@@ -19,9 +19,9 @@ state lives at `.github/seo-data`. The recurring scheduler is an authorized
 ChatGPT or equivalent session-level task outside this repository.
 
 Do not add a GitHub Actions workflow, repository cron job, webhook, hosted
-agent runner, provider SDK, or model-provider secret to run the SEO agent. This
-repository does not need `OPENAI_API_KEY`. Existing GitHub Actions are limited
-to ordinary CI and static-site publication.
+agent runner, provider SDK, or model-provider secret to run the SEO agent. No
+model-provider credential belongs in this repository. Existing GitHub Actions
+are limited to ordinary CI and static-site publication.
 
 When the external session invokes `.github/seo-data/daily-task.md`, it uses a
 fresh `seo/agentsight-` branch, a real non-draft pull request, the repository's
