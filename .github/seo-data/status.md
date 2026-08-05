@@ -2,67 +2,48 @@
 
 ## Current state
 
-- Last completed owner-directed site recovery and incremental improvement: `2026-08-05 15:06 PDT`
-- Last verified weekly export window: `2026-07-27` through `2026-08-02`; seven matching GA4 and Search Console CSV files are present
-- Recovery pull request: `#22`, squash-merged
-- Recovery squash commit: `4bdeffe0af471980ef29310aaf80fe1d6e21f1f5`
-- Incremental homepage pull request: `#23`, squash-merged
-- Current site-change squash commit: `773982962557971b35922122661fd76f639d9966`
-- Current publication marker: `site:.source-sha` = `773982962557971b35922122661fd76f639d9966`
-- Runtime analytics: preserved; GA4 uses path-only reporting with Google signals and ad-personalization signals disabled
-- Canonical documentation: `https://eunomia.dev/agentsight/`
-- Skill submodule commit: `1140a11b9a366ddb611d19d691d81122184f7f9e`
-- Scheduler owner: external session-level task; schedule state is intentionally outside Git
-- Repository-hosted SEO agent workflow: none
-- Model-provider credential requirement: none
+- Active owner-directed site change: Grafana-inspired AgentSight product-site refresh in progress on `2026-08-05`.
+- Current production source marker before this change: `773982962557971b35922122661fd76f639d9966`.
+- Current product release: AgentSight `v0.2.68`, product commit `4e1504e7f6713dcae7fb7762415bb93288abb931`.
+- Canonical product website: `https://agentsight.us/`.
+- Canonical documentation: `https://eunomia.dev/agentsight/`.
+- Route inventory and navigation hierarchy: preserved; this change does not create, remove, rename, or redirect public routes.
+- Runtime analytics: preserved; GA4 uses path-only reporting and excludes query strings, Google signals, and ad-personalization signals.
+- Current skill submodule commit: `1140a11b9a366ddb611d19d691d81122184f7f9e`.
+- Reviewed compatible skill target: `d7d92ba12f7e6368e1f438432e7957c0d06eea4f`, which adds the shared operating entrypoint and explicit incremental-change policy.
+- Scheduler owner: external session-level task; schedule state remains outside Git.
+- Repository-hosted SEO agent workflow: none.
+- Model-provider credential requirement: none.
 
-## Delivery evidence
+## Change scope
 
-- PR `#22` head: `70a15afe9a7c775399bd89d6603c52eae9e904ff`
-- PR `#22` exact-head Website CI: run `31051001581`, successful
-- PR `#22` squash commit: `4bdeffe0af471980ef29310aaf80fe1d6e21f1f5`
-- PR `#22` main Website CI: run `31051076758`, successful
-- PR `#22` publication workflow: run `31051076781`, successful
-- PR `#23` head: `3016234629d0d25ef3074bb1e0cfe540fb6d5f54`
-- PR `#23` exact-head Website CI: run `31051335639`, successful
-- PR `#23` squash commit: `773982962557971b35922122661fd76f639d9966`
-- PR `#23` main Website CI: run `31051403988`, successful
-- PR `#23` publication workflow: run `31051404031`, successful
-- Published `site/index.html` contains the restored pre-PR `#17` product-site structure, the three-view product tour, the pinned first-party screenshot URLs, the eunomia.dev documentation target, and the GA4 loader
+- Refresh the existing shared visual system, header, footer, homepage, social preview, and web manifest in a Grafana-inspired developer-product style without copying Grafana assets or layout code.
+- Use direct product language from the AgentSight README and repository instead of abstract invented terminology.
+- Use existing first-party AgentSight product material: live sessions, timeline, process tree, resource metrics, Agent Nebula repository replay, and Agent Flamegraph.
+- Pin every externally loaded first-party product image to product commit `4e1504e7f6713dcae7fb7762415bb93288abb931`.
+- Update release references from `v0.2.67` or `v0.2.66` to the current `v0.2.68` where this change touches the public page.
+- Preserve the existing 23 content pages and canonical route structure.
 
-## Current product-site baseline
+## Acceptance gates
 
-- PR `#17`'s bulk redesign, new run-library routes, methodology route, about route, replacement brand assets, and split global visual system have been removed from the generated site
-- The pre-PR `#17` product website is restored
-- The homepage keeps its original hero, layout, navigation, and design language
-- The documentation-style command block was replaced with a narrow product tour showing the real timeline, process-tree, and resource-metrics views
-- Screenshot provenance is pinned to AgentSight product commit `0d305c8186b8d6154c954af8985a1d6733a06339`
-- Product documentation points to eunomia.dev; remaining internal guide routes are legacy content to be handled incrementally rather than through another bulk migration
-- GA4 measurement remains present with query strings excluded from page-location reporting
+- Exact-head Website CI must complete successfully.
+- The generated static export must preserve canonical URLs, robots, sitemap coverage, internal links, GA4 path-only configuration, and all existing routes.
+- Desktop and mobile homepage renders must be visually reviewed from the exact CI artifact.
+- Representative unchanged pages must be inspected after the shared CSS update: `/use-cases/`, `/compare/`, `/integrations/claude-code/`, `/security/`, `/changelog/`, and `/releases/`.
+- Every pinned first-party image URL must resolve successfully.
+- After a clean final diff review, squash-merge normally without bypassing checks.
+- The exact squash commit's normal main Website CI and Publish static site workflows must succeed.
+- `site/.source-sha` must identify the exact rendered squash commit.
+- Production verification must cover the homepage, representative unchanged routes, metadata, sitemap, robots, manifest, Open Graph image, documentation target, product image loading, and GA4 configuration.
+- Final PR, CI, squash, publication, and live verification facts must be recorded through a metadata-only closeout pull request.
 
-## Current signals
+## Current analytics and search data
 
-- Google Drive SEO folder: configured as `agentsight.us SEO Weekly CSV`
-- Google Analytics 4 export: organic landing-page CSV present; raw rows remain outside Git
-- Google Search Console exports: queries, pages, countries, devices, search appearance, and dates CSVs present; raw rows remain outside Git
-- Cloudflare analytics: not configured
-- Product release baseline: AgentSight `v0.2.67`
-- Public search visibility: current public search caches may still show older homepage copies while search engines recrawl; do not treat cached snippets as the production source of truth
-- Repository CI and static publication pipeline: operational
-- Confirmed actionable production defect: none open after recovery and publication
-
-Unavailable or delayed provider evidence must never be interpreted as zero
-traffic or zero search demand. Public search observations are directional and
-do not replace Search Console clicks, impressions, CTR, average position, or
-indexing reports.
+- Last verified weekly export window: `2026-07-27` through `2026-08-02`.
+- One GA4 organic landing-page CSV and six Search Console CSVs were previously verified; raw rows remain outside Git.
+- Cloudflare analytics: not configured.
+- No traffic, ranking, or conversion claim is introduced by this design change.
 
 ## Active focus
 
-Keep `agentsight.us` as the AgentSight product website. Make only small,
-reversible improvements against the restored baseline. Prioritize real product
-screenshots, concrete product behavior, use-case differentiation, and links to
-the demo, source repository, and eunomia.dev documentation. Do not perform
-another bulk redesign, mass rewrite, or route migration in one change.
-
-This file is the current verified summary. Detailed autonomous-run history
-belongs in `daily/`.
+Complete the current product-site refresh as one bounded visual and messaging change. Do not change route ownership, documentation architecture, analytics policy, scheduler behavior, or unrelated content-page structure in this pull request.
