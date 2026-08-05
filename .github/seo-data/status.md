@@ -6,7 +6,7 @@
 - Last data window: unavailable; no finalized GA4 or Search Console export found
 - Last site-change pull request: `#17`, squash-merged
 - Last autonomous squash merge: `6db78cadef959f2be9fce304a40d128ca795349b`
-- Last autonomous closeout pull request: pending creation by the metadata-only closeout
+- Last autonomous closeout pull request: `#18`
 - Last successful production deployment: squash commit `6db78cadef959f2be9fce304a40d128ca795349b`
 - Last public verification: `2026-08-05`, launch routes and assets verified
 - Skill submodule commit: `53ef5e7027c40bb1f57d05673d5b4eecae70d605`
@@ -20,6 +20,7 @@
 - Exact pull-request head: `5e00f9875ff923072cd8a9798b66cb469b0d9800`
 - Exact-head Website CI: run `#43`, run ID `31002760823`, successful
 - Exact squash commit: `6db78cadef959f2be9fce304a40d128ca795349b`
+- Closeout pull request: `https://github.com/eunomia-bpf/agentsight-website/pull/18`
 - Publication source marker: `site:.source-sha` = `6db78cadef959f2be9fce304a40d128ca795349b`
 - Live verification set: `/`, `/runs/`, `/runs/recorded-demo/`, `/runs/review-artifact/`, `/methodology/`, `/about/`, `/changelog/`, `/manifest.webmanifest`, `/icon.svg`, and `/opengraph-image`
 - Live origin metadata: `https://agentsight.us/llms.txt` returned HTTP 200 with AgentSight `v0.2.67` and the new route inventory
