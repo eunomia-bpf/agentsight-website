@@ -39,20 +39,29 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - name: Check out publication branch
+        uses: actions/checkout@v4
+        with:
+          ref: site
+          fetch-depth: 1
+          path: .publish-site
       - name: Publish generated files to site branch
         run: |
+          publish_dir="$GITHUB_WORKSPACE/.publish-site"
           tar -C out -cf "$RUNNER_TEMP/site.tar" .
-          git worktree add --detach "$RUNNER_TEMP/site-branch" "$SOURCE_SHA"
-          git -C "$RUNNER_TEMP/site-branch" checkout --orphan site-publish
-          git -C "$RUNNER_TEMP/site-branch" rm -rf .
-          tar -C "$RUNNER_TEMP/site-branch" -xf "$RUNNER_TEMP/site.tar"
-          touch "$RUNNER_TEMP/site-branch/.nojekyll"
-          printf '%s\n' "$SOURCE_SHA" > "$RUNNER_TEMP/site-branch/.source-sha"
-          git -C "$RUNNER_TEMP/site-branch" add -A
-          if git -C "$RUNNER_TEMP/site-branch" ls-files | grep -Eq '^(\.next|node_modules|out)(/|$)'; then
+          find "$publish_dir" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          tar -C "$publish_dir" -xf "$RUNNER_TEMP/site.tar"
+          touch "$publish_dir/.nojekyll"
+          printf '%s\n' "$SOURCE_SHA" > "$publish_dir/.source-sha"
+          git -C "$publish_dir" add -A
+          if git -C "$publish_dir" ls-files | grep -Eq '^(\.next|node_modules|out)(/|$)'; then
             echo "Refusing to publish build caches or dependencies" >&2
             exit 1
           fi
-          test -f "$RUNNER_TEMP/site-branch/index.html"
-          git -C "$RUNNER_TEMP/site-branch" -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Publish ${SOURCE_SHA}"
-          git -C "$RUNNER_TEMP/site-branch" push --force origin HEAD:site
+          test -f "$publish_dir/index.html"
+          if git -C "$publish_dir" diff --cached --quiet; then
+            echo "Publication branch already matches ${SOURCE_SHA}"
+            exit 0
+          fi
+          git -C "$publish_dir" -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Publish ${SOURCE_SHA}"
+          git -C "$publish_dir" push origin HEAD:site
