@@ -9,7 +9,7 @@
 - Last autonomous closeout pull request: none
 - Last successful production deployment: none recorded for an SEO site change
 - Last public verification: none recorded for an SEO site change
-- Skill submodule commit: `53ef5e7027c40bb1f57d05673d5b4eecae70d605`
+- Skill submodule commit: `16446ddbec8eeb1173362c7ce41977a274e897e8`
 - Scheduler owner: external session-level task; schedule state is intentionally outside Git
 - Repository-hosted SEO agent workflow: none
 - Model-provider credential requirement: none
