@@ -2,22 +2,28 @@
 
 ## Current state
 
-- Last completed autonomous SEO run: `2026-08-05 09:00 PDT` metadata/data refresh with no rendered site change
+- Last completed autonomous SEO run: `2026-08-05 13:16 PDT` Google-native export verification and runtime analytics repair
 - Last verified weekly export window: `2026-07-27` through `2026-08-02`; seven matching GA4 and Search Console CSV files are present
-- Last site-change pull request: `#17`, squash-merged
-- Last site-change squash commit: `6db78cadef959f2be9fce304a40d128ca795349b`
-- Last autonomous metadata closeout: `#18`, squash commit `5948f21375d07de02fe79a36ae68fddd558aa35c`
+- Last site-change pull request: `#20`, squash-merged
+- Last site-change squash commit: `6bfa944f29b44a4fbfd9aaa78557b17fdd22f402`
+- Current autonomous metadata closeout: `#21`
+  (`https://github.com/eunomia-bpf/agentsight-website/pull/21`)
 - Last data-only pull request: `#19`, squash commit `8ef2cc29314243593f93d0697ee22e02c2cf5052`
-- Current runtime-analytics repair: in progress; production does not yet expose the configured GA4 measurement
-- Last successful production deployment: squash commit `6db78cadef959f2be9fce304a40d128ca795349b`
-- Last public verification: `2026-08-05`, launch routes, crawl controls, canonical metadata, structured data, and assets verified
-- Skill submodule commit: `0b9a76a27de6d1e46ef0193a8d683bca182b785a`
+- Runtime-analytics repair: completed; production exposes the configured GA4 measurement with path-only reporting
+- Last successful production deployment: squash commit `6bfa944f29b44a4fbfd9aaa78557b17fdd22f402`
+- Last public verification: `2026-08-05 13:10 PDT`, GA4 loader and path-only configuration verified
+- Skill submodule commit: `1140a11b9a366ddb611d19d691d81122184f7f9e`
 - Scheduler owner: external session-level task; schedule state is intentionally outside Git
 - Repository-hosted SEO agent workflow: none
 - Model-provider credential requirement: none
 
 ## Delivery evidence
 
+- Runtime analytics pull request: `https://github.com/eunomia-bpf/agentsight-website/pull/20`
+- Runtime analytics exact-head Website CI: run `31042613671`, successful
+- Runtime analytics squash commit: `6bfa944f29b44a4fbfd9aaa78557b17fdd22f402`
+- Runtime analytics production workflow: run `31042739403`, successful
+- Current publication marker: `site:.source-sha` = `6bfa944f29b44a4fbfd9aaa78557b17fdd22f402`
 - Change pull request: `https://github.com/eunomia-bpf/agentsight-website/pull/17`
 - Exact pull-request head: `5e00f9875ff923072cd8a9798b66cb469b0d9800`
 - Exact-head Website CI: run `#43`, run ID `31002760823`, successful
@@ -43,7 +49,8 @@
 - Internal-link baseline: repository checks cover 46 internal links across 32 routes; no confirmed broken internal route
 - Content baseline: 23 existing intent pages plus the evidence-oriented run library, methodology, and project-authorship layer
 - Repository CI and static publication pipeline: operational
-- Confirmed actionable technical defect: the production site does not load the configured runtime analytics tag; repair is in progress
+- Runtime analytics: GA4 loader and path-only page-view configuration verified on production
+- Confirmed actionable technical defect: none open
 
 Unavailable or delayed provider evidence must never be interpreted as zero
 traffic or zero search demand. Public search observations are directional and
@@ -52,10 +59,9 @@ indexing reports.
 
 ## Active focus
 
-Restore runtime GA4 measurement without changing public content or URL behavior,
-then preserve the verified launch baseline while search engines recrawl the new
-route inventory. Continue weekly export ingestion and monitor brand ambiguity
-and priority-query discovery.
+Preserve the verified launch and analytics baseline while search engines recrawl
+the route inventory. Continue weekly export ingestion and monitor brand
+ambiguity and priority-query discovery without manufacturing daily changes.
 
 This file is the current verified summary. Detailed autonomous-run history
 belongs in `daily/`.
