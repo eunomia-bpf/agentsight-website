@@ -14,7 +14,7 @@
 - Automation branch prefix: `seo/agentsight-`
 - Skill submodule path: `.github/seo-skills`
 - Skill allowed branch: `main`
-- Pinned skill commit: `53ef5e7027c40bb1f57d05673d5b4eecae70d605`
+- Pinned skill commit: `0b9a76a27de6d1e46ef0193a8d683bca182b785a`
 
 ## Scheduler
 
@@ -29,13 +29,22 @@ provider secret whose purpose is to run the SEO agent.
 
 ## Google data
 
+- Runtime analytics required: yes
+- Primary runtime provider: Google Analytics 4
+- Runtime implementation location: `src/app/layout.tsx`
+- Runtime verification URL: `https://agentsight.us/`
+- URL reporting: `path-only`
+- Search analytics required: Google Search Console
+- Search evidence route: weekly CSV exports in the configured Google Drive folder
+- Infrastructure analytics: not configured
+- Analytics payload policy: default public page-view metadata only; query strings and custom fields derived from credentials, cookies, authorization values, private identifiers, or application storage are prohibited
 - Google Drive enabled: yes
 - Google Drive folder name: `agentsight.us SEO Weekly CSV`
 - Folder lookup: search by folder name through the connected Google Drive account
 - Daily source check: yes
 - Export refresh expectation: weekly or whenever a newer export is available
-- GA4 export filename pattern: `ga4-*.csv`
-- Search Console export filename pattern: `gsc-*.csv`
+- GA4 export filename pattern: `*_ga4_organic_landing_pages.csv`
+- Search Console export filename pattern: `*_gsc_*.csv`
 - Lookback days: 28
 - Finalization lag days: 3
 
@@ -79,6 +88,7 @@ for the publication triggered by the exact squash commit, confirms the `site`
 branch identifies that rendered source commit, and verifies the intended public
 behavior.
 
-Store only durable public metadata here. Never add analytics property IDs,
-Drive IDs, Cloudflare IDs, account identifiers, personal emails, credentials,
-private URLs, or raw analytics.
+Store only durable public metadata here. Public browser measurement IDs may
+remain in runtime source because clients must receive them. Never add private
+analytics property IDs, Drive IDs, Cloudflare IDs, account identifiers,
+personal emails, credentials, private URLs, or raw analytics.

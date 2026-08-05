@@ -48,6 +48,9 @@ for (const route of routes) {
   titles.add(title);
   assert((html.match(/<h1(?:\s|>)/g) ?? []).length === 1, `Expected one H1 in ${route}`);
   assert(html.includes(`rel="canonical" href="https://agentsight.us${route}"`), `Missing canonical URL in ${route}`);
+  assert(html.includes('G-VVRNSCMWBX'), `Missing GA4 measurement on ${route}`);
+  assert(html.includes('window.location.origin + window.location.pathname'), `Missing path-only GA4 location policy on ${route}`);
+  assert(html.includes('window.location.pathname'), `Missing path-only GA4 page path on ${route}`);
   for (const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) {
     if (!match[1].startsWith('/_next/')) internalLinks.add(match[1]);
   }

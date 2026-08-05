@@ -1,10 +1,13 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import Script from 'next/script';
 import './styles/base.css';
 import './styles/home.css';
 import './styles/content.css';
 import './styles/responsive.css';
 import { site } from '@/lib/site';
+
+const googleAnalyticsId = 'G-VVRNSCMWBX';
 
 const socialImage = {
   url: '/opengraph-image',
@@ -91,7 +94,31 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${googleAnalyticsId}', {
+                page_location: window.location.origin + window.location.pathname,
+                page_path: window.location.pathname,
+                page_title: document.title,
+                allow_google_signals: false,
+                allow_ad_personalization_signals: false
+              });
+            `,
+          }}
+        />
+      </body>
     </html>
   );
 }
