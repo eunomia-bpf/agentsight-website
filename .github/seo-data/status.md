@@ -16,18 +16,27 @@
 
 ## Current signals
 
-- Google Analytics 4: not configured
-- Google Search Console: not configured
+- Google Drive SEO folder: configured as `agentsight.us SEO Weekly CSV`
+- Google Drive folder state: folder is visible to the connected account but no direct child files were returned during the `2026-08-05 03:03 PDT` check
+- Google Analytics 4: no matching export found
+- Google Search Console: no matching export found
 - Cloudflare analytics: not configured
-- Public technical baseline: pending first session-invoked verification
-- Content and semantic-overlap baseline: pending first session-invoked verification
+- Public search visibility: the AgentSight homepage is indexed and appears for the brand; Search Console metrics are still unavailable
+- Public technical baseline: pending first scheduled daily verification
+- Content and semantic-overlap baseline: pending first scheduled daily verification
 - Repository CI and static publication pipeline: available
+
+Missing exports are unavailable evidence, not zero traffic or zero search demand.
+The daily task must check the configured Drive folder and public search baseline
+every day and record source freshness even when no new export or site change is
+available.
 
 ## Active focus
 
-Complete the first session-scheduled operating cycle, verify crawl and metadata
-behavior, inventory existing search intents, and select a site change only if
-the evidence supports one.
+Complete the first session-scheduled daily data cycle, record public index and
+site-health evidence, ingest the first finalized GSC and GA4 exports when they
+appear in the configured folder, and select a site change only when the evidence
+supports one.
 
 This file is the current verified summary. Detailed autonomous-run history
 belongs in `daily/`.

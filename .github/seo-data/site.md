@@ -29,16 +29,33 @@ provider secret whose purpose is to run the SEO agent.
 
 ## Google data
 
-- Google Drive enabled: no
-- Google Drive folder name: `not configured`
+- Google Drive enabled: yes
+- Google Drive folder name: `agentsight.us SEO Weekly CSV`
+- Folder lookup: search by folder name through the connected Google Drive account
+- Daily source check: yes
+- Export refresh expectation: weekly or whenever a newer export is available
 - GA4 export filename pattern: `ga4-*.csv`
 - Search Console export filename pattern: `gsc-*.csv`
 - Lookback days: 28
 - Finalization lag days: 3
 
-Disabled sources are unavailable, not zero. Do not fabricate metrics. They may
-be enabled later only after a read-only connected-data path exists in the
-invoking session.
+The scheduled session checks the configured folder every day. It uses the
+newest finalized exports available, records their filenames, date windows,
+modification times, and public-safe checksums, and compares them with the prior
+record. When the folder is empty, missing, unchanged, stale, or contains no
+matching export, record that exact source state. Missing evidence is not zero.
+Do not commit the Drive folder ID, raw rows, search-query exports, or account
+identifiers.
+
+## Public search visibility
+
+- Public index checks enabled: yes
+- Daily baseline queries: `site:agentsight.us`, `agentsight.us`, and the AgentSight brand query
+- Priority-query sampling: use only evidence-backed product and use-case terms already present on the site
+
+Public search results are directional evidence for discovery, indexing, titles,
+and competing results. They are not a substitute for Search Console clicks,
+impressions, CTR, average position, or page-indexing reports.
 
 ## Cloudflare data
 
