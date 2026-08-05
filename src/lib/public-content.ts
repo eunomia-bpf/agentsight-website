@@ -66,7 +66,7 @@ function rewriteText(text: string) {
   );
 }
 
-function publicPage(page: ContentPage): ContentPage {
+export function publicPage(page: ContentPage): ContentPage {
   return {
     ...page,
     title: rewriteText(page.title),
