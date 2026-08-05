@@ -59,8 +59,9 @@ jobs:
             exit 1
           fi
           test -f "$publish_dir/index.html"
-          if git -C "$publish_dir" diff --cached --quiet; then
-            echo "Publication branch already matches ${SOURCE_SHA}"
+          if git -C "$publish_dir" diff --cached --quiet -- . ':(exclude).source-sha'; then
+            echo "Rendered output is unchanged; keeping the existing publication source marker"
+            git -C "$publish_dir" reset --hard HEAD
             exit 0
           fi
           git -C "$publish_dir" -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Publish ${SOURCE_SHA}"
