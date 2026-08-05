@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/3dh7kwjz8pnq6.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"slug","param":{"type":"d","key":"mcp-server-audit","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"agentsight-112aa0016d7eb175c4f4dd26"}
+:HL["/_next/static/chunks/3dvqz8xtemg-q.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"slug","param":{"type":"d","key":"mcp-server-audit","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"agentsight-f6fe6cbcfc5d301f178e0ea1"}
