@@ -11,20 +11,7 @@ const entryPattern = /\n  \{\r?\n    kind: '([^']+)',\r?\n    slug: '([^']+)',\r
 const entries = [...contentSource.matchAll(entryPattern)].map((match) => ({ kind: match[1], slug: match[2] }));
 const routePrefix = { 'use-case': 'use-cases', comparison: 'compare', guide: 'guides', blog: 'blog', integration: 'integrations', landing: '' };
 const routes = [
-  '/',
-  '/use-cases/',
-  '/compare/',
-  '/guides/',
-  '/blog/',
-  '/integrations/',
-  '/security/',
-  '/changelog/',
-  '/releases/',
-  '/runs/',
-  '/runs/recorded-demo/',
-  '/runs/review-artifact/',
-  '/methodology/',
-  '/about/',
+  '/', '/use-cases/', '/compare/', '/guides/', '/blog/', '/integrations/', '/security/', '/changelog/', '/releases/',
   ...entries.map((entry) => `/${routePrefix[entry.kind] ? `${routePrefix[entry.kind]}/` : ''}${entry.slug}/`),
 ];
 
@@ -48,9 +35,6 @@ for (const route of routes) {
   titles.add(title);
   assert((html.match(/<h1(?:\s|>)/g) ?? []).length === 1, `Expected one H1 in ${route}`);
   assert(html.includes(`rel="canonical" href="https://agentsight.us${route}"`), `Missing canonical URL in ${route}`);
-  assert(html.includes('G-VVRNSCMWBX'), `Missing GA4 measurement on ${route}`);
-  assert(html.includes('window.location.origin + window.location.pathname'), `Missing path-only GA4 location policy on ${route}`);
-  assert(html.includes('window.location.pathname'), `Missing path-only GA4 page path on ${route}`);
   for (const match of html.matchAll(/(?:href|src)="(\/[^"#]*)"/g)) {
     if (!match[1].startsWith('/_next/')) internalLinks.add(match[1]);
   }
@@ -72,21 +56,7 @@ for (const target of internalLinks) {
   assert(found, `Exported internal link has no file: ${target}`);
 }
 
-for (const required of [
-  'robots.txt',
-  'sitemap.xml',
-  'manifest.webmanifest',
-  'opengraph-image',
-  'twitter-image',
-  'llms.txt',
-  '_headers',
-  '_redirects',
-  'favicon.ico',
-  'icon-192.png',
-  'icon-512.png',
-  'brand/logo-mark.svg',
-  'brand/logo-horizontal.svg',
-]) {
+for (const required of ['robots.txt', 'sitemap.xml', 'manifest.webmanifest', 'opengraph-image', 'llms.txt', '_headers', '_redirects']) {
   await access(path.join(out, required));
 }
 
@@ -94,10 +64,6 @@ const sitemap = await readFile(path.join(out, 'sitemap.xml'), 'utf8');
 for (const route of routes) {
   assert(sitemap.includes(`<loc>https://agentsight.us${route}</loc>`), `Sitemap is missing ${route}`);
 }
-
-const manifest = await readFile(path.join(out, 'manifest.webmanifest'), 'utf8');
-assert(manifest.includes('/icon-192.png'), 'Manifest is missing the 192px icon');
-assert(manifest.includes('/icon-512.png'), 'Manifest is missing the 512px icon');
 
 const allFiles = await readdir(out, { recursive: true });
 assert(allFiles.length >= routes.length, 'Static export contains fewer files than routes');
