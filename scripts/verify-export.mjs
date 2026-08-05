@@ -81,7 +81,6 @@ for (const required of [
   'favicon.ico',
   'icon-192.png',
   'icon-512.png',
-  'apple-icon.png',
   'brand/logo-mark.svg',
   'brand/logo-horizontal.svg',
 ]) {
