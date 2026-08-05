@@ -45,9 +45,10 @@
 - Repository CI and static publication pipeline: operational
 - Confirmed actionable technical defect: the production site does not load the configured runtime analytics tag; repair is in progress
 
-Missing exports are unavailable evidence, not zero traffic or zero search demand.
-Public search observations are directional and do not replace Search Console
-clicks, impressions, CTR, average position, or indexing reports.
+Unavailable or delayed provider evidence must never be interpreted as zero
+traffic or zero search demand. Public search observations are directional and
+do not replace Search Console clicks, impressions, CTR, average position, or
+indexing reports.
 
 ## Active focus
 
