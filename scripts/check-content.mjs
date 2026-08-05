@@ -1,12 +1,16 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 eunomia-bpf org.
 
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
 const contentSource = await readFile(path.join(root, 'src/lib/content.ts'), 'utf8');
 const shellSource = await readFile(path.join(root, 'src/components/SiteShell.tsx'), 'utf8');
+const layoutSource = await readFile(path.join(root, 'src/app/layout.tsx'), 'utf8');
+const manifestSource = await readFile(path.join(root, 'src/app/manifest.ts'), 'utf8');
+const metadataSource = await readFile(path.join(root, 'src/lib/metadata.ts'), 'utf8');
+const sitemapSource = await readFile(path.join(root, 'src/app/sitemap.ts'), 'utf8');
 
 const entryPattern = /\n  \{\r?\n    kind: '([^']+)',\r?\n    slug: '([^']+)',\r?\n    title: '([^']+)',\r?\n    description:\r?\n      '([^']+)'/g;
 const entries = [...contentSource.matchAll(entryPattern)].map((match) => ({
@@ -52,7 +56,7 @@ const routePrefix = {
   integration: 'integrations',
   landing: '',
 };
-const routes = new Set([
+const fixedRoutes = [
   '/',
   '/use-cases/',
   '/compare/',
@@ -62,6 +66,14 @@ const routes = new Set([
   '/security/',
   '/changelog/',
   '/releases/',
+  '/runs/',
+  '/runs/recorded-demo/',
+  '/runs/review-artifact/',
+  '/methodology/',
+  '/about/',
+];
+const routes = new Set([
+  ...fixedRoutes,
   ...entries.map((entry) => `/${routePrefix[entry.kind] ? `${routePrefix[entry.kind]}/` : ''}${entry.slug}/`),
 ]);
 
@@ -82,4 +94,32 @@ for (const host of primaryHosts) {
   assert(comparisonSection.includes(host), `Comparison sources are missing ${host}`);
 }
 
-console.log(`Content check passed: ${entries.length} unique pages, ${routes.size} HTML routes, ${internalLinks.length} checked internal links.`);
+const requiredTextSignals = [
+  [layoutSource, '/favicon.ico', 'layout favicon'],
+  [layoutSource, '/apple-icon.png', 'Apple touch icon'],
+  [layoutSource, '/opengraph-image', 'Open Graph image'],
+  [manifestSource, '/icon-192.png', '192px manifest icon'],
+  [manifestSource, '/icon-512.png', '512px manifest icon'],
+  [metadataSource, 'site.maintainer.name', 'page author metadata'],
+  [sitemapSource, '/methodology/', 'methodology sitemap route'],
+  [sitemapSource, '/runs/', 'runs sitemap route'],
+];
+for (const [source, needle, label] of requiredTextSignals) {
+  assert(source.includes(needle), `Missing ${label}`);
+}
+
+for (const file of [
+  'src/app/icon.svg',
+  'src/app/apple-icon.png',
+  'public/favicon.ico',
+  'public/icon-192.png',
+  'public/icon-512.png',
+  'public/brand/logo-mark.svg',
+  'public/brand/logo-horizontal.svg',
+  'src/app/opengraph-image.tsx',
+  'src/app/twitter-image.tsx',
+]) {
+  await access(path.join(root, file));
+}
+
+console.log(`Content and brand check passed: ${entries.length} unique content pages, ${routes.size} HTML routes, ${internalLinks.length} checked internal links.`);
