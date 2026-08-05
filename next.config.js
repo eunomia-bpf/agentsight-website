@@ -5,6 +5,9 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  experimental: {
+    useTypeScriptCli: true,
+  },
   images: {
     unoptimized: true,
   },
