@@ -3,6 +3,12 @@ name: Publish static site
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact main-branch commit to build and publish
+        required: false
+        type: string
 
 permissions:
   actions: read
@@ -15,8 +21,18 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          fetch-depth: 0
+      - name: Validate publication source
+        run: |
+          git cat-file -e "${SOURCE_SHA}^{commit}"
+          git fetch origin main --quiet
+          git merge-base --is-ancestor "$SOURCE_SHA" origin/main
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -24,8 +40,6 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - name: Publish generated files to site branch
-        env:
-          SOURCE_SHA: ${{ github.sha }}
         run: |
           tar -C out -cf "$RUNNER_TEMP/site.tar" .
           git worktree add --detach "$RUNNER_TEMP/site-branch" "$SOURCE_SHA"
@@ -33,6 +47,7 @@ jobs:
           git -C "$RUNNER_TEMP/site-branch" rm -rf .
           tar -C "$RUNNER_TEMP/site-branch" -xf "$RUNNER_TEMP/site.tar"
           touch "$RUNNER_TEMP/site-branch/.nojekyll"
+          printf '%s\n' "$SOURCE_SHA" > "$RUNNER_TEMP/site-branch/.source-sha"
           git -C "$RUNNER_TEMP/site-branch" add -A
           if git -C "$RUNNER_TEMP/site-branch" ls-files | grep -Eq '^(\.next|node_modules|out)(/|$)'; then
             echo "Refusing to publish build caches or dependencies" >&2

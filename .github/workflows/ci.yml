@@ -4,6 +4,12 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      expected_sha:
+        description: Exact feature-branch commit expected for an autonomous run
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -13,6 +19,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      - name: Verify explicitly dispatched commit
+        if: github.event_name == 'workflow_dispatch' && inputs.expected_sha != ''
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: test "$GITHUB_SHA" = "$EXPECTED_SHA"
+      - name: Enforce autonomous SEO scope
+        env:
+          SEO_AUTOMATION_BRANCH: ${{ github.head_ref || github.ref_name }}
+          SEO_BASE_REF: origin/main
+        run: |
+          case "$SEO_AUTOMATION_BRANCH" in
+            seo/agentsight-*)
+              git fetch origin main --quiet
+              git show origin/main:scripts/check-seo-automation-scope.py > "$RUNNER_TEMP/check-seo-automation-scope.py"
+              python3 "$RUNNER_TEMP/check-seo-automation-scope.py"
+              ;;
+            *)
+              echo "SEO scope guard not required for $SEO_AUTOMATION_BRANCH"
+              ;;
+          esac
+      - name: Validate SEO operating data
+        run: python3 .github/seo-skills/scripts/validate_seo_data.py --data-root .github/seo-data
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
