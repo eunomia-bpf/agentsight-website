@@ -1,11 +1,10 @@
 # Human-only blockers
 
-## Provide the OpenAI API credential required by the agent runner
+No human-only blockers.
 
-- Status: open
-- Blocked action: start the scheduled Codex SEO operating cycle.
-- Evidence: bootstrap workflow run `https://github.com/eunomia-bpf/agentsight-website/actions/runs/30983349752` stopped in `Preflight` because the `OPENAI_API_KEY` Actions secret was empty. Repository-scoped GitHub permissions and the pinned skill checkout succeeded.
-- Impact: the skill, schedule, delivery controls, CI, and publication contract are installed, but no model-driven SEO decision or repository change can run until the provider credential exists.
-- Smallest human action: add a repository or organization GitHub Actions secret named `OPENAI_API_KEY` containing a valid OpenAI API key, then manually dispatch `Autonomous SEO operations` once. Later daily runs need no human approval.
-
-GitHub Models cannot be substituted directly into the pinned Codex action: GitHub Models exposes the Chat Completions inference API, while the Codex action requires a provider key and a Responses API endpoint. Do not add an unreviewed protocol-translation proxy merely to avoid the credential.
+The SEO scheduler intentionally lives outside this repository in an authorized
+session-level task. The absence of a repository-hosted agent workflow or
+`OPENAI_API_KEY` is expected and is not a blocker. Add an item here only when an
+external system truly requires a human-only action or a required connected-tool
+permission is absent. Include the blocked action, evidence, impact, and minimum
+human action needed, then remove resolved items in the next pull request.

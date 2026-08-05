@@ -12,16 +12,20 @@ Run `npm run verify` before opening a pull request. Keep the site compatible
 with Next.js static export: do not add server-only routes, request-time APIs,
 or image optimization that requires a Next.js server.
 
-## Autonomous SEO operations
+## SEO operations
 
-`.github/seo-data/daily-task.md` is the site-specific operating contract.
-Shared collection and site-change skills are pinned as the
-`.github/seo-skills` submodule. Scheduled runs are authorized to research,
-edit the site, create non-draft pull requests, explicitly run and wait for CI,
-perform the final self-review, squash-merge, publish the exact squash commit,
-verify production, and merge a metadata closeout without human review.
+Shared SEO skills are pinned at `.github/seo-skills`; site-specific operating
+state lives at `.github/seo-data`. The recurring scheduler is an authorized
+ChatGPT or equivalent session-level task outside this repository.
 
-Automated SEO work must use a fresh `seo/agentsight-` branch and must never
-push directly to `main`, bypass checks, force-push, fabricate evidence, or
-expose private data. Normal SEO cycles may not edit the protected automation
-control plane listed in `daily-task.md`.
+Do not add a GitHub Actions workflow, repository cron job, webhook, hosted
+agent runner, provider SDK, or model-provider secret to run the SEO agent. This
+repository does not need `OPENAI_API_KEY`. Existing GitHub Actions are limited
+to ordinary CI and static-site publication.
+
+When the external session invokes `.github/seo-data/daily-task.md`, it uses a
+fresh `seo/agentsight-` branch, a real non-draft pull request, the repository's
+existing CI, final self-review, squash merge, production verification, and a
+metadata closeout. It must never push directly to `main`, bypass checks,
+force-push, fabricate evidence, or expose private data. Normal SEO cycles may
+not edit the protected control plane listed in `daily-task.md`.

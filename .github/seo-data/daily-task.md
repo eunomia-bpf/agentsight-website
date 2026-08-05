@@ -4,7 +4,7 @@
 
 Run one fully autonomous, evidence-backed SEO operating cycle for
 `https://agentsight.us`. No normal collection, editing, pull-request, CI,
-self-review, merge, deployment, verification, or closeout step requires human
+self-review, merge, deployment-verification, or closeout step requires human
 approval.
 
 The objective is useful, technically accurate coverage for people evaluating
@@ -15,11 +15,18 @@ through the required pull-request lifecycle.
 ## Schedule
 
 - Frequency: daily
-- GitHub cron: `37 16 * * *`
+- Configuration owner: authorized ChatGPT or equivalent session-level task outside this repository
 - Timezone for reports and data windows: `America/Los_Angeles`
 - Data window: use the lookback and finalization lag in `site.md`
 - Maximum site changes: one coherent change per main pull request
 - Maximum concurrent cycles: one
+
+The invoking session supplies model access and connected tools. Do not add a
+GitHub Actions workflow, repository cron job, webhook, hosted agent runner,
+provider SDK, or model-provider credential to execute this task. In particular,
+this repository does not need `OPENAI_API_KEY`. Existing CI and publication
+workflows validate and deliver repository changes; they do not run the SEO
+agent.
 
 ## Evidence policy
 
@@ -36,14 +43,14 @@ through the required pull-request lifecycle.
 - Never commit raw rows, search queries, user events, IP addresses, private
   identifiers, credentials, personal information, or full API responses.
 
-## Protected automation control plane
+## Protected operating control plane
 
 Normal SEO cycles must not modify `.github/workflows/**`, `.gitmodules`,
 `AGENTS.md`, `.agents/**`, `.github/seo-data/site.md`,
 `.github/seo-data/daily-task.md`, or
 `scripts/check-seo-automation-scope.py`. They may update the
-`.github/seo-skills` gitlink to a newer commit on its allowed branch, but must
-not edit files inside the submodule.
+`.github/seo-skills` gitlink to a newer compatible commit on its allowed branch,
+but must not edit files inside the submodule.
 
 ## Required sequence
 
@@ -58,7 +65,8 @@ not edit files inside the submodule.
    no update was available.
 4. Collect every configured finalized source. For disabled analytics sources,
    record `not configured`. Also inspect current public, repository, product,
-   release, and live-site evidence relevant to the day's decision.
+   release, generated-site, and live-site evidence relevant to the day's
+   decision.
 5. Write or append `.github/seo-data/daily/YYYY-MM-DD.md`; refresh
    `status.md`, maintain durable future work in `plan.md`, and keep `block.md`
    limited to genuine permission or external human-only blockers.
@@ -74,46 +82,40 @@ not edit files inside the submodule.
 9. Commit only intended files, push the fresh branch, and create a real
    non-draft pull request. Its body must state evidence, scope, tests,
    deployment target, acceptance check, and any submodule movement.
-10. Do not rely on recursive workflow triggering. Explicitly dispatch
-    `.github/workflows/ci.yml` on the feature branch with the exact current
-    head commit in the `expected_sha` input. Wait for the matching
-    `workflow_dispatch` run and verify its head commit and all jobs succeeded.
-    Missing, approval-pending, queued, skipped, cancelled, timed-out, or failed
-    checks are not success.
+10. Wait for the ordinary pull-request CI associated with the exact current
+    head commit. Missing, approval-pending, queued, skipped, cancelled,
+    timed-out, or failed checks are not success. Do not create or dispatch a
+    model-running workflow.
 11. After green CI, read the final PR diff, commits, generated output, and check
     results. Review correctness, evidence, SEO semantics, public-data safety,
-    scope, and regressions. Fix every issue on the same branch, explicitly
-    dispatch CI again for the new head, and repeat the complete review.
-12. Squash-merge the PR and delete its branch only after green exact-head CI
-    and a clean final self-review. Capture the PR URL and resulting squash
-    commit. Never push an automated change directly to `main`, force-push, or
-    bypass checks.
-13. When rendered site behavior changed, explicitly dispatch
-    `.github/workflows/publish.yml` from `main` with the exact squash commit in
-    `source_sha`. Wait for that exact publication to succeed, then verify the
-    predefined acceptance check on `https://agentsight.us`. An HTTP 200,
-    preview, PR check, or unrelated workflow run is not deployment proof.
+    scope, and regressions. Fix every issue on the same branch, wait for CI
+    again, and repeat the complete review.
+12. Squash-merge the PR and delete its branch only after green CI and a clean
+    final self-review. Capture the PR URL and resulting squash commit. Never
+    push an automated change directly to `main`, force-push, or bypass checks.
+13. When rendered site behavior changed, wait for the repository's existing
+    push-triggered `Publish static site` workflow associated with the exact
+    squash commit. Confirm successful publication and verify the predefined
+    acceptance check on `https://agentsight.us`. An HTTP 200, preview, PR
+    check, or unrelated workflow run is not deployment proof.
 14. Create a fresh metadata-only closeout branch and non-draft pull request.
     Update the same day's report and `status.md` with the main PR, exact squash
     commit, CI run, deployment, verification time, observed result, and
-    closeout PR. Explicitly dispatch `ci.yml` for the closeout head, wait for
-    success, self-review the complete closeout diff, squash-merge, and delete
-    the branch. A closeout that changes no rendered files does not need another
-    production deployment.
+    closeout PR. Wait for ordinary PR CI, self-review the complete closeout
+    diff, squash-merge, and delete the branch. A closeout that changes no
+    rendered files does not need another production deployment.
 15. Continue autonomously while safe progress is possible. Record a blocker
     only when a required permission is absent or an external system truly
-    enforces a human-only action. Include the failed operation, evidence,
-    impact, and smallest human action needed; never fabricate completion.
+    enforces a human-only action. Never fabricate completion.
 
 ## Daily completion
 
 A day is complete only when its main pull request and metadata closeout pull
-request are squash-merged, every expected exact-head CI run succeeded, the
-final self-reviews were clean, and the final daily record is present on
-`origin/main` with `- Status: completed`.
+request are squash-merged, every expected CI run succeeded, the final
+self-reviews were clean, and the final daily record is present on `origin/main`
+with `- Status: completed`.
 
 A site-change day additionally requires successful publication of the exact
 main squash commit and verification of the changed behavior on the public
-site. An issue, draft PR, local commit, open branch, approval-pending workflow,
-unverified merge, or workflow URL without a successful matching run is not
-completion.
+site. An issue, draft PR, local commit, open branch, unverified merge, or
+workflow URL without a successful matching run is not completion.
