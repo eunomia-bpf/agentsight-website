@@ -16,18 +16,18 @@
 
 ## Current signals
 
-- Google Analytics 4: not configured
-- Google Search Console: not configured
-- Cloudflare analytics: not configured
+- Google Analytics 4: property and web data stream configured; production tag delivery pending this run
+- Google Search Console: domain property verified and sitemap accepted
+- Google Drive exports: configured for weekly GA4 and Search Console CSV artifacts
+- Cloudflare analytics: configured for read-only zone-level collection
 - Public technical baseline: pending first session-invoked verification
 - Content and semantic-overlap baseline: pending first session-invoked verification
 - Repository CI and static publication pipeline: available
 
 ## Active focus
 
-Complete the first session-scheduled operating cycle, verify crawl and metadata
-behavior, inventory existing search intents, and select a site change only if
-the evidence supports one.
+Complete the GA4 deployment and first weekly export, then use finalized GA4,
+Search Console, and Cloudflare evidence to prioritize the next site change.
 
 This file is the current verified summary. Detailed autonomous-run history
 belongs in `daily/`.

@@ -29,20 +29,19 @@ provider secret whose purpose is to run the SEO agent.
 
 ## Google data
 
-- Google Drive enabled: no
-- Google Drive folder name: `not configured`
+- Google Drive enabled: yes
+- Google Drive folder name: `agentsight.us SEO Weekly CSV`
 - GA4 export filename pattern: `ga4-*.csv`
 - Search Console export filename pattern: `gsc-*.csv`
 - Lookback days: 28
 - Finalization lag days: 3
 
-Disabled sources are unavailable, not zero. Do not fabricate metrics. They may
-be enabled later only after a read-only connected-data path exists in the
-invoking session.
+The invoking session reads finalized GA4 and Search Console CSV exports from
+the exact configured folder. Missing exports are unavailable, not zero.
 
 ## Cloudflare data
 
-- Cloudflare enabled: no
+- Cloudflare enabled: yes
 - Zone hostname: `agentsight.us`
 - Preferred dataset: `httpRequestsAdaptiveGroups`
 
