@@ -9,8 +9,9 @@
 - Canonical documentation: `https://eunomia.dev/agentsight/`.
 - Route inventory and navigation hierarchy: preserved; this change does not create, remove, rename, or redirect public routes.
 - Runtime analytics: preserved; GA4 uses path-only reporting and excludes query strings, Google signals, and ad-personalization signals.
-- Current skill submodule commit: `1140a11b9a366ddb611d19d691d81122184f7f9e`.
-- Reviewed compatible skill target: `d7d92ba12f7e6368e1f438432e7957c0d06eea4f`, which adds the shared operating entrypoint and explicit incremental-change policy.
+- Skill submodule before this change: `1140a11b9a366ddb611d19d691d81122184f7f9e`.
+- Latest compatible skill target: `3ff90dff96d4f53b37d4fea8da80e0ecb2e2b3f3`.
+- Compatibility decision: `3ff90dff96d4f53b37d4fea8da80e0ecb2e2b3f3` includes the incremental and reversible site-change policy inherited from `f0c096385d4ad676ca8d7d9a56732e8c923f3c1a` and retains `scripts/validate_seo_data.py`, which the current website CI invokes. Newer shared commits remove that compatibility entrypoint and cannot be consumed until the website control plane is separately migrated with explicit authorization.
 - Scheduler owner: external session-level task; schedule state remains outside Git.
 - Repository-hosted SEO agent workflow: none.
 - Model-provider credential requirement: none.
