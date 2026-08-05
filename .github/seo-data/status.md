@@ -6,7 +6,8 @@
 - Last verified weekly export window: `2026-07-27` through `2026-08-02`; seven matching GA4 and Search Console CSV files are present
 - Last site-change pull request: `#20`, squash-merged
 - Last site-change squash commit: `6bfa944f29b44a4fbfd9aaa78557b17fdd22f402`
-- Current autonomous metadata closeout: this metadata-only delivery
+- Current autonomous metadata closeout: `#21`
+  (`https://github.com/eunomia-bpf/agentsight-website/pull/21`)
 - Last data-only pull request: `#19`, squash commit `8ef2cc29314243593f93d0697ee22e02c2cf5052`
 - Runtime-analytics repair: completed; production exposes the configured GA4 measurement with path-only reporting
 - Last successful production deployment: squash commit `6bfa944f29b44a4fbfd9aaa78557b17fdd22f402`
