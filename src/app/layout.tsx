@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
 import './globals.css';
+import './mobile-menu.css';
 import { site } from '@/lib/site';
 
 const googleAnalyticsId = 'G-VVRNSCMWBX';
