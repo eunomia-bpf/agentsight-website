@@ -7,7 +7,7 @@
 - Last site-change pull request: `#17`, squash-merged
 - Last site-change squash commit: `6db78cadef959f2be9fce304a40d128ca795349b`
 - Last autonomous metadata closeout: `#18`, squash commit `5948f21375d07de02fe79a36ae68fddd558aa35c`
-- Current data-only pull request: pending
+- Current data-only pull request: `#19` (`https://github.com/eunomia-bpf/agentsight-website/pull/19`)
 - Last successful production deployment: squash commit `6db78cadef959f2be9fce304a40d128ca795349b`
 - Last public verification: `2026-08-05`, launch routes, crawl controls, canonical metadata, structured data, and assets verified
 - Skill submodule commit: `6dde51078f87d5f6cf1c22045df13a3f786a5f02`
@@ -25,7 +25,7 @@
 - Launch closeout squash commit: `5948f21375d07de02fe79a36ae68fddd558aa35c`
 - Publication source marker: `site:.source-sha` = `6db78cadef959f2be9fce304a40d128ca795349b`
 - Live verification set: `/`, `/runs/`, `/runs/recorded-demo/`, `/runs/review-artifact/`, `/methodology/`, `/about/`, `/changelog/`, `/manifest.webmanifest`, `/icon.svg`, and `/opengraph-image`
-- Current metadata/data pull request: pending; exact-head CI and final self-review are merge gates
+- Current metadata/data pull request: `#19`; exact-head CI and final self-review are merge gates
 
 ## Current signals
 
