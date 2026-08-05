@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ContentCard } from '@/components/ContentPages';
-import { CommandBlock, Eyebrow, JsonLd } from '@/components/PageParts';
+import { Eyebrow, JsonLd } from '@/components/PageParts';
 import { SiteShell } from '@/components/SiteShell';
 import { getPages } from '@/lib/content';
 import { site } from '@/lib/site';
+import styles from './homepage-product-tour.module.css';
 
 const softwareJsonLd = {
   '@context': 'https://schema.org',
@@ -27,14 +27,35 @@ const evidence = [
   ['Effects', 'File reads and writes, deletes, and network targets'],
 ];
 
+const productViews = [
+  {
+    title: 'Timeline',
+    description: 'Correlate model calls, processes, file activity, and network events across a recorded run.',
+    src: 'https://raw.githubusercontent.com/eunomia-bpf/agentsight/0d305c8186b8d6154c954af8985a1d6733a06339/docs/demo-timeline.png',
+    alt: 'AgentSight timeline showing LLM, process, file, and network events from a recorded AI agent run',
+  },
+  {
+    title: 'Process tree',
+    description: 'Follow child processes and connect commands to the agent session that caused them.',
+    src: 'https://raw.githubusercontent.com/eunomia-bpf/agentsight/0d305c8186b8d6154c954af8985a1d6733a06339/docs/demo-tree.png',
+    alt: 'AgentSight process tree showing agent subprocesses and file activity',
+  },
+  {
+    title: 'Resource metrics',
+    description: 'Inspect CPU and memory behavior beside the model and tool activity that shaped the run.',
+    src: 'https://raw.githubusercontent.com/eunomia-bpf/agentsight/0d305c8186b8d6154c954af8985a1d6733a06339/docs/demo-metrics.png',
+    alt: 'AgentSight metrics view showing CPU and memory usage for a recorded AI agent run',
+  },
+];
+
 export default function HomePage() {
   const featured = [
     getPages('use-case')[0],
     getPages('use-case')[1],
     getPages('use-case')[2],
     getPages('use-case')[3],
-    getPages('guide')[2],
     getPages('comparison')[1],
+    getPages('integration')[0],
   ].filter((page) => page !== undefined);
 
   return (
@@ -108,26 +129,37 @@ export default function HomePage() {
       </section>
 
       <section className="section section-white">
-        <div className="shell split-section">
-          <div>
-            <Eyebrow>Start with a real run</Eyebrow>
-            <h2>Record the agent command you already use.</h2>
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <Eyebrow>See the product</Eyebrow>
+              <h2>Inspect a run from three system views.</h2>
+            </div>
             <p>
-              AgentSight attaches at the system boundary. Keep Claude Code, Codex, Gemini CLI,
-              OpenCode, OpenClaw, or your own command unchanged, then inspect the saved session or
-              export a bounded review artifact.
+              The live session table is only the starting point. Timeline, process-tree, and resource
+              views expose how model activity turns into commands and system effects.
             </p>
-            <Link className="arrow-link" href="/guides/getting-started/">
-              Follow the getting-started guide <span aria-hidden="true">→</span>
-            </Link>
           </div>
-          <CommandBlock
-            commands={[
-              'cargo install agentsight',
-              'sudo agentsight record -- claude',
-              'agentsight report export -o snapshot.json',
-            ]}
-          />
+          <div className={styles.gallery}>
+            {productViews.map((view) => (
+              <figure className={styles.card} key={view.title}>
+                <a className={styles.media} href={site.demo} aria-label={`Open the recorded demo from the ${view.title} preview`}>
+                  <img src={view.src} alt={view.alt} loading="lazy" decoding="async" />
+                </a>
+                <figcaption className={styles.caption}>
+                  <strong>{view.title}</strong>
+                  <p>{view.description}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className={styles.actions}>
+            <a className="button button-accent" href={site.demo}>Open the recorded demo</a>
+            <a className="button button-outline" href={site.docs}>Read documentation on eunomia.dev <span aria-hidden="true">↗</span></a>
+          </div>
+          <p className={styles.provenance}>
+            First-party AgentSight v0.2.67 screenshots, pinned to product commit 0d305c8186b8d6154c954af8985a1d6733a06339.
+          </p>
         </div>
       </section>
 
