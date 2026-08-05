@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/3dvqz8xtemg-q.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"integrations","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"gemini-cli","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"agentsight-b7004296f6efc6194dcf5e24"}
+:HL["/_next/static/chunks/3dh7kwjz8pnq6.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"integrations","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"gemini-cli","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"agentsight-a20d9dc89b5a630d554f72c3"}
