@@ -1,18 +1,25 @@
 import Link from 'next/link';
 import { ArrowLink, CommandBlock, Eyebrow, JsonLd, OutcomeList } from './PageParts';
 import { SiteShell } from './SiteShell';
-import { contentPath, getPages, type ContentKind, type ContentPage } from '@/lib/content';
+import {
+  contentPath,
+  getPages,
+  publicPage,
+  type ContentKind,
+  type ContentPage,
+} from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 export function ContentCard({ page }: { page: ContentPage }) {
+  const displayPage = publicPage(page);
   return (
     <article className="content-card">
-      <p className="card-label">{page.eyebrow}</p>
+      <p className="card-label">{displayPage.eyebrow}</p>
       <h2>
-        <Link href={contentPath(page)}>{page.title}</Link>
+        <Link href={contentPath(displayPage)}>{displayPage.title}</Link>
       </h2>
-      <p>{page.description}</p>
-      <ArrowLink href={contentPath(page)}>Read the page</ArrowLink>
+      <p>{displayPage.description}</p>
+      <ArrowLink href={contentPath(displayPage)}>Read the page</ArrowLink>
     </article>
   );
 }

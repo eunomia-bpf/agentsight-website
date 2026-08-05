@@ -4,13 +4,13 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'AgentSight',
+    name: 'AgentSight — AI agent observability',
     short_name: 'AgentSight',
-    description: 'System-level observability for AI agents.',
+    description: 'Open-source, local-first observability for AI agents.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#f5f7f9',
-    theme_color: '#101828',
+    background_color: '#ffffff',
+    theme_color: '#0b0b10',
     icons: [{ src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' }],
   };
 }
