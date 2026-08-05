@@ -26,6 +26,27 @@ export function Logo() {
   );
 }
 
+function MobileNavigation() {
+  return (
+    <details className="mobile-menu">
+      <summary aria-label="Open site navigation">
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+      </summary>
+      <nav aria-label="Mobile navigation">
+        {navigation.map((item) => (
+          <Link key={item.href} href={item.href}>
+            {item.label}
+          </Link>
+        ))}
+        <a href={site.docs}>Documentation ↗</a>
+        <a href={site.repository}>GitHub ↗</a>
+      </nav>
+    </details>
+  );
+}
+
 export function SiteHeader() {
   return (
     <header className="site-header">
@@ -38,6 +59,7 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
+        <MobileNavigation />
         <div className="header-actions">
           <a className="header-github" href={site.repository}>GitHub ↗</a>
           <a className="button button-accent header-cta" href={site.demo}>View demo</a>
