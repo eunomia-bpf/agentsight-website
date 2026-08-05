@@ -3,35 +3,22 @@
 > AgentSight is an open-source, local-first profiler that connects AI agent intent and model activity to commands, processes, files, network destinations, and resource use.
 
 Canonical site: https://agentsight.us/
-Current verified release: v0.2.67
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://github.com/eunomia-bpf/agentsight#readme
 Recorded demo: https://app.agentsight.us/
 
-## Evidence routes
+## Main routes
 
-- https://agentsight.us/runs/
-- https://agentsight.us/runs/recorded-demo/
-- https://agentsight.us/runs/review-artifact/
-- https://agentsight.us/methodology/
 - https://agentsight.us/use-cases/
 - https://agentsight.us/compare/
 - https://agentsight.us/guides/
+- https://agentsight.us/blog/
 - https://agentsight.us/integrations/
 - https://agentsight.us/security/
-
-## Project routes
-
-- https://agentsight.us/about/
 - https://agentsight.us/changelog/
 - https://agentsight.us/releases/
-- https://agentsight.us/blog/
-
-## Evidence policy
-
-Pages distinguish observed effects, attribution, inference, and unavailable data. Public claims are checked against the current release and primary sources. A missing event is not proof that an effect was impossible.
 
 ## Data handling
 
-Recorded sessions can contain prompts, responses, paths, headers, commands, and network targets. Treat raw databases and exports as sensitive. Keep raw data local, redact review artifacts, and publish only the minimum evidence required for a decision.
+Recorded sessions can contain prompts, responses, paths, headers, commands, and network targets. Treat raw databases and exports as sensitive and review them before sharing.

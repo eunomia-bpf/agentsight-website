@@ -7,28 +7,14 @@ export const site = {
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
   docs: 'https://github.com/eunomia-bpf/agentsight#readme',
   demo: 'https://app.agentsight.us/',
-  version: '0.2.67',
-  releaseDate: '2026-08-05',
-  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v0.2.67',
-  updatedAt: '2026-08-05',
-  organization: {
-    name: 'Eunomia',
-    url: 'https://eunomia.dev/',
-  },
-  maintainer: {
-    name: 'Yusheng Zheng',
-    handle: 'yunwei37',
-    url: 'https://github.com/yunwei37',
-    avatar: 'https://avatars.githubusercontent.com/u/34985212?v=4',
-  },
 } as const;
 
 export const navigation = [
-  { href: '/runs/', label: 'Run library' },
   { href: '/use-cases/', label: 'Use cases' },
-  { href: '/guides/', label: 'Guides' },
   { href: '/compare/', label: 'Compare' },
-  { href: '/methodology/', label: 'Methodology' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/integrations/', label: 'Integrations' },
+  { href: '/security/', label: 'Security' },
 ] as const;
 
 export const hubConfig = {
@@ -55,7 +41,7 @@ export const hubConfig = {
   },
   blog: {
     path: '/blog/',
-    eyebrow: 'Engineering notes',
+    eyebrow: 'Blog',
     title: 'Engineering notes from the system boundary',
     description:
       'How to connect agent intent to low-level effects and turn traces into useful review artifacts.',
