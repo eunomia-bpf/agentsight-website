@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { ContentCard } from '@/components/ContentPages';
 import { Eyebrow, JsonLd } from '@/components/PageParts';
 import { SiteShell } from '@/components/SiteShell';
-import { getPages } from '@/lib/content';
+import { getPages } from '@/lib/public-content';
 import { site } from '@/lib/site';
 import styles from './homepage-product-tour.module.css';
 
@@ -205,8 +205,8 @@ export default function HomePage() {
                 <p>Agent Nebula replays file reads, writes, creates, renames, and deletes across a Git worktree.</p>
               </div>
               <img
-                src={`${site.assetBase}/agentvis/examples/actplane-agent-nebula.gif`}
-                alt="Agent Nebula animated replay of coding agent file activity across the ACTplane repository"
+                src={`${site.assetBase}/agentvis/examples/actplane-agent-nebula.png`}
+                alt="Agent Nebula preview showing coding agent file activity across the ACTplane repository"
                 loading="lazy"
                 decoding="async"
               />
