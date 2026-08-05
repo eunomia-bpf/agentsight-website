@@ -1,0 +1,24 @@
+# AgentSight
+
+> AgentSight is an open-source, local-first profiler that connects AI agent intent and model activity to commands, processes, files, network destinations, and resource use.
+
+Canonical site: https://agentsight.us/
+Product repository: https://github.com/eunomia-bpf/agentsight
+Website repository: https://github.com/eunomia-bpf/agentsight-website
+Documentation: https://github.com/eunomia-bpf/agentsight#readme
+Recorded demo: https://app.agentsight.us/
+
+## Main routes
+
+- https://agentsight.us/use-cases/
+- https://agentsight.us/compare/
+- https://agentsight.us/guides/
+- https://agentsight.us/blog/
+- https://agentsight.us/integrations/
+- https://agentsight.us/security/
+- https://agentsight.us/changelog/
+- https://agentsight.us/releases/
+
+## Data handling
+
+Recorded sessions can contain prompts, responses, paths, headers, commands, and network targets. Treat raw databases and exports as sensitive and review them before sharing.
