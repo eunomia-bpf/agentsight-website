@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 const points = [
   ['Local-first data path', 'Recorded sessions stay on the machine unless you explicitly export, serve, copy, or upload them.'],
-  ['Sensitive evidence', 'Sessions can include prompts, responses, paths, headers, commands, and network targets. Treat databases and exports as sensitive.'],
-  ['Targeted recording', 'Prefer one selected agent command or bounded process family over broad capture. Review scope before sharing an artifact.'],
-  ['System evidence, not a verdict', 'Observed access must be interpreted against the authorized task and runtime. Reproduce suspicious behavior before drawing a security conclusion.'],
+  ['Sensitive session data', 'Sessions can include prompts, responses, paths, headers, commands, and network targets. Treat databases and exports as sensitive.'],
+  ['Targeted recording', 'Prefer one selected agent command or bounded process family over broad capture. Review scope before sharing an export.'],
+  ['Recorded activity needs context', 'Observed access must be interpreted against the authorized task and runtime. Reproduce suspicious behavior before drawing a security conclusion.'],
 ];
 
 export default function SecurityPage() {
@@ -47,10 +47,10 @@ export default function SecurityPage() {
       <section className="page-hero compact-hero">
         <div className="shell narrow">
           <Eyebrow>Security</Eyebrow>
-          <h1>Keep run evidence local, bounded, and reviewable.</h1>
+          <h1>Keep recorded sessions local and under your control.</h1>
           <p className="hero-lede">
-            AgentSight is an observability tool. It can capture sensitive execution context, so the
-            person operating it remains responsible for scope, storage, redaction, and sharing.
+            AgentSight can capture sensitive execution context. The person operating it remains
+            responsible for recording scope, storage, redaction, and sharing.
           </p>
         </div>
       </section>
