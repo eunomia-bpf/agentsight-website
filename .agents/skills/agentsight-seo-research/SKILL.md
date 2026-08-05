@@ -56,12 +56,15 @@ Return:
 
 ## Delivery mode
 
-For an autonomous run governed by `.github/seo-data/daily-task.md`, lack of
-distinctness or source support is a reason to reject the page, not a reason to
-wait for human review. When a page is distinct and supported, follow the
-pinned `$change-seo-site` contract: use a real non-draft pull request, exact-head
-CI, complete final self-review, squash merge, exact-commit deployment, live
-verification, and a metadata closeout. No human reviewer is required.
+For a run invoked by the external session-level scheduler through
+`.github/seo-data/daily-task.md`, lack of distinctness or source support is a
+reason to reject the page, not a reason to wait for human review. When a page is
+distinct and supported, follow the pinned `$change-seo-site` contract and the
+repository's existing CI and deployment paths: use a real non-draft pull
+request, complete final self-review, squash merge, exact-commit deployment,
+live verification, and a metadata closeout.
 
-Outside that autonomous operating contract, return the brief without
-publishing unless the user explicitly asks for delivery.
+The repository must not host or schedule the SEO agent and must not contain a
+model-provider credential for this work. Outside the autonomous operating
+contract, return the brief without publishing unless the user explicitly asks
+for delivery.

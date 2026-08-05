@@ -4,12 +4,6 @@ on:
   pull_request:
   push:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      expected_sha:
-        description: Exact feature-branch commit expected for an autonomous run
-        required: false
-        type: string
 
 permissions:
   contents: read
@@ -22,11 +16,6 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
-      - name: Verify explicitly dispatched commit
-        if: github.event_name == 'workflow_dispatch' && inputs.expected_sha != ''
-        env:
-          EXPECTED_SHA: ${{ inputs.expected_sha }}
-        run: test "$GITHUB_SHA" = "$EXPECTED_SHA"
       - name: Enforce autonomous SEO scope
         env:
           SEO_AUTOMATION_BRANCH: ${{ github.head_ref || github.ref_name }}

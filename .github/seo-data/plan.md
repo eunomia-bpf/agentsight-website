@@ -26,17 +26,21 @@ workflow. It should not grow through thin keyword variants.
 
 ## Operating constraints
 
+- Scheduling is owned by an authorized external session-level task, not this
+  repository.
+- Do not add a GitHub Actions agent workflow, repository cron, webhook, hosted
+  model runner, provider SDK, or model-provider credential for SEO execution.
 - Raw analytics and private identifiers stay outside Git.
 - Every automated change uses a fresh `seo/agentsight-` branch and a real
   non-draft pull request.
-- Required and expected exact-head CI must pass before final automated
+- Required and expected existing CI must pass before final automated
   self-review and squash merge.
-- Site changes wait for the exact squash commit's production publication and
-  public verification.
-- Post-merge evidence is recorded through a metadata-only closeout pull
-  request with the same CI, self-review, and squash-merge rules.
+- Site changes wait for the exact squash commit's normal production publication
+  and public verification.
+- Post-merge evidence is recorded through a metadata-only closeout pull request
+  with the same CI, self-review, and squash-merge rules.
 - Normal operation requires no human approval.
-- The protected automation control plane in `daily-task.md` is not editable by
+- The protected operating control plane in `daily-task.md` is not editable by
   normal SEO cycles.
 - No off-site automated posting, link schemes, fabricated evidence, invented
   benchmarks, customer claims, or roadmap promises.

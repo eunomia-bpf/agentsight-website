@@ -3,15 +3,8 @@ name: Publish static site
 on:
   push:
     branches: [main]
-  workflow_dispatch:
-    inputs:
-      source_sha:
-        description: Exact main-branch commit to build and publish
-        required: false
-        type: string
 
 permissions:
-  actions: read
   contents: write
 
 concurrency:
@@ -22,7 +15,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      SOURCE_SHA: ${{ inputs.source_sha || github.sha }}
+      SOURCE_SHA: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v4
         with:
