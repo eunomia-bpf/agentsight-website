@@ -96,7 +96,7 @@ for (const host of primaryHosts) {
 
 const requiredTextSignals = [
   [layoutSource, '/favicon.ico', 'layout favicon'],
-  [layoutSource, '/apple-icon.png', 'Apple touch icon'],
+  [layoutSource, "apple: [{ url: '/icon-192.png'", 'Apple touch icon'],
   [layoutSource, '/opengraph-image', 'Open Graph image'],
   [manifestSource, '/icon-192.png', '192px manifest icon'],
   [manifestSource, '/icon-512.png', '512px manifest icon'],
@@ -110,7 +110,6 @@ for (const [source, needle, label] of requiredTextSignals) {
 
 for (const file of [
   'src/app/icon.svg',
-  'src/app/apple-icon.png',
   'public/favicon.ico',
   'public/icon-192.png',
   'public/icon-512.png',
