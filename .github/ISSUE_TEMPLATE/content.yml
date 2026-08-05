@@ -1,0 +1,24 @@
+name: Content correction
+description: Report an inaccurate, outdated, or unclear agentsight.us page.
+title: "content: "
+labels: [documentation]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://agentsight.us/...
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What should change?
+      description: Include the current wording and a primary source when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting evidence
+      description: Link the current AgentSight command, documentation, release, standard, or source code.

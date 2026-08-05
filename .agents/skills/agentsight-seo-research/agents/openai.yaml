@@ -1,0 +1,4 @@
+interface:
+  display_name: "AgentSight SEO Research"
+  short_description: "Research high-value AgentSight content briefs"
+  default_prompt: "Use $agentsight-seo-research to research and draft a source-grounded AgentSight content brief."
