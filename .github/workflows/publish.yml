@@ -1,9 +1,7 @@
 name: Publish static site
 
 on:
-  workflow_run:
-    workflows: [Website CI]
-    types: [completed]
+  push:
     branches: [main]
 
 permissions:
@@ -16,12 +14,9 @@ concurrency:
 
 jobs:
   publish:
-    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -30,13 +25,19 @@ jobs:
       - run: npm run verify
       - name: Publish generated files to site branch
         env:
-          SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+          SOURCE_SHA: ${{ github.sha }}
         run: |
           tar -C out -cf "$RUNNER_TEMP/site.tar" .
-          git checkout --orphan site-publish
-          git rm -rf .
-          tar -xf "$RUNNER_TEMP/site.tar"
-          touch .nojekyll
-          git add -A
-          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Publish ${SOURCE_SHA}"
-          git push --force origin HEAD:site
+          git worktree add --detach "$RUNNER_TEMP/site-branch" "$SOURCE_SHA"
+          git -C "$RUNNER_TEMP/site-branch" checkout --orphan site-publish
+          git -C "$RUNNER_TEMP/site-branch" rm -rf .
+          tar -C "$RUNNER_TEMP/site-branch" -xf "$RUNNER_TEMP/site.tar"
+          touch "$RUNNER_TEMP/site-branch/.nojekyll"
+          git -C "$RUNNER_TEMP/site-branch" add -A
+          if git -C "$RUNNER_TEMP/site-branch" ls-files | grep -Eq '^(\.next|node_modules|out)(/|$)'; then
+            echo "Refusing to publish build caches or dependencies" >&2
+            exit 1
+          fi
+          test -f "$RUNNER_TEMP/site-branch/index.html"
+          git -C "$RUNNER_TEMP/site-branch" -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Publish ${SOURCE_SHA}"
+          git -C "$RUNNER_TEMP/site-branch" push --force origin HEAD:site

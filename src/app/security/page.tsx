@@ -68,19 +68,21 @@ export default function SecurityPage() {
       <section className="section section-white">
         <div className="shell split-section">
           <div>
-            <Eyebrow>Report a vulnerability</Eyebrow>
-            <h2>Use the AgentSight security policy.</h2>
+            <Eyebrow>Security reports</Eyebrow>
+            <h2>Share only what can be safely public.</h2>
             <p>
-              Do not include private traces, credentials, tokens, or sensitive path contents in a
-              public issue. Follow the repository policy for the current private reporting route.
+              AgentSight does not currently publish a private vulnerability-reporting channel. Do
+              not place traces, credentials, tokens, or sensitive path contents in a public issue.
+              Use the public tracker only for a fully redacted, non-sensitive issue that does not
+              disclose an unpatched vulnerability.
             </p>
           </div>
           <div className="detail-aside static-aside">
-            <a className="button button-accent" href={`${site.repository}/security/policy`}>
-              Open security policy
+            <a className="button button-accent" href={`${site.repository}/issues/new/choose`}>
+              Report a non-sensitive issue
             </a>
-            <a className="button button-outline" href={`${site.repository}/issues`}>
-              Browse public issues
+            <a className="button button-outline" href={site.repository}>
+              Review the source repository
             </a>
           </div>
         </div>
