@@ -5,7 +5,7 @@ export const site = {
     'Profile AI agent intent, model calls, processes, files, network activity, and resource use from the system boundary.',
   repository: 'https://github.com/eunomia-bpf/agentsight',
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
-  docs: 'https://github.com/eunomia-bpf/agentsight#readme',
+  docs: 'https://eunomia.dev/agentsight/',
   demo: 'https://app.agentsight.us/',
 } as const;
 
