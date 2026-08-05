@@ -14,7 +14,7 @@
 - Automation branch prefix: `seo/agentsight-`
 - Skill submodule path: `.github/seo-skills`
 - Skill allowed branch: `main`
-- Initial pinned skill commit: `53ef5e7027c40bb1f57d05673d5b4eecae70d605`
+- Pinned skill commit: `53ef5e7027c40bb1f57d05673d5b4eecae70d605`
 
 ## Scheduler
 

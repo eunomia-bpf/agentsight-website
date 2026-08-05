@@ -23,10 +23,10 @@ through the required pull-request lifecycle.
 
 The invoking session supplies model access and connected tools. Do not add a
 GitHub Actions workflow, repository cron job, webhook, hosted agent runner,
-provider SDK, or model-provider credential to execute this task. In particular,
-this repository does not need `OPENAI_API_KEY`. Existing CI and publication
-workflows validate and deliver repository changes; they do not run the SEO
-agent.
+provider SDK, or model-provider credential to execute this task. No
+model-provider credential belongs in this repository. Existing CI and
+publication workflows validate and deliver repository changes; they do not run
+the SEO agent.
 
 ## Evidence policy
 
