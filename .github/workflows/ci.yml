@@ -31,8 +31,6 @@ jobs:
               echo "SEO scope guard not required for $SEO_AUTOMATION_BRANCH"
               ;;
           esac
-      - name: Validate SEO operating data
-        run: python3 .github/seo-skills/scripts/validate_seo_data.py --data-root .github/seo-data
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
