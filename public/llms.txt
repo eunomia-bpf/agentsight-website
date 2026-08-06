@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v0.2.68
+Current release: v1.0.3
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -26,7 +26,7 @@ Recorded demo: https://app.agentsight.us/
 
 ## Product capabilities
 
-AgentSight provides a live session view, model and tool-call capture, process trees, file and network activity, CPU and memory metrics, repository replay, saved-session reports, Agent Flamegraphs, and OpenTelemetry GenAI export.
+AgentSight provides a live session view, an Overview dashboard, model and tool-call capture, process trees, file and network activity, CPU and memory metrics, repository replay, saved-session reports, Agent Flamegraphs, and OpenTelemetry GenAI export.
 
 ## Data handling
 
