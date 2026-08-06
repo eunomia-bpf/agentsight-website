@@ -2,9 +2,9 @@
 
 ## Current state
 
-- No active owner-directed site change and no open website pull request.
-- Current website `main`: `f0b755444c8d3768433834603d7652801b2d5a45`.
-- Current production source marker: `f0b755444c8d3768433834603d7652801b2d5a45`; source and published marker match.
+- No active owner-directed rendered site change.
+- Last rendered-behavior baseline: `f0b755444c8d3768433834603d7652801b2d5a45`, which completed the PR `#28` publication cleanup.
+- Control-plane-only commits may advance `main` and `site/.source-sha` without changing rendered HTML. Every daily run must resolve the exact current repository SHA, publication run, and source marker dynamically rather than treating this file as a live branch pointer.
 - Current product release: AgentSight `v1.0.0`.
 - Product release snapshot commit: `a9fa55893fb2d7237cb2ee43238088c219edc9d7`.
 - Current product default-branch commit after release-workflow fixes: `713d3bbe891b280e445bc695cb5b4d917508b901`.
@@ -23,7 +23,7 @@
 
 - PR `#25` delivered the mature developer-product visual and messaging refresh while preserving the route inventory and documentation boundary.
 - PRs `#26`, `#27`, and `#28` completed the shared static-site checker migration, publication submodule initialization, and removal of the accidental diagnostic JSON from public output.
-- Current `site/.source-sha` matches current website `main`.
+- The last rendered-behavior publication was verified against its exact source marker.
 - Existing product views include first-party live sessions, timeline, process tree, resource metrics, Agent Nebula replay preview, and Agent Flamegraph material.
 - The site remains compatible with Next.js static export and ordinary GitHub Actions publication.
 
