@@ -63,9 +63,9 @@ but must not edit files inside the submodule.
 
 ## Required sequence
 
-1. Read `AGENTS.md`, the pinned `$collect-seo-data` skill, the pinned
-   `$change-seo-site` skill when a site change is justified, this file, all
-   other `.github/seo-data/*.md` files, and the newest daily reports.
+1. Read `AGENTS.md`, the pinned `$operate-seo-site`, `$collect-seo-data`, and
+   `$deliver-github-pr` skills, this file, all other `.github/seo-data/*.md`
+   files, and the newest daily reports.
 2. Fetch `origin/main`, ensure no earlier `seo/agentsight-` run remains open,
    and create a fresh branch from the current remote `main` using the configured
    prefix and local date.
@@ -96,9 +96,8 @@ but must not edit files inside the submodule.
    satisfy the schedule.
 7. Implement narrowly. Preserve static export compatibility, canonical path
    ownership, primary-source accuracy, and one page per reader decision.
-8. Run `python3 .github/seo-skills/scripts/validate_seo_data.py --data-root
-   .github/seo-data`, `npm run verify`, and any smaller relevant check. Inspect
-   the complete intended diff and generated output.
+8. Run `npm run verify` and any smaller relevant check. Inspect the complete
+   intended diff and generated output.
 9. Commit only intended files, push the fresh branch, and create a real
    non-draft pull request. Its body must state evidence, source freshness,
    scope, tests, deployment target, acceptance check, and any submodule

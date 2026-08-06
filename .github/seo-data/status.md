@@ -9,9 +9,9 @@
 - Canonical documentation: `https://eunomia.dev/agentsight/`.
 - Route inventory and navigation hierarchy: preserved; this change does not create, remove, rename, or redirect public routes.
 - Runtime analytics: preserved; GA4 uses path-only reporting and excludes query strings, Google signals, and ad-personalization signals.
-- Skill submodule before this change: `1140a11b9a366ddb611d19d691d81122184f7f9e`.
-- Latest compatible skill target: `3ff90dff96d4f53b37d4fea8da80e0ecb2e2b3f3`.
-- Compatibility decision: `3ff90dff96d4f53b37d4fea8da80e0ecb2e2b3f3` includes the incremental and reversible site-change policy inherited from `f0c096385d4ad676ca8d7d9a56732e8c923f3c1a` and retains `scripts/validate_seo_data.py`, which the current website CI invokes. Newer shared commits remove that compatibility entrypoint and cannot be consumed until the website control plane is separately migrated with explicit authorization.
+- Current skill submodule: `0440402cf5713994969ccd2b9998985367a2797b`.
+- Shared static-site validation: this repository explicitly opts into the optional `scripts/site_snapshot.py` helper for generated titles, H1s, canonicals, internal links, sitemap coverage, and required static artifacts.
+- Compatibility decision: the website control plane no longer calls the removed shared `validate_seo_data.py` entrypoint, and the duplicated local `verify-export.mjs` implementation is replaced by the shared optional helper.
 - Scheduler owner: external session-level task; schedule state remains outside Git.
 - Repository-hosted SEO agent workflow: none.
 - Model-provider credential requirement: none.
