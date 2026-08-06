@@ -23,7 +23,8 @@
 - Latest eligible finalized date for the configured 28-day lookback is `2026-08-03`, after the three-day finalization lag.
 - The exact Google Drive folder was present on `2026-08-06`, but direct-child inspection found no matching GA4 or Search Console exports. Source-native traffic and search metrics are therefore unavailable for today's comparison, not zero.
 - The previously recorded finalized export window was `2026-07-27` through `2026-08-02`; it could not be revalidated from the folder's current contents.
-- Public baseline searches on `2026-08-06` did not return a direct `agentsight.us` result for the site, domain, or brand checks. The product repository and eunomia.dev documentation were visible, while unrelated products using the AgentSight name also appeared. This is directional evidence that product-site index visibility is not yet established; it is not a Search Console indexing diagnosis.
+- The exact `site:agentsight.us` query returned no result in today's public-result sample, while the domain query `agentsight.us` returned the canonical product homepage as the leading direct result. Broader brand results also included the product repository, eunomia.dev documentation, and unrelated products using the same name.
+- This is directional evidence that domain and brand discovery exists while site-qualified visibility remains inconsistent. It is not a Search Console indexing diagnosis.
 - Direct retrieval of `https://agentsight.us/` succeeded and exposed the expected canonical product content. Technical crawlability and exact index state remain separate checks.
 - Cloudflare analytics: not configured.
 
@@ -39,7 +40,7 @@
 
 ## Active focus after this cycle
 
-After the release correction is complete, investigate product-site search visibility using a restored finalized Search Console export or a connected read-only Search Console source. Confirm indexing and page coverage before changing routes, titles, or content based only on public-result sampling.
+After the release correction is complete, investigate site-qualified search visibility using a restored finalized Search Console export or a connected read-only Search Console source. Confirm indexing and page coverage before changing routes, titles, or content based only on public-result sampling.
 
 Continue the page-by-page content-completeness audit in parallel. Prioritize existing important pages that lack a concrete reader decision, real product output or visual evidence, explicit limitations, or a useful next action. Do not introduce a daily publishing quota, bulk rewrite, route expansion, or keyword-swapped pages.
 
