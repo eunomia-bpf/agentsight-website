@@ -2,49 +2,50 @@
 
 ## Current state
 
-- Active owner-directed site change: Grafana-inspired AgentSight product-site refresh in progress on `2026-08-05`.
-- Current production source marker before this change: `773982962557971b35922122661fd76f639d9966`.
-- Current product release: AgentSight `v0.2.68`, product commit `4e1504e7f6713dcae7fb7762415bb93288abb931`.
+- No active owner-directed site change and no open website pull request.
+- Current website `main`: `f0b755444c8d3768433834603d7652801b2d5a45`.
+- Current production source marker: `f0b755444c8d3768433834603d7652801b2d5a45`; source and published marker match.
+- Current product release: AgentSight `v1.0.0`.
+- Product release snapshot commit: `a9fa55893fb2d7237cb2ee43238088c219edc9d7`.
+- Current product default-branch commit after release-workflow fixes: `713d3bbe891b280e445bc695cb5b4d917508b901`.
+- The rendered website still contains release facts and pinned product material from `v0.2.68` / `4e1504e7f6713dcae7fb7762415bb93288abb931`; this is verified product-source drift and is the next bounded content correction.
 - Canonical product website: `https://agentsight.us/`.
 - Canonical documentation: `https://eunomia.dev/agentsight/`.
-- Route inventory and navigation hierarchy: preserved; this change does not create, remove, rename, or redirect public routes.
-- Runtime analytics: preserved; GA4 uses path-only reporting and excludes query strings, Google signals, and ad-personalization signals.
+- Route inventory, canonical ownership, navigation hierarchy, static export, and documentation boundary remain unchanged.
+- Runtime analytics: GA4 uses path-only reporting and excludes query strings, Google signals, and ad-personalization signals.
 - Current skill submodule: `0440402cf5713994969ccd2b9998985367a2797b`.
-- Shared static-site validation: this repository explicitly opts into the optional `scripts/site_snapshot.py` helper for generated titles, H1s, canonicals, internal links, sitemap coverage, and required static artifacts.
-- Compatibility decision: the website control plane no longer calls the removed shared `validate_seo_data.py` entrypoint, and the duplicated local `verify-export.mjs` implementation is replaced by the shared optional helper.
-- Scheduler owner: external session-level task; schedule state remains outside Git.
+- Scheduler owner: enabled external session-level task, daily at approximately `09:00` in `America/Los_Angeles`.
+- Scheduler prompt policy: thin repository pointer only; current repository instructions are authoritative and override copied task text or prior conversation context.
 - Repository-hosted SEO agent workflow: none.
 - Model-provider credential requirement: none.
 
-## Change scope
+## Completed production baseline
 
-- Refresh the existing shared visual system, header, footer, homepage, social preview, and web manifest in a Grafana-inspired developer-product style without copying Grafana assets or layout code.
-- Use direct product language from the AgentSight README and repository instead of abstract invented terminology.
-- Use existing first-party AgentSight product material: live sessions, timeline, process tree, resource metrics, Agent Nebula repository replay, and Agent Flamegraph.
-- Pin every externally loaded first-party product image to product commit `4e1504e7f6713dcae7fb7762415bb93288abb931`.
-- Update release references from `v0.2.67` or `v0.2.66` to the current `v0.2.68` where this change touches the public page.
-- Preserve the existing 23 content pages and canonical route structure.
-
-## Acceptance gates
-
-- Exact-head Website CI must complete successfully.
-- The generated static export must preserve canonical URLs, robots, sitemap coverage, internal links, GA4 path-only configuration, and all existing routes.
-- Desktop and mobile homepage renders must be visually reviewed from the exact CI artifact.
-- Representative unchanged pages must be inspected after the shared CSS update: `/use-cases/`, `/compare/`, `/integrations/claude-code/`, `/security/`, `/changelog/`, and `/releases/`.
-- Every pinned first-party image URL must resolve successfully.
-- After a clean final diff review, squash-merge normally without bypassing checks.
-- The exact squash commit's normal main Website CI and Publish static site workflows must succeed.
-- `site/.source-sha` must identify the exact rendered squash commit.
-- Production verification must cover the homepage, representative unchanged routes, metadata, sitemap, robots, manifest, Open Graph image, documentation target, product image loading, and GA4 configuration.
-- Final PR, CI, squash, publication, and live verification facts must be recorded through a metadata-only closeout pull request.
+- PR `#25` delivered the mature developer-product visual and messaging refresh while preserving the route inventory and documentation boundary.
+- PRs `#26`, `#27`, and `#28` completed the shared static-site checker migration, publication submodule initialization, and removal of the accidental diagnostic JSON from public output.
+- Current `site/.source-sha` matches current website `main`.
+- Existing product views include first-party live sessions, timeline, process tree, resource metrics, Agent Nebula replay preview, and Agent Flamegraph material.
+- The site remains compatible with Next.js static export and ordinary GitHub Actions publication.
 
 ## Current analytics and search data
 
-- Last verified weekly export window: `2026-07-27` through `2026-08-02`.
+- Last verified finalized export window: `2026-07-27` through `2026-08-02`.
 - One GA4 organic landing-page CSV and six Search Console CSVs were previously verified; raw rows remain outside Git.
+- Daily operation checks source presence, freshness, checksums, product drift, production health, and public index visibility.
+- Full comparative metric analysis runs when a finalized export window or checksum changes, and during the weekly review. Identical exports are recorded as unchanged rather than repeatedly recomputed.
 - Cloudflare analytics: not configured.
-- No traffic, ranking, or conversion claim is introduced by this design change.
 
 ## Active focus
 
-Complete the current product-site refresh as one bounded visual and messaging change. Do not change route ownership, documentation architecture, analytics policy, scheduler behavior, or unrelated content-page structure in this pull request.
+The next coherent rendered change should synchronize public release facts from
+`v0.2.68` to `v1.0.0` using the immutable release snapshot and current product
+repository as evidence. It should update only affected release labels,
+structured software metadata, release or changelog surfaces, and any facts or
+assets proven stale. It must not claim that the npm package is available until
+the npm permission blocker in `block.md` is resolved.
+
+After release drift is corrected, continue a page-by-page content-completeness
+audit. Prioritize important existing pages that lack a concrete reader decision,
+real product output or visual evidence, limitations, or a useful next action.
+Do not introduce a daily publishing quota, bulk rewrite, route expansion, or
+keyword-swapped pages.
