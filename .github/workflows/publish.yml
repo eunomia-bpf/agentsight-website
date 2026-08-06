@@ -21,6 +21,7 @@ jobs:
         with:
           ref: ${{ env.SOURCE_SHA }}
           fetch-depth: 0
+          submodules: recursive
       - name: Validate publication source
         run: |
           git cat-file -e "${SOURCE_SHA}^{commit}"
