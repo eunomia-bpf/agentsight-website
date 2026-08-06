@@ -20,12 +20,18 @@
 
 - Owner: authorized ChatGPT or equivalent session-level task outside the repository
 - Entrypoint: `.github/seo-data/daily-task.md`
+- Intended cadence: daily at approximately `09:00` in `America/Los_Angeles`, flexible within one hour
+- Task prompt policy: keep the external task short; it points to the current `main` branch and invokes the repository entrypoint
+- Authority policy: current repository instructions override copied scheduler text and prior conversation context
 - Repository-hosted agent scheduler: prohibited
 - Model-provider credentials in repository: prohibited
 
-The invoking session owns model access and connected-tool credentials. This
-repository must not contain a GitHub Actions workflow, cron job, webhook, or
-provider secret whose purpose is to run the SEO agent.
+The invoking session owns model access and connected-tool credentials. The
+external task should contain only enough information to locate this repository
+and invoke `daily-task.md`; durable operating rules, state, priorities, data
+contracts, and completion criteria belong in this repository. This repository
+must not contain a GitHub Actions workflow, cron job, webhook, or provider
+secret whose purpose is to run the SEO agent.
 
 ## Google data
 
@@ -42,19 +48,22 @@ provider secret whose purpose is to run the SEO agent.
 - Google Drive folder name: `agentsight.us SEO Weekly CSV`
 - Folder lookup: search by folder name through the connected Google Drive account
 - Daily source check: yes
+- Full comparative analysis trigger: a new finalized export window, a changed public-safe checksum, or the scheduled weekly review
 - Export refresh expectation: weekly or whenever a newer export is available
 - GA4 export filename pattern: `*_ga4_organic_landing_pages.csv`
 - Search Console export filename pattern: `*_gsc_*.csv`
 - Lookback days: 28
 - Finalization lag days: 3
 
-The scheduled session checks the configured folder every day. It uses the
-newest finalized exports available, records their filenames, date windows,
-modification times, and public-safe checksums, and compares them with the prior
-record. When the folder is empty, missing, unchanged, stale, or contains no
-matching export, record that exact source state. Missing evidence is not zero.
-Do not commit the Drive folder ID, raw rows, search-query exports, or account
-identifiers.
+The scheduled session checks the configured folder every day. It records source
+presence, filenames, date windows, modification times, freshness, and
+public-safe checksums. When a finalized export is new or changed, analyze it
+against the prior comparable period and record source-native findings. When the
+same export is unchanged, record that state and carry forward the prior finding;
+do not repeatedly recompute identical data or invent a site change. When the
+folder is empty, missing, stale, or contains no matching export, record that
+exact source state. Missing evidence is not zero. Do not commit the Drive folder
+ID, raw rows, search-query exports, or account identifiers.
 
 ## Public search visibility
 
