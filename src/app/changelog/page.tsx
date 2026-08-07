@@ -15,14 +15,14 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'Adds documentation for the report snapshot schema and broader TLS target support for native agent CLIs. GitHub Releases remains the source for binaries and per-tag changes.',
+      'Introduces the Overview dashboard for run KPIs, activity, tokens, system effects, resource shape, and friction signals; adds operation-stack agentpprof profiling; and includes the PID-tracker correctness fix shipped after 1.0.0. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
   },
   {
     label: 'Profiling',
     title: 'Agent Flamegraphs',
     description:
-      'agentpprof aggregates local agent sessions into token, time, operation, file, and network profiles with stable categories for comparison.',
+      'agentpprof derives configurable task, skill, phase, action, object, repeat, result, outcome, and token stacks from local agent sessions, with pprof, folded, SVG, and JSON outputs.',
     href: `${site.repository}/blob/master/docs/agentpprof.md`,
   },
   {

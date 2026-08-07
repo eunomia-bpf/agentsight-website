@@ -17,7 +17,7 @@ const softwareJsonLd = {
   codeRepository: site.repository,
   softwareVersion: site.version,
   releaseNotes: site.releaseUrl,
-  screenshot: `${site.url}/images/top-mode-demo.png`,
+  screenshot: `${site.assetBase}/docs/dashboard-overview.png`,
   license: 'https://opensource.org/license/mit',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
@@ -47,6 +47,13 @@ const capabilities = [
 ];
 
 const productViews = [
+  {
+    eyebrow: 'Overview dashboard',
+    title: 'Start with the whole run.',
+    description: 'Review duration, tokens, model calls, processes, files, endpoints, activity over time, resource shape, and friction signals before drilling into detailed views.',
+    src: `${site.assetBase}/docs/dashboard-overview.png`,
+    alt: 'AgentSight Overview dashboard summarizing duration, tokens, model calls, system effects, resource shape, and friction signals for a recorded AI agent run',
+  },
   {
     eyebrow: 'Timeline',
     title: 'Follow the run in order.',
@@ -175,8 +182,8 @@ export default function HomePage() {
               <h2>Move from a busy run to a clear explanation.</h2>
             </div>
             <p>
-              Start from live sessions, then use the timeline, process tree, resource views, repository
-              replay, and flamegraphs to inspect the part of the run that matters.
+              Start with the Overview dashboard, then use the timeline, process tree, resource views,
+              repository replay, and flamegraphs to inspect the part of the run that matters.
             </p>
           </div>
 

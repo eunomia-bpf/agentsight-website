@@ -2,50 +2,46 @@
 
 ## Current state
 
-- No active owner-directed rendered site change.
-- Last rendered-behavior baseline: `f0b755444c8d3768433834603d7652801b2d5a45`, which completed the PR `#28` publication cleanup.
-- Control-plane-only commits may advance `main` and `site/.source-sha` without changing rendered HTML. Every daily run must resolve the exact current repository SHA, publication run, and source marker dynamically rather than treating this file as a live branch pointer.
-- Current product release: AgentSight `v1.0.0`.
-- Product release snapshot commit: `a9fa55893fb2d7237cb2ee43238088c219edc9d7`.
-- Current product default-branch commit after release-workflow fixes: `713d3bbe891b280e445bc695cb5b4d917508b901`.
-- The rendered website still contains release facts and pinned product material from `v0.2.68` / `4e1504e7f6713dcae7fb7762415bb93288abb931`; this is verified product-source drift and is the next bounded content correction.
+- Active bounded rendered change: synchronize public release facts and product material to AgentSight `v1.0.3`.
+- Current website `main` baseline before this cycle: `b25ee8cbc612b901ffce838d61ceeec8656209c9`.
+- Last rendered-behavior production marker before this cycle: `f0b755444c8d3768433834603d7652801b2d5a45`.
+- Current product release: AgentSight `v1.0.3`.
+- Current product release and default-branch commit: `07a83a32257b8c8dcba911bd9db23f77e71dc085`.
+- Product changes reviewed since the website's pinned `v0.2.68` snapshot include a new Overview dashboard, configurable operation-stack profiling in `agentpprof`, and the PID-tracker collision-removal correctness fix shipped after `v1.0.0`.
+- The current change updates release labels, structured software metadata, immutable product-asset references, the homepage product walkthrough, the changelog, and the machine-readable site summary. It does not add, remove, rename, consolidate, or redirect public routes.
 - Canonical product website: `https://agentsight.us/`.
 - Canonical documentation: `https://eunomia.dev/agentsight/`.
-- Route inventory, canonical ownership, navigation hierarchy, static export, and documentation boundary remain unchanged.
-- Runtime analytics: GA4 uses path-only reporting and excludes query strings, Google signals, and ad-personalization signals.
-- Current skill submodule: `0440402cf5713994969ccd2b9998985367a2797b`.
-- Scheduler owner: enabled external session-level task, daily at approximately `09:00` in `America/Los_Angeles`.
-- Scheduler prompt policy: thin repository pointer only; current repository instructions are authoritative and override copied task text or prior conversation context.
+- Runtime analytics: GA4 remains path-only and excludes query strings, Google signals, and ad-personalization signals.
+- Current shared SEO skill pointer before this cycle: `0440402cf5713994969ccd2b9998985367a2797b`.
+- Compatible upstream target reviewed for this cycle: `e7338af051ee9621b3033912d5c5751c7ebc241a`; its only change clarifies that optional diagnostic snapshots should remain outside public output.
+- Scheduler owner: enabled external session-level task; current repository instructions remain authoritative.
 - Repository-hosted SEO agent workflow: none.
 - Model-provider credential requirement: none.
 
-## Completed production baseline
-
-- PR `#25` delivered the mature developer-product visual and messaging refresh while preserving the route inventory and documentation boundary.
-- PRs `#26`, `#27`, and `#28` completed the shared static-site checker migration, publication submodule initialization, and removal of the accidental diagnostic JSON from public output.
-- The last rendered-behavior publication was verified against its exact source marker.
-- Existing product views include first-party live sessions, timeline, process tree, resource metrics, Agent Nebula replay preview, and Agent Flamegraph material.
-- The site remains compatible with Next.js static export and ordinary GitHub Actions publication.
-
 ## Current analytics and search data
 
-- Last verified finalized export window: `2026-07-27` through `2026-08-02`.
-- One GA4 organic landing-page CSV and six Search Console CSVs were previously verified; raw rows remain outside Git.
-- Daily operation checks source presence, freshness, checksums, product drift, production health, and public index visibility.
-- Full comparative metric analysis runs when a finalized export window or checksum changes, and during the weekly review. Identical exports are recorded as unchanged rather than repeatedly recomputed.
+- Latest eligible finalized date for the configured 28-day lookback is `2026-08-03`, after the three-day finalization lag.
+- The exact Google Drive folder was present on `2026-08-06`, but direct-child inspection found no matching GA4 or Search Console exports. Source-native traffic and search metrics are therefore unavailable for today's comparison, not zero.
+- The previously recorded finalized export window was `2026-07-27` through `2026-08-02`; it could not be revalidated from the folder's current contents.
+- The exact `site:agentsight.us` query returned no result in today's public-result sample, while the domain query `agentsight.us` returned the canonical product homepage as the leading direct result. Broader brand results also included the product repository, eunomia.dev documentation, and unrelated products using the same name.
+- This is directional evidence that domain and brand discovery exists while site-qualified visibility remains inconsistent. It is not a Search Console indexing diagnosis.
+- Direct retrieval of `https://agentsight.us/` succeeded and exposed the expected canonical product content. Technical crawlability and exact index state remain separate checks.
 - Cloudflare analytics: not configured.
 
-## Active focus
+## Acceptance gates for the active change
 
-The next coherent rendered change should synchronize public release facts from
-`v0.2.68` to `v1.0.0` using the immutable release snapshot and current product
-repository as evidence. It should update only affected release labels,
-structured software metadata, release or changelog surfaces, and any facts or
-assets proven stale. It must not claim that the npm package is available until
-the npm permission blocker in `block.md` is resolved.
+- Exact-head Website CI must complete successfully.
+- Generated output must preserve all existing routes, canonical URLs, robots, sitemap coverage, internal links, and GA4 path-only assertions.
+- The homepage, footer, structured software metadata, and `llms.txt` must expose `v1.0.3`, link to the immutable `v1.0.3` release where applicable, and use product commit `07a83a32257b8c8dcba911bd9db23f77e71dc085`.
+- The immutable Overview dashboard image must resolve and render without changing the existing route or navigation structure.
+- Desktop and mobile homepage output and representative unchanged routes must be reviewed from the exact CI artifact.
+- After a clean final review and squash merge, the exact squash commit's normal publication must succeed, `site/.source-sha` must identify that commit, and the live homepage, changelog, representative unchanged routes, metadata, product image, documentation target, and analytics configuration must be verified.
+- Final delivery evidence must be recorded through a metadata-only closeout pull request.
 
-After release drift is corrected, continue a page-by-page content-completeness
-audit. Prioritize important existing pages that lack a concrete reader decision,
-real product output or visual evidence, limitations, or a useful next action.
-Do not introduce a daily publishing quota, bulk rewrite, route expansion, or
-keyword-swapped pages.
+## Active focus after this cycle
+
+After the release correction is complete, investigate site-qualified search visibility using a restored finalized Search Console export or a connected read-only Search Console source. Confirm indexing and page coverage before changing routes, titles, or content based only on public-result sampling.
+
+Continue the page-by-page content-completeness audit in parallel. Prioritize existing important pages that lack a concrete reader decision, real product output or visual evidence, explicit limitations, or a useful next action. Do not introduce a daily publishing quota, bulk rewrite, route expansion, or keyword-swapped pages.
+
+The npm scoped-package first-publication blocker remains active until registry availability is independently verified. The website must not claim that `@eunomia-bpf/agentsight` is installable.
