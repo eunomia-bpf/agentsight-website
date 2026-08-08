@@ -17,7 +17,7 @@ jobs:
     env:
       SOURCE_SHA: ${{ github.sha }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ env.SOURCE_SHA }}
           fetch-depth: 0
@@ -34,7 +34,7 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - name: Check out publication branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: site
           fetch-depth: 1
