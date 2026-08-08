@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ContentCard } from '@/components/ContentPages';
 import { Eyebrow, JsonLd } from '@/components/PageParts';
 import { SiteShell } from '@/components/SiteShell';
@@ -77,6 +78,45 @@ const productViews = [
   },
 ];
 
+const credibility = [
+  { value: `v${site.version}`, label: 'Current release' },
+  { value: 'MIT', label: 'Open-source license' },
+  { value: 'arXiv + ACM', label: 'Published system research' },
+  { value: 'OTel GenAI', label: 'Model-call export' },
+  { value: 'Local first', label: 'SQLite session artifacts' },
+];
+
+const postRunQueries = [
+  {
+    command: 'agentsight report audit --json',
+    title: 'Audit process, file, and API activity',
+    description: 'Inspect process spawns, file opens, and captured API activity from a saved run instead of relying on the final agent answer alone.',
+    href: '/security/',
+    link: 'Review data and security →',
+  },
+  {
+    command: 'agentsight report token',
+    title: 'Profile token use across sessions',
+    description: 'Summarize token usage from the latest AgentSight database or supported local agent sessions, then move to Agent Flamegraphs for deeper aggregation.',
+    href: '/guides/agent-flamegraph/',
+    link: 'Explore token profiling →',
+  },
+  {
+    command: 'agentsight report serve',
+    title: 'Reopen a recorded session in the web UI',
+    description: 'Use the same Overview, timeline, process-tree, log, and metrics views on saved SQLite sessions after the original command has finished.',
+    href: site.demo,
+    link: 'Open the recorded demo →',
+  },
+  {
+    command: 'agentsight vis',
+    title: 'Replay repository changes',
+    description: 'Turn local Claude, Codex, and Gemini session history into an Agent Nebula replay of reads, writes, creates, renames, and deletes in a Git worktree.',
+    href: '/use-cases/review-ai-generated-prs/',
+    link: 'See the review workflow →',
+  },
+];
+
 export default function HomePage() {
   const featured = [
     getPages('use-case')[0],
@@ -150,6 +190,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.credibilitySection} aria-label="AgentSight project facts">
+        <div className="shell">
+          <div className={styles.credibilityGrid}>
+            {credibility.map((item) => (
+              <div className={styles.credibilityItem} key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section section-white">
         <div className="shell">
           <div className="section-heading">
@@ -158,8 +211,9 @@ export default function HomePage() {
               <h2>From model request to system activity.</h2>
             </div>
             <p>
-              Application traces stop where their instrumentation stops. AgentSight watches the local
-              process family and connects agent activity to what happened on the machine.
+              Native agent telemetry is strongest for model, tool, and session semantics. AgentSight adds
+              independent process-family, file, network, and resource observations when execution crosses
+              those instrumentation boundaries.
             </p>
           </div>
           <div className={styles.capabilityGrid}>
@@ -236,6 +290,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.querySection}>
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <Eyebrow>After the run</Eyebrow>
+              <h2>Query the session from several angles.</h2>
+            </div>
+            <p>
+              A recorded run is a reusable local artifact. Use focused report commands, the saved-session web UI,
+              repository replay, and profiling views without turning the product website into duplicate CLI documentation.
+            </p>
+          </div>
+          <div className={styles.queryGrid}>
+            {postRunQueries.map((item) => (
+              <article className={styles.queryCard} key={item.command}>
+                <code>{item.command}</code>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                {item.href.startsWith('/') ? <Link href={item.href}>{item.link}</Link> : <a href={item.href}>{item.link}</a>}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section section-white">
         <div className="shell">
           <div className="section-heading">
@@ -256,6 +335,51 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className={styles.researchSection}>
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <Eyebrow>Research and operating boundaries</Eyebrow>
+              <h2>Technical claims should be inspectable.</h2>
+            </div>
+            <p>
+              AgentSight is an open-source systems project with a published paper, versioned source,
+              public product artifacts, and explicit data-handling limits. The website should expose those facts directly.
+            </p>
+          </div>
+          <div className={styles.researchGrid}>
+            <article className={styles.researchCard}>
+              <span className={styles.researchMeta}>Evergreen research · refreshed Aug 2026</span>
+              <h3>Native agent telemetry vs. system observation: where does the boundary actually sit?</h3>
+              <p>
+                We reviewed current Claude Code telemetry, Gemini CLI at an exact commit, Codex OpenTelemetry source,
+                OpenTelemetry GenAI conventions, MCP, and AgentSight. Native telemetry is already rich; independent
+                system observation becomes most useful when execution crosses into descendant processes and low-level effects.
+              </p>
+              <Link href="/blog/system-boundary-observability/">Read the boundary map →</Link>
+            </article>
+            <article className={styles.researchCard}>
+              <span className={styles.researchMeta}>Published research</span>
+              <h3>AgentSight: System-Level Observability for AI Agents Using eBPF</h3>
+              <p>
+                The AgentSight paper describes boundary tracing, correlation across model and system activity,
+                the system design, and the evaluation behind the project.
+              </p>
+              <a href="https://arxiv.org/abs/2508.02736">Read the paper on arXiv →</a>
+            </article>
+            <article className={styles.researchCard}>
+              <span className={styles.researchMeta}>Local data handling</span>
+              <h3>Recorded sessions are useful because they are detailed—and should be treated as sensitive.</h3>
+              <p>
+                Session databases and exports can contain prompts, responses, paths, headers, and network targets.
+                Keep raw artifacts local or handle them with the same care as other development telemetry.
+              </p>
+              <Link href="/security/">Read Security and data handling →</Link>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className={styles.openSourceSection}>
         <div className="shell">
           <div className={styles.openSourceGrid}>
@@ -263,12 +387,12 @@ export default function HomePage() {
               <Eyebrow>Open source and local first</Eyebrow>
               <h2>Run it around the command you already use.</h2>
               <p>
-                AgentSight records locally, works with closed-source CLIs, and exports model calls as
-                OpenTelemetry GenAI spans when you want to connect it to an existing telemetry stack.
+                AgentSight records locally, works with closed-source CLIs, and exports captured model calls as
+                OpenTelemetry GenAI spans when you want to connect them to an existing telemetry stack.
               </p>
               <ul className={styles.openSourceList}>
                 <li><span>✓</span> Existing CLI and terminal workflow</li>
-                <li><span>✓</span> Local SQLite sessions and web UI</li>
+                <li><span>✓</span> Local SQLite sessions and saved-session web UI</li>
                 <li><span>✓</span> eBPF process and file monitoring</li>
                 <li><span>✓</span> TLS tracing without a model proxy</li>
               </ul>
@@ -280,7 +404,8 @@ export default function HomePage() {
             <div className={styles.commandPreview} aria-label="AgentSight example commands">
               <div><span>01</span><code>agentsight top</code></div>
               <div><span>02</span><code>sudo agentsight record -- claude</code></div>
-              <div><span>03</span><code>agentsight report serve</code></div>
+              <div><span>03</span><code>agentsight report audit --json</code></div>
+              <div><span>04</span><code>agentsight report token</code></div>
             </div>
           </div>
         </div>
