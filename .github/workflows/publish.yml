@@ -27,7 +27,7 @@ jobs:
           git cat-file -e "${SOURCE_SHA}^{commit}"
           git fetch origin main --quiet
           git merge-base --is-ancestor "$SOURCE_SHA" origin/main
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
