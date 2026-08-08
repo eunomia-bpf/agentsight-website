@@ -9,8 +9,8 @@
   display: grid;
   place-content: center;
   gap: 4px;
-  border: 1px solid #d8d8e0;
-  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
   background: #fff;
   cursor: pointer;
   list-style: none;
@@ -25,35 +25,35 @@
   height: 2px;
   display: block;
   border-radius: 999px;
-  background: #30303a;
+  background: #334155;
 }
 
 .mobile-menu[open] summary {
-  border-color: #d797ba;
-  background: #fff8fc;
+  border-color: #67e8f9;
+  background: #ecfeff;
 }
 
 .mobile-menu nav {
   display: grid;
   overflow: hidden;
   padding: 8px;
-  border: 1px solid #dcdce4;
-  border-radius: 12px;
+  border: 1px solid #dbe3ec;
+  border-radius: 8px;
   background: #fff;
-  box-shadow: 0 20px 60px rgb(25 25 38 / 18%);
+  box-shadow: 0 18px 60px rgb(9 22 39 / 14%);
 }
 
 .mobile-menu nav a {
   padding: 12px 13px;
-  border-radius: 7px;
-  color: #343440;
+  border-radius: 5px;
+  color: #334155;
   font-size: 0.87rem;
   font-weight: 720;
 }
 
 .mobile-menu nav a:hover {
-  background: #faf1f7;
-  color: #ad3474;
+  background: #ecfeff;
+  color: #0e7490;
 }
 
 @media (max-width: 820px) {
