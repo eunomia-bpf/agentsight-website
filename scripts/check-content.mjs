@@ -8,6 +8,7 @@ const root = process.cwd();
 const contentSource = await readFile(path.join(root, 'src/lib/content.ts'), 'utf8');
 const publicContentSource = await readFile(path.join(root, 'src/lib/public-content.ts'), 'utf8');
 const shellSource = await readFile(path.join(root, 'src/components/SiteShell.tsx'), 'utf8');
+const securitySource = await readFile(path.join(root, 'src/app/security/page.tsx'), 'utf8');
 
 const entryPattern = /\n  \{\r?\n    kind: '([^']+)',\r?\n    slug: '([^']+)',\r?\n    title: '([^']+)',\r?\n    description:\r?\n      '([^']+)'/g;
 const entries = [...contentSource.matchAll(entryPattern)].map((match) => ({
@@ -80,16 +81,91 @@ for (const href of internalLinks) {
   assert(routes.has(href), `Internal content link has no route: ${href}`);
 }
 
-const comparisonSection = contentSource.slice(contentSource.indexOf("kind: 'comparison'"), contentSource.indexOf("kind: 'guide'"));
+const comparisonSection = `${contentSource}\n${publicContentSource}`;
 const primaryHosts = [
   'opentelemetry.io',
   'developers.cloudflare.com',
   'langfuse.com/docs',
   'docs.langchain.com/langsmith',
+  'code.claude.com/docs',
+  'geminicli.com/docs',
+  'modelcontextprotocol.io/specification',
+  'github.com/openai/codex',
   'agentsightReadme',
 ];
 for (const host of primaryHosts) {
-  assert(comparisonSection.includes(host), `Comparison sources are missing ${host}`);
+  assert(comparisonSection.includes(host), `Content sources are missing ${host}`);
 }
 
-console.log(`Content check passed: ${allEntries.length} unique pages, ${routes.size} HTML routes, ${internalLinks.length} checked internal links.`);
+// Every legacy content page that still uses the generic renderer must have an
+// explicit deep-content override. The system-boundary article has its own
+// dedicated long-form renderer, and the TLS deep dive is already authored as a
+// standalone supplemental ContentPage.
+const requiredUpgrades = [
+  'use-case:profile-slow-expensive-agent-runs',
+  'use-case:review-ai-generated-prs',
+  'use-case:trace-closed-source-agent-clis',
+  'use-case:audit-mcp-servers-skills-plugins',
+  'comparison:application-tracing',
+  'comparison:opentelemetry',
+  'comparison:ai-gateways',
+  'comparison:langfuse',
+  'comparison:langsmith',
+  'guide:getting-started',
+  'guide:claude-code-profiling',
+  'guide:agent-flamegraph',
+  'blog:from-agent-trace-to-review-artifact',
+  'integration:claude-code',
+  'integration:codex',
+  'integration:gemini-cli',
+  'integration:opencode-openclaw',
+  'landing:claude-code-observability',
+  'landing:codex-observability',
+  'landing:mcp-server-audit',
+  'landing:ebpf-ai-agent-monitoring',
+  'landing:ai-agent-file-access-monitoring',
+];
+
+const upgradeMarkers = requiredUpgrades.map((key) => ({
+  key,
+  marker: `  '${key}': {`,
+  index: publicContentSource.indexOf(`  '${key}': {`),
+}));
+assert(upgradeMarkers.every(({ index }) => index >= 0), 'Every legacy page must have a deep-content upgrade');
+assert(new Set(upgradeMarkers.map(({ index }) => index)).size === requiredUpgrades.length, 'Legacy content upgrades must be unique');
+
+for (let i = 0; i < upgradeMarkers.length; i++) {
+  const { key, index } = upgradeMarkers[i];
+  const nextIndexes = upgradeMarkers.slice(i + 1).map((entry) => entry.index).filter((value) => value > index);
+  const upgradeEnd = nextIndexes.length
+    ? Math.min(...nextIndexes)
+    : publicContentSource.indexOf('\n};\n\nconst directReplacements', index);
+  assert(upgradeEnd > index, `Could not resolve content upgrade block: ${key}`);
+  const block = publicContentSource.slice(index, upgradeEnd);
+  const sectionBodies = [...block.matchAll(/\n\s+body:\s/g)].length;
+  const sourceLabels = [...block.matchAll(/\n\s+\{ label:/g)].length;
+  assert(sectionBodies >= 5, `Deep-content upgrade must contain at least five substantive sections: ${key}`);
+  assert(sourceLabels >= 2, `Deep-content upgrade must cite at least two sources or supporting references: ${key}`);
+}
+
+assert(
+  publicContentSource.includes("page.kind === 'blog' && page.slug === 'system-boundary-observability'") === false,
+  'System-boundary custom rendering belongs in ContentPages.tsx, not public-content overrides',
+);
+assert(
+  securitySource.includes('Local-first is a storage default, not a sensitivity claim.'),
+  'Security page must retain the expanded local-data boundary guidance',
+);
+assert(
+  securitySource.includes('Exports are a new data boundary'),
+  'Security page must explain export-boundary handling',
+);
+assert(
+  securitySource.includes('Does an empty AgentSight result prove that an action did not happen?'),
+  'Security FAQ must preserve capture-limit uncertainty',
+);
+
+console.log(
+  `Content check passed: ${allEntries.length} unique pages, ${routes.size} HTML routes, ` +
+    `${internalLinks.length} checked internal links, ${requiredUpgrades.length} deep legacy upgrades.`,
+);
