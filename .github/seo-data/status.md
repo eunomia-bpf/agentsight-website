@@ -2,48 +2,52 @@
 
 ## Current state
 
-- AgentSight `v1.0.3` is the current product release used by the website, with immutable first-party product material pinned to `07a83a32257b8c8dcba911bd9db23f77e71dc085`.
+- AgentSight `v1.0.3` is the current product release used by the website, with AgentSight-specific product material pinned to `07a83a32257b8c8dcba911bd9db23f77e71dc085` where exact source anchoring is useful.
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
-- Blog is now a first-class shared navigation destination. PR `#41` added the existing `/blog/` hub to both desktop and mobile navigation without changing or removing any existing route. Exact-head CI `31284996998` succeeded; squash commit `d1775292582e2d2172823da65234ce42c1ba48a8`.
-- The Blog now contains three substantive entries. The newest is `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`, published through PR `#42` as a distinct source-level engineering deep dive rather than a keyword variant of the recording guides.
-- PR `#42` exact head `7acb44f465ef203c1ba419f2a656b07be061d060` passed Website CI `31285201858`; its static artifact `9029577411` has digest `sha256:c004cfd6a2b7072c6ca2ee9d7d999180637e74ac9082bc26ee26101d45bbdbce`.
-- PR `#42` was squash-merged as `3c1991644bb2d8057b55c5ea60c510b3a3757612`. Main Website CI `31285282865` and Publish static site `31285282851` both succeeded. `site/.source-sha` identifies the exact same squash commit.
-- Exact static review found 35 generated canonical index pages and 33 sitemap URLs. `/blog/` lists three posts; the new article has one H1, canonical/index metadata, TechArticle metadata, source links, a command block, related internal links, and approximately 1,746 rendered words.
-- Independent public search/crawler sampling immediately after publication still exposes an older cached homepage generation and has not indexed the new Blog route. Treat this as crawler/index freshness until direct retrieval or Search Console proves otherwise; do not create a rendered repair solely to force cache/index refresh.
-- The earlier `/blog/system-boundary-observability/` evergreen article remains useful and distinct: it explains native-agent telemetry versus independent system observation, while the new TLS article explains how to locate the actual plaintext hook point across OpenSSL, BoringSSL, rustls, wrappers, threads, and containers.
-- Owner-authorized content operating policy remains active: maintain at least one substantive search-facing publication or major evergreen refresh within every rolling 48-hour window. The daily external scheduler remains a thin trigger and current repository instructions are authoritative.
-- A qualifying publication must add a distinct reader answer and durable technical information such as primary-source synthesis, exact implementation/version research, a reproducible AgentSight experiment, real first-party artifacts, measured behavior, or a concrete limitation/reference analysis.
-- Metadata-only work, thin release notes, keyword swaps, cosmetic copy changes, generic summaries, navigation-only changes, and near-duplicate pages do not satisfy the content SLO.
-- Visual Phase 1 and Phase 2 remain delivered: the shared shell and homepage align with the Eunomia visual family while preserving AgentSight identity, URLs, canonical ownership, documentation ownership, and product imagery.
+- Blog is a first-class desktop/mobile navigation destination at `/blog/`.
+- The Blog contains three substantive entries. The two long-form research anchors are `/blog/system-boundary-observability/` and `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`; the older `/blog/from-agent-trace-to-review-artifact/` has now also been upgraded from the thin legacy template into a decision-oriented review-method article.
+- Owner-directed legacy-content remediation is delivered through PR `#44`: all 22 remaining generic legacy content pages now have explicit deep-content upgrades with at least five substantive sections and at least two supporting references. The custom Security page is also substantially expanded.
+- PR `#44` exact final head `a0b2dcd43a5c8b5463cbe10283b5f1293502a5b0` passed Website CI `31300709260`; exact artifact `9034396225` has digest `sha256:9d9ecaeee5310c31800150423e219aadedd334da366dd18558bcc084b182cf26`.
+- PR `#44` was squash-merged as `f831d1c80be9285f2240ef7949a33ddc1a305806`. Main Website CI `31300787290` and Publish static site `31300787279` succeeded. `site/.source-sha` identifies the same exact squash commit.
+- Exact artifact review found 35 generated index pages and 33 unique sitemap URLs, with exactly one canonical and one H1 on every generated page. No public URL, redirect, canonical owner, or sitemap URL was removed or renamed by the quality pass.
+- The 22 upgraded generic pages now render roughly 350–575 article-body words each, with five to eight substantive sections before generic source/continuation UI. Security renders roughly 760 words. The two already-long-form research articles retain their existing deeper bodies.
+- The new CI quality floor requires every legacy generic page to retain an explicit deep upgrade with at least five substantive section bodies and at least two supporting references. This prevents a future regression back to two-paragraph keyword/template pages.
+- Content responsibilities are now intentionally separated: use cases explain reader decisions; integrations document current compatibility/runtime boundaries; Claude/Codex observability landings map the multi-layer telemetry stack; `/mcp-server-audit/` is a concrete audit method; comparison pages use current primary sources and complementary-use-case analysis; product reference/install material stays on eunomia.dev.
+- Current primary-source comparison set includes OpenTelemetry, Claude Code, Gemini CLI, the open-source Codex OpenTelemetry implementation, Cloudflare AI Gateway, Langfuse, LangSmith, Model Context Protocol, Linux kernel uprobes, and exact AgentSight v1.0.3 source/docs.
+- Security now explicitly distinguishes local-first storage from data sensitivity, documents privileged observation and bounded capture, treats export/OTLP as new data boundaries, preserves absence uncertainty, and gives redaction/reproduction guidance without inventing a private vulnerability channel.
+- Visual Phase 1 and Phase 2 remain delivered: shared shell and homepage align with the Eunomia visual family while preserving AgentSight identity, URLs, canonical ownership, documentation ownership, and product imagery.
 - Current shared SEO skill pointer: `d1194eeb23a6dd5cf04956f5efcfe8e3f0105003`.
 - Runtime analytics: GA4 remains path-only and excludes query strings, Google signals, and ad-personalization signals.
 - Repository-hosted SEO agent workflow: none.
 - Model-provider credential requirement: none.
 
+## Current public verification
+
+- Independent canonical-homepage retrieval is fresh and exposes AgentSight `v1.0.3`, current homepage information, and Blog navigation.
+- Independent detail-route retrieval is still inconsistent with the exact publication branch: a sampled slow-run page returned an older cached `v0.2.67` generation, while several other detail routes returned crawler cache misses.
+- Because `site/.source-sha` exactly identifies the successful `f831d1c8...` publication and the exact static artifact contains the upgraded routes, treat the current mismatch as per-route crawler/cache freshness. Do not label it a 404 or claim direct live verification of every detail page.
+- Do not create rendered changes solely to force crawler freshness. Retry representative detail routes in later operating cycles and use Search Console when valid source-native exports are restored.
+
 ## Current analytics and search data
 
-- Latest eligible finalized date for the configured 28-day lookback is `2026-08-05`, after the three-day finalization lag.
-- The exact Google Drive folder is present and uniquely resolved.
-- On `2026-08-08`, the folder contained a GA4 source manifest for the completed `2026-07-27` through `2026-08-02` window without its required paired `*_ga4_organic_landing_pages.csv`; no matching Search Console CSV exports were present.
+- Latest known configured source state is from the `2026-08-08` patrol.
+- The configured Google Drive folder contained a GA4 source manifest for the completed `2026-07-27` through `2026-08-02` window without its required paired `*_ga4_organic_landing_pages.csv`; no matching Search Console CSV exports were present.
 - The manifest-only GA4 state is an exporter error under the current shared skill, not valid analytics evidence. Source-native traffic and search metrics remain unavailable for comparison, not zero.
 - Restoring the external Google Apps Script exporter remains recorded in `block.md` because the scheduled operator has Drive access but no connected Apps Script execution/configuration surface.
-- Public brand/homepage discovery remains present in sampled search results, but the crawler/search cache is behind the exact publication branch and currently cannot be used to judge the new article's indexing or ranking.
+- Public search/crawler sampling is directional only while Search Console exports are unavailable and detail-route caches are inconsistent.
 - Cloudflare analytics: not configured.
 
 ## Content clock and portfolio
 
-- Latest qualifying publication: `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`.
-- Exact qualifying squash commit: `3c1991644bb2d8057b55c5ea60c510b3a3757612`.
-- Exact successful static publication completed at `2026-08-08 17:02` PDT (`2026-08-09T00:02:24Z`). This resets the rolling 48-hour substantive-content clock.
-- The article's reader decision is durable: diagnose why normal `libssl.so` uprobes miss AI agent CLI plaintext and determine the correct executable/library-specific hook boundary.
-- Its primary implementation findings are pinned to AgentSight `v1.0.3`, including embedded Node OpenSSL handling, stripped Bun/BoringSSL byte-pattern discovery, rustls stripped-binary paths, internal-thread filtering behavior, wrapper/interpreter resolution, and container descendant executable discovery. Version-sensitive byte/offset fingerprints are described as compatibility mechanisms, not stable ABIs.
+- Latest new Blog publication: `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`, published at `2026-08-08 17:02` PDT.
+- Latest qualifying substantive publication under the rolling 48-hour policy: the full legacy-content major evergreen refresh, exact static publication completed at `2026-08-09 00:17` PDT (`2026-08-09T07:17:27Z`).
+- The quality pass upgrades the entire old portfolio; the next cycle should not immediately manufacture another rewrite of the same pages.
+- Next preferred substantive outcome is a new research Blog or first-party experiment that adds information the current portfolio does not already contain, for example a reproducible slow/expensive-run breakdown, a real MCP-server audit, or an Agent Flamegraph token/time study built from public-safe session material.
 - On every daily cycle, resolve the latest qualifying publication dynamically. If waiting until the next scheduled run would breach the 48-hour target, deliver another qualifying article or major evergreen refresh after higher-priority production/factual repairs.
-- Prefer a major refresh when an existing canonical already owns the reader decision. Create a new Blog URL only for a genuinely distinct technical question.
-- Next strong content candidates: a reproducible slow/expensive-run breakdown using real session outputs; an MCP-server audit comparing protocol/tool results with process/file/network activity; an Agent Flamegraph token-profile study using real local sessions; or a new implementation deep dive only when upstream/product changes create a distinct question.
 
 ## Outstanding follow-up
 
-- Retry independent public retrieval/index visibility for `/blog/`, `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`, and `/blog/system-boundary-observability/`; do not modify rendered content merely to force crawler freshness.
+- Re-check representative upgraded detail routes after crawler/CDN freshness catches up; do not alter rendered content merely to force a cache refresh.
 - Restore valid weekly GA4 and Search Console exports through the external Google Apps Script exporter; see `block.md` for the minimum external action and resolution evidence.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. The website must not claim that `@eunomia-bpf/agentsight` is installable.
