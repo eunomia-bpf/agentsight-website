@@ -7,7 +7,8 @@
     "check": "node scripts/check-content.mjs",
     "typecheck": "tsc --noEmit",
     "build": "next build",
-    "verify": "npm run check && npm run typecheck && npm run build && node scripts/verify-export.mjs"
+    "verify:seo": "python3 .github/seo-skills/scripts/site_snapshot.py --root out --base-url https://agentsight.us --sitemap sitemap.xml --exclude-html 404/index.html --exclude-html _not-found/index.html --require-title --require-one-h1 --require-unique-titles --canonical same-route --check-internal-links --check-sitemap-coverage --require-file robots.txt --require-file sitemap.xml --require-file manifest.webmanifest --require-file opengraph-image --require-file llms.txt --require-file _headers --require-file _redirects",
+    "verify": "npm run check && npm run typecheck && npm run build && npm run verify:seo"
   },
   "dependencies": {
     "next": "16.2.12",
@@ -17,7 +18,7 @@
   "devDependencies": {
     "@types/node": "^20.17.0",
     "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
+    "@types/react-dom": "19.2.4",
     "typescript": "^7.0.2"
   },
   "engines": {

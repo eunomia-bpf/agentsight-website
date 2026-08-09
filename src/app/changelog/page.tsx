@@ -6,30 +6,30 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, profiling improvements, semantic flamegraph work, supported agent paths, and website updates.',
+    'Follow AgentSight releases, supported agent runtimes, local reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
 const updates = [
   {
-    label: 'Current release line',
-    title: 'AgentSight 0.2.66',
+    label: 'Current release',
+    title: `AgentSight ${site.version}`,
     description:
-      'The current product repository release when this independent website launched. Use GitHub Releases for binaries and the authoritative per-tag change history.',
-    href: `${site.repository}/releases/tag/v0.2.66`,
+      'Introduces the Overview dashboard for run KPIs, activity, tokens, system effects, resource shape, and friction signals; adds operation-stack agentpprof profiling; and includes the PID-tracker correctness fix shipped after 1.0.0. GitHub Releases remains authoritative for per-tag changes.',
+    href: site.releaseUrl,
   },
   {
-    label: 'Analysis',
-    title: 'Semantic Agent Flamegraphs',
+    label: 'Profiling',
+    title: 'Agent Flamegraphs',
     description:
-      'The agentpprof workflow aggregates local agent sessions into tokens, time, operations, files, and network views with stable semantic intent labels.',
+      'agentpprof derives configurable task, skill, phase, action, object, repeat, result, outcome, and token stacks from local agent sessions, with pprof, folded, SVG, and JSON outputs.',
     href: `${site.repository}/blob/master/docs/agentpprof.md`,
   },
   {
-    label: 'Experience',
+    label: 'Product',
     title: 'Local session replay and reports',
     description:
-      'AgentSight can inspect native Claude, Codex, and Gemini session history and create local analysis artifacts without requiring a live eBPF recording for every workflow.',
+      'AgentSight can inspect Claude, Codex, and Gemini session history, replay repository changes, serve recorded sessions, and export portable report snapshots.',
     href: site.docs,
   },
 ];
@@ -40,10 +40,10 @@ export default function ChangelogPage() {
       <section className="page-hero compact-hero">
         <div className="shell narrow">
           <Eyebrow>Changelog</Eyebrow>
-          <h1>Follow the evidence model as AgentSight evolves.</h1>
+          <h1>Product updates and release highlights.</h1>
           <p className="hero-lede">
-            This page highlights major user-facing directions. GitHub Releases and the product
-            repository remain the authoritative source for a specific version.
+            This page summarizes major user-facing changes. GitHub Releases and the AgentSight
+            repository remain authoritative for a specific version.
           </p>
         </div>
       </section>
@@ -54,7 +54,7 @@ export default function ChangelogPage() {
               <p className="card-label">{update.label}</p>
               <h2>{update.title}</h2>
               <p>{update.description}</p>
-              <a className="arrow-link" href={update.href}>Read the primary source <span aria-hidden="true">↗</span></a>
+              <a className="arrow-link" href={update.href}>Read the source <span aria-hidden="true">↗</span></a>
             </article>
           ))}
         </div>

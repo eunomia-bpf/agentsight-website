@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'AgentSight — system-level observability for AI agents';
+export const alt = 'AgentSight — open-source observability for AI agents';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 export const dynamic = 'force-static';
@@ -14,43 +14,57 @@ export default function OpenGraphImage() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: '72px 78px',
-        background: 'linear-gradient(135deg, #101828 0%, #1d2939 58%, #143b75 100%)',
+        padding: '64px 72px',
+        background:
+          'radial-gradient(circle at 82% 18%, rgba(232,72,177,.35), transparent 31%), radial-gradient(circle at 92% 72%, rgba(255,122,61,.26), transparent 25%), linear-gradient(135deg, #0b0b10 0%, #15151f 72%, #231420 100%)',
         color: '#ffffff',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 22 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <div
           style={{
-            width: 74,
-            height: 74,
+            width: 62,
+            height: 62,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            border: '2px solid #84adff',
-            borderRadius: 18,
-            color: '#b2ccff',
-            fontSize: 28,
-            fontWeight: 800,
+            border: '2px solid #e848b1',
+            borderRadius: 17,
+            background: '#17171f',
           }}
         >
-          AS
+          <div
+            style={{
+              width: 28,
+              height: 18,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '3px solid #ff8b4b',
+              borderRadius: '50%',
+            }}
+          >
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#e848b1' }} />
+          </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: 34, fontWeight: 800, letterSpacing: 2 }}>AGENTSIGHT</span>
-          <span style={{ marginTop: 4, color: '#98a2b3', fontSize: 20 }}>by Eunomia</span>
+          <span style={{ fontSize: 30, fontWeight: 800, letterSpacing: -1 }}>AgentSight</span>
+          <span style={{ marginTop: 2, color: '#aaaab7', fontSize: 17 }}>by Eunomia · open source</span>
         </div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 940 }}>
-        <div style={{ fontSize: 68, fontWeight: 800, letterSpacing: -3, lineHeight: 1.04 }}>
-          Profile AI agents like programs.
+
+      <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 980 }}>
+        <div style={{ fontSize: 72, fontWeight: 850, letterSpacing: -4.5, lineHeight: 0.98 }}>
+          See what AI agents actually do.
         </div>
-        <div style={{ marginTop: 28, color: '#d0d5dd', fontSize: 27, lineHeight: 1.45 }}>
-          Connect intent and model calls to commands, files, processes, network activity, and resource use.
+        <div style={{ marginTop: 26, color: '#c7c7d2', fontSize: 25, lineHeight: 1.42 }}>
+          Connect model calls to commands, files, processes, network activity, and resource use—without an SDK or proxy.
         </div>
       </div>
-      <div style={{ display: 'flex', gap: 15, color: '#b2ccff', fontSize: 18 }}>
-        <span>Local-first</span><span>·</span><span>Zero SDK</span><span>·</span><span>Open source</span>
+
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, color: '#d8d8e1', fontSize: 17 }}>
+        <span>Local first</span><span style={{ color: '#ff8b4b' }}>•</span><span>Linux + eBPF</span>
+        <span style={{ color: '#e848b1' }}>•</span><span>Claude Code · Codex · Gemini CLI · more</span>
       </div>
     </div>,
     size,

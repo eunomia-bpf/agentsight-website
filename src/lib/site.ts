@@ -1,17 +1,25 @@
+export const productCommit = '07a83a32257b8c8dcba911bd9db23f77e71dc085';
+
 export const site = {
   name: 'AgentSight',
   url: 'https://agentsight.us',
   description:
-    'Profile AI agent intent, model calls, processes, files, network activity, and resource use from the system boundary.',
+    'Open-source, local-first observability for AI agents. Connect model calls to commands, files, processes, network activity, and resource use.',
   repository: 'https://github.com/eunomia-bpf/agentsight',
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
-  docs: 'https://github.com/eunomia-bpf/agentsight#readme',
+  docs: 'https://eunomia.dev/agentsight/',
   demo: 'https://app.agentsight.us/',
+  version: '1.0.3',
+  releaseDate: '2026-08-06',
+  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.3',
+  productCommit,
+  assetBase: `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}`,
 } as const;
 
 export const navigation = [
   { href: '/use-cases/', label: 'Use cases' },
   { href: '/compare/', label: 'Compare' },
+  { href: '/blog/', label: 'Blog' },
   { href: '/guides/', label: 'Guides' },
   { href: '/integrations/', label: 'Integrations' },
   { href: '/security/', label: 'Security' },
@@ -21,36 +29,36 @@ export const hubConfig = {
   'use-case': {
     path: '/use-cases/',
     eyebrow: 'Use cases',
-    title: 'Profiles that answer a concrete engineering question',
+    title: 'Use AgentSight to debug and review real agent runs',
     description:
-      'Start with a slow run, a risky change, a closed-source agent, or an extension you need to audit.',
+      'Start with a slow run, an AI-generated change, a closed-source agent, or an extension you need to inspect.',
   },
   comparison: {
     path: '/compare/',
     eyebrow: 'Compare',
-    title: 'Choose the right observability boundary',
+    title: 'Choose the observability layer that fits the job',
     description:
-      'AgentSight complements application traces, standards, gateways, and hosted LLM observability tools by recording system effects.',
+      'AgentSight complements application traces, OpenTelemetry, gateways, and hosted LLM tools by showing local processes, files, network activity, and resources.',
   },
   guide: {
     path: '/guides/',
     eyebrow: 'Guides',
-    title: 'Record, inspect, and explain a real agent run',
+    title: 'Workflows for inspecting AgentSight runs',
     description:
-      'Practical workflows for first capture, Claude Code profiling, and semantic Agent Flamegraphs.',
+      'Practical workflows for first capture, Claude Code profiling, and Agent Flamegraphs. Full product documentation lives on eunomia.dev.',
   },
   blog: {
     path: '/blog/',
     eyebrow: 'Blog',
-    title: 'Engineering notes from the system boundary',
+    title: 'Engineering notes about AI agent observability',
     description:
-      'How to connect agent intent to low-level effects and turn traces into useful review artifacts.',
+      'How to connect model activity to local processes, files, network calls, and resource use.',
   },
   integration: {
     path: '/integrations/',
     eyebrow: 'Integrations',
     title: 'Use AgentSight with the agent you already run',
     description:
-      'Attach to supported local CLIs and process families without changing their source or routing traffic through a proxy.',
+      'Profile supported local CLIs and process families without changing their source code or routing model traffic through a proxy.',
   },
 } as const;

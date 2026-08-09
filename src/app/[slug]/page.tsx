@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ContentDetail } from '@/components/ContentPages';
-import { getPage, getPages } from '@/lib/content';
+import { getPage, getPages } from '@/lib/public-content';
 import { contentMetadata } from '@/lib/metadata';
 
 type Props = { params: Promise<{ slug: string }> };
