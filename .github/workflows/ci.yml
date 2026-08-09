@@ -31,7 +31,7 @@ jobs:
               echo "SEO scope guard not required for $SEO_AUTOMATION_BRANCH"
               ;;
           esac
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
