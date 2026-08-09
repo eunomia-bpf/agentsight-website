@@ -9,7 +9,7 @@
 - The Blog contains three substantive entries. The two long-form research anchors are `/blog/system-boundary-observability/` and `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`; the older `/blog/from-agent-trace-to-review-artifact/` has now also been upgraded from the thin legacy template into a decision-oriented review-method article.
 - Owner-directed legacy-content remediation is delivered through PR `#44`: all 22 remaining generic legacy content pages now have explicit deep-content upgrades with at least five substantive sections and at least two supporting references. The custom Security page is also substantially expanded.
 - PR `#44` exact final head `a0b2dcd43a5c8b5463cbe10283b5f1293502a5b0` passed Website CI `31300709260`; exact artifact `9034396225` has digest `sha256:9d9ecaeee5310c31800150423e219aadedd334da366dd18558bcc084b182cf26`.
-- PR `#44` was squash-merged as `f831d1c80be9285f2240ef7949a33ddc1a305806`. Main Website CI `31300787290` and Publish static site `31300787279` succeeded. `site/.source-sha` identifies the same exact squash commit.
+- PR `#44` was squash-merged as `f831d1c80be9285f2240ef7949a33ddc1a305806`. Main Website CI `31300787290` and Publish static site `31300787279` succeeded. At rendered acceptance time, `site/.source-sha` identified that exact squash commit; later metadata-only publication may advance the marker without changing rendered behavior.
 - Exact artifact review found 35 generated index pages and 33 unique sitemap URLs, with exactly one canonical and one H1 on every generated page. No public URL, redirect, canonical owner, or sitemap URL was removed or renamed by the quality pass.
 - The 22 upgraded generic pages now render roughly 350–575 article-body words each, with five to eight substantive sections before generic source/continuation UI. Security renders roughly 760 words. The two already-long-form research articles retain their existing deeper bodies.
 - The new CI quality floor requires every legacy generic page to retain an explicit deep upgrade with at least five substantive section bodies and at least two supporting references. This prevents a future regression back to two-paragraph keyword/template pages.
@@ -26,7 +26,7 @@
 
 - Independent canonical-homepage retrieval is fresh and exposes AgentSight `v1.0.3`, current homepage information, and Blog navigation.
 - Independent detail-route retrieval is still inconsistent with the exact publication branch: a sampled slow-run page returned an older cached `v0.2.67` generation, while several other detail routes returned crawler cache misses.
-- Because `site/.source-sha` exactly identifies the successful `f831d1c8...` publication and the exact static artifact contains the upgraded routes, treat the current mismatch as per-route crawler/cache freshness. Do not label it a 404 or claim direct live verification of every detail page.
+- The exact rendered acceptance marker and static artifact prove that the upgraded routes were published from `f831d1c8...`; treat the current public mismatch as per-route crawler/cache freshness. Do not label it a 404 or claim direct live verification of every detail page.
 - Do not create rendered changes solely to force crawler freshness. Retry representative detail routes in later operating cycles and use Search Console when valid source-native exports are restored.
 
 ## Current analytics and search data
