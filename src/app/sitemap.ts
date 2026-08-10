@@ -14,10 +14,11 @@ const contentKinds: ContentKind[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const updated = new Date('2026-08-08T00:00:00Z');
+  const updated = new Date('2026-08-10T00:00:00Z');
   const fixed = [
     '/',
     ...Object.values(hubConfig).map(({ path }) => path),
+    '/integrations/cursor/',
     '/security/',
     '/changelog/',
     '/releases/',
