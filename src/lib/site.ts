@@ -1,4 +1,4 @@
-export const productCommit = '07a83a32257b8c8dcba911bd9db23f77e71dc085';
+export const productCommit = 'ac1e6cb7a8398c57c1ad0ba04ff032cd271d99c8';
 
 export const site = {
   name: 'AgentSight',
@@ -9,9 +9,9 @@ export const site = {
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
   docs: 'https://eunomia.dev/agentsight/',
   demo: 'https://app.agentsight.us/',
-  version: '1.0.3',
-  releaseDate: '2026-08-06',
-  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.3',
+  version: '1.0.4',
+  releaseDate: '2026-08-10',
+  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.4',
   productCommit,
   assetBase: `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}`,
 } as const;
@@ -59,6 +59,6 @@ export const hubConfig = {
     eyebrow: 'Integrations',
     title: 'Use AgentSight with the agent you already run',
     description:
-      'Profile supported local CLIs and process families without changing their source code or routing model traffic through a proxy.',
+      'Profile supported local CLIs, IDE agents, and process families with the capture path that matches the runtime.',
   },
 } as const;
