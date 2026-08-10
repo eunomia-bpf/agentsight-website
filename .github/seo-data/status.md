@@ -3,63 +3,82 @@
 ## Current state
 
 - Authoritative AgentSight product release: `v1.0.4`, published `2026-08-10` from product commit `ac1e6cb7a8398c57c1ad0ba04ff032cd271d99c8`.
-- `v1.0.4` adds Cursor IDE sessions through the agent-native local-session path. The website's August 10 rendered outcome synchronizes the release metadata and adds a source-grounded `/integrations/cursor/` reference rather than treating Cursor as another eBPF/TLS CLI target.
+- The website now synchronizes that release and publishes a standalone `/integrations/cursor/` reference for Cursor IDE sessions through AgentSight's agent-native local-session path.
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
-- The existing Blog, use-case, comparison, guide, integration, landing, Security, release, and changelog route families remain canonical. No existing URL, redirect, or canonical owner is removed or renamed by the Cursor release synchronization.
-- The Cursor integration is intentionally standalone from the four generic CLI/runtime integration pages. Its reader decision is to use local Cursor session artifacts instead of `record`/TLS attachment; the page pins AgentSight `v1.0.4` and states the live-payload, token-availability, timestamp, and enrichment limits explicitly.
-- The site-wide legacy-content remediation remains in force: 22 generic legacy pages have explicit deep-content upgrades with at least five substantive sections and at least two supporting references, and Security retains its expanded local-data/export/capture-limit guidance.
-- Existing long-form research anchors remain `/blog/system-boundary-observability/` and `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`; `/blog/from-agent-trace-to-review-artifact/` remains the upgraded review-method article.
-- Visual Phase 1 and Phase 2 remain delivered; the current release work does not change the shared visual system or information architecture.
+- No existing URL, redirect, or canonical owner was removed or renamed by the `v1.0.4` synchronization.
 - Runtime analytics remains Google Analytics 4 with path-only reporting. Query strings, Google signals, and ad-personalization signals remain excluded by the current implementation.
-- Repository-hosted model-running SEO automation remains prohibited by the website's current instructions.
-- Model-provider credential requirement in the repository: none.
+- Repository-hosted model-running SEO automation remains prohibited by the website's current instructions. No workflow, scheduler, direct-main model lane, or provider credential was added.
+- Current shared SEO skill pointer: `9f0bd4f0b33b28fc22592e5463d95f63cda4d165`; a fresh allowed-upstream check on `2026-08-10` finds no newer `main` commit.
 
 ## Cursor product boundary
 
-- Supported source path: Cursor transcripts below `~/.cursor/projects/<workspace>/agent-transcripts/`, with delegated subagent transcripts folded into the parent session.
-- Optional enrichment source: Cursor's local `state.vscdb` for session timing, model, and working-directory data; transcript parsing remains usable when the database is missing or locked.
-- User workflow: existing local sessions are consumed by commands such as `agentsight top`, `agentsight report --local`, and `agentsight vis`; the Cursor path does not require launching the IDE through AgentSight or using sudo for eBPF capture.
-- Live TLS/API-body capture is not the supported Cursor mechanism. The authoritative product documentation identifies desktop platform, Electron helper/stripped TLS attachment, and protobuf Connect payload semantics as separate obstacles.
-- Current Cursor versions may not record local per-turn token usage. Missing recent token totals must not be interpreted as a failed AgentSight capture.
+- Supported source path: Cursor transcripts below `~/.cursor/projects/<workspace>/agent-transcripts/`, with delegated `subagents/*.jsonl` work folded into the parent session.
+- Optional enrichment source: Cursor's local `state.vscdb` for timing, model, and working-directory metadata; transcript parsing remains useful when that database is unavailable or locked.
+- User workflow: existing local sessions can be consumed through commands such as `agentsight top`, `agentsight report --local`, and `agentsight vis`; this path does not require a special Cursor launch or sudo/eBPF capture.
+- Live Cursor TLS/API-body capture is not the supported mechanism. Desktop platform constraints, Electron helper/stripped TLS boundaries, and protobuf Connect payloads are separate obstacles.
+- Recent Cursor sessions may not contain local per-turn token totals. Missing recent token totals must not be interpreted as a failed AgentSight capture.
 
-## Current public verification baseline
+## August 10 rendered delivery
 
-- At the start of the August 10 cycle, direct public retrieval still exposes the successfully published `v1.0.3` homepage and its pre-Cursor supported-agent text. This is a real product-version drift relative to the newly published `v1.0.4` release, not a cache-only inference.
-- Public search sampling remains lagged relative to production: a sampled `agentsight.us` result still represents an older homepage generation. Search-result freshness is directional evidence only while Search Console exports are unavailable.
-- Earlier detail-route crawler results remain inconsistent with exact publication output. Exact CI, publication-branch, sitemap, robots, and direct-route evidence should be used together; do not manufacture duplicate pages solely to force search/crawler refresh.
-- The post-merge acceptance check for the August 10 rendered change must verify the exact deployment plus public homepage `v1.0.4`, integrations hub, `/integrations/cursor/`, changelog, sitemap, and one representative unchanged route. Any crawler qualification will be recorded in the metadata closeout rather than hidden.
+Rendered change PR `#47`, `Sync AgentSight v1.0.4 and add Cursor session integration`, is complete:
+
+- base commit: `fcb70a0f8416a366bb4fce8c8b2e8167907305bd`;
+- final PR head: `2f90652f2c19b544b5320fa660f36db7bc161936`;
+- exact-head Website CI: run `31412375565`, successful;
+- exact static artifact: `9072077530`;
+- artifact digest: `sha256:9921772b57f8c7adc1ba9e30d3b40b5cb5fac0771c86c2993ee5b704b733ee72`;
+- squash commit: `ff0ca8e9a7cc2c5b7ce8a88099782dd90a206517`;
+- main Website CI: run `31412735462`, successful;
+- Publish static site: run `31412735631`, successful;
+- exact publish job completed `2026-08-10T17:11:26Z`;
+- `site/.source-sha` identifies `ff0ca8e9a7cc2c5b7ce8a88099782dd90a206517`.
+
+Exact output review confirms:
+
+- publication-branch homepage metadata and visible release surface say `v1.0.4` and point to the current product release/commit;
+- `/integrations/cursor/` exists with one canonical and one H1;
+- the Cursor page contains the transcript/state source model, delegated-subagent handling, local-session commands, eBPF/TLS boundary, token/timestamp limitations, data-handling guidance, and primary/current references;
+- `/integrations/` links the Cursor page;
+- `/changelog/` reflects the `v1.0.4` Cursor change;
+- sitemap contains 34 unique canonical URLs and includes `/integrations/cursor/` exactly once with `2026-08-10` freshness while existing URLs retain their previous freshness;
+- representative unchanged `/integrations/claude-code/` still has one canonical and one H1.
+
+From-scratch review after exact-head CI found no route migration, analytics-policy drift, unrelated navigation change, private-data leakage, unsupported Cursor compatibility claim, or regression in representative unchanged routes.
+
+Metadata closeout is being delivered through PR `#48`, `Close out AgentSight v1.0.4 Cursor publication`. Its scope is limited to the August 10 daily record and this status file; it changes no rendered site behavior.
+
+## Current public verification qualification
+
+- Independent public retrieval available to the operator remains stale/inconsistent immediately after the exact publication: the homepage crawler still exposes the previous `v1.0.3` generation, while several detail-route checks return crawler/cache errors.
+- This does not match the exact successful publication branch, which already contains `v1.0.4` and the Cursor route. Treat the current discrepancy as public crawler/cache freshness until later direct retrieval proves otherwise.
+- Do not create duplicate Cursor content, route churn, or rendered cache-forcing changes merely to make an external crawler refresh sooner.
+- Re-check representative public routes in later cycles and record direct public freshness when available.
 
 ## Current analytics and search data
 
 - Latest configured source check: `2026-08-10`; latest eligible finalized calendar date under the three-day lag is `2026-08-07`.
-- The configured Drive folder resolves uniquely.
-- A new `2026-08-03_to_2026-08-09_ga4_source.json` manifest for `agentsight.us` was generated on `2026-08-10`; public-safe SHA-256: `8cf76880e864e891ff4459cd8775d18dcdf0c7f9547fec1788b90ce898b6282a`.
-- The prior `2026-07-27_to_2026-08-02_ga4_source.json` manifest remains present.
-- Neither manifest has the required paired `*_ga4_organic_landing_pages.csv`, and no matching `*_gsc_*.csv` exports are present. The new weekly manifest also extends beyond the current finalized watermark. No source-native GA4 or Search Console comparison is valid; missing CSV data is unavailable, not zero.
-- The fresh August 10 manifest is meaningful exporter-health evidence: the external job is still creating source manifests, but its artifact set remains incomplete. The human-only Google Apps Script repair in `block.md` remains unresolved.
-- Runtime GA4 remains present in source with the configured path-only URL policy. Provider-side evidence cannot be reconciled until the export pipeline is repaired.
+- The configured Google Drive folder resolves uniquely.
+- Its direct-child export artifacts remain `2026-08-03_to_2026-08-09_ga4_source.json` and `2026-07-27_to_2026-08-02_ga4_source.json`.
+- Neither manifest has the required paired `*_ga4_organic_landing_pages.csv`, and no matching `*_gsc_*.csv` export is present. The newer manifest also extends beyond the current finalized watermark.
+- No source-native GA4 or Search Console comparison is valid. Missing CSV data is unavailable, not zero.
+- The fresh August manifest is exporter-health evidence that the external job still runs but its artifact set remains incomplete. The Google Apps Script repair in `block.md` remains a genuine human-only blocker because this operator has no Apps Script execution/configuration surface.
+- Runtime GA4 source and exact built output retain the configured path-only policy.
 - Cloudflare analytics remains not configured.
-- The npm scoped-package first-publication blocker remains unresolved; the website must not claim `@eunomia-bpf/agentsight` is installable until a registry lookup verifies it.
-
-## Shared SEO skill state
-
-- Consuming repository pointer before this cycle: `d1194eeb23a6dd5cf04956f5efcfe8e3f0105003`.
-- New compatible allowed-upstream commit selected this cycle: `9f0bd4f0b33b28fc22592e5463d95f63cda4d165`.
-- The upstream change adds an automation-first `autoaction` contract for deterministic mechanical operations. The AgentSight website currently has no site-owned `autoaction.md`, and its protected repository instructions continue to limit GitHub Actions to ordinary CI and static publication.
-- Adoption in this cycle is therefore gitlink-only. No new workflow, direct-default-branch write lane, scheduler, model runner, or credential is created. A future autoaction would require an owner-authorized protected-control-plane change under the website's own rules.
+- Public search sampling remains directional and lagged while Search Console exports are unavailable.
+- The npm scoped-package first-publication blocker remains unresolved; the website must not claim `@eunomia-bpf/agentsight` is installable until the registry confirms it.
 
 ## Content clock and portfolio
 
-- Latest qualifying substantive publication before the current cycle: the full legacy-content major evergreen refresh, exact static publication completed `2026-08-09 00:17:27` PDT.
-- At the August 10 cycle start that publication is roughly 33.5 hours old. Waiting until the next normal cycle around August 11 09:00 PDT would exceed the rolling 48-hour target.
-- The selected Cursor integration is intended to satisfy the current content SLO only after it passes exact-head CI, is squash-merged, and is published from the exact squash commit. A release-number edit or changelog-only change would not qualify by itself.
-- The Cursor page adds a distinct reader answer and durable implementation information: agent-native versus eBPF/TLS boundary, exact local sources, delegated-subagent handling, commands, source/version scope, and concrete limitations.
-- After this release-driven integration, rotate away from another immediate Cursor/IDE variant unless a materially new source or reader decision appears. Preferred future families remain first-party run studies, MCP audits, Agent Flamegraph analyses, performance/cost work with real measurements, and implementation changes that materially move an observability boundary.
+- Latest qualifying substantive publication: `/integrations/cursor/` as part of the AgentSight `v1.0.4` release synchronization.
+- Exact qualifying static publication completed `2026-08-10 10:11:26` PDT (`2026-08-10T17:11:26Z`). This resets the rolling 48-hour content clock.
+- The page qualifies because it adds a distinct reader answer plus exact first-party implementation and limitation information; the release-number/changelog synchronization alone would not qualify.
+- Do not immediately publish another Cursor/IDE variant unless a materially new source or reader decision appears.
+- Preferred future content families remain public-safe first-party run studies, MCP audits, Agent Flamegraph analyses, measured performance/cost work, and implementation changes that materially move an observability boundary.
 
 ## Outstanding follow-up
 
-- Complete the August 10 `v1.0.4` / Cursor rendered delivery through exact-head CI, from-scratch final review, squash merge, exact-commit publication, public acceptance, and metadata closeout.
-- Re-check public search/index visibility after the new route has had time to be discovered; do not infer deindexing from cached public search alone.
-- Restore valid weekly GA4 and Search Console exports through the external Google Apps Script exporter; see `block.md` for the minimum external action and resolution evidence.
+- Complete metadata-only closeout PR `#48` after ordinary exact-head Website CI and a clean from-scratch review. No production deployment wait is required because it changes no generated site output.
+- Re-check public homepage and Cursor-route freshness in a later normal cycle; do not mutate rendered content solely to force crawler refresh.
+- Restore valid weekly GA4 and Search Console exports through the external Google Apps Script exporter; see `block.md` for the minimum human action and resolution evidence.
 - Resolve the npm scoped-package first publication before adding npm installation claims.
