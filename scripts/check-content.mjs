@@ -9,6 +9,7 @@ const contentSource = await readFile(path.join(root, 'src/lib/content.ts'), 'utf
 const publicContentSource = await readFile(path.join(root, 'src/lib/public-content.ts'), 'utf8');
 const shellSource = await readFile(path.join(root, 'src/components/SiteShell.tsx'), 'utf8');
 const securitySource = await readFile(path.join(root, 'src/app/security/page.tsx'), 'utf8');
+const cursorSource = await readFile(path.join(root, 'src/app/integrations/cursor/page.tsx'), 'utf8');
 
 const entryPattern = /\n  \{\r?\n    kind: '([^']+)',\r?\n    slug: '([^']+)',\r?\n    title: '([^']+)',\r?\n    description:\r?\n      '([^']+)'/g;
 const entries = [...contentSource.matchAll(entryPattern)].map((match) => ({
@@ -70,13 +71,14 @@ const routes = new Set([
   '/guides/',
   '/blog/',
   '/integrations/',
+  '/integrations/cursor/',
   '/security/',
   '/changelog/',
   '/releases/',
   ...allEntries.map((entry) => `/${routePrefix[entry.kind] ? `${routePrefix[entry.kind]}/` : ''}${entry.slug}/`),
 ]);
 
-const internalLinks = [...`${contentSource}\n${publicContentSource}\n${shellSource}`.matchAll(/href:\s*['"](\/[^'"]+)['"]/g)].map((match) => match[1]);
+const internalLinks = [...`${contentSource}\n${publicContentSource}\n${shellSource}\n${cursorSource}`.matchAll(/href:\s*['"](\/[^'"]+)['"]/g)].map((match) => match[1]);
 for (const href of internalLinks) {
   assert(routes.has(href), `Internal content link has no route: ${href}`);
 }
@@ -165,7 +167,21 @@ assert(
   'Security FAQ must preserve capture-limit uncertainty',
 );
 
+// Cursor is intentionally a standalone integration page rather than another
+// generic CLI template: v1.0.4 observes it through agent-native local session
+// artifacts instead of eBPF/TLS attachment. Keep the source/version boundary
+// and the most important limitations explicit.
+assert(cursorSource.includes("alternates: { canonical: '/integrations/cursor/' }"), 'Cursor page must own its canonical route');
+assert(cursorSource.includes('AgentSight v1.0.4'), 'Cursor page must state the reviewed AgentSight release');
+assert(cursorSource.includes('ac1e6cb7a8398c57c1ad0ba04ff032cd271d99c8'), 'Cursor page must pin the reviewed product source commit');
+assert(cursorSource.includes('agentsight report --local'), 'Cursor page must retain the local-session workflow');
+assert(cursorSource.includes('no live API-body capture'), 'Cursor page must retain the live-payload limitation');
+assert(cursorSource.includes('recent Cursor sessions may show no token totals'), 'Cursor page must retain the current token-availability limitation');
+assert(cursorSource.includes('github.com/eunomia-bpf/agentsight/pull/149'), 'Cursor page must cite the product implementation PR');
+assert(cursorSource.includes('docs.cursor.com/en/agent/tools'), 'Cursor page must cite a Cursor primary source');
+assert([...cursorSource.matchAll(/<h2/g)].length >= 6, 'Cursor integration must remain substantive, not a thin release page');
+
 console.log(
-  `Content check passed: ${allEntries.length} unique pages, ${routes.size} HTML routes, ` +
-    `${internalLinks.length} checked internal links, ${requiredUpgrades.length} deep legacy upgrades.`,
+  `Content check passed: ${allEntries.length} generic pages, ${routes.size} HTML routes, ` +
+    `${internalLinks.length} checked internal links, ${requiredUpgrades.length} deep legacy upgrades, and the Cursor integration.`,
 );
