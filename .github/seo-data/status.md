@@ -46,6 +46,8 @@ Exact output review confirms:
 
 From-scratch review after exact-head CI found no route migration, analytics-policy drift, unrelated navigation change, private-data leakage, unsupported Cursor compatibility claim, or regression in representative unchanged routes.
 
+Metadata closeout is being delivered through PR `#48`, `Close out AgentSight v1.0.4 Cursor publication`. Its scope is limited to the August 10 daily record and this status file; it changes no rendered site behavior.
+
 ## Current public verification qualification
 
 - Independent public retrieval available to the operator remains stale/inconsistent immediately after the exact publication: the homepage crawler still exposes the previous `v1.0.3` generation, while several detail-route checks return crawler/cache errors.
@@ -76,7 +78,7 @@ From-scratch review after exact-head CI found no route migration, analytics-poli
 
 ## Outstanding follow-up
 
-- Finish the metadata-only August 10 closeout pull request and merge it after ordinary exact-head Website CI and a clean from-scratch review. The closeout changes only this status record and the same day's daily report.
+- Complete metadata-only closeout PR `#48` after ordinary exact-head Website CI and a clean from-scratch review. No production deployment wait is required because it changes no generated site output.
 - Re-check public homepage and Cursor-route freshness in a later normal cycle; do not mutate rendered content solely to force crawler refresh.
 - Restore valid weekly GA4 and Search Console exports through the external Google Apps Script exporter; see `block.md` for the minimum human action and resolution evidence.
 - Resolve the npm scoped-package first publication before adding npm installation claims.
