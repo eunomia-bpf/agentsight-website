@@ -15,7 +15,7 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'Introduces the Overview dashboard for run KPIs, activity, tokens, system effects, resource shape, and friction signals; adds operation-stack agentpprof profiling; and includes the PID-tracker correctness fix shipped after 1.0.0. GitHub Releases remains authoritative for per-tag changes.',
+      'Adds Cursor IDE sessions through the agent-native local-session path. AgentSight reads Cursor transcripts and optional local state metadata without requiring eBPF, sudo, a proxy, or a special Cursor launch. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
   },
   {
@@ -29,7 +29,7 @@ const updates = [
     label: 'Product',
     title: 'Local session replay and reports',
     description:
-      'AgentSight can inspect Claude, Codex, and Gemini session history, replay repository changes, serve recorded sessions, and export portable report snapshots.',
+      'AgentSight can inspect Claude, Codex, Gemini, and Cursor session history, replay repository changes, serve recorded sessions, and export portable report snapshots.',
     href: site.docs,
   },
 ];
