@@ -11,13 +11,13 @@ const socialImage = {
   url: '/opengraph-image',
   width: 1200,
   height: 630,
-  alt: 'AgentSight — open-source observability for AI agents',
+  alt: 'AgentSight — agent-native observability and evolution for AI agents',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: 'AgentSight: Open-source observability for AI agents',
+    default: 'AgentSight: Observe and evolve AI agents with AI agents',
     template: '%s | AgentSight',
   },
   description: site.description,
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   publisher: 'Eunomia',
   keywords: [
     'AI agent observability',
+    'AI agent evolution',
+    'self-improving AI agents',
+    'agent skill evolution',
     'AI agent profiling',
     'coding agent monitoring',
     'eBPF observability',
@@ -39,14 +42,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: site.name,
-    title: 'AgentSight: See what AI agents actually do',
+    title: 'AgentSight: Observe and evolve your AI agents — with AI agents',
     description: site.description,
     url: '/',
     images: [socialImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AgentSight: See what AI agents actually do',
+    title: 'AgentSight: Observe and evolve your AI agents — with AI agents',
     description: site.description,
     images: ['/opengraph-image'],
   },
