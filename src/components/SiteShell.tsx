@@ -266,6 +266,7 @@ export function SiteFooter() {
         </div>
         <div>
           <h2>Product</h2>
+          <Link href="/product/">Product overview</Link>
           <a href={site.demo}>Hosted app</a>
           <Link href="/use-cases/">Use cases</Link>
           <Link href="/architecture/">Architecture</Link>
