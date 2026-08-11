@@ -7,6 +7,7 @@ import { site } from '@/lib/site';
 const cursorSourceCommit = 'ac1e6cb7a8398c57c1ad0ba04ff032cd271d99c8';
 const cursorDocs = `https://github.com/eunomia-bpf/agentsight/blob/${cursorSourceCommit}/docs/agents.md#cursor`;
 const cursorPullRequest = 'https://github.com/eunomia-bpf/agentsight/pull/149';
+const cursorRelease = 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.4';
 const cursorAgentTools = 'https://docs.cursor.com/en/agent/tools';
 const cursorSubagents = 'https://cursor.com/changelog/2-4';
 
@@ -240,7 +241,7 @@ export default function CursorIntegrationPage() {
                 enriches, and cannot capture.
               </p>
               <ul>
-                <li><a href={site.releaseUrl}>AgentSight v1.0.4 release</a></li>
+                <li><a href={cursorRelease}>AgentSight v1.0.4 release</a></li>
                 <li><a href={cursorDocs}>AgentSight v1.0.4 Cursor and IDE-agent documentation</a></li>
                 <li><a href={cursorPullRequest}>AgentSight PR #149 implementation notes and validation</a></li>
                 <li><a href={cursorAgentTools}>Cursor Agent tools documentation</a></li>
