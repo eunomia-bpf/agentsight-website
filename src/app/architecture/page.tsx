@@ -31,7 +31,7 @@ const planes = [
 const modes = [
   ['01', 'Local', 'One Node, local evidence, local or hosted UI, no cloud dependency required.'],
   ['02', 'Direct Fleet', 'Multiple Nodes over LAN, VPN, Tailscale, WireGuard, SSH tunnels, or other direct connectivity.'],
-  ['03', 'Managed Coordination', 'AgentSight Cloud provides identity, discovery, managed connectivity, collaboration, policy, and fleet access.'],
+  ['03', 'Managed', 'AgentSight Cloud provides identity, discovery, managed connectivity, collaboration, policy, and fleet access.'],
   ['04', 'Enterprise Site', 'Site Gateways federate large fleets while keeping detailed evidence inside customer-controlled Nodes and sites.'],
 ] as const;
 
@@ -45,7 +45,7 @@ export default function ArchitecturePage() {
           <p className="hero-lede">
             AgentSight separates runtime evidence from cloud coordination. Detailed agent data stays
             on customer-controlled Nodes and Site Gateways, while the hosted layer coordinates how
-            people and machines discover, reach, govern, and collaborate across that distributed fleet.
+            people and machines discover, reach, govern, and collaborate across the distributed fleet.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
@@ -105,7 +105,7 @@ export default function ArchitecturePage() {
           <div className="section-heading">
             <div>
               <Eyebrow>Why distributed matters</Eyebrow>
-              <h2>The architecture changes privacy, cost, availability, and scale together.</h2>
+              <h2>Privacy, cost, availability, and scale come from the same design.</h2>
             </div>
             <p>
               AgentSight does not need a second authoritative copy of every prompt, response, process,
