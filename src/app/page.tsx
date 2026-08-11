@@ -148,7 +148,7 @@ export default function HomePage() {
             <div className={styles.heroCopy}>
               <Eyebrow>Agent-native observability and evolution</Eyebrow>
               <h1 style={{ fontSize: 'clamp(3rem, 5.4vw, 5.25rem)', lineHeight: 0.98 }}>
-                Observe and evolve your AI agents — with AI agents.
+                Observe and evolve your AI agents with AI agents.
               </h1>
               <p className={styles.heroLede}>
                 AgentSight turns agent trajectories and system-level runtime evidence into a closed improvement loop.
