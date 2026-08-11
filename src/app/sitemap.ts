@@ -16,7 +16,7 @@ const contentKinds: ContentKind[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
-  const pricingUpdated = new Date('2026-08-11T00:00:00Z');
+  const productUpdated = new Date('2026-08-11T00:00:00Z');
   const fixed = [
     '/',
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -34,8 +34,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: path === '/' ? 1 : 0.8,
     })),
     {
+      url: `${site.url}/product/`,
+      lastModified: productUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${site.url}/architecture/`,
+      lastModified: productUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
       url: `${site.url}/pricing/`,
-      lastModified: pricingUpdated,
+      lastModified: productUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },

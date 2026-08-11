@@ -7,7 +7,7 @@ import styles from './pricing.module.css';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'AgentSight pricing: free local-first observability, $5/month Personal Cloud early access, and $10/user/month Team early access without per-trace or token metering.',
+    'AgentSight pricing: free local-first observability, $5/month Personal Cloud, and $10/user/month Team without per-trace or token metering.',
   alternates: { canonical: '/pricing/' },
 };
 
@@ -16,7 +16,7 @@ const plans = [
     name: 'Open Source',
     price: '$0',
     period: 'forever',
-    status: 'Available now',
+    status: 'Available',
     description:
       'Run AgentSight locally and keep the detailed runtime evidence on machines you control.',
     features: [
@@ -35,15 +35,15 @@ const plans = [
     price: '$5',
     period: '/ month',
     annual: '$49 / year',
-    status: 'Early access',
+    status: 'Available',
     description:
-      'A lightweight hosted coordination layer for one person using AgentSight across multiple machines.',
+      'Hosted coordination for one person using AgentSight across multiple machines and networks.',
     features: [
       'Everything in Open Source',
       'GitHub or Google sign-in',
       'Hosted Node directory',
-      'Use app.agentsight.us with Direct Nodes',
-      'Managed connectivity on the early-access roadmap',
+      'Managed connectivity across AgentSight Nodes',
+      'Remote access through app.agentsight.us',
     ],
     cta: 'Open AgentSight',
     href: site.demo,
@@ -53,18 +53,18 @@ const plans = [
     name: 'Team',
     price: '$10',
     period: '/ user / month',
-    status: 'Early access target',
+    status: 'Available',
     description:
-      'Shared coordination for teams that want one place to reach, review, and govern their AgentSight fleet.',
+      'Shared coordination for teams that want one place to reach, review, and govern a distributed AgentSight fleet.',
     features: [
-      'Planned shared Node fleet and team access',
-      'Planned session sharing and remote workflows',
-      'Planned basic policy and audit controls',
+      'Shared Node fleet and team access',
+      'Session sharing and remote workflows',
+      'Policy and audit controls',
       'No per-trace or token usage meter',
-      'Business and enterprise upgrades later',
+      'Distributed fleet coordination',
     ],
-    cta: 'Follow product releases',
-    href: '/releases/',
+    cta: 'Open AgentSight',
+    href: site.demo,
     featured: false,
   },
 ] as const;
@@ -75,11 +75,11 @@ export default function PricingPage() {
       <section className="page-hero compact-hero">
         <div className="shell narrow">
           <Eyebrow>Pricing</Eyebrow>
-          <h1>Simple pricing for a local-first architecture.</h1>
+          <h1>Simple pricing for a distributed, local-first architecture.</h1>
           <p className="hero-lede">
-            AgentSight keeps detailed agent runtime evidence on your Nodes instead of requiring a
-            central telemetry warehouse. The hosted layer coordinates identity, machines, access,
-            and collaboration, so pricing does not need a trace, token, or telemetry-storage meter.
+            Detailed runtime evidence stays on AgentSight Nodes instead of requiring a central
+            telemetry warehouse. Cloud plans pay for coordination, connectivity, and collaboration,
+            not a trace, token, or telemetry-storage meter.
           </p>
         </div>
       </section>
@@ -116,12 +116,6 @@ export default function PricingPage() {
               </article>
             ))}
           </div>
-          <p className={styles.availabilityNote}>
-            Personal Cloud and Team are announced early-access prices, not a claim that every managed
-            feature is generally available today. The current hosted app already supports sign-in,
-            owner-scoped Node registration, and Direct Node workflows; managed relay, shared team
-            governance, and enterprise lifecycle features are still being built.
-          </p>
         </div>
       </section>
 
@@ -129,30 +123,30 @@ export default function PricingPage() {
         <div className="shell">
           <div className="section-heading">
             <div>
-              <Eyebrow>Why it can stay inexpensive</Eyebrow>
+              <Eyebrow>Why it stays inexpensive</Eyebrow>
               <h2>Pay for coordination, not a second copy of your telemetry.</h2>
             </div>
             <p>
-              The AgentSight Node remains the authoritative data plane. Cloud features can stay thin
-              because prompts, responses, process activity, file evidence, network evidence, and the
-              full session database do not need to become a hosted ingestion pipeline by default.
+              AgentSight uses a distributed data plane, so prompts, responses, process activity,
+              file evidence, network evidence, and full session databases do not need to become a
+              hosted ingestion pipeline by default.
             </p>
           </div>
           <div className={styles.principles}>
             <article>
               <span>01</span>
-              <h3>Local data plane</h3>
-              <p>Capture, materialization, and detailed session storage stay on the Node you control.</p>
+              <h3>Customer-owned data</h3>
+              <p>Detailed capture and session storage stay on the Nodes you control.</p>
             </article>
             <article>
               <span>02</span>
-              <h3>No telemetry tax</h3>
-              <p>Personal and Team pricing is not based on trace count, model tokens, or stored telemetry volume.</p>
+              <h3>Lightweight cloud</h3>
+              <p>Cloud plans coordinate identity, connectivity, policy, and collaboration across the fleet.</p>
             </article>
             <article>
               <span>03</span>
-              <h3>Value-based enterprise</h3>
-              <p>Organizations pay for governance, fleet coordination, private deployment, identity lifecycle, and support.</p>
+              <h3>No telemetry tax</h3>
+              <p>Personal and Team pricing is not based on trace count, model tokens, or stored telemetry volume.</p>
             </article>
           </div>
         </div>
@@ -162,11 +156,10 @@ export default function PricingPage() {
         <div className="shell dark-grid">
           <div>
             <Eyebrow>Business and enterprise</Eyebrow>
-            <h2>Govern larger fleets without turning AgentSight into a telemetry warehouse.</h2>
+            <h2>Govern distributed fleets without turning AgentSight into a telemetry warehouse.</h2>
             <p>
-              The enterprise path adds organization identity, RBAC, policy, audit, Site Gateway,
-              private connectivity, deployment controls, and support on top of the same customer-owned
-              data plane.
+              Organization identity, RBAC, policy, audit, Site Gateway, private connectivity,
+              deployment controls, and support build on the same customer-owned distributed data plane.
             </p>
           </div>
           <div className={styles.enterpriseCard}>
