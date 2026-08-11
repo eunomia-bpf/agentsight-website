@@ -246,7 +246,7 @@ export function SiteHeader() {
         <MobileNavigation />
         <div className="header-actions">
           <a className="header-github" href={site.repository}>GitHub ↗</a>
-          <a className="button button-accent header-cta" href={site.demo}>View demo</a>
+          <a className="button button-accent header-cta" href={site.demo}>Open app</a>
         </div>
       </div>
     </header>
@@ -266,7 +266,7 @@ export function SiteFooter() {
         </div>
         <div>
           <h2>Product</h2>
-          <a href={site.demo}>Live demo</a>
+          <a href={site.demo}>Hosted app</a>
           <Link href="/use-cases/">Use cases</Link>
           <Link href="/compare/">Compare</Link>
           <Link href="/integrations/">Integrations</Link>
