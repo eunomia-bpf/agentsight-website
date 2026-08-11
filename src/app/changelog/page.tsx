@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'Adds Cursor IDE sessions through the agent-native local-session path. AgentSight reads Cursor transcripts and optional local state metadata without requiring eBPF, sudo, a proxy, or a special Cursor launch. GitHub Releases remains authoritative for per-tag changes.',
+      'Adds the unprivileged agentsight bind workflow for opening a local Direct Node in the hosted app. The default Node stays on loopback, uses a process-lifetime access key, and keeps detailed session data on the Node; the hosted control plane stores only optional identity, session, and Node metadata. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Release artifacts',
+    title: 'Native Linux x86_64 and ARM64 binaries',
+    description:
+      'Current GitHub Releases publish agentsight and agentpprof binaries for x86_64 and aarch64 Linux. The unsuffixed compatibility assets remain x86_64; use the architecture-specific artifact when pinning a reproducible deployment.',
+    href: `${site.repository}/releases/latest`,
   },
   {
     label: 'Profiling',
