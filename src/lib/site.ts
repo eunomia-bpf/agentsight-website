@@ -18,12 +18,9 @@ export const site = {
 
 export const navigation = [
   { href: '/use-cases/', label: 'Use cases' },
+  { href: '/integrations/', label: 'Integrations' },
   { href: '/compare/', label: 'Compare' },
   { href: '/pricing/', label: 'Pricing' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/guides/', label: 'Guides' },
-  { href: '/integrations/', label: 'Integrations' },
-  { href: '/security/', label: 'Security' },
 ] as const;
 
 export const hubConfig = {
