@@ -4,7 +4,7 @@ export const site = {
   name: 'AgentSight',
   url: 'https://agentsight.us',
   description:
-    'Open-source, local-first observability for AI agents. Connect model calls to commands, files, processes, network activity, and resource use.',
+    'Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements.',
   repository: 'https://github.com/eunomia-bpf/agentsight',
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
   docs: 'https://eunomia.dev/agentsight/',
