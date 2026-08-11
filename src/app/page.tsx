@@ -377,7 +377,7 @@ export default function HomePage() {
             </article>
             <article className={styles.researchCard}>
               <span className={styles.researchMeta}>Local data handling</span>
-              <h3>Recorded sessions are useful because they are detailed—and should be treated as sensitive.</h3>
+              <h3>Recorded sessions are useful because they are detailed and should be treated as sensitive.</h3>
               <p>
                 Session databases and exports can contain prompts, responses, paths, headers, and network targets.
                 Keep raw artifacts local or handle them with the same care as other development telemetry.
