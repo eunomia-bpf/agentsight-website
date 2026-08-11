@@ -26,24 +26,24 @@ const softwareJsonLd = {
 
 const capabilities = [
   {
-    title: 'Live agent sessions',
-    description: 'See active agents, models, tokens, health, tool calls, file activity, and network activity in one live view.',
-    label: 'top',
+    title: 'Observe runtime evidence',
+    description: 'Connect prompts, model and tool activity to processes, files, network effects, resources, and the rest of the real run.',
+    label: 'observe',
   },
   {
-    title: 'Model and tool activity',
-    description: 'Connect prompts, responses, model timing, and tool decisions to the rest of the run.',
-    label: 'llm',
+    title: 'Diagnose repeated failures',
+    description: 'Mine agent trajectories for recurring mistakes, correction loops, friction, and the evidence behind them.',
+    label: 'diagnose',
   },
   {
-    title: 'Processes and resources',
-    description: 'Follow commands and child processes with exit status, CPU, memory, I/O, and duration.',
-    label: 'proc',
+    title: 'Evolve agent skills',
+    description: 'Turn repeated failures into small, versioned skill changes and reusable improvements instead of one-off retries.',
+    label: 'evolve',
   },
   {
-    title: 'Files and network',
-    description: 'Track files created, changed, renamed, or deleted and the remote destinations contacted by the run.',
-    label: 'io',
+    title: 'Evaluate, promote, or roll back',
+    description: 'Compare baseline and candidate behavior on held-out tasks, guard regressions, promote improvements, and roll back bad changes.',
+    label: 'eval',
   },
 ];
 
@@ -146,12 +146,14 @@ export default function HomePage() {
           </a>
           <div className={styles.heroGrid}>
             <div className={styles.heroCopy}>
-              <Eyebrow>Open-source observability for AI agents</Eyebrow>
-              <h1>See what AI agents actually do.</h1>
+              <Eyebrow>Agent-native observability and evolution</Eyebrow>
+              <h1 style={{ fontSize: 'clamp(3rem, 5.4vw, 5.25rem)', lineHeight: 0.98 }}>
+                Observe and evolve your AI agents — with AI agents.
+              </h1>
               <p className={styles.heroLede}>
-                AgentSight is a local-first <code>top</code>/<code>strace</code>-like profiler for AI agents.
-                It connects prompts and model calls to commands, files, processes, network activity,
-                and resource use—without an SDK or proxy.
+                AgentSight turns agent trajectories and system-level runtime evidence into a closed improvement loop.
+                AI agents can diagnose repeated failures, generate skill improvements, compare baseline and candidate
+                behavior, and promote or roll back changes.
               </p>
               <div className="hero-actions">
                 <a className="button button-accent button-large" href={site.demo}>
@@ -162,14 +164,14 @@ export default function HomePage() {
                 </a>
               </div>
               <div className={styles.heroBadges} aria-label="AgentSight product characteristics">
-                <span>No SDK</span><span>No proxy</span><span>Linux + eBPF</span><span>MIT licensed</span>
+                <span>Runtime evidence</span><span>Trajectory diagnosis</span><span>Skill evolution</span><span>Eval + rollback</span>
               </div>
             </div>
 
             <a className={styles.heroProduct} href={site.demo} aria-label="Open the AgentSight hosted app">
               <div className={styles.windowBar}>
                 <span><i /> AgentSight live sessions</span>
-                <b>Direct Node + demo</b>
+                <b>Hosted app + Direct Node</b>
               </div>
               <Image
                 src="/images/top-mode-demo.png"
@@ -180,7 +182,7 @@ export default function HomePage() {
                 sizes="(max-width: 960px) 100vw, 56vw"
               />
               <div className={styles.windowFooter}>
-                <span>Live sessions</span><span>Model & tool calls</span><span>Processes & files</span>
+                <span>Observe</span><span>Diagnose</span><span>Evolve & evaluate</span>
               </div>
             </a>
           </div>
@@ -214,13 +216,12 @@ export default function HomePage() {
         <div className="shell">
           <div className="section-heading">
             <div>
-              <Eyebrow>One view of the whole run</Eyebrow>
-              <h2>From model request to system activity.</h2>
+              <Eyebrow>Observe → diagnose → evolve → evaluate</Eyebrow>
+              <h2>Close the agent improvement loop.</h2>
             </div>
             <p>
-              Native agent telemetry is strongest for model, tool, and session semantics. AgentSight adds
-              independent process-family, file, network, and resource observations when execution crosses
-              those instrumentation boundaries.
+              AgentSight connects what agents intended to what actually happened, finds repeated failure patterns,
+              turns them into reusable skill changes, and validates candidate behavior before promotion.
             </p>
           </div>
           <div className={styles.capabilityGrid}>
@@ -403,6 +404,7 @@ export default function HomePage() {
                 <li><span>✓</span> Direct Node access without uploading detailed session contents</li>
                 <li><span>✓</span> eBPF process and file monitoring</li>
                 <li><span>✓</span> TLS tracing without a model proxy</li>
+                <li><span>✓</span> Evidence-gated skill evolution with evaluation and rollback</li>
               </ul>
               <div className="hero-actions">
                 <a className="button button-accent" href={site.docs}>Read the documentation</a>
@@ -424,10 +426,10 @@ export default function HomePage() {
         <div className="shell">
           <div>
             <Eyebrow>Try AgentSight</Eyebrow>
-            <h2>Open local AgentSight data or the recorded demo in your browser.</h2>
+            <h2>Observe a run. Evolve the next one.</h2>
             <p>
-              Run <code>agentsight bind</code> to let the hosted app read a loopback Direct Node without uploading
-              detailed session contents, or open the retained recorded demo before capturing a run of your own.
+              Open the hosted app, connect a Direct Node, or explore the retained recorded session. AgentSight keeps
+              detailed runtime evidence available for diagnosis, skill evolution, evaluation, and rollback.
             </p>
           </div>
           <div className="hero-actions">
