@@ -29,8 +29,10 @@ export default function ReleasesPage() {
             <Eyebrow>Install</Eyebrow>
             <h2>Start from the current release artifacts.</h2>
             <p>
-              Check the release page for operating-system artifacts and release notes. The website
-              does not mirror binaries, so there is one authoritative download location.
+              Current GitHub Releases publish Linux binaries for both x86_64 and aarch64. The
+              unsuffixed compatibility asset remains x86_64; choose the architecture-specific artifact
+              when you need an explicitly pinned deployment. The website does not mirror binaries, so
+              GitHub Releases remains the authoritative download location.
             </p>
             <div className="hero-actions">
               <a className="button button-accent" href={`${site.repository}/releases/latest`}>Latest GitHub release</a>
