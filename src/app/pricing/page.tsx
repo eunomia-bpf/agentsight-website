@@ -28,6 +28,7 @@ const plans = [
     ],
     cta: 'Read the documentation',
     href: site.docs,
+    featured: false,
   },
   {
     name: 'Personal Cloud',
@@ -42,7 +43,7 @@ const plans = [
       'GitHub or Google sign-in',
       'Hosted Node directory',
       'Use app.agentsight.us with Direct Nodes',
-      'Managed connectivity as the hosted layer rolls out',
+      'Managed connectivity on the early-access roadmap',
     ],
     cta: 'Open AgentSight',
     href: site.demo,
@@ -56,14 +57,15 @@ const plans = [
     description:
       'Shared coordination for teams that want one place to reach, review, and govern their AgentSight fleet.',
     features: [
-      'Shared Node fleet and team access',
-      'Session sharing and remote workflows',
-      'Basic policy and audit controls',
+      'Planned shared Node fleet and team access',
+      'Planned session sharing and remote workflows',
+      'Planned basic policy and audit controls',
       'No per-trace or token usage meter',
       'Business and enterprise upgrades later',
     ],
     cta: 'Follow product releases',
     href: '/releases/',
+    featured: false,
   },
 ] as const;
 
