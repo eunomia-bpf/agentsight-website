@@ -70,11 +70,11 @@ export default function ProductPage() {
           <div className="section-heading">
             <div>
               <Eyebrow>Product map</Eyebrow>
-              <h2>Explore the product by the question you need to answer.</h2>
+              <h2>Use one entry point for the product, then go deeper where needed.</h2>
             </div>
             <p>
-              The detailed pages remain independent so use cases, architecture, integrations, and
-              comparisons can stay focused without competing for space in the primary navigation.
+              Use cases, architecture, integrations, and comparisons remain focused pages, but they now
+              sit under one Product entry instead of competing as separate primary navigation items.
             </p>
           </div>
           <div className="card-grid">
