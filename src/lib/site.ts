@@ -18,7 +18,7 @@ export const site = {
 
 export const navigation = [
   { href: '/use-cases/', label: 'Use cases' },
-  { href: '/architecture/', label: 'Architecture' },
+  { href: '/blog/', label: 'Blog' },
   { href: '/integrations/', label: 'Integrations' },
   { href: '/compare/', label: 'Compare' },
   { href: '/pricing/', label: 'Pricing' },
