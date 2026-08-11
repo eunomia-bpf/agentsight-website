@@ -77,9 +77,9 @@ export default function PricingPage() {
           <Eyebrow>Pricing</Eyebrow>
           <h1>Simple pricing for a distributed, local-first architecture.</h1>
           <p className="hero-lede">
-            AgentSight keeps detailed agent runtime evidence on distributed Nodes instead of requiring a
-            central telemetry warehouse. The hosted layer coordinates identity, machines, access,
-            connectivity, and collaboration, so pricing does not need a trace, token, or telemetry-storage meter.
+            Detailed runtime evidence stays on AgentSight Nodes instead of requiring a central
+            telemetry warehouse. Cloud plans pay for coordination, connectivity, and collaboration,
+            not a trace, token, or telemetry-storage meter.
           </p>
         </div>
       </section>
@@ -119,29 +119,29 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="section" id="architecture">
+      <section className="section">
         <div className="shell">
           <div className="section-heading">
             <div>
-              <Eyebrow>Distributed architecture</Eyebrow>
+              <Eyebrow>Why it stays inexpensive</Eyebrow>
               <h2>Pay for coordination, not a second copy of your telemetry.</h2>
             </div>
             <p>
-              AgentSight uses a distributed data plane: each Node remains authoritative for its own
-              detailed evidence, while the cloud coordinates identity, discovery, connectivity, policy,
-              and collaboration across the fleet.
+              AgentSight uses a distributed data plane, so prompts, responses, process activity,
+              file evidence, network evidence, and full session databases do not need to become a
+              hosted ingestion pipeline by default.
             </p>
           </div>
           <div className={styles.principles}>
             <article>
               <span>01</span>
-              <h3>Distributed local data plane</h3>
-              <p>Capture, materialization, and detailed session storage stay on the Nodes you control.</p>
+              <h3>Customer-owned data</h3>
+              <p>Detailed capture and session storage stay on the Nodes you control.</p>
             </article>
             <article>
               <span>02</span>
-              <h3>Lightweight coordination plane</h3>
-              <p>Cloud services coordinate identity, discovery, connectivity, policy, and collaboration instead of ingesting every trace.</p>
+              <h3>Lightweight cloud</h3>
+              <p>Cloud plans coordinate identity, connectivity, policy, and collaboration across the fleet.</p>
             </article>
             <article>
               <span>03</span>
