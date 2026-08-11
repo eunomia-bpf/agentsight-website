@@ -3,12 +3,12 @@
 ## Current state
 
 - Authoritative AgentSight product release: `v1.0.6`, published `2026-08-11` from release target commit `ad0cdcd3d77fee053b3b1ab81bb63239af4a6535`.
-- The website's rendered product snapshot has been synchronized from `v1.0.4` to `v1.0.6` through PR `#49`, including the Direct Node / hosted-app binding workflow and the current x86_64/aarch64 Linux release-artifact boundary.
+- The website's rendered product snapshot was synchronized from `v1.0.4` to `v1.0.6` through PR `#49`, including the Direct Node / hosted-app binding workflow and the current x86_64/aarch64 Linux release-artifact boundary.
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
 - No existing URL, redirect, canonical owner, navigation destination, analytics policy, or documentation boundary was removed or renamed by the `v1.0.6` synchronization.
 - Runtime analytics remains Google Analytics 4 with path-only reporting. Query strings, Google signals, and ad-personalization signals remain excluded by the current implementation.
-- Repository-hosted model-running SEO automation remains prohibited. No workflow, scheduler, direct-main model lane, or provider credential was added.
+- Repository-hosted model-running SEO automation remains prohibited. No workflow, scheduler, direct-main model lane, or provider credential was added by this cycle.
 - Current shared SEO skill pointer: `9f0bd4f0b33b28fc22592e5463d95f63cda4d165`; the allowed upstream `main` currently points to the same commit.
 
 ## Current v1.0.6 product boundary
@@ -38,15 +38,21 @@
 - Squash commit: `feadc4a997ba0b8b6280129adb8dd89d0d389552`.
 - Main Website CI: `31515813681`, successful.
 - Publish static site: `31515813523`, successful for the exact squash commit; run completed `2026-08-11T17:06:24Z`.
-- `site/.source-sha` exactly identifies `feadc4a997ba0b8b6280129adb8dd89d0d389552`.
+- At rendered-change acceptance, `site/.source-sha` exactly identified `feadc4a997ba0b8b6280129adb8dd89d0d389552`.
 - Exact static review confirms the homepage reports `v1.0.6` and `ad0cdcd3...`, exposes `agentsight bind`, releases/changelog describe x86_64 and aarch64 Linux assets, `llms.txt` reports `v1.0.6`, and the Cursor page remains pinned to `v1.0.4`.
 - Representative generated pages retain one canonical and one H1; the sitemap retains 34 canonical URLs and robots remains crawlable.
 
+## Subsequent main publication
+
+- During metadata closeout, `main` independently advanced to `900a7f3790c165b9e3ca5469fb08dca8539ca3c8` (`Position AgentSight as hosted web app`), a two-label `SiteShell` change outside this SEO cycle.
+- Its normal Website CI `31516623137` and Publish static site `31516623037` succeeded.
+- The current `site/.source-sha` identifies `900a7f3790c165b9e3ca5469fb08dca8539ca3c8`.
+- That commit descends directly from the v1.0.6 squash commit, so the current publication retains the v1.0.6 product synchronization. The SEO closeout preserves rather than rewrites this unrelated owner change.
+
 ## Current public verification
 
-- The exact publication workflow and `site` branch are synchronized to `v1.0.6`, but independent canonical public retrieval immediately after the publish still exposes the cached `v1.0.4` release pill and `ac1e6cb7...` product snapshot.
-- Public search has not yet established `v1.0.6` indexing.
-- Treat this as a public crawler/cache freshness qualification, not successful direct live acceptance and not a reproducible rendered regression. Do not create another rendered edit merely to force refresh while the exact artifact, publication branch, source marker, CI, and Publish run agree.
+- Independent canonical public retrieval after the v1.0.6 publication still exposes the cached `v1.0.4` release pill and `ac1e6cb7...` product snapshot; public search has not yet established `v1.0.6` indexing.
+- Treat this as a public crawler/cache freshness qualification, not successful direct live acceptance and not a reproducible rendered regression. Do not create another rendered edit merely to force refresh while the exact v1.0.6 artifact and its descendant publication are internally consistent.
 - Retry canonical public verification on a later cycle. If the stale generation persists beyond ordinary propagation and becomes independently reproducible outside the crawler cache, investigate deployment/domain routing before content work.
 
 ## Current analytics and search data
