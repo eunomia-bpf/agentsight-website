@@ -148,7 +148,7 @@ button:focus-visible {
 }
 .command-title { border-color: #1e293b; color: #94a3b8; }
 .command-title span { color: #34d399; }
-.dark-section { background: #091627; color: #fff; }
+.dark-section { background: #091627; }
 .dark-section .eyebrow { color: #67e8f9; }
 .dark-grid > div > p { color: #cbd5e1; }
 .workflow-list li {
