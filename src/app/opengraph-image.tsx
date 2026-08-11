@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'AgentSight — open-source observability for AI agents';
+export const alt = 'AgentSight — observe and evolve AI agents with AI agents';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 export const dynamic = 'force-static';
@@ -53,18 +53,18 @@ export default function OpenGraphImage() {
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 980 }}>
-        <div style={{ fontSize: 72, fontWeight: 850, letterSpacing: -4.5, lineHeight: 0.98 }}>
-          See what AI agents actually do.
+      <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 1000 }}>
+        <div style={{ fontSize: 60, fontWeight: 850, letterSpacing: -3.6, lineHeight: 1 }}>
+          Observe and evolve your AI agents — with AI agents.
         </div>
         <div style={{ marginTop: 26, color: '#c7c7d2', fontSize: 25, lineHeight: 1.42 }}>
-          Connect model calls to commands, files, processes, network activity, and resource use—without an SDK or proxy.
+          Runtime evidence → diagnosis → skill evolution → evaluation and rollback.
         </div>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, color: '#d8d8e1', fontSize: 17 }}>
         <span>Local first</span><span style={{ color: '#ff8b4b' }}>•</span><span>Linux + eBPF</span>
-        <span style={{ color: '#e848b1' }}>•</span><span>Claude Code · Codex · Gemini CLI · more</span>
+        <span style={{ color: '#e848b1' }}>•</span><span>Evidence-gated evolution</span>
       </div>
     </div>,
     size,
