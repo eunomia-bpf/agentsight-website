@@ -28,17 +28,17 @@ const capabilities = [
   {
     title: 'Observe runtime evidence',
     description: 'Connect prompts, model and tool activity to processes, files, network effects, resources, and the rest of the real run.',
-    label: 'observe',
+    label: 'obs',
   },
   {
     title: 'Diagnose repeated failures',
     description: 'Mine agent trajectories for recurring mistakes, correction loops, friction, and the evidence behind them.',
-    label: 'diagnose',
+    label: 'diag',
   },
   {
     title: 'Evolve agent skills',
     description: 'Turn repeated failures into small, versioned skill changes and reusable improvements instead of one-off retries.',
-    label: 'evolve',
+    label: 'skill',
   },
   {
     title: 'Evaluate, promote, or roll back',
