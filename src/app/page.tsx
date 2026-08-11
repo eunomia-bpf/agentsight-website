@@ -102,11 +102,18 @@ const postRunQueries = [
     link: 'Explore token profiling →',
   },
   {
+    command: 'agentsight bind',
+    title: 'Open local data in the hosted app',
+    description: 'Start an unprivileged loopback Direct Node with a process-lifetime access key. Detailed session data stays on the Node while the hosted app reads it directly.',
+    href: site.demo,
+    link: 'Open the AgentSight app →',
+  },
+  {
     command: 'agentsight report serve',
-    title: 'Reopen a recorded session in the web UI',
+    title: 'Reopen a recorded session in the local web UI',
     description: 'Use the same Overview, timeline, process-tree, log, and metrics views on saved SQLite sessions after the original command has finished.',
     href: site.demo,
-    link: 'Open the recorded demo →',
+    link: 'Open the retained recorded demo →',
   },
   {
     command: 'agentsight vis',
@@ -148,7 +155,7 @@ export default function HomePage() {
               </p>
               <div className="hero-actions">
                 <a className="button button-accent button-large" href={site.demo}>
-                  Open the live demo <span aria-hidden="true">→</span>
+                  Open the AgentSight app <span aria-hidden="true">→</span>
                 </a>
                 <a className="button button-ghost button-large" href={site.repository}>
                   View on GitHub <span aria-hidden="true">↗</span>
@@ -159,10 +166,10 @@ export default function HomePage() {
               </div>
             </div>
 
-            <a className={styles.heroProduct} href={site.demo} aria-label="Open the AgentSight recorded demo">
+            <a className={styles.heroProduct} href={site.demo} aria-label="Open the AgentSight hosted app">
               <div className={styles.windowBar}>
                 <span><i /> AgentSight live sessions</span>
-                <b>recorded demo</b>
+                <b>Direct Node + demo</b>
               </div>
               <Image
                 src="/images/top-mode-demo.png"
@@ -251,7 +258,7 @@ export default function HomePage() {
                   <p>{view.description}</p>
                   <a className="arrow-link" href={site.demo}>Open this view <span aria-hidden="true">→</span></a>
                 </div>
-                <a className={styles.showcaseMedia} href={site.demo} aria-label={`Open the ${view.eyebrow} view in the AgentSight demo`}>
+                <a className={styles.showcaseMedia} href={site.demo} aria-label={`Open the ${view.eyebrow} view in the AgentSight app`}>
                   <img src={view.src} alt={view.alt} loading="lazy" decoding="async" />
                 </a>
               </article>
@@ -295,10 +302,10 @@ export default function HomePage() {
           <div className="section-heading">
             <div>
               <Eyebrow>After the run</Eyebrow>
-              <h2>Query the session from several angles.</h2>
+              <h2>Query or open the session from several angles.</h2>
             </div>
             <p>
-              A recorded run is a reusable local artifact. Use focused report commands, the saved-session web UI,
+              A recorded run is a reusable local artifact. Use focused report commands, local or Direct Node web views,
               repository replay, and profiling views without turning the product website into duplicate CLI documentation.
             </p>
           </div>
@@ -393,6 +400,7 @@ export default function HomePage() {
               <ul className={styles.openSourceList}>
                 <li><span>✓</span> Existing CLI and terminal workflow</li>
                 <li><span>✓</span> Local SQLite sessions and saved-session web UI</li>
+                <li><span>✓</span> Direct Node access without uploading detailed session contents</li>
                 <li><span>✓</span> eBPF process and file monitoring</li>
                 <li><span>✓</span> TLS tracing without a model proxy</li>
               </ul>
@@ -406,6 +414,7 @@ export default function HomePage() {
               <div><span>02</span><code>sudo agentsight record -- claude</code></div>
               <div><span>03</span><code>agentsight report audit --json</code></div>
               <div><span>04</span><code>agentsight report token</code></div>
+              <div><span>05</span><code>agentsight bind</code></div>
             </div>
           </div>
         </div>
@@ -415,11 +424,14 @@ export default function HomePage() {
         <div className="shell">
           <div>
             <Eyebrow>Try AgentSight</Eyebrow>
-            <h2>Open a real recorded run in your browser.</h2>
-            <p>No registration. Inspect the product before recording a run on your own Linux machine.</p>
+            <h2>Open local AgentSight data or the recorded demo in your browser.</h2>
+            <p>
+              Run <code>agentsight bind</code> to let the hosted app read a loopback Direct Node without uploading
+              detailed session contents, or open the retained recorded demo before capturing a run of your own.
+            </p>
           </div>
           <div className="hero-actions">
-            <a className="button button-accent button-large" href={site.demo}>Open the demo</a>
+            <a className="button button-accent button-large" href={site.demo}>Open the AgentSight app</a>
             <a className="button button-outline button-large" href={site.repository}>View source</a>
           </div>
         </div>
