@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.6
+Current release: v1.0.15
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -12,6 +12,9 @@ Hosted app: https://app.agentsight.us/
 ## Product routes
 
 - https://agentsight.us/
+- https://agentsight.us/product/
+- https://agentsight.us/architecture/
+- https://agentsight.us/pricing/
 - https://agentsight.us/use-cases/
 - https://agentsight.us/compare/
 - https://agentsight.us/integrations/
@@ -29,10 +32,16 @@ Hosted app: https://app.agentsight.us/
 
 AgentSight provides a live session view, an Overview dashboard, model and tool-call capture, process trees, file and network activity, CPU and memory metrics, repository replay, saved-session reports, Agent Flamegraphs, OpenTelemetry GenAI export, and agent-native local session inspection for Cursor IDE sessions.
 
-AgentSight v1.0.6 also provides `agentsight bind`, an opt-in unprivileged Direct Node workflow for opening local AgentSight data in the hosted or a self-hosted app. The default endpoint is loopback-only and uses a process-lifetime access key. Detailed session data stays on the Node; optional hosted sign-in/control-plane state is limited to identity, session, and Node metadata.
+AgentSight Direct Node access lets a browser reach a Node through a local, LAN, VPN, or HTTPS endpoint without requiring Controller Relay. In v1.0.15 the Direct binding flow exchanges the bootstrap credential for a Node-local scoped capability used by the browser.
+
+The open-source AgentSight Controller coordinates OAuth identity, organizations and memberships, built-in viewer/operator/admin/owner roles, organization configuration, plan and entitlement metadata, Node discovery, relay presence, and authorization decisions. Detailed runtime data remains authoritative on Nodes; Controller does not persist snapshots, session transcripts, prompts, process data, or relay response bodies.
+
+Normal protected Node Protocol operations use scoped capabilities such as `node.info`, `evidence.read`, `session.read`, and `session.message`, optionally restricted to one session. Nodes do not need to understand user membership, billing, or organization RBAC.
+
+The canonical Controller plan catalog is Free ($0), Pro ($5/month or $49/year), Team ($10/user/month), and Enterprise (custom). Contributor Lifetime Pro applies to the contributor's personal organization and does not waive Team or Enterprise billing.
 
 Current GitHub Releases publish Linux binaries for x86_64 and aarch64. The unsuffixed compatibility binaries remain x86_64.
 
 ## Data handling
 
-Recorded sessions and local agent histories can contain prompts, responses, paths, headers, commands, and network targets. Keep raw databases and source session files local and review exported data before sharing it. Direct Node access does not upload detailed session contents to the AgentSight control plane.
+Recorded sessions and local agent histories can contain prompts, responses, paths, headers, commands, and network targets. Keep raw databases and source session files local and review exported data before sharing them. Controller is a coordination plane rather than the authoritative telemetry store; a relay payload passes through Controller runtime memory while the request is active but is not persisted as a relay response body.
