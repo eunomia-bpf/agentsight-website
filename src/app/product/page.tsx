@@ -24,7 +24,7 @@ const productAreas = [
     eyebrow: 'Architecture',
     title: 'A distributed, local-first data plane.',
     description:
-      'Keep detailed runtime evidence on customer-controlled Nodes and Site Gateways while the hosted coordination plane handles identity, connectivity, fleet access, policy, and collaboration.',
+      'Keep detailed runtime data authoritative on AgentSight Nodes while Direct access and the Controller coordinate identity, organizations, discovery, connectivity, roles, and authorization.',
     href: '/architecture/',
     link: 'See the architecture →',
   },
@@ -55,8 +55,8 @@ export default function ProductPage() {
           <h1>One product from local agent runs to distributed fleets.</h1>
           <p className="hero-lede">
             AgentSight combines runtime evidence, a distributed local-first data plane, supported agent
-            integrations, and a hosted coordination layer in one product. Start on one machine and keep
-            the same Node and data model as the fleet grows.
+            integrations, and an optional coordination layer in one product. Start on one machine and
+            keep the same Node protocol as the fleet grows.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
@@ -94,16 +94,16 @@ export default function ProductPage() {
         <div className="shell dark-grid">
           <div>
             <Eyebrow>Distributed by architecture</Eyebrow>
-            <h2>Keep execution evidence close to the agents that produced it.</h2>
+            <h2>Keep execution data close to the agents that produced it.</h2>
             <p>
-              AgentSight scales by coordinating customer-owned Nodes and Site Gateways rather than
-              requiring every detailed session to become a second copy in a centralized telemetry warehouse.
+              AgentSight scales by coordinating customer-controlled Nodes rather than requiring every
+              detailed session to become a second copy in a centralized telemetry warehouse.
             </p>
           </div>
           <ul className="workflow-list">
-            <li><span>01</span><div><strong>Observe locally</strong><p>Capture and query detailed runtime evidence on the Node.</p></div></li>
-            <li><span>02</span><div><strong>Coordinate fleets</strong><p>Use identity, discovery, connectivity, policy, and collaboration across machines.</p></div></li>
-            <li><span>03</span><div><strong>Federate at scale</strong><p>Use Site Gateways for large customer-controlled deployments.</p></div></li>
+            <li><span>01</span><div><strong>Observe locally</strong><p>Capture and query detailed runtime data on the Node.</p></div></li>
+            <li><span>02</span><div><strong>Connect directly</strong><p>Reach browser-visible Nodes by explicit HTTP(S) endpoints without requiring Controller Relay.</p></div></li>
+            <li><span>03</span><div><strong>Coordinate organizations</strong><p>Add identity, discovery, roles, capabilities, entitlements, and relay connectivity through Controller when needed.</p></div></li>
           </ul>
         </div>
       </section>
