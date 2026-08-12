@@ -7,18 +7,18 @@ import styles from './pricing.module.css';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'AgentSight pricing: free local-first observability, $5/month Personal Cloud, and $10/user/month Team without per-trace or token metering.',
+    'AgentSight pricing: free local-first observability, $5/month Pro, $10/user/month Team, and contributor Pro for life without per-trace or token metering.',
   alternates: { canonical: '/pricing/' },
 };
 
 const plans = [
   {
-    name: 'Open Source',
+    name: 'Free',
     price: '$0',
     period: 'forever',
     status: 'Available',
     description:
-      'Run AgentSight locally and keep the detailed runtime evidence on machines you control.',
+      'Run open-source AgentSight locally and keep detailed runtime evidence on machines you control.',
     features: [
       'Local AgentSight Node and CLI/TUI',
       'Unlimited local sessions and SQLite artifacts',
@@ -31,19 +31,20 @@ const plans = [
     featured: false,
   },
   {
-    name: 'Personal Cloud',
+    name: 'Pro',
     price: '$5',
     period: '/ month',
     annual: '$49 / year',
     status: 'Available',
     description:
-      'Hosted coordination for one person using AgentSight across multiple machines and networks.',
+      'Hosted coordination and managed connectivity for one person using AgentSight across multiple machines and networks.',
     features: [
-      'Everything in Open Source',
+      'Everything in Free',
       'GitHub or Google sign-in',
-      'Hosted Node directory',
-      'Managed connectivity across AgentSight Nodes',
+      'Personal organization and hosted Node directory',
+      'Managed Direct and Controller relay workflows',
       'Remote access through app.agentsight.us',
+      'Meaningful contributors get personal Pro for life',
     ],
     cta: 'Open AgentSight',
     href: site.demo,
@@ -55,13 +56,13 @@ const plans = [
     period: '/ user / month',
     status: 'Available',
     description:
-      'Shared coordination for teams that want one place to reach, review, and govern a distributed AgentSight fleet.',
+      'Shared coordination for teams that want one place to reach, review, control, and govern a distributed AgentSight fleet.',
     features: [
-      'Shared Node fleet and team access',
-      'Session sharing and remote workflows',
-      'Policy and audit controls',
-      'No per-trace or token usage meter',
-      'Distributed fleet coordination',
+      'Shared organization and Node fleet',
+      'Viewer, operator, admin, and owner roles',
+      'Member invitations and organization configuration',
+      'Capability-scoped Node access and remote workflows',
+      'No per-trace, token, or telemetry-storage meter',
     ],
     cta: 'Open AgentSight',
     href: site.demo,
@@ -116,6 +117,9 @@ export default function PricingPage() {
               </article>
             ))}
           </div>
+          <p className={styles.annual} style={{ marginTop: '1.25rem', textAlign: 'center' }}>
+            Contributor Lifetime Pro is a personal benefit. Team, Enterprise, private deployment, and support remain billed normally.
+          </p>
         </div>
       </section>
 
@@ -141,12 +145,12 @@ export default function PricingPage() {
             <article>
               <span>02</span>
               <h3>Lightweight cloud</h3>
-              <p>Cloud plans coordinate identity, connectivity, policy, and collaboration across the fleet.</p>
+              <p>Cloud plans coordinate identity, organizations, connectivity, policy, and collaboration across the fleet.</p>
             </article>
             <article>
               <span>03</span>
               <h3>No telemetry tax</h3>
-              <p>Personal and Team pricing is not based on trace count, model tokens, or stored telemetry volume.</p>
+              <p>Pro and Team pricing is not based on trace count, model tokens, or stored telemetry volume.</p>
             </article>
           </div>
         </div>
