@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, supported agent runtimes, local reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, distributed Node access, organization authorization, supported runtimes, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'Adds the unprivileged agentsight bind workflow for opening a local Direct Node in the hosted app. The default Node stays on loopback, uses a process-lifetime access key, and keeps detailed session data on the Node; the hosted control plane stores only optional identity, session, and Node metadata. GitHub Releases remains authoritative for per-tag changes.',
+      'Adds organization-scoped Node registration, viewer/operator/admin/owner roles, canonical Free/Pro/Team/Enterprise plan semantics, and capability-scoped Node authorization. Controller coordinates identity, organizations, discovery, relay state, and authorization while detailed runtime data remains authoritative on Nodes. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Distributed access',
+    title: 'Direct Node and Controller Relay are independent transports',
+    description:
+      'A browser-reachable Direct Node can be used by explicit IP or URL without requiring Controller Relay. Current Direct pairing exchanges bootstrap authority for a scoped Node capability, while Controller relay requests are checked against organization membership and plan state before reaching the Node.',
+    href: '/architecture/',
   },
   {
     label: 'Release artifacts',
