@@ -16,22 +16,31 @@ const contentKinds: ContentKind[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
-  const productUpdated = new Date('2026-08-11T00:00:00Z');
+  const productUpdated = new Date('2026-08-12T00:00:00Z');
   const fixed = [
-    '/',
     ...Object.values(hubConfig).map(({ path }) => path),
     '/security/',
-    '/changelog/',
-    '/releases/',
   ];
   const pages = contentKinds.flatMap((kind) => getPages(kind));
 
   return [
+    {
+      url: `${site.url}/`,
+      lastModified: productUpdated,
+      changeFrequency: 'weekly' as const,
+      priority: 1,
+    },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
       lastModified: existingUpdated,
-      changeFrequency: path === '/' ? ('weekly' as const) : ('monthly' as const),
-      priority: path === '/' ? 1 : 0.8,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+    ...['/changelog/', '/releases/'].map((path) => ({
+      url: `${site.url}${path}`,
+      lastModified: productUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
     })),
     {
       url: `${site.url}/product/`,

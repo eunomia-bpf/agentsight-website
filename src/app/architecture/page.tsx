@@ -6,33 +6,72 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'AgentSight uses a distributed, local-first data plane with lightweight cloud coordination across Nodes, fleets, and enterprise Site Gateways.',
+    'How AgentSight v1.0.15 separates Node-local runtime data, Direct browser access, Controller coordination, organization roles, and capability-scoped authorization.',
   alternates: { canonical: '/architecture/' },
 };
 
+const productCommit = 'ba14044491d2fdb52e8b9d0f3e9a94c5d3a12dd1';
+const productSource = `https://github.com/eunomia-bpf/agentsight/blob/${productCommit}`;
+
 const planes = [
   {
-    title: 'Distributed data plane',
+    title: 'Node data plane',
     description:
-      'AgentSight Nodes capture, materialize, query, and retain detailed runtime evidence close to the agents they observe. Each Node remains authoritative for its own session data.',
+      'The AgentSight Node captures, stores, and serves detailed runtime data. Session databases, snapshots, prompts, process activity, and other detailed records remain authoritative on the Node.',
   },
   {
-    title: 'Coordination plane',
+    title: 'Controller coordination plane',
     description:
-      'AgentSight Cloud coordinates identity, discovery, managed connectivity, policy, capabilities, audit, and collaboration without becoming the authoritative telemetry store.',
+      'Controller handles identity, organizations, memberships, plan and entitlement metadata, Node discovery, relay presence, and authorization decisions. It is not the authoritative telemetry store.',
   },
   {
-    title: 'Presentation plane',
+    title: 'Client and presentation plane',
     description:
-      'The hosted app, CLI, and other clients query the same Node protocol across local, direct, managed, and enterprise deployments.',
+      'The hosted app, local UI, and CLI reach a Node through a local or Direct connection, or through Controller relay when that transport is available and authorized.',
   },
-];
+] as const;
 
 const modes = [
-  ['01', 'Local', 'One Node, local evidence, local or hosted UI, no cloud dependency required.'],
-  ['02', 'Direct Fleet', 'Multiple Nodes over LAN, VPN, Tailscale, WireGuard, SSH tunnels, or other direct connectivity.'],
-  ['03', 'Managed', 'AgentSight Cloud provides identity, discovery, managed connectivity, collaboration, policy, and fleet access.'],
-  ['04', 'Enterprise Site', 'Site Gateways federate large fleets while keeping detailed evidence inside customer-controlled Nodes and sites.'],
+  ['01', 'Local', 'Run and query AgentSight on one machine. No Controller account or relay is required for local capture and saved-session analysis.'],
+  ['02', 'Direct', 'A browser reaches a Node by an explicit HTTP(S) endpoint. Direct remains usable without Controller Relay and is preferred when a saved Direct path is available.'],
+  ['03', 'Controller-managed', 'Controller adds OAuth identity, organization-scoped Node discovery, plan gates, relay connectivity, roles, and authorization before remote operations.'],
+] as const;
+
+const roles = [
+  ['Viewer', 'Inspect organization metadata, Nodes, runtime evidence, sessions, configuration, and billing state.'],
+  ['Operator', 'Viewer permissions plus the ability to send session messages.'],
+  ['Admin', 'Operator permissions plus Node, member, and organization-configuration management.'],
+  ['Owner', 'Admin permissions plus organization and billing management.'],
+] as const;
+
+const capabilities = [
+  ['node.info', 'Read Node identity and protocol information.'],
+  ['evidence.read', 'Read the Node snapshot/runtime evidence surface.'],
+  ['session.read', 'Read a session, optionally restricted to one session identifier.'],
+  ['session.message', 'Send a message to a session, optionally restricted to one session identifier.'],
+] as const;
+
+const sources = [
+  {
+    label: 'AgentSight v1.0.15 Controller architecture and authorization model',
+    href: `${productSource}/controller/README.md`,
+  },
+  {
+    label: 'AgentSight v1.0.15 Node capability implementation',
+    href: `${productSource}/collector/src/server/capability.rs`,
+  },
+  {
+    label: 'AgentSight v1.0.15 Direct pairing and connection implementation',
+    href: `${productSource}/frontend/src/lib/connection.ts`,
+  },
+  {
+    label: 'v1.0.15 release: organization pricing and capability authorization',
+    href: site.releaseUrl,
+  },
+  {
+    label: 'Direct Node access independent of Controller Relay (PR #166)',
+    href: 'https://github.com/eunomia-bpf/agentsight/pull/166',
+  },
 ] as const;
 
 export default function ArchitecturePage() {
@@ -40,16 +79,16 @@ export default function ArchitecturePage() {
     <SiteShell>
       <section className="page-hero compact-hero">
         <div className="shell narrow">
-          <Eyebrow>Architecture</Eyebrow>
-          <h1>A distributed, local-first data plane for AI agents.</h1>
+          <Eyebrow>Architecture · AgentSight v{site.version}</Eyebrow>
+          <h1>Keep runtime data on Nodes. Add coordination without making the cloud the data plane.</h1>
           <p className="hero-lede">
-            AgentSight separates runtime evidence from cloud coordination. Detailed agent data stays
-            on customer-controlled Nodes and Site Gateways, while the hosted layer coordinates how
-            people and machines discover, reach, govern, and collaborate across the distributed fleet.
+            AgentSight separates the machine that owns detailed runtime data from the service that
+            coordinates people, organizations, discovery, connectivity, and authorization. Direct Node
+            access and Controller Relay are transports to the same Node protocol, not separate telemetry stores.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
-            <a className="button button-outline" href="/pricing/">See pricing</a>
+            <a className="button button-outline" href="/pricing/">See plans and roles</a>
           </div>
         </div>
       </section>
@@ -58,12 +97,13 @@ export default function ArchitecturePage() {
         <div className="shell">
           <div className="section-heading">
             <div>
-              <Eyebrow>Three planes</Eyebrow>
-              <h2>Keep evidence close to execution. Coordinate globally.</h2>
+              <Eyebrow>The boundary</Eyebrow>
+              <h2>Three planes, with the Node authoritative for detailed runtime data.</h2>
             </div>
             <p>
-              The same architecture works from one laptop to a distributed enterprise fleet. Scaling
-              adds coordination and federation instead of moving every trace into a central warehouse.
+              This page describes the released v{site.version} implementation, reviewed against product
+              commit <code>{productCommit.slice(0, 12)}</code>. It intentionally separates shipped behavior
+              from design ideas that may exist elsewhere in the repository.
             </p>
           </div>
           <div className="card-grid">
@@ -81,12 +121,12 @@ export default function ArchitecturePage() {
       <section className="dark-section section">
         <div className="shell dark-grid">
           <div>
-            <Eyebrow>One protocol, four deployment modes</Eyebrow>
-            <h2>Start local. Grow into a distributed fleet without changing the data model.</h2>
+            <Eyebrow>Current deployment paths</Eyebrow>
+            <h2>Local, Direct, and Controller-managed access share one Node protocol.</h2>
             <p>
-              Local, direct, managed, and enterprise modes share the same AgentSight Node, session
-              model, query semantics, and presentation layer. The difference is how identity,
-              connectivity, policy, and federation are provided.
+              Direct is not merely a fallback for Controller Relay. Since the v1.0.13 Direct transport
+              change, a browser-reachable Node can be used by IP or URL even when Relay is unavailable or
+              not deployed. Controller adds coordination rather than replacing that path.
             </p>
           </div>
           <ul className="workflow-list">
@@ -101,34 +141,174 @@ export default function ArchitecturePage() {
       </section>
 
       <section className="section section-white">
+        <div className="shell split-section">
+          <div>
+            <Eyebrow>Direct pairing</Eyebrow>
+            <h2>The bootstrap credential is not the normal browser credential.</h2>
+            <p>
+              In v{site.version}, a Direct binding link carries a bootstrap key long enough to identify
+              the Node and mint a scoped capability. The browser then stores the returned capability for
+              normal Node requests. The default Direct capability covers <code>node.info</code>,
+              <code>evidence.read</code>, <code>session.read</code>, and <code>session.message</code> for up
+              to twelve hours; the persistent bootstrap authority is not stored as the normal Direct access token.
+            </p>
+            <p>
+              Long-lived Direct capabilities are persisted locally by the Node with expiry, so a Node
+              restart does not necessarily force immediate re-pairing. The Node still validates the
+              capability action and optional session scope on each protected protocol operation.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <p className="card-label">Transport order</p>
+            <p><strong>1. Saved Direct path</strong></p>
+            <p>Use the browser-reachable Node endpoint when one has been paired.</p>
+            <p><strong>2. Controller Relay</strong></p>
+            <p>Use Relay only when Controller reports that transport online and the operation is authorized.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="shell">
           <div className="section-heading">
             <div>
-              <Eyebrow>Why distributed matters</Eyebrow>
-              <h2>Privacy, cost, availability, and scale come from the same design.</h2>
+              <Eyebrow>Controller data boundary</Eyebrow>
+              <h2>Controller coordinates access; it does not persist the detailed Node payload.</h2>
             </div>
             <p>
-              AgentSight does not need a second authoritative copy of every prompt, response, process,
-              file event, or resource sample in its cloud in order to provide a unified product.
+              The released Controller stores OAuth identity, organizations and memberships, organization
+              configuration, plan and entitlement metadata, Node registration, relay credentials and
+              presence, and the authorization decision used before a relayed operation.
             </p>
           </div>
           <div className="card-grid">
             <article className="content-card">
-              <p className="card-label">Data ownership</p>
-              <h2>Customer-controlled evidence</h2>
-              <p>Detailed runtime evidence remains on the Node or customer-controlled Site Gateway by default.</p>
+              <p className="card-label">Stored centrally</p>
+              <h2>Identity and coordination state</h2>
+              <p>Users, organization membership, roles, plan state, Node discovery, relay state, and organization configuration live in Controller.</p>
             </article>
             <article className="content-card">
-              <p className="card-label">Economics</p>
-              <h2>No telemetry warehouse tax</h2>
-              <p>Cloud pricing can follow coordination and governance value instead of trace count, token volume, or hosted retention.</p>
+              <p className="card-label">Authoritative on Node</p>
+              <h2>Detailed runtime data</h2>
+              <p>Snapshots, session transcripts, prompts, process data, and detailed runtime evidence remain authoritative on Nodes.</p>
             </article>
             <article className="content-card">
-              <p className="card-label">Resilience</p>
-              <h2>Capture does not depend on the cloud</h2>
-              <p>Nodes continue local capture, materialization, retention, and query even when the coordination plane is unavailable.</p>
+              <p className="card-label">Relay behavior</p>
+              <h2>Payloads pass through memory</h2>
+              <p>Controller does not persist relay response bodies; relay traffic exists in Controller runtime memory only while the request is active.</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <Eyebrow>Authorization</Eyebrow>
+              <h2>Human roles become semantic actions, then Node-local capabilities.</h2>
+            </div>
+            <p>
+              OAuth authenticates a human. Controller resolves organization membership and the requested
+              semantic action. The Node does not need to understand users, billing, or organization RBAC;
+              it enforces the scoped capability presented to its protocol surface.
+            </p>
+          </div>
+          <div className="card-grid">
+            {capabilities.map(([name, description]) => (
+              <article className="content-card" key={name}>
+                <p className="card-label">Node capability</p>
+                <h2><code>{name}</code></h2>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <Eyebrow>Organization roles</Eyebrow>
+              <h2>Four built-in roles keep fleet authorization small and inspectable.</h2>
+            </div>
+            <p>
+              Nodes are registered into an organization namespace rather than being owned directly by
+              a user. Every account receives a personal organization; Team organizations use the same
+              membership model and add multiple members.
+            </p>
+          </div>
+          <div className="card-grid">
+            {roles.map(([name, description]) => (
+              <article className="content-card" key={name}>
+                <p className="card-label">Role</p>
+                <h2>{name}</h2>
+                <p>{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="dark-section section">
+        <div className="shell dark-grid">
+          <div>
+            <Eyebrow>Failure and trust boundaries</Eyebrow>
+            <h2>Cloud coordination can disappear without deleting the Node-local record.</h2>
+            <p>
+              Local capture and saved-session data do not depend on Controller persistence. A saved
+              Direct path can continue to be the browser transport without Relay. Conversely, an
+              organization-listed Node with neither a reachable Direct path nor an online Relay has no
+              usable remote transport until one of those paths is restored.
+            </p>
+          </div>
+          <ul className="workflow-list">
+            <li><span>01</span><div><strong>Do not infer intent from transport</strong><p>Direct and Relay change how a request reaches the Node, not what the underlying runtime data means.</p></div></li>
+            <li><span>02</span><div><strong>Do not treat Controller as a backup telemetry database</strong><p>Its coordination records are intentionally not a second copy of full session data.</p></div></li>
+            <li><span>03</span><div><strong>Scope remote authority</strong><p>Use organization actions and Node capabilities rather than handing normal clients the persistent bootstrap credential.</p></div></li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="shell split-section">
+          <div>
+            <Eyebrow>Choosing a mode</Eyebrow>
+            <h2>Add only the coordination layer the deployment needs.</h2>
+            <p>
+              Use Local when one machine and local artifacts are enough. Use Direct when the browser can
+              reach the Node through loopback, LAN, VPN, or an HTTPS endpoint and you do not need Relay.
+              Use Controller-managed access when identity, organization membership, managed discovery,
+              plan gates, roles, and Relay connectivity are part of the operating model.
+            </p>
+            <p>
+              Team and Enterprise plans extend the organization and governance boundary; they do not
+              change the basic rule that detailed runtime data is authoritative on the Node. See Pricing
+              for the currently published plan catalog rather than inferring a deployment feature from a design document.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <a className="button button-accent" href="/pricing/">Compare plans</a>
+            <a className="button button-outline" href="/security/">Review data handling</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell narrow source-section">
+          <Eyebrow>Primary sources</Eyebrow>
+          <h2>Architecture claims are pinned to the released implementation.</h2>
+          <p>
+            Reviewed on 12 August 2026 against AgentSight v{site.version} at
+            <code> {productCommit}</code>. Product behavior changes quickly, so use the tagged release and
+            exact source links below when a deployment or security decision depends on a specific version.
+          </p>
+          <ul>
+            {sources.map((source) => (
+              <li key={source.href}><a href={source.href}>{source.label}</a></li>
+            ))}
+          </ul>
         </div>
       </section>
     </SiteShell>

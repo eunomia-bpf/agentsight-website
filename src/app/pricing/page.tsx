@@ -145,7 +145,7 @@ export default function PricingPage() {
             <article>
               <span>02</span>
               <h3>Lightweight cloud</h3>
-              <p>Cloud plans coordinate identity, organizations, connectivity, policy, and collaboration across the fleet.</p>
+              <p>Cloud plans coordinate identity, organizations, connectivity, authorization, and collaboration across the fleet.</p>
             </article>
             <article>
               <span>03</span>
@@ -162,8 +162,9 @@ export default function PricingPage() {
             <Eyebrow>Business and enterprise</Eyebrow>
             <h2>Govern distributed fleets without turning AgentSight into a telemetry warehouse.</h2>
             <p>
-              Organization identity, RBAC, policy, audit, Site Gateway, private connectivity,
-              deployment controls, and support build on the same customer-owned distributed data plane.
+              Organization identity, built-in roles, capability-scoped Node authorization, private
+              deployment requirements, and support build on the same Node-authoritative data plane.
+              GitHub Releases and the Controller source remain authoritative for shipped behavior.
             </p>
           </div>
           <div className={styles.enterpriseCard}>
