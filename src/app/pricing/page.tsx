@@ -7,7 +7,7 @@ import styles from './pricing.module.css';
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'AgentSight pricing: free local-first observability, $5/month Pro, $10/user/month Team, and contributor Pro for life without per-trace or token metering.',
+    'AgentSight pricing and hosted preview: free open-source local use, a published future Pro/Team catalog, and unlimited hosted preview access for registered users today.',
   alternates: { canonical: '/pricing/' },
 };
 
@@ -16,7 +16,7 @@ const plans = [
     name: 'Free',
     price: '$0',
     period: 'forever',
-    status: 'Available',
+    status: 'Open source',
     description:
       'Run open-source AgentSight locally and keep detailed runtime evidence on machines you control.',
     features: [
@@ -35,18 +35,18 @@ const plans = [
     price: '$5',
     period: '/ month',
     annual: '$49 / year',
-    status: 'Available',
+    status: 'Future catalog',
     description:
-      'Hosted coordination and managed connectivity for one person using AgentSight across multiple machines and networks.',
+      'Published future billing scope for hosted coordination and managed connectivity for one person across multiple machines and networks.',
     features: [
       'Everything in Free',
       'GitHub or Google sign-in',
       'Personal organization and hosted Node directory',
       'Managed Direct and Controller relay workflows',
       'Remote access through app.agentsight.us',
-      'Meaningful contributors get personal Pro for life',
+      'Meaningful contributors get personal Pro for life after billing enforcement',
     ],
-    cta: 'Open AgentSight',
+    cta: 'Open hosted preview',
     href: site.demo,
     featured: true,
   },
@@ -54,9 +54,9 @@ const plans = [
     name: 'Team',
     price: '$10',
     period: '/ user / month',
-    status: 'Available',
+    status: 'Future catalog',
     description:
-      'Shared coordination for teams that want one place to reach, review, control, and govern a distributed AgentSight fleet.',
+      'Published future billing scope for teams that want one place to reach, review, control, and govern a distributed AgentSight fleet.',
     features: [
       'Shared organization and Node fleet',
       'Viewer, operator, admin, and owner roles',
@@ -64,7 +64,7 @@ const plans = [
       'Capability-scoped Node access and remote workflows',
       'No per-trace, token, or telemetry-storage meter',
     ],
-    cta: 'Open AgentSight',
+    cta: 'Open hosted preview',
     href: site.demo,
     featured: false,
   },
@@ -78,15 +78,26 @@ export default function PricingPage() {
           <Eyebrow>Pricing</Eyebrow>
           <h1>Simple pricing for a distributed, local-first architecture.</h1>
           <p className="hero-lede">
-            Detailed runtime evidence stays on AgentSight Nodes instead of requiring a central
-            telemetry warehouse. Cloud plans pay for coordination, connectivity, and collaboration,
-            not a trace, token, or telemetry-storage meter.
+            AgentSight keeps a Free/Pro/Team/Enterprise billing catalog separate from the current
+            hosted preview. Today, every registered user's organization receives unlimited access to
+            the implemented managed-connectivity and multi-member features; the persisted billing plan
+            is not rewritten by that preview access.
           </p>
         </div>
       </section>
 
       <section className="section section-white">
         <div className="shell">
+          <article className="content-card" style={{ marginBottom: '1.5rem' }}>
+            <p className="card-label">Hosted preview</p>
+            <h2>Registered users currently receive unlimited hosted feature access.</h2>
+            <p>
+              AgentSight v{site.version} exposes <code>effectivePlan: "unlimited"</code> during the hosted
+              preview. This bypasses managed-connectivity and multi-member plan gates without changing
+              an organization's stored Free/Pro/Team/Enterprise plan or billing status. The prices below
+              are the published future billing catalog, not a claim that paid-plan enforcement is active today.
+            </p>
+          </article>
           <div className={styles.pricingGrid}>
             {plans.map((plan) => (
               <article
@@ -118,7 +129,7 @@ export default function PricingPage() {
             ))}
           </div>
           <p className={styles.annual} style={{ marginTop: '1.25rem', textAlign: 'center' }}>
-            Contributor Lifetime Pro is a personal benefit. Team, Enterprise, private deployment, and support remain billed normally.
+            Contributor Lifetime Pro is a durable personal benefit for the future billed catalog. It does not waive Team or Enterprise billing when billing enforcement is enabled.
           </p>
         </div>
       </section>
@@ -127,13 +138,14 @@ export default function PricingPage() {
         <div className="shell">
           <div className="section-heading">
             <div>
-              <Eyebrow>Why it stays inexpensive</Eyebrow>
+              <Eyebrow>Why the catalog stays inexpensive</Eyebrow>
               <h2>Pay for coordination, not a second copy of your telemetry.</h2>
             </div>
             <p>
               AgentSight uses a distributed data plane, so prompts, responses, process activity,
               file evidence, network evidence, and full session databases do not need to become a
-              hosted ingestion pipeline by default.
+              hosted ingestion pipeline by default. The future paid catalog is designed around
+              coordination, connectivity, and collaboration rather than raw telemetry volume.
             </p>
           </div>
           <div className={styles.principles}>
@@ -145,12 +157,12 @@ export default function PricingPage() {
             <article>
               <span>02</span>
               <h3>Lightweight cloud</h3>
-              <p>Cloud plans coordinate identity, organizations, connectivity, authorization, and collaboration across the fleet.</p>
+              <p>Hosted coordination handles identity, organizations, connectivity, authorization, and collaboration across the fleet.</p>
             </article>
             <article>
               <span>03</span>
               <h3>No telemetry tax</h3>
-              <p>Pro and Team pricing is not based on trace count, model tokens, or stored telemetry volume.</p>
+              <p>The published Pro and Team catalog is not based on trace count, model tokens, or stored telemetry volume.</p>
             </article>
           </div>
         </div>
@@ -164,13 +176,14 @@ export default function PricingPage() {
             <p>
               Organization identity, built-in roles, capability-scoped Node authorization, private
               deployment requirements, and support build on the same Node-authoritative data plane.
-              GitHub Releases and the Controller source remain authoritative for shipped behavior.
+              GitHub Releases and the Controller source remain authoritative for shipped behavior and
+              the current preview/billing boundary.
             </p>
           </div>
           <div className={styles.enterpriseCard}>
             <span>Business / Enterprise</span>
             <strong>Custom</strong>
-            <p>Pricing follows fleet scope, governance requirements, private deployment, and support rather than raw trace volume.</p>
+            <p>The future enterprise catalog follows fleet scope, governance requirements, private deployment, and support rather than raw trace volume.</p>
             <a className="button button-ghost" href="https://eunomia.dev/">Work with Eunomia</a>
           </div>
         </div>
