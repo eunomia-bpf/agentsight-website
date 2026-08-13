@@ -12,13 +12,13 @@ const softwareJsonLd = {
   '@type': 'SoftwareApplication',
   name: site.name,
   applicationCategory: 'DeveloperApplication',
-  operatingSystem: 'Linux',
+  operatingSystem: 'Windows, macOS, Linux',
   description: site.description,
   url: site.url,
   codeRepository: site.repository,
   softwareVersion: site.version,
   releaseNotes: site.releaseUrl,
-  screenshot: `${site.assetBase}/docs/dashboard-overview.png`,
+  screenshot: `${site.assetBase}/docs/top-mode-demo.png`,
   license: 'https://opensource.org/license/mit',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
@@ -49,32 +49,25 @@ const capabilities = [
 
 const productViews = [
   {
-    eyebrow: 'Overview dashboard',
-    title: 'Start with the whole run.',
-    description: 'Review duration, tokens, model calls, processes, files, endpoints, activity over time, resource shape, and friction signals before drilling into detailed views.',
-    src: `${site.assetBase}/docs/dashboard-overview.png`,
-    alt: 'AgentSight Overview dashboard summarizing duration, tokens, model calls, system effects, resource shape, and friction signals for a recorded AI agent run',
+    eyebrow: 'Machine overview',
+    title: 'Start with active and recent agents.',
+    description: 'See running, recent, and stopped sessions with token totals, CPU and RSS, process counts, and source-recorded coding plans before selecting one session.',
+    src: `${site.assetBase}/docs/top-mode-demo.png`,
+    alt: 'AgentSight machine overview showing active and recent AI agent sessions, token totals, process activity, and resource use',
   },
   {
-    eyebrow: 'Timeline',
-    title: 'Follow the run in order.',
-    description: 'Line up model calls, tool activity, processes, file operations, and network events on one timeline.',
+    eyebrow: 'Selected-session timeline',
+    title: 'Follow one session in order.',
+    description: 'After selecting a session, line up model calls, tool activity, processes, file operations, and network events on its timeline.',
     src: `${site.assetBase}/docs/demo-timeline.png`,
-    alt: 'AgentSight timeline showing model, process, file, and network events from a recorded AI agent run',
+    alt: 'AgentSight selected-session timeline showing model, process, file, and network events from a recorded AI agent run',
   },
   {
-    eyebrow: 'Process tree',
-    title: 'See which agent launched each command.',
-    description: 'Inspect child processes and file activity under the agent session that caused them.',
+    eyebrow: 'Process tree and prompts',
+    title: 'Connect agent intent to descendant work.',
+    description: 'Drill into a selected session to inspect prompts, child processes, and the system activity attributable to that agent run.',
     src: `${site.assetBase}/docs/demo-tree.png`,
-    alt: 'AgentSight process tree showing agent subprocesses and file activity',
-  },
-  {
-    eyebrow: 'Resource metrics',
-    title: 'Find expensive and stalled phases.',
-    description: 'Compare CPU and memory behavior with the model and tool activity happening at the same time.',
-    src: `${site.assetBase}/docs/demo-metrics.png`,
-    alt: 'AgentSight resource metrics showing CPU and memory usage for a recorded AI agent run',
+    alt: 'AgentSight selected-session process tree showing AI prompts, child processes, and file activity',
   },
 ];
 
@@ -104,14 +97,14 @@ const postRunQueries = [
   {
     command: 'agentsight bind',
     title: 'Open local data in the hosted app',
-    description: 'Start an unprivileged loopback Direct Node with a process-lifetime access key. Detailed session data stays on the Node while the hosted app reads it directly.',
+    description: 'Expose a local AgentSight Node to the hosted app through Direct access. Detailed session data remains authoritative on the Node instead of becoming a hosted telemetry copy.',
     href: site.demo,
     link: 'Open the AgentSight app →',
   },
   {
     command: 'agentsight report serve',
     title: 'Reopen a recorded session in the local web UI',
-    description: 'Use the same Overview, timeline, process-tree, log, and metrics views on saved SQLite sessions after the original command has finished.',
+    description: 'Serve a saved SQLite capture for recorded snapshot views. Saved-capture servers are read-only and do not expose the live machine overview, hydrated transcript, or session-message APIs.',
     href: site.demo,
     link: 'Open the retained recorded demo →',
   },
@@ -191,10 +184,10 @@ export default function HomePage() {
 
       <section className={styles.platformBar} aria-label="Supported agent workflows">
         <div className="shell">
-          <p>Works with the agents and runtimes you already use</p>
+          <p>Portable session workflows on Windows, macOS, and Linux; eBPF capture remains Linux-only</p>
           <div>
             <span>Claude Code</span><span>Codex</span><span>Gemini CLI</span><span>OpenCode</span>
-            <span>OpenClaw</span><span>Python</span><span>Node.js</span><span>Containers</span>
+            <span>OpenClaw</span><span>Windows</span><span>macOS</span><span>Linux + eBPF</span>
           </div>
         </div>
       </section>
@@ -241,11 +234,12 @@ export default function HomePage() {
           <div className="section-heading">
             <div>
               <Eyebrow>Explore the product</Eyebrow>
-              <h2>Move from a busy run to a clear explanation.</h2>
+              <h2>Move from a machine overview to one agent session.</h2>
             </div>
             <p>
-              Start with the Overview dashboard, then use the timeline, process tree, resource views,
-              repository replay, and flamegraphs to inspect the part of the run that matters.
+              Start with the bounded machine overview, then select a session before opening Conversation,
+              Process Tree & AI Prompts, Timeline, or Detailed Events. CPU and RSS now live in the overview
+              and selected-session header instead of a separate metrics dashboard.
             </p>
           </div>
 
@@ -399,11 +393,11 @@ export default function HomePage() {
                 OpenTelemetry GenAI spans when you want to connect them to an existing telemetry stack.
               </p>
               <ul className={styles.openSourceList}>
-                <li><span>✓</span> Existing CLI and terminal workflow</li>
+                <li><span>✓</span> Portable local-session workflows on Windows, macOS, and Linux</li>
                 <li><span>✓</span> Local SQLite sessions and saved-session web UI</li>
                 <li><span>✓</span> Direct Node access without uploading detailed session contents</li>
-                <li><span>✓</span> eBPF process and file monitoring</li>
-                <li><span>✓</span> TLS tracing without a model proxy</li>
+                <li><span>✓</span> Linux eBPF process and file monitoring</li>
+                <li><span>✓</span> TLS tracing without a model proxy on supported Linux runtimes</li>
                 <li><span>✓</span> Evidence-gated skill evolution with evaluation and rollback</li>
               </ul>
               <div className="hero-actions">
