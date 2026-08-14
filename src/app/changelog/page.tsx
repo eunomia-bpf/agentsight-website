@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, distributed Node access, organization authorization, supported runtimes, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, session-first monitoring, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,14 +15,21 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'Adds organization-scoped Node registration, viewer/operator/admin/owner roles, canonical Free/Pro/Team/Enterprise plan semantics, and capability-scoped Node authorization. Controller coordinates identity, organizations, discovery, relay state, and authorization while detailed runtime data remains authoritative on Nodes. GitHub Releases remains authoritative for per-tag changes.',
+      'Makes the hosted web app session-first: start from a machine-level overview of running/recent/stopped agents, tokens, plans, CPU/RSS, and processes, then select one session for Conversation, Process Tree & AI Prompts, Timeline, and Detailed Events. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
   },
   {
-    label: 'Distributed access',
-    title: 'Direct Node and Controller Relay are independent transports',
+    label: 'Cross-platform',
+    title: 'Portable native-session workflows on Windows, macOS, and Linux',
     description:
-      'A browser-reachable Direct Node can be used by explicit IP or URL without requiring Controller Relay. Current Direct pairing exchanges bootstrap authority for a scoped Node capability, while Controller relay requests are checked against organization membership and plan state before reaching the Node.',
+      'top, bind, vis, and report can use agent-native session files without eBPF. Native Windows session management is supported by CI and provider shims, while record and eBPF-backed tracing remain Linux-only; current GitHub Releases do not publish a Windows binary asset.',
+    href: '/product/',
+  },
+  {
+    label: 'Hosted architecture',
+    title: 'Frontend and Controller deploy together while Direct stays independent',
+    description:
+      'The hosted frontend and Controller API/relay now deploy from one Cloudflare Worker revision. Direct browser-to-Node access remains independent, and detailed runtime data remains authoritative on Nodes rather than Controller.',
     href: '/architecture/',
   },
   {
