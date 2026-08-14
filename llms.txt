@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.17
+Current release: v1.0.21
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -30,19 +30,25 @@ Hosted app: https://app.agentsight.us/
 
 ## Product capabilities
 
-AgentSight v1.0.17 uses a session-first hosted workflow. A connected live Node starts with a machine-level overview of running, recent, and stopped agents, token totals, current coding plans, CPU/RSS, and process counts. Selecting a session opens Conversation, Process Tree & AI Prompts, Timeline, and Detailed Events for that session.
+AgentSight v1.0.21 gives signed-in users an All machines organization view. The browser queries each reachable Node through Direct or Relay and combines bounded Node overviews in memory, including machine state, active and stopped sessions, reported Tokens, CPU/RSS, Agent Plans, and source-reported subscription windows. Controller stores the machine directory and access policy; it does not persist the fetched Node snapshots or the browser-produced aggregate.
+
+A single Node keeps a bounded machine overview. Selecting one session opens three session-scoped views: Conversation, Process Tree & AI Prompts, and Analysis. Analysis summarizes duration, LLM turns, tool activity, failures, token and model usage, files, network targets, processes, and resources above an interactive timeline. Lower-level event detail remains available by selecting an event in that timeline rather than through a separate raw-event tab.
+
+Observed token usage and source-reported subscription capacity are separate signals. When a local agent source exposes provider capacity metadata, AgentSight allowlists supported fields and can show them beside observed session usage. It does not infer provider quota from captured token totals, and Controller does not persist these Node-provided usage details.
 
 Agent-native session files support portable `top`, `bind`, `vis`, and `report` workflows on Windows, macOS, and Linux without eBPF. Linux additionally supports `record` and eBPF-backed debug/tracing commands when privileges and runtime compatibility allow. Native Windows support does not provide ETW/eBPF system-capture parity, and current GitHub Releases do not publish a Windows binary asset.
 
 AgentSight Direct Node access lets a browser reach a Node through a local, LAN, VPN, or HTTPS endpoint without requiring Controller relay. Direct binding exchanges bootstrap authority for a Node-local scoped capability used by the browser. Direct configuration stays in the current browser by default; signed-in users may explicitly opt in to store an encrypted account copy for use from another browser.
 
-The open-source AgentSight Controller coordinates OAuth identity, organizations and memberships, built-in viewer/operator/admin/owner roles, organization configuration, plan and entitlement metadata, Node discovery, relay presence, optional encrypted Direct configuration, and authorization decisions. Detailed runtime data remains authoritative on Nodes; Controller does not persist snapshots, session transcripts, prompts, process data, or relay response bodies.
+The open-source AgentSight Controller coordinates OAuth identity, organizations and memberships, built-in viewer/operator/admin/owner roles, organization configuration, plan and entitlement metadata, Node discovery, relay presence, optional encrypted Direct configuration, and authorization decisions. Detailed runtime data remains authoritative on Nodes; Controller does not persist snapshots, session transcripts, prompts, process data, source-reported subscription details, or relay response bodies.
 
 Normal protected Node Protocol operations use scoped capabilities such as `node.info`, `evidence.read`, `session.read`, and `session.message`, optionally restricted to one session. Nodes do not need to understand user membership, billing, or organization RBAC.
 
 The Controller plan catalog is Free ($0), Pro ($5/month or $49/year), Team ($10/user/month), and Enterprise (custom). During the current hosted preview, billing gates are not enforced: registered users receive an `unlimited` effective plan for implemented hosted features. Contributor Lifetime Pro remains a durable personal entitlement for meaningful contributors.
 
 The hosted frontend at app.agentsight.us and Controller API/relay at control.agentsight.us deploy from one production Cloudflare Worker revision. This deployment topology does not make Controller the runtime-data store; Direct remains an independent browser-to-Node transport.
+
+When hosted sign-in is available, the current UI keeps supported GitHub and Google entries visible. An unconfigured provider is disabled with an explanation, and Controller provider-status failures are surfaced instead of being converted into an empty provider list. This describes UI behavior, not a claim that both providers are configured in every deployment.
 
 Current GitHub Releases publish Linux binaries for x86_64 and aarch64. The unsuffixed compatibility binaries remain x86_64.
 
