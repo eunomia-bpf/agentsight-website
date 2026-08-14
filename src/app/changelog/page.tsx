@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, session-first monitoring, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,22 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'Makes the hosted web app session-first: start from a machine-level overview of running/recent/stopped agents, tokens, plans, CPU/RSS, and processes, then select one session for Conversation, Process Tree & AI Prompts, Timeline, and Detailed Events. GitHub Releases remains authoritative for per-tag changes.',
+      'The current hosted product combines an All machines organization overview, bounded per-Node agent state, source-reported subscription capacity, and a three-view session workspace: Conversation, Process Tree & AI Prompts, and Analysis. v1.0.21 also makes hosted sign-in provider configuration failures visible instead of silently hiding a provider. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Fleet overview',
+    title: 'All machines is aggregated in the browser',
+    description:
+      'Signed-in users can filter and compare reachable Nodes, active and stopped sessions, reported Tokens, CPU/RSS, Agent Plans, and source-reported subscription windows. The browser reads bounded Node overviews through Direct or Relay and combines them in memory; Controller keeps the machine directory and access policy rather than the Node snapshots.',
+    href: '/architecture/',
+  },
+  {
+    label: 'Session analysis',
+    title: 'One Analysis workspace replaces separate Timeline and Detailed Events tabs',
+    description:
+      'Analysis summarizes duration, LLM turns, tool activity, failures, token and model usage, files, network targets, processes, and resources above an interactive timeline. Selecting a timeline event keeps the lower-level event detail available without a separate raw-log tab.',
+    href: '/product/',
   },
   {
     label: 'Cross-platform',
@@ -29,7 +43,7 @@ const updates = [
     label: 'Hosted architecture',
     title: 'Frontend and Controller deploy together while Direct stays independent',
     description:
-      'The hosted frontend and Controller API/relay now deploy from one Cloudflare Worker revision. Direct browser-to-Node access remains independent, and detailed runtime data remains authoritative on Nodes rather than Controller.',
+      'The hosted frontend and Controller API/relay deploy from one Cloudflare Worker revision. Direct browser-to-Node access remains independent, and detailed runtime data remains authoritative on Nodes rather than Controller.',
     href: '/architecture/',
   },
   {

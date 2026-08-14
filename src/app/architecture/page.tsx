@@ -6,16 +6,16 @@ import { productCommit, site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How AgentSight v1.0.17 separates Node-local runtime data, Direct browser access, Controller coordination, organization roles, capability-scoped access, and the unified hosted Worker.',
+    'How AgentSight v1.0.21 keeps runtime data on Nodes while Direct, Controller, organizations, browser-side fleet aggregation, roles, and capabilities coordinate access.',
   alternates: { canonical: '/architecture/' },
 };
 
 const productSource = `https://github.com/eunomia-bpf/agentsight/blob/${productCommit}`;
 
 const planes = [
-  ['Node data plane', 'The AgentSight Node captures, stores, and serves detailed runtime data. Sessions, snapshots, prompts, process activity, and other detailed records remain authoritative on the Node.'],
+  ['Node data plane', 'The AgentSight Node captures, stores, and serves detailed runtime data. Sessions, snapshots, prompts, process activity, source-reported usage metadata, and other detailed records remain authoritative on the Node.'],
   ['Controller coordination plane', 'Controller handles identity, organizations, memberships, plan and entitlement metadata, Node discovery, relay presence, optional encrypted Direct configuration, and authorization decisions. It is not the authoritative telemetry store.'],
-  ['Client and presentation plane', 'The hosted app, local UI, and CLI reach a Node locally or through Direct, or through Controller relay when that path is available and authorized.'],
+  ['Client and presentation plane', 'The hosted app, local UI, and CLI reach Nodes locally, through Direct, or through Controller relay. The browser can aggregate bounded Node overviews without persisting that fleet snapshot in Controller.'],
 ] as const;
 
 const modes = [
@@ -39,10 +39,11 @@ const capabilities = [
 ] as const;
 
 const sources = [
-  ['AgentSight v1.0.17 Controller architecture and authorization model', `${productSource}/controller/README.md`],
-  ['AgentSight v1.0.17 Node capability implementation', `${productSource}/collector/src/server/capability.rs`],
-  ['AgentSight v1.0.17 Direct connection implementation', `${productSource}/frontend/src/lib/connection.ts`],
-  ['AgentSight v1.0.17 current plan and hosted-preview access model', `${productSource}/controller/src/access.ts`],
+  [`AgentSight v${site.version} Controller architecture and authorization model`, `${productSource}/controller/README.md`],
+  [`AgentSight v${site.version} Node capability implementation`, `${productSource}/collector/src/server/capability.rs`],
+  [`AgentSight v${site.version} Direct connection implementation`, `${productSource}/frontend/src/lib/connection.ts`],
+  [`AgentSight v${site.version} fleet aggregation implementation`, `${productSource}/frontend/src/lib/fleetData.ts`],
+  ['Multi-machine organization overview and browser-memory data boundary (PR #180)', 'https://github.com/eunomia-bpf/agentsight/pull/180'],
   ['Unified frontend and Controller Worker deployment (PR #175)', 'https://github.com/eunomia-bpf/agentsight/pull/175'],
   ['Direct Node access independent of Controller relay (PR #166)', 'https://github.com/eunomia-bpf/agentsight/pull/166'],
 ] as const;
@@ -55,9 +56,10 @@ export default function ArchitecturePage() {
           <Eyebrow>Architecture · AgentSight v{site.version}</Eyebrow>
           <h1>Keep runtime data on Nodes. Add coordination without making the cloud the data plane.</h1>
           <p className="hero-lede">
-            AgentSight separates the machine that owns detailed runtime data from the service that
+            AgentSight separates the machines that own detailed runtime data from the service that
             coordinates people, organizations, discovery, connectivity, and access. Direct Node access
-            and Controller relay are transports to the same Node protocol, not separate telemetry stores.
+            and Controller relay are transports to the same Node protocol. The All machines view combines
+            bounded Node overviews in the browser rather than creating another cloud telemetry store.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
@@ -69,7 +71,7 @@ export default function ArchitecturePage() {
       <section className="section section-white">
         <div className="shell">
           <div className="section-heading">
-            <div><Eyebrow>The boundary</Eyebrow><h2>Three planes, with the Node authoritative for detailed runtime data.</h2></div>
+            <div><Eyebrow>The boundary</Eyebrow><h2>Three planes, with Nodes authoritative for detailed runtime data.</h2></div>
             <p>
               This page describes the released v{site.version} implementation at <code>{productCommit.slice(0, 12)}</code>.
               It distinguishes shipped behavior from design ideas elsewhere in the repository.
@@ -113,10 +115,10 @@ export default function ArchitecturePage() {
               necessarily force immediate re-pairing.
             </p>
             <p>
-              Direct configuration stays in the current browser by default. In v{site.version}, a signed-in
-              user may explicitly opt in to save a compact Direct endpoint and bootstrap configuration for
-              another browser. Controller stores that optional account copy encrypted; its D1 database does
-              not store the plaintext, and the account copy can be removed separately from the local browser capability.
+              Direct configuration stays in the current browser by default. A signed-in user may explicitly
+              opt in to save a compact Direct endpoint and bootstrap configuration for another browser.
+              Controller stores that optional account copy encrypted; its D1 database does not store the
+              plaintext, and the account copy can be removed separately from the local browser capability.
             </p>
           </div>
           <div className="detail-aside static-aside">
@@ -139,13 +141,39 @@ export default function ArchitecturePage() {
           </div>
           <div className="card-grid">
             <article className="content-card"><p className="card-label">Stored centrally</p><h2>Identity and coordination state</h2><p>Users, organizations, roles, plan state, Node discovery, relay state, and organization configuration live in Controller.</p></article>
-            <article className="content-card"><p className="card-label">Authoritative on Node</p><h2>Detailed runtime data</h2><p>Snapshots, session transcripts, prompts, process data, and detailed runtime records remain authoritative on Nodes.</p></article>
+            <article className="content-card"><p className="card-label">Authoritative on Node</p><h2>Detailed runtime data</h2><p>Snapshots, session transcripts, prompts, process data, source-reported subscription metadata, and detailed runtime records remain authoritative on Nodes.</p></article>
             <article className="content-card"><p className="card-label">Relay behavior</p><h2>Payloads are not stored as relay history</h2><p>Relay traffic exists in Controller runtime memory while a request is active; Controller does not persist relay response bodies.</p></article>
           </div>
         </div>
       </section>
 
       <section className="section section-white">
+        <div className="shell split-section">
+          <div>
+            <Eyebrow>All machines</Eyebrow>
+            <h2>Fleet aggregation happens in browser memory after reading reachable Nodes.</h2>
+            <p>
+              The signed-in organization landing view queries each reachable Node for a bounded overview
+              through Direct or Relay. The browser combines machine state, active and stopped sessions,
+              reported Tokens, CPU/RSS, Agent Plans, and source-reported subscription windows, then lets the
+              user switch to one Node. Controller supplies the machine directory and access policy; it does
+              not persist the fetched Node snapshots or the aggregate produced from them.
+            </p>
+            <p>
+              This boundary matters for both privacy and failure semantics. A Node that is unreachable cannot
+              contribute current detail to the fleet view, and the browser-side aggregate is not evidence that
+              Controller has a durable copy of the underlying runtime data.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <p className="card-label">Fleet read path</p>
+            <p><strong>Directory</strong></p><p>Controller identifies Nodes the user may reach.</p>
+            <p><strong>Data</strong></p><p>The browser reads each reachable Node and combines the bounded results locally.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="shell">
           <div className="section-heading">
             <div><Eyebrow>Authorization</Eyebrow><h2>Human roles become semantic actions, then Node-local capabilities.</h2></div>
@@ -161,7 +189,7 @@ export default function ArchitecturePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section section-white">
         <div className="shell">
           <div className="section-heading">
             <div><Eyebrow>Organization roles</Eyebrow><h2>Four built-in roles keep fleet authorization small and inspectable.</h2></div>
@@ -180,18 +208,18 @@ export default function ArchitecturePage() {
         <div className="shell dark-grid">
           <div>
             <Eyebrow>Hosted deployment</Eyebrow>
-            <h2>The app and Controller now deploy from one repository revision in one Worker.</h2>
+            <h2>The app and Controller deploy from one repository revision in one Worker.</h2>
             <p>
-              Since v1.0.16, the hosted frontend at app.agentsight.us and Controller API/relay at
-              control.agentsight.us are served by one production Cloudflare Worker revision. D1 stores
-              Controller metadata and a Durable Object carries live relay traffic. This deployment
-              unification does not change the Node-authoritative runtime-data boundary.
+              The hosted frontend at app.agentsight.us and Controller API/relay at control.agentsight.us
+              are served by one production Cloudflare Worker revision. D1 stores Controller metadata and
+              a Durable Object carries live relay traffic. This deployment unification does not change the
+              Node-authoritative runtime-data boundary.
             </p>
           </div>
           <ul className="workflow-list">
             <li><span>01</span><div><strong>One revision</strong><p>Frontend and Controller production surfaces move together.</p></div></li>
             <li><span>02</span><div><strong>Direct remains independent</strong><p>A browser can still reach a paired Node without using Controller relay.</p></div></li>
-            <li><span>03</span><div><strong>Preview stays isolated</strong><p>Non-production builds use a separate Worker, D1 database, and relay resources.</p></div></li>
+            <li><span>03</span><div><strong>Preview stays isolated</strong><p>Non-production builds use separate hosted resources from production.</p></div></li>
           </ul>
         </div>
       </section>
@@ -220,7 +248,7 @@ export default function ArchitecturePage() {
         <div className="shell narrow source-section">
           <Eyebrow>Primary sources</Eyebrow>
           <h2>Architecture claims are pinned to the released implementation.</h2>
-          <p>Reviewed on 13 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
+          <p>Reviewed on 14 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
           <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
         </div>
       </section>
