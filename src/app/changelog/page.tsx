@@ -15,7 +15,7 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'The current hosted product combines an All machines organization overview, bounded per-Node agent state, source-reported subscription capacity, and a three-view session workspace: Conversation, Process Tree & AI Prompts, and Analysis. v1.0.21 also makes hosted sign-in provider configuration failures visible instead of silently hiding a provider. GitHub Releases remains authoritative for per-tag changes.',
+      'v1.0.22 is a repository-hygiene release: it removes a committed local environment file, adds an example environment file, and updates package versions without changing runtime or product behavior. The current user-facing fleet, session-analysis, sign-in, and Node model remains the v1.0.21 behavior summarized below. GitHub Releases remains authoritative for per-tag changes.',
     href: site.releaseUrl,
   },
   {
