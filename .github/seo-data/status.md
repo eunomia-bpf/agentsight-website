@@ -6,7 +6,9 @@
 - Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
 - Current authoritative AgentSight release: `v1.0.22`, published 15 August 2026 at product commit `4a789dc90942efaa09a21be4b83e0dec3629bce8`.
 - v1.0.22 is a repository-hygiene release rather than a product-behavior change. Product PR `#186` removes a committed local environment file, adds/maintains environment-file hygiene and an example file, and explicitly states that runtime/product behavior is unchanged. The user-facing product model described below remains the v1.0.21 model.
-- The v1.0.22 website factual synchronization is being delivered in the 15 August operating cycle. Exact PR, squash commit, CI, publication, and public-verification evidence belong in the same day's closeout record once those facts exist.
+- The website release identity is synchronized to v1.0.22 through PR `#61`, squash/main commit `f1f990bd4ac2854ceb727ac5a49d690e020d093a`.
+- PR `#61` exact-head Website CI `31896164711`, main Website CI `31896250720`, and Publish static site `31896250693` succeeded. The exact pre-merge static artifact is `9249851468` with digest `sha256:ac06c93c2467ce46a2e3f139fa502e2c188f99b82e3dac67645af6ab24ba8111`.
+- `site/.source-sha` exactly matches the rendered v1.0.22 squash commit `f1f990bd4ac2854ceb727ac5a49d690e020d093a` after publication.
 - The product’s current signed-in organization landing view is **All machines**. The browser queries bounded overviews from reachable Nodes through Direct or Relay and aggregates the fleet in browser memory. Controller keeps machine directory/access policy rather than persisting Node snapshots or the browser-produced aggregate.
 - Current machine/fleet views can show active and stopped sessions, observed Tokens, source-reported subscription windows, Agent Plans, CPU/RSS, and process/session state. Observed Tokens and provider-reported capacity remain separate signals.
 - A selected session has three primary views: Conversation, Process Tree & AI Prompts, and Analysis. Analysis replaced separate Timeline and Detailed Events tabs while retaining event-level inspection through its interactive timeline.
@@ -22,10 +24,12 @@
 
 ## Production and public verification
 
-- Before the v1.0.22 repair, direct independent retrieval of the canonical homepage was fresh and correctly exposed the rendered v1.0.21 release banner, release card, and product source pin `412ee6dbad967fa48a226a8052ee0c689e4bd1c6`. This resolves the crawler/CDN freshness qualification recorded immediately after the v1.0.21 publication.
-- The last accepted v1.0.21 static artifact contains 39 generated index pages and 37 unique sitemap URLs; every generated page has exactly one canonical and one H1.
-- Product, Architecture, Changelog, homepage release metadata, and `llms.txt` describe the current fleet/session model; today's v1.0.22 repair changes release identity only where needed and explicitly preserves the v1.0.21 behavior because the new release has no runtime feature delta.
-- Public search indexes remain behind direct production retrieval and still expose older homepage positioning in sampled results. Treat that as directional index freshness, not current production truth.
+- The v1.0.22 exact static artifact contains 39 generated index pages and 37 unique sitemap URLs; every generated page has exactly one canonical and one H1.
+- The publication-branch homepage contains v1.0.22, product source pin `4a789dc90942efaa09a21be4b83e0dec3629bce8`, the existing canonical, and the expected GA loader.
+- The Changelog explicitly describes v1.0.22 as repository hygiene with no runtime/product behavior change; `llms.txt` reports v1.0.22 while retaining the v1.0.21 user-facing product model.
+- No public route, redirect, canonical owner, primary navigation item/destination, pricing-catalog semantics, GA4 behavior, documentation ownership, dependency, workflow, or deployment configuration changed in the v1.0.22 repair.
+- Independent canonical-homepage retrieval immediately after exact publication still exposed the pre-publication v1.0.21 generation. Exact main commit, CI, generated artifact, Publish static site, and `site/.source-sha` all agree on the v1.0.22 publication, so the current mismatch is recorded as crawler/CDN freshness rather than a static-publication failure. Do not manufacture a rendered change solely to force refresh; recheck later and escalate only if independently persistent.
+- Public search indexes are also materially behind direct/publication-branch truth and still expose older positioning in sampled results. Treat that as directional index freshness, not current product truth.
 
 ## Current analytics and search data
 
@@ -48,6 +52,6 @@
 
 ## Outstanding follow-up
 
-- Complete and publicly verify the v1.0.22 release-identity repair through the normal PR, exact-head CI, squash, exact-commit static publication, and metadata closeout lifecycle.
+- Re-check the canonical homepage after crawler/CDN freshness catches up; if a normal independent fetch still serves v1.0.21 after the later operating cycle, investigate production routing/cache as a real incident rather than changing content blindly.
 - Restore valid weekly GA4 and Search Console exports through the external Apps Script exporter; see `block.md` for the human action required.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. A fresh 15 August public package search still did not establish `@eunomia-bpf/agentsight` on npm, so the website must not claim that package is installable.
