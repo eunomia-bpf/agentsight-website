@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.21
+Current release: v1.0.22
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -30,7 +30,7 @@ Hosted app: https://app.agentsight.us/
 
 ## Product capabilities
 
-AgentSight v1.0.21 gives signed-in users an All machines organization view. The browser queries each reachable Node through Direct or Relay and combines bounded Node overviews in memory, including machine state, active and stopped sessions, reported Tokens, CPU/RSS, Agent Plans, and source-reported subscription windows. Controller stores the machine directory and access policy; it does not persist the fetched Node snapshots or the browser-produced aggregate.
+AgentSight v1.0.22 is a repository-hygiene release and does not change the runtime or product behavior introduced through v1.0.21. The current signed-in product gives users an All machines organization view. The browser queries each reachable Node through Direct or Relay and combines bounded Node overviews in memory, including machine state, active and stopped sessions, reported Tokens, CPU/RSS, Agent Plans, and source-reported subscription windows. Controller stores the machine directory and access policy; it does not persist the fetched Node snapshots or the browser-produced aggregate.
 
 A single Node keeps a bounded machine overview. Selecting one session opens three session-scoped views: Conversation, Process Tree & AI Prompts, and Analysis. Analysis summarizes duration, LLM turns, tool activity, failures, token and model usage, files, network targets, processes, and resources above an interactive timeline. Lower-level event detail remains available by selecting an event in that timeline rather than through a separate raw-event tab.
 
