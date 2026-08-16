@@ -6,7 +6,7 @@ import { productCommit, site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How AgentSight v1.0.21 keeps runtime data on Nodes while Direct, Controller, organizations, browser-side fleet aggregation, roles, and capabilities coordinate access.',
+    'How AgentSight v1.0.24 separates native capture, bounded WebAssembly Components, Node-local runtime data, Direct access, Controller coordination, and browser-side fleet aggregation.',
   alternates: { canonical: '/architecture/' },
 };
 
@@ -16,6 +16,12 @@ const planes = [
   ['Node data plane', 'The AgentSight Node captures, stores, and serves detailed runtime data. Sessions, snapshots, prompts, process activity, source-reported usage metadata, and other detailed records remain authoritative on the Node.'],
   ['Controller coordination plane', 'Controller handles identity, organizations, memberships, plan and entitlement metadata, Node discovery, relay presence, optional encrypted Direct configuration, and authorization decisions. It is not the authoritative telemetry store.'],
   ['Client and presentation plane', 'The hosted app, local UI, and CLI reach Nodes locally, through Direct, or through Controller relay. The browser can aggregate bounded Node overviews without persisting that fleet snapshot in Controller.'],
+] as const;
+
+const extensionBoundaries = [
+  ['Native capture substrate', 'agentsight-capture keeps platform capture such as eBPF, /proc, SSL, stdio, and system runners. Identity/capability enforcement and transport also remain native host responsibilities.'],
+  ['Composable product extensions', 'The canonical ext/ tree now owns session parsing, analysis, semantic pprof, repository visualization, and web presentation boundaries without copying their algorithms into a new abstraction.'],
+  ['One shipped Wasm Component today', 'Only ext/session currently exports and executes a wasm32-wasip2 Component. Analysis, pprof, vis, and web are native or build-time boundaries in v1.0.24.'],
 ] as const;
 
 const modes = [
@@ -38,11 +44,22 @@ const capabilities = [
   ['session.message', 'Send a message to a session, optionally restricted to one session identifier.'],
 ] as const;
 
+const runtimeLimits = [
+  ['64 MiB', 'Default Component memory limit'],
+  ['10 million', 'Default execution fuel'],
+  ['16 MiB', 'Maximum Component binary and transcript content size'],
+  ['64 KiB', 'Maximum combined session metadata size'],
+] as const;
+
 const sources = [
   [`AgentSight v${site.version} Controller architecture and authorization model`, `${productSource}/controller/README.md`],
+  [`AgentSight v${site.version} extension boundary`, `${productSource}/ext/README.md`],
+  [`AgentSight v${site.version} bounded Component runtime`, `${productSource}/ext/runtime/src/lib.rs`],
   [`AgentSight v${site.version} Node capability implementation`, `${productSource}/collector/src/server/capability.rs`],
   [`AgentSight v${site.version} Direct connection implementation`, `${productSource}/frontend/src/lib/connection.ts`],
   [`AgentSight v${site.version} fleet aggregation implementation`, `${productSource}/frontend/src/lib/fleetData.ts`],
+  ['Component boundary and session Wasm runtime (PR #187)', 'https://github.com/eunomia-bpf/agentsight/pull/187'],
+  ['Relay reconnect refreshes the running Node version (PR #192)', 'https://github.com/eunomia-bpf/agentsight/pull/192'],
   ['Multi-machine organization overview and browser-memory data boundary (PR #180)', 'https://github.com/eunomia-bpf/agentsight/pull/180'],
   ['Unified frontend and Controller Worker deployment (PR #175)', 'https://github.com/eunomia-bpf/agentsight/pull/175'],
   ['Direct Node access independent of Controller relay (PR #166)', 'https://github.com/eunomia-bpf/agentsight/pull/166'],
@@ -54,12 +71,12 @@ export default function ArchitecturePage() {
       <section className="page-hero compact-hero">
         <div className="shell narrow">
           <Eyebrow>Architecture · AgentSight v{site.version}</Eyebrow>
-          <h1>Keep runtime data on Nodes. Add coordination without making the cloud the data plane.</h1>
+          <h1>Keep capture native, make product features composable, and keep runtime data on Nodes.</h1>
           <p className="hero-lede">
-            AgentSight separates the machines that own detailed runtime data from the service that
-            coordinates people, organizations, discovery, connectivity, and access. Direct Node access
-            and Controller relay are transports to the same Node protocol. The All machines view combines
-            bounded Node overviews in the browser rather than creating another cloud telemetry store.
+            AgentSight separates the machine-level capture substrate from independently composable product
+            features, while keeping detailed runtime data authoritative on Nodes. The current Component Model
+            boundary is deliberately narrow: one session parser runs as bounded Wasm today; Direct and Controller
+            remain transports and coordination paths to the same Node protocol.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
@@ -71,16 +88,88 @@ export default function ArchitecturePage() {
       <section className="section section-white">
         <div className="shell">
           <div className="section-heading">
-            <div><Eyebrow>The boundary</Eyebrow><h2>Three planes, with Nodes authoritative for detailed runtime data.</h2></div>
+            <div><Eyebrow>The data boundary</Eyebrow><h2>Three planes, with Nodes authoritative for detailed runtime data.</h2></div>
             <p>
               This page describes the released v{site.version} implementation at <code>{productCommit.slice(0, 12)}</code>.
-              It distinguishes shipped behavior from design ideas elsewhere in the repository.
+              It distinguishes shipped behavior from design ideas and explicit follow-up work in the repository.
             </p>
           </div>
           <div className="card-grid">
             {planes.map(([title, description], index) => (
               <article className="content-card" key={title}><p className="card-label">0{index + 1}</p><h2>{title}</h2><p>{description}</p></article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell">
+          <div className="section-heading">
+            <div><Eyebrow>Extension boundary</Eyebrow><h2>Composable does not mean that the capture substrate moved into plugins.</h2></div>
+            <p>
+              v1.0.23 reorganized independently composable product functionality under <code>ext/</code> while
+              preserving the existing capture and protocol contracts. The distinction is architectural: platform
+              capture stays native, while higher-level functionality gets an explicit boundary that can be native,
+              build-time, frontend, or a WebAssembly Component depending on the feature.
+            </p>
+          </div>
+          <div className="card-grid">
+            {extensionBoundaries.map(([title, description], index) => (
+              <article className="content-card" key={title}><p className="card-label">Boundary 0{index + 1}</p><h2>{title}</h2><p>{description}</p></article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="dark-section section">
+        <div className="shell dark-grid">
+          <div>
+            <Eyebrow>What actually runs as Wasm?</Eyebrow>
+            <h2>One host-supplied transcript enters one bounded session Component.</h2>
+            <p>
+              The released <code>ext/session</code> parser exports a <code>wasm32-wasip2</code> Component entrypoint.
+              Native discovery reads the filesystem and handles Cursor subagent aggregation, then supplies one
+              transcript plus bounded metadata to the Component. The production CLI does not dynamically discover
+              arbitrary extensions or dispatch extension-defined commands in v{site.version}.
+            </p>
+            <p>
+              The Wasmtime host links WASI Preview 2 for ABI compatibility but gives the default Component no
+              inherited arguments, environment, stdio, directories, or network access; TCP and UDP are disabled.
+              AgentSight-specific authority would have to arrive through an explicit capability-bearing host
+              interface. The current host is for trusted Components shipped with AgentSight, not a user-uploaded
+              arbitrary-Wasm execution boundary.
+            </p>
+          </div>
+          <ul className="workflow-list">
+            {runtimeLimits.map(([value, description], index) => (
+              <li key={description}><span>0{index + 1}</span><div><strong>{value}</strong><p>{description}</p></div></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="shell split-section">
+          <div>
+            <Eyebrow>Current limitations</Eyebrow>
+            <h2>The Component boundary is real, but a general runtime plugin system is not shipped yet.</h2>
+            <p>
+              Only session parsing currently crosses the Component Model execution boundary. Analysis,
+              <code>pprof</code>, <code>vis</code>, and web presentation have explicit extension directories but
+              execute natively or at build time. Dynamic extension discovery, extension-defined CLI commands, and
+              opaque Controller-to-Node <code>/ext/*</code> routing are explicitly follow-up work rather than current
+              capabilities.
+            </p>
+            <p>
+              Existing Controller relay authorization remains route-specific and fail-closed. Published crate names,
+              public <code>agentsight-capture</code> import paths, Node protocol behavior, CLI commands, and binary
+              names remain compatible across the refactor.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <p className="card-label">Shipped in v{site.version}</p>
+            <p><strong>Wasm</strong></p><p>Single-transcript session parsing through a bounded Component host.</p>
+            <p><strong>Not shipped</strong></p><p>Arbitrary uploaded plugins, dynamic command discovery, or generic remote extension routing.</p>
           </div>
         </div>
       </section>
@@ -139,6 +228,12 @@ export default function ArchitecturePage() {
               encrypted Direct configuration, and the authorization decision used before a relayed operation.
             </p>
           </div>
+          <p>
+            v1.0.24 also makes the existing relay reconnect carry the running CLI version. After the relay token is
+            authenticated, Controller refreshes the persisted Node version together with <code>last_seen_at</code>;
+            older Nodes that omit the version header keep their previously stored value. This fixes stale fleet
+            version labels after an upgrade without adding a polling path or requiring Direct re-pairing.
+          </p>
           <div className="card-grid">
             <article className="content-card"><p className="card-label">Stored centrally</p><h2>Identity and coordination state</h2><p>Users, organizations, roles, plan state, Node discovery, relay state, and organization configuration live in Controller.</p></article>
             <article className="content-card"><p className="card-label">Authoritative on Node</p><h2>Detailed runtime data</h2><p>Snapshots, session transcripts, prompts, process data, source-reported subscription metadata, and detailed runtime records remain authoritative on Nodes.</p></article>
@@ -248,7 +343,7 @@ export default function ArchitecturePage() {
         <div className="shell narrow source-section">
           <Eyebrow>Primary sources</Eyebrow>
           <h2>Architecture claims are pinned to the released implementation.</h2>
-          <p>Reviewed on 14 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
+          <p>Reviewed on 16 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
           <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
         </div>
       </section>
