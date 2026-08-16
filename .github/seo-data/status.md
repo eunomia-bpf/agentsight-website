@@ -25,12 +25,16 @@
 
 ## Production and public verification
 
-- The last completed rendered publication is the v1.0.22 release synchronization from PR `#61`, squash/main commit `f1f990bd4ac2854ceb727ac5a49d690e020d093a`.
-- Its exact-head Website CI `31896164711`, main Website CI `31896250720`, and Publish static site `31896250693` succeeded; `site/.source-sha` currently identifies the same rendered commit.
-- The v1.0.22 exact static artifact contains 39 generated index pages and 37 unique sitemap URLs; every generated page has exactly one canonical and one H1.
-- Direct canonical-homepage retrieval on 16 August is fresh for that v1.0.22 baseline and exposes v1.0.22 plus product source pin `4a789dc90942efaa09a21be4b83e0dec3629bce8`. The homepage freshness qualification recorded immediately after the 15 August publication is resolved.
-- An independently cached `/architecture/` retrieval remains older and reports v1.0.15. Treat it as per-route crawler/index freshness while exact publication evidence remains consistent; do not manufacture a rendered change solely to force cache refresh.
-- Current product drift to v1.0.24 is being repaired through the 16 August architecture/release synchronization cycle. Production acceptance is not complete until exact-head CI, squash merge, exact static publication, publication-branch verification, and public checks finish.
+- Current rendered publication: PR `#63`, **Sync v1.0.24 and document the Component architecture**, squash/main commit `a774f6e867e9106d4bb59d1243991edb0e6fe637`.
+- PR `#63` exact final head `a782862206bcad6228207fab646f0894428f1b06` passed Website CI `31959478620`.
+- Exact-head static artifact: `9266851351`, digest `sha256:7c9c63e3618700f5a48de1efcf23677d5cc122e891f2c03511f94785ecc1b0f7`.
+- Main Website CI `31959559236` and Publish static site `31959559232` both succeeded for exact squash commit `a774f6e867e9106d4bb59d1243991edb0e6fe637`.
+- Publish job completed at `2026-08-16T16:46:13Z`; `site/.source-sha` exactly identifies `a774f6e867e9106d4bb59d1243991edb0e6fe637`.
+- Exact static artifact contains 39 generated index pages and 37 unique sitemap URLs; every generated index page has exactly one canonical and one H1.
+- Homepage, Architecture, Product, and Changelog artifacts render v1.0.24; homepage/Architecture/Product pin product source `4f77a4a32ed2177c7f1c29cf79f6a79d2f3c00fe`; GA loader remains present; the blocked scoped npm package name does not appear in representative rendered HTML.
+- The Architecture artifact includes the native-capture versus extension boundary, the single shipped session Wasm Component, bounded Wasmtime authority/resource limits, explicit dynamic-plugin non-capabilities, and the v1.0.24 relay-version refresh behavior.
+- The publication-branch `/architecture/` metadata reports v1.0.24 and the expected canonical.
+- Independent public retrieval immediately after publication is still cache/index stale: the homepage crawler shows the pre-publication v1.0.22 generation and the Architecture crawler shows v1.0.15. Exact main, CI, artifact, Publish, publication branch, and source marker agree on v1.0.24, so this remains a public crawler/index freshness qualification rather than a static-publication failure. Do not manufacture a rendered change solely to force refresh; investigate routing only if the mismatch persists beyond normal cache delay.
 
 ## Current analytics and search data
 
@@ -41,22 +45,19 @@
 - Restoring the external Google Apps Script exporter remains a genuine human-only blocker because this runtime can inspect Drive but cannot execute or configure that Apps Script project.
 - Cloudflare analytics is not configured for this site.
 - The independent Alibaba Cloud Linux **How to use AgentSight** documentation remains discoverable. It describes a different ANOLISA AgentSight command/deployment surface and remains an independent brand mention rather than authoritative documentation for this repository.
-- A third-party technical-blog search result now appears to mention `agentsight.us` as an online demo, but the external page could not be fetched for verification. It is a search-only discovery, not a verified backlink.
+- A third-party technical-blog search result appears to mention `agentsight.us` as an online demo, but the external page could not be fetched for verification. It is a search-only discovery, not a verified backlink.
 - Public brand results remain mixed with unrelated products using the AgentSight name, including `agentsight.io`; treat search-result composition as directional context rather than product truth.
 
 ## Content clock and portfolio
 
-- Latest completed qualifying substantive publication: the v1.0.21 Product/Architecture major evergreen refresh from PR `#59`.
-- Its exact static publication completed at `2026-08-14T17:12:35Z`.
-- At the 16 August operating cycle, waiting until the next normal daily cycle would exceed the rolling 48-hour content SLO. A qualifying publication is therefore required today after higher-priority factual repair.
-- The selected qualifying outcome is a major refresh of the existing `/architecture/` canonical, not a new URL. It explains the new native-capture versus extension boundary, the exact single-session Wasm Component, bounded Wasmtime authority and resource limits, explicit non-capabilities, and the v1.0.24 relay-version freshness behavior using exact released source.
-- The Architecture refresh counts only after exact-head CI, squash merge, and exact static publication. Release-number synchronization or a thin changelog entry alone does not reset the content clock.
+- Latest qualifying substantive publication: the v1.0.24 Architecture evergreen refresh from PR `#63`.
+- Exact static publication completed at `2026-08-16T16:46:13Z` (09:46 PDT). This resets the rolling 48-hour substantive-content clock.
+- The qualifying information gain is the source-pinned Component architecture and limitation analysis: what stays native, what is composable, what actually executes as Wasm, what authority/resource limits apply, and what general plugin/runtime capabilities are not shipped. The release-number bump alone does not qualify.
 - The existing canonical portfolio should absorb current product changes when it already owns the reader decision; do not create thin release-summary or keyword-variant URLs.
 - Next research-content candidates remain evidence-producing work such as a reproducible slow/expensive-run breakdown, a real MCP-server audit, or an Agent Flamegraph study built from public-safe first-party sessions.
 
 ## Outstanding follow-up
 
-- Complete and verify the v1.0.24 release synchronization plus Architecture evergreen refresh selected for the 16 August cycle.
-- Re-check `/architecture/` after exact publication; if a normal independent fetch remains stale while publication evidence is current, keep a truthful crawler/index qualification and investigate only if the mismatch persists beyond normal cache delay.
+- Re-check the canonical homepage and `/architecture/` after crawler/CDN freshness catches up. If normal independent retrieval remains stale beyond routine cache delay while the publication branch stays current, investigate production routing/cache as a real incident.
 - Restore valid weekly GA4 and Search Console exports through the external Apps Script exporter; see `block.md` for the human action required.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. A fresh 16 August public package search still did not establish `@eunomia-bpf/agentsight` on npm, so the website must not claim that package is installable.
