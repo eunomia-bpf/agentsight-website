@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, extension boundaries, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.22 is a repository-hygiene release: it removes a committed local environment file, adds an example environment file, and updates package versions without changing runtime or product behavior. The current user-facing fleet, session-analysis, sign-in, and Node model remains the v1.0.21 behavior summarized below. GitHub Releases remains authoritative for per-tag changes.',
+      'v1.0.24 refreshes the persisted Node version on authenticated Controller relay reconnects, so a Node that was upgraded and restarted no longer needs Direct re-pairing just to update the fleet version label. Older Nodes that omit the new version header keep their existing stored value.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Extension architecture',
+    title: 'Composable product boundaries with one bounded session Component',
+    description:
+      'v1.0.23 made ext/ the canonical cross-platform source layout for independently composable product functionality while keeping platform capture native. Only ext/session currently executes as a wasm32-wasip2 Component; dynamic extension discovery, extension-defined CLI commands, and generic remote extension routing are not shipped capabilities.',
+    href: '/architecture/',
   },
   {
     label: 'Fleet overview',
