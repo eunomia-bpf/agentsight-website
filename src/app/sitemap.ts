@@ -16,7 +16,7 @@ const contentKinds: ContentKind[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
-  const productUpdated = new Date('2026-08-14T00:00:00Z');
+  const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
     '/security/',
