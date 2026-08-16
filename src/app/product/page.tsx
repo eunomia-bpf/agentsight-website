@@ -7,7 +7,7 @@ import { productCommit, site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Product',
   description:
-    'How AgentSight v1.0.21 moves from an organization-wide machine overview to one Node and one agent session, with source-reported usage, session analysis, and Linux system capture when needed.',
+    `How AgentSight v${site.version} moves from an organization-wide machine overview to one Node and one agent session, with source-reported usage, session analysis, and Linux system capture when needed.`,
   alternates: { canonical: '/product/' },
 };
 
@@ -33,7 +33,7 @@ const productAreas = [
 ] as const;
 
 const sources = [
-  ['AgentSight v1.0.21 release', site.releaseUrl],
+  ['Current AgentSight release', site.releaseUrl],
   ['Agent usage, subscription metadata, and Analysis workspace (PR #179)', 'https://github.com/eunomia-bpf/agentsight/pull/179'],
   ['Multi-machine organization overview and browser-only aggregation (PR #180)', 'https://github.com/eunomia-bpf/agentsight/pull/180'],
   ['Google/GitHub provider-status visibility without hiding configuration errors (PR #184)', 'https://github.com/eunomia-bpf/agentsight/pull/184'],
@@ -254,7 +254,7 @@ export default function ProductPage() {
           <Eyebrow>Primary sources</Eyebrow>
           <h2>This workflow is pinned to the released v{site.version} implementation.</h2>
           <p>
-            Reviewed on 14 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.
+            Reviewed on 16 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.
             The fleet, usage, and session-analysis surfaces changed materially after v1.0.17, so use the
             exact release and source links below when a deployment or audit depends on a specific version.
           </p>
