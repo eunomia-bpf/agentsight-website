@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.24
+Current release: v1.0.25
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -30,9 +30,11 @@ Hosted app: https://app.agentsight.us/
 
 ## Product capabilities
 
-AgentSight v1.0.24 retains the signed-in All machines, session-analysis, Direct/Relay, and Controller behavior introduced through v1.0.21 while adding two implementation changes. v1.0.23 made `ext/` the canonical cross-platform boundary for independently composable product functionality; v1.0.24 makes an authenticated relay reconnect refresh the persisted Node version so fleet metadata follows the binary that is actually running.
+AgentSight v1.0.25 retains the All machines, session-analysis, Direct/Relay, Controller, and Component boundaries introduced through v1.0.24 and hardens live session messaging. Provider initialization, resume, transport-close, timeout, and immediate process-exit failures are surfaced instead of being reported as successful acceptance. Codex session resume prefers the recorded standalone CLI version when usable and preserves the existing PATH fallback.
 
-The extension boundary does not move platform capture into arbitrary plugins. Native capture remains in `agentsight-capture`, including eBPF, `/proc`, SSL, stdio, and system runners, while the host retains identity/capability enforcement, transport, and Component execution. `ext/session` is currently the only extension that exports and executes as a `wasm32-wasip2` WebAssembly Component. It parses one transcript supplied by native discovery; filesystem discovery and Cursor subagent aggregation stay native. Analysis, pprof, vis, and web are native or build-time extension boundaries in v1.0.24.
+Live messaging is serialized per session: one session runtime owns one in-flight submission, concurrent same-session requests are rejected rather than interleaved, and AgentSight does not automatically resend an ambiguously delivered message. Direct and relay preserve the same public decoded-message-size contract. Relay handling is independently bounded for concurrent Node work, response size, and request deadlines so unrelated reads and slow provider work do not require unbounded buffering.
+
+The extension boundary does not move platform capture into arbitrary plugins. Native capture remains in `agentsight-capture`, including eBPF, `/proc`, SSL, stdio, and system runners, while the host retains identity/capability enforcement, transport, and Component execution. `ext/session` is currently the only extension that exports and executes as a `wasm32-wasip2` WebAssembly Component. It parses one transcript supplied by native discovery; filesystem discovery and Cursor subagent aggregation stay native. Analysis, pprof, vis, and web are native or build-time extension boundaries in v1.0.25.
 
 The current Wasmtime host is intentionally bounded. The default Component context inherits no arguments, environment, stdio, directories, or network access, and TCP/UDP are disabled. The runtime uses bounded fuel and memory/input limits and is for trusted Components shipped with AgentSight, not an arbitrary user-uploaded Wasm execution surface. Dynamic extension discovery, extension-defined CLI commands, and opaque Controller-to-Node `/ext/*` routing are not shipped capabilities.
 
@@ -48,7 +50,7 @@ AgentSight Direct Node access lets a browser reach a Node through a local, LAN, 
 
 The open-source AgentSight Controller coordinates OAuth identity, organizations and memberships, built-in viewer/operator/admin/owner roles, organization configuration, plan and entitlement metadata, Node discovery, relay presence, optional encrypted Direct configuration, and authorization decisions. Detailed runtime data remains authoritative on Nodes; Controller does not persist snapshots, session transcripts, prompts, process data, source-reported subscription details, or relay response bodies.
 
-On relay reconnect, a v1.0.24 Node sends its running release version only after the existing relay authentication path. Controller validates the metadata and refreshes the stored Node version together with last-seen state; older Nodes that omit the header retain their existing version value.
+On relay reconnect, a v1.0.24-or-newer Node sends its running release version only after the existing relay authentication path. Controller validates the metadata and refreshes the stored Node version together with last-seen state; older Nodes that omit the header retain their existing version value.
 
 Normal protected Node Protocol operations use scoped capabilities such as `node.info`, `evidence.read`, `session.read`, and `session.message`, optionally restricted to one session. Nodes do not need to understand user membership, billing, or organization RBAC.
 
