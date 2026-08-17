@@ -24,17 +24,21 @@
 
 ## Production and public verification
 
-- Starting production source for the 17 August cycle is website `main` `223b4c39cdd4bee4641140d35eaa335d819722a7`, owner PR `#65`, which derives product sitemap freshness from `site.releaseDate` after the v1.0.24 publication.
-- `site/.source-sha` exactly identifies `223b4c39cdd4bee4641140d35eaa335d819722a7`; the publication-branch homepage and Architecture page render v1.0.24 and the expected canonicals.
-- The generated homepage contains the configured GA4 loader `G-VVRNSCMWBX`, consistent with `src/app/layout.tsx` and the path-only URL policy.
-- Independent canonical-homepage retrieval on 17 August is fresh for the v1.0.24 baseline, resolving the homepage cache qualification recorded immediately after the prior publication.
-- Independent Architecture retrieval is still an explicitly older cached crawl, while the publication branch contains the current v1.0.24 Architecture. Treat that result as crawler/index freshness, not evidence of a production-routing incident; investigate routing only if an independent live fetch remains stale beyond normal cache delay.
-- The website is therefore factually one release behind the authoritative v1.0.25 product until the current synchronization PR completes. No route or canonical migration is required.
+- Current rendered release synchronization: PR `#67`, **Sync AgentSight v1.0.25 session messaging release**.
+- PR `#67` exact final head `09e791d9a85aeed9419e4253abc29628b8bb2207` passed Website CI `32045860672`.
+- Exact-head static artifact: `9292871245`, digest `sha256:f73647276835eb38b24cfe82b5d583f528ab61595c20ed93870103ff2881a825`.
+- Exact artifact review found 39 generated `index.html` files including two error/not-found outputs, 37 normal generated index pages, and 37 unique sitemap URLs. Every normal generated index page has exactly one canonical and one H1.
+- PR `#67` was squash-merged as `0ce28b6b456c998f1ef6bdcfc5f6a3fb30be52fa`.
+- Main Website CI `32046038785` and exact `Publish static site` run `32046038910` both succeeded; publish job `95434079156` completed at `2026-08-17T16:32:45Z`.
+- `site/.source-sha` exactly identifies `0ce28b6b456c998f1ef6bdcfc5f6a3fb30be52fa`.
+- Publication-branch output identifies AgentSight v1.0.25, pins product commit `0080545f7c6b110ec2d4a4af5100b58f514c84d5`, updates Changelog and `llms.txt` with the v1.0.25 session-messaging reliability boundary, retains the GA4 loader, preserves the 37-URL sitemap inventory, and does not expose the blocked scoped npm package claim.
+- The owner PR `#65` sitemap-freshness implementation remains intact: product freshness is derived from `site.releaseDate`, not re-hard-coded by this cycle.
+- Independent canonical-homepage retrieval immediately after v1.0.25 publication still serves the previous v1.0.24 generation; independent Architecture retrieval remains an explicitly three-day-old v1.0.15 crawl and some other detail routes return cache misses. Exact main, CI, artifact, Publish, publication branch, and source marker all agree on v1.0.25, so this is currently a crawler/CDN/index freshness qualification rather than evidence of a static-publication or routing failure. Do not manufacture a rendered edit solely to force refresh; investigate routing/cache only if an independent live fetch remains stale beyond normal propagation.
 
 ## Current analytics and search data
 
 - Configured finalization lag: three days. On 17 August 2026, source-native data after 14 August is not yet fully finalized.
-- The configured Drive folder now contains three AgentSight GA4 source manifests: `2026-07-27_to_2026-08-02_ga4_source.json`, `2026-08-03_to_2026-08-09_ga4_source.json`, and newly generated `2026-08-10_to_2026-08-16_ga4_source.json`.
+- The configured Drive folder contains three AgentSight GA4 source manifests: `2026-07-27_to_2026-08-02_ga4_source.json`, `2026-08-03_to_2026-08-09_ga4_source.json`, and newly generated `2026-08-10_to_2026-08-16_ga4_source.json`.
 - The newest manifest was generated on 17 August for `agentsight.us`; its public-safe SHA-256 is `f8d31e5f2ecc4f317ec000d977a004f691c12473a8579cd144a9ac6403f44b44`.
 - None of the manifests has its required paired `*_ga4_organic_landing_pages.csv`; no matching Search Console CSV is present.
 - The fully finalized 3–9 August window therefore still has no usable GA4/GSC export. The 10–16 August manifest is additionally too recent to treat the entire weekly window as finalized today.
@@ -46,15 +50,14 @@
 
 ## Content clock and portfolio
 
-- Latest qualifying substantive publication: the v1.0.24 Architecture evergreen refresh from PR `#63`.
-- Exact static publication completed at `2026-08-16T16:46:13Z` (09:46 PDT). Waiting until the next normal daily cycle remains inside the rolling 48-hour publication window.
+- Latest qualifying substantive publication remains the v1.0.24 Architecture evergreen refresh from PR `#63`.
+- Exact qualifying static publication completed at `2026-08-16T16:46:13Z` (09:46 PDT). Waiting until the next normal daily cycle remains inside the rolling 48-hour publication window.
 - The v1.0.25 release synchronization is a factual product repair and does not qualify merely because the version changed.
 - The existing canonical portfolio should absorb current product changes when it already owns the reader decision; do not create thin release-summary or keyword-variant URLs.
 - Next research-content candidates remain evidence-producing work such as a reproducible slow/expensive-run breakdown, a real MCP-server audit, or an Agent Flamegraph study built from public-safe first-party sessions.
 
 ## Outstanding follow-up
 
-- Complete the v1.0.25 website synchronization through exact-head CI, from-scratch review, squash merge, exact static publication, public acceptance, and metadata closeout.
-- Re-check the canonical Architecture route with a fresh independent public fetch after normal crawler/CDN freshness catches up; do not alter rendered content merely to force a search cache refresh.
+- Re-check the canonical homepage and Architecture route after normal crawler/CDN freshness catches up. If independent live retrieval remains stale beyond routine propagation while the publication branch stays current, investigate production routing/cache as a real incident.
 - Restore valid weekly GA4 and Search Console exports through the external Apps Script exporter; see `block.md` for the human action required.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. The website must not claim that `@eunomia-bpf/agentsight` is installable.
