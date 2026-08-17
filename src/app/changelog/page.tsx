@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, extension boundaries, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.24 refreshes the persisted Node version on authenticated Controller relay reconnects, so a Node that was upgraded and restarted no longer needs Direct re-pairing just to update the fleet version label. Older Nodes that omit the new version header keep their existing stored value.',
+      'v1.0.25 hardens live session messaging across provider resume, Direct, and Controller relay paths. It preserves the recorded Codex CLI version when resuming when possible, reports provider start/resume/transport failures instead of false acceptance, serializes messages to the same session, and bounds relay concurrency, response sizes, and request deadlines.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Node freshness',
+    title: 'Relay reconnect refreshes the running Node version',
+    description:
+      'v1.0.24 refreshes the persisted Node version on authenticated Controller relay reconnects, so a Node that was upgraded and restarted no longer needs Direct re-pairing just to update the fleet version label. Older Nodes that omit the version header keep their existing stored value.',
+    href: 'https://github.com/eunomia-bpf/agentsight/pull/192',
   },
   {
     label: 'Extension architecture',
