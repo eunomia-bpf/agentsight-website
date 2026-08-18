@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { AgentFlamegraphGuide } from '@/components/AgentFlamegraphGuide';
 import { ContentDetail } from '@/components/ContentPages';
 import { getPage, getPages } from '@/lib/public-content';
 import { contentMetadata } from '@/lib/metadata';
@@ -21,5 +22,5 @@ export default async function GuideDetailPage({ params }: Props) {
   const { slug } = await params;
   const page = getPage('guide', slug);
   if (!page) notFound();
-  return <ContentDetail page={page} />;
+  return slug === 'agent-flamegraph' ? <AgentFlamegraphGuide page={page} /> : <ContentDetail page={page} />;
 }
