@@ -21,12 +21,16 @@
 
 ## Production and public verification
 
-- Current substantive rendered publication before the 21 August cycle: PR `#72`, **Refresh MCP server audit for the 2026 protocol**.
-- PR `#72` exact final head `5861bcc8c4538c203a4113ef9e1c2f76cfc4b490` passed Website CI `32279595222`; exact-head artifact `9375300053` has digest `sha256:e7b29a3aa06ad15ee92dd2388657fb6e8bed1736feaacd393d18f35b59650c35`.
-- PR `#72` was squash-merged as `2c353664d149079b1e5b38a67d5204ac2e724e14`. The `site` branch was published at `2026-08-19T17:07:34Z` from that exact commit and `site/.source-sha` still identifies it on 21 August.
-- Publication-branch homepage HTML still contains the expected GA4 loader and current generated site assets. No publication-source drift was found.
-- Independent canonical-homepage retrieval is now fresh for v1.0.25: the public crawler exposes the v1.0.25 announcement/current-release label and the homepage references product commit `0080545f7c6b110ec2d4a4af5100b58f514c84d5`.
-- Independent crawler retrieval of `/mcp-server-audit/` and `/guides/agent-flamegraph/` still could not be established on 21 August. Treat those detail-route misses as crawler/index freshness while the exact publication branch remains consistent; do not manufacture rendered changes solely to force refresh.
+- Current substantive rendered publication: PR `#75`, **Explain what the AgentSight overhead benchmark actually measures**.
+- PR `#75` exact final head `ba5deb4cad3f9d4d0f810f86fcca60bffaac304d` passed Website CI `32503864620`, including the scope guard, `npm ci`, `npm run verify`, and static artifact upload.
+- Exact-head static artifact: `9454530484`, digest `sha256:935e5136b5c3abded8610b197947b5aa4b690b0e9a8dab142d7c636255e0a8d9`.
+- Exact artifact review found 38 normal generated index pages and 38 unique sitemap URLs. Every normal generated page has exactly one canonical and one H1.
+- The new `/blog/how-much-overhead-does-agentsight-add/` artifact has one H1/canonical, 14 H2 sections, about 1,220 visible whitespace-separated words, primary links to the paper and all three raw first-party benchmark records, and a horizontally bounded data table.
+- The article distinguishes end-to-end runtime/wall-clock overhead from CPU-utilization overhead, exposes the raw n=3 variability behind the paper's 2.9% average, and treats the 2025 benchmark as historical evidence rather than a universal v1.0.25 guarantee.
+- PR `#75` was squash-merged as `15e5cd2cfb9b7db5973ed5e2c9b5fd2dd6fac839`.
+- The generated `site` branch was published at `2026-08-21T16:39:40Z` by commit `2b1c01c37e5dc1fc75872018f08d366ae1004f1c` with message `Publish 15e5cd2cfb9b7db5973ed5e2c9b5fd2dd6fac839`; `site/.source-sha` identifies the same exact rendered squash commit.
+- Publication-branch HTML for the new canonical contains its intended title, description, canonical URL, article metadata, and the existing GA4 loader.
+- Independent canonical-homepage retrieval remains fresh for v1.0.25 and serves as the unaffected control. Immediate independent crawler retrieval/index visibility for the new Blog route and fresh Blog hub was not established after publication; this is recorded as crawler/index freshness because the exact publication branch and source marker are correct. Do not manufacture rendered changes solely to force refresh.
 
 ## Current analytics and search data
 
@@ -43,15 +47,14 @@
 
 ## Content clock and portfolio
 
-- The MCP server audit publication completed at `2026-08-19T17:07:34Z` (10:07 PDT), so the 21 August 09:27 PDT cycle begins about 47 hours 20 minutes after the last qualifying publication.
-- Waiting until the next normal daily cycle would exceed the rolling 48-hour substantive-content target. With no higher-priority site-owned technical defect or product drift, the 21 August cycle therefore requires one qualifying publication.
-- The selected publication is a new performance-methods Blog article answering a distinct reader question: what the paper's 2.9% AgentSight overhead result actually measured, how much the raw three-run results varied, and how a current deployment should re-benchmark its own workload.
-- The article is grounded in the paper's exact evaluation plus the three raw first-party experiment records retained at product commit `0080545f7c6b110ec2d4a4af5100b58f514c84d5`. It explicitly treats the result as historical end-to-end runtime evidence, not a universal current-release or CPU-overhead guarantee.
-- Existing `/use-cases/profile-slow-expensive-agent-runs/` continues to own diagnosis of why an agent run itself is slow or expensive; the new Blog owns profiler/instrumentation measurement methodology, so the two reader decisions are not keyword variants.
+- Latest qualifying publication: `/blog/how-much-overhead-does-agentsight-add/`.
+- Exact static publication completed at `2026-08-21T16:39:40Z` (09:39 PDT), before the rolling 48-hour deadline from the 19 August MCP publication. This resets the substantive-content clock.
+- The article owns a distinct reader decision: interpret the paper's AgentSight instrumentation-overhead result and design a current workload benchmark. `/use-cases/profile-slow-expensive-agent-runs/` continues to own diagnosis of an agent workload's own latency, while `/guides/agent-flamegraph/` owns offline aggregate profiling.
+- The article is grounded in the paper's exact evaluation plus the three raw first-party experiment records retained at product commit `0080545f7c6b110ec2d4a4af5100b58f514c84d5`. The published task-level overheads are 3.4%, 4.9%, and 0.4%, averaging about 2.9%; the raw records show substantial run-to-run variance for model-heavy tasks.
 - Future content should continue to prefer public-safe first-party measurements or artifacts over generic summaries. A current-version workload replay with larger sample sizes would be a stronger follow-up than another broad observability overview.
 
 ## Outstanding follow-up
 
-- Re-check `/mcp-server-audit/`, `/guides/agent-flamegraph/`, and the new performance-methods Blog after normal crawler/CDN freshness catches up. Investigate production routing/cache only if fresh independent live retrieval remains inconsistent while the publication branch stays current.
+- Re-check `/blog/how-much-overhead-does-agentsight-add/`, `/blog/`, `/mcp-server-audit/`, and `/guides/agent-flamegraph/` after normal crawler/CDN freshness catches up. Investigate production routing/cache only if fresh independent live retrieval remains inconsistent while the publication branch stays current.
 - Restore valid weekly GA4 and Search Console exports through the external Apps Script exporter; see `block.md` for the human action required. The evidence remains strong because two consecutive fully finalized weekly windows are manifest-only.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. The website must not claim that `@eunomia-bpf/agentsight` is installable.
