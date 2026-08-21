@@ -16,6 +16,7 @@ const contentKinds: ContentKind[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
+  const overheadUpdated = new Date('2026-08-21T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -63,6 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/integrations/cursor/`,
       lastModified: cursorUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/how-much-overhead-does-agentsight-add/`,
+      lastModified: overheadUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
