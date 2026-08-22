@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, recorded-demo coverage, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.25 hardens live session messaging across provider resume, Direct, and Controller relay paths. It preserves the recorded Codex CLI version when resuming when possible, reports provider start/resume/transport failures instead of false acceptance, serializes messages to the same session, and bounds relay concurrency, response sizes, and request deadlines.',
+      'v1.0.26 fixes the recorded demo so it loads a recorded LiveOverview alongside the session snapshot. The demo now exercises the normal Overview, Conversation, Process Tree & AI Prompts, and Analysis paths with coherent Codex and Claude sample data for processes, resources, tool calls, network activity, failures, plans, and source-reported subscriptions.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Messaging reliability',
+    title: 'Live session messaging fails visibly and stays serialized',
+    description:
+      'v1.0.25 hardened live provider messaging across provider resume, Direct, and Controller relay paths. It preserves the recorded Codex CLI version when resuming when possible, reports provider start/resume/transport failures instead of false acceptance, serializes messages to the same session, and bounds relay concurrency, response sizes, and request deadlines.',
+    href: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.25',
   },
   {
     label: 'Node freshness',
