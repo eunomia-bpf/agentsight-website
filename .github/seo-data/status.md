@@ -21,12 +21,15 @@
 
 ## Production and public verification
 
-- At the start of the 22 August cycle, the rendered site still identified v1.0.25 and product commit `0080545f7c6b110ec2d4a4af5100b58f514c84d5`, while authoritative product `master` and the `v1.0.26` tag identify `92d634ec02d116a52acae62eb3b9b00c771e0b9d`. This is material product-source drift and is the current repair target.
-- Before the repair, `site/.source-sha` identifies `15e5cd2cfb9b7db5973ed5e2c9b5fd2dd6fac839`, the exact rendered commit for the 21 August overhead-methods publication.
-- Independent canonical-homepage retrieval on 22 August is fresh for the pre-repair v1.0.25 generation, confirming the stale release identity is publicly visible rather than only a repository bookkeeping mismatch.
-- Current substantive rendered publication remains PR `#75`, **Explain what the AgentSight overhead benchmark actually measures**, until the v1.0.26 factual synchronization completes its own exact CI/publication lifecycle.
-- PR `#75` exact static publication completed at `2026-08-21T16:39:40Z`; its artifact retained 38 normal generated pages and 38 sitemap URLs with one canonical and one H1 per normal page.
-- Immediate independent crawler retrieval for the new overhead Blog detail route was not established after its publication while the homepage stayed fresh. Continue to treat that as crawler/index freshness unless a reproducible production-routing failure appears.
+- The v1.0.26 website synchronization is delivered through rendered PR `#77`, **Synchronize AgentSight website to v1.0.26**.
+- PR `#77` exact final head `d3a9fac9d03a97170e499df4cb50f0500b44d991` passed Website CI `32585928154`, including the autonomous SEO scope guard, `npm ci`, `npm run verify`, and static artifact upload.
+- Exact static artifact `9479038054` has digest `sha256:dfa97b7dba29554e33190b197971db8c6d8bc27396fe599a47bf659d8a63893c`.
+- Exact artifact review found 38 normal generated index pages and 38 sitemap URLs. Every normal page has exactly one canonical and one H1. Homepage output contains v1.0.26 and product pin `92d634ec02d116a52acae62eb3b9b00c771e0b9d`; Changelog and `llms.txt` describe the recorded-demo fix while preserving v1.0.25 messaging history; GA4 remains present; version-pinned research pages were not mechanically rewritten.
+- PR `#77` was squash-merged as `a1b21100ff12fe418a4777912583c3f6b8750da3` at `2026-08-22T16:52:41Z`.
+- Exact static publication created `site` commit `20ffbe85967fc883540191abb29c4c961a19ae90` at `2026-08-22T16:53:20Z` with message `Publish a1b21100ff12fe418a4777912583c3f6b8750da3`.
+- `site/.source-sha` exactly identifies `a1b21100ff12fe418a4777912583c3f6b8750da3`, proving the publication branch is generated from the rendered squash commit.
+- Independent canonical-homepage crawler retrieval immediately after exact publication still returned the previous v1.0.25 generation. Because exact-head CI, generated artifact, `site` publication, and source marker all agree on v1.0.26, this is currently a crawler/CDN freshness qualification rather than evidence of a rendered-site regression. Do not make a cache-forcing content change solely for this mismatch.
+- The latest qualifying substantive rendered publication remains PR `#75`, **Explain what the AgentSight overhead benchmark actually measures**, published at `2026-08-21T16:39:40Z`. The v1.0.26 factual synchronization does not reset the substantive-content clock.
 
 ## Current analytics and search data
 
@@ -45,14 +48,14 @@
 
 - Latest qualifying publication: `/blog/how-much-overhead-does-agentsight-add/`.
 - Exact static publication completed at `2026-08-21T16:39:40Z` (09:39 PDT), resetting the substantive-content clock.
-- Waiting until the next normal daily cycle remains inside the rolling 48-hour content SLO, so the 22 August cycle does not need to manufacture an additional article after the higher-priority v1.0.26 factual repair.
+- Waiting until the next normal daily cycle remains inside the rolling 48-hour content SLO, so the 22 August cycle did not manufacture an additional article after the higher-priority v1.0.26 factual repair.
 - The v1.0.26 release synchronization is a factual/product-source repair and does not itself reset the substantive-content clock.
 - The overhead article owns a distinct reader decision: interpret the paper's AgentSight instrumentation-overhead result and design a current workload benchmark. `/use-cases/profile-slow-expensive-agent-runs/` continues to own diagnosis of an agent workload's own latency, while `/guides/agent-flamegraph/` owns offline aggregate profiling.
 - Future content should continue to prefer public-safe first-party measurements or artifacts over generic summaries. A current-version workload replay with larger sample sizes would be a stronger follow-up than another broad overhead summary.
 
 ## Outstanding follow-up
 
-- Complete the v1.0.26 website synchronization through exact-head CI, squash merge, exact static publication, and public homepage verification; record the final identities in the 22 August daily closeout.
-- Re-check `/blog/how-much-overhead-does-agentsight-add/`, `/blog/`, and other recently refreshed detail routes after normal crawler/CDN freshness catches up. Investigate production routing/cache only if fresh independent live retrieval remains inconsistent while the publication branch stays current.
+- Re-check the canonical homepage and `/changelog/` after normal crawler/CDN freshness catches up. Investigate production routing/cache only if independent live retrieval remains stale while the publication branch continues to identify v1.0.26.
+- Re-check `/blog/how-much-overhead-does-agentsight-add/`, `/blog/`, and other recently refreshed detail routes after normal crawler/index freshness catches up.
 - Restore valid weekly GA4 and Search Console exports through the external Apps Script exporter; see `block.md` for the human action required. Two consecutive fully finalized weekly windows remain manifest-only.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. The website must not claim that `@eunomia-bpf/agentsight` is installable.
