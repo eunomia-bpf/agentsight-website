@@ -1,2 +1,2 @@
 :HL["/_next/static/chunks/3qsftj3dl-hsh.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"integrations","param":null,"prefetchHints":0,"slots":{"children":{"name":"cursor","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"agentsight-8b8826f3d187c974a7f1f5e2"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"integrations","param":null,"prefetchHints":0,"slots":{"children":{"name":"cursor","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"agentsight-994223be025aeac4a434e260"}
