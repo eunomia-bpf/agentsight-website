@@ -23,10 +23,17 @@
 ## Production and public verification
 
 - The v1.0.26 website synchronization remains delivered through rendered PR `#77`, squash commit `a1b21100ff12fe418a4777912583c3f6b8750da3`.
-- `site/.source-sha` still identifies `a1b21100ff12fe418a4777912583c3f6b8750da3`, matching the rendered v1.0.26 publication.
-- Independent canonical-homepage retrieval on 23 August now exposes the current v1.0.26 generation. The immediate post-publication homepage freshness mismatch recorded on 22 August is no longer reproduced on the direct canonical fetch.
+- Independent canonical-homepage retrieval on 23 August exposes the current v1.0.26 generation. The immediate post-publication homepage freshness mismatch recorded on 22 August is no longer reproduced on the direct canonical fetch.
+- The 23 August substantive publication is PR `#79`, **Explain repository replay with Agent Nebula**.
+- PR `#79` exact final head `aca96a70a3e56ff20b66c53b993b06149b14b911` passed Website CI `32652121829`, including the autonomous SEO scope guard, `npm ci`, `npm run verify`, static export, and artifact upload.
+- Exact static artifact `9496473475` has digest `sha256:70f2bbadb4e802b7e053e8e26d29f25be0a2e68cda5c8ea66e986da0ca21a3d9`.
+- Exact artifact review found 39 normal generated pages and 39 unique sitemap URLs, up by one from the previous 38/38 baseline. Every normal page has exactly one canonical and one H1, and `/blog/replay-coding-agent-repository-changes/` appears once in the sitemap.
+- PR `#79` was squash-merged as `936bc397c658ed3cabd953c161ae4eee34f09bfa` at `2026-08-23T16:36:54Z`.
+- The normal `Publish static site` workflow rebuilt and verified that exact `main` commit before publication. Publication branch commit `1884b21fc7ebce76ab0473b1d961aff91ec63e89` was created at `2026-08-23T16:37:33Z` with message `Publish 936bc397c658ed3cabd953c161ae4eee34f09bfa`.
+- `site/.source-sha` exactly identifies `936bc397c658ed3cabd953c161ae4eee34f09bfa`, proving the publication branch is generated from the rendered squash commit.
+- Published HTML for the new route contains the intended title, description, canonical, article OpenGraph metadata, GA4 loader, exact v1.0.26 product source references, and the pinned ACTplane Agent Nebula image.
+- Immediate independent search did not yet surface the new Blog URL and the Blog-hub crawler returned a cache miss during the acceptance window. Because the exact publication branch already contains the route and source marker, this is crawler/index freshness, not evidence of a 404 or failed static publication.
 - Public search can still expose older cached AgentSight snippets alongside current GitHub/product results. Treat those search-index copies as index freshness unless direct canonical retrieval or exact publication evidence regresses.
-- The 23 August content cycle selects one new research Blog canonical, `/blog/replay-coding-agent-repository-changes/`, because waiting until the next normal cycle would breach the rolling 48-hour substantive-content target. Exact PR/CI/squash/publication evidence is recorded after delivery rather than guessed in advance.
 
 ## Current analytics and search data
 
@@ -38,23 +45,23 @@
 - Directional GSC homepage snapshot: 2 clicks / 134 impressions / 1.49% CTR / 7.16 average position on 3–9 August versus 5 clicks / 131 impressions / 3.82% CTR / 9.35 average position on 10–16 August. Impressions are essentially flat while clicks/CTR rise in the exported snapshot, but the position and finalization qualifications prevent a causal conclusion.
 - Directional GSC brand query `agentsight`: 1 click / 53 impressions / 1.89% CTR / 6.68 position versus 2 clicks / 49 impressions / 4.08% CTR / 5.65 position across the same two snapshots.
 - The later page/query snapshots begin to expose low-volume discovery for eBPF monitoring, Agent Flamegraph, Cursor, Langfuse observability, MCP security-audit, OpenTelemetry comparison, and agent-graph wording. These are single-digit or low-teen impression signals and do not support broad keyword rewrites.
-- The external Apps Script exporter therefore remains a human-only blocker for **post-finalization refresh timing**, not for missing CSV generation. See `block.md`.
+- The external Apps Script exporter remains a human-only blocker for **post-finalization refresh timing**, not for missing CSV generation. See `block.md`.
 - Cloudflare analytics is not configured for this site.
 - No new independently verified external link to `agentsight.us` was established in the 23 August bounded scan. Search-only discoveries are not treated as backlinks.
 - A fresh public registry-oriented check still did not establish that `@eunomia-bpf/agentsight@1.0.0` has been published. The website must continue to avoid claiming the scoped npm package as an available install path.
 
 ## Content clock and portfolio
 
-- Before the 23 August publication, the latest qualifying substantive output is `/blog/how-much-overhead-does-agentsight-add/`, exactly published at `2026-08-21T16:39:40Z` (09:39 PDT).
-- The 23 August cycle occurs close enough to the 48-hour boundary that waiting for the next normal daily cycle would breach the content SLO, so a qualifying publication is required today after product and analytics triage.
-- Selected publication: `/blog/replay-coding-agent-repository-changes/`, a methods-first Agent Nebula article grounded in the exact v1.0.26 product source and committed ACTplane artifact.
-- The article owns a distinct reader decision: reconstruct the ordered repository trajectory of an already-completed coding-agent run from native local session history, and understand what that replay can and cannot prove.
+- Latest qualifying substantive publication: `/blog/replay-coding-agent-repository-changes/`.
+- Exact static publication completed at `2026-08-23T16:37:33Z` (09:37 PDT), resetting the rolling 48-hour substantive-content clock.
+- The article is a methods-first Agent Nebula reference grounded in AgentSight v1.0.26 commit `92d634ec02d116a52acae62eb3b9b00c771e0b9d` and the committed ACTplane replay artifact.
+- Its reader decision is distinct: reconstruct the ordered repository trajectory of an already-completed coding-agent run from native local session history, and understand what that replay can and cannot prove.
 - `/ai-agent-file-access-monitoring/` continues to own system-observed file-operation attribution; `/use-cases/review-ai-generated-prs/` owns the code-review decision; `/guides/agent-flamegraph/` owns aggregate profile analysis. The new Blog does not replace those canonicals or product installation documentation.
-- Future content should continue to prefer public-safe first-party measurements, artifacts, and implementation-specific method analysis over generic summaries.
+- Future content should continue to prefer public-safe first-party measurements, artifacts, and implementation-specific method analysis over generic summaries. Do not immediately create another Agent Nebula URL unless a distinct reader problem and new source material justify it.
 
 ## Outstanding follow-up
 
-- Complete the Agent Nebula repository-replay Blog through exact-head CI, from-scratch final review, squash merge, exact static publication, public acceptance, and metadata closeout.
 - Adjust or rerun the external Google Apps Script exporter after the configured three-day finalization cutoff; see `block.md` for the human action required.
-- Re-check recently refreshed Blog/detail routes as normal crawler/index freshness catches up; do not make cache-forcing content changes without an independently reproduced production defect.
+- Re-check `/blog/replay-coding-agent-repository-changes/` and `/blog/` as normal crawler/index freshness catches up; do not make cache-forcing content changes without an independently reproduced production defect.
+- Re-evaluate the directional GA4/GSC movement only after one post-finalization weekly export is available; do not promote the current next-morning snapshots to finalized KPIs.
 - The npm scoped-package first-publication blocker remains active until registry availability is independently verified. The website must not claim that `@eunomia-bpf/agentsight` is installable.
