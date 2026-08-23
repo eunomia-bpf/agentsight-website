@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const repositoryReplayArticle = {
+  title: 'What repository replay can tell you about a coding agent',
+  description:
+    'See how Agent Nebula reconstructs ordered repository evolution from local agent sessions, and where replay stops short of explaining intent or low-level system effects.',
+  href: '/blog/replay-coding-agent-repository-changes/',
+};
 const overheadArticle = {
   title: 'How much overhead does AgentSight add?',
   description:
@@ -30,6 +36,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: repositoryReplayArticle.title, url: `${site.url}${repositoryReplayArticle.href}` },
       { '@type': 'WebPage', name: overheadArticle.title, url: `${site.url}${overheadArticle.href}` },
     ],
   };
@@ -46,6 +53,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Agent replay methods · August 2026</p>
+            <h2><Link href={repositoryReplayArticle.href}>{repositoryReplayArticle.title}</Link></h2>
+            <p>{repositoryReplayArticle.description}</p>
+            <Link className="arrow-link" href={repositoryReplayArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Performance methods · August 2026</p>
             <h2><Link href={overheadArticle.href}>{overheadArticle.title}</Link></h2>
