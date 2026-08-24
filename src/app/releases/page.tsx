@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'AgentSight releases',
   description:
-    'Install AgentSight from crates.io or GitHub Releases, verify the selected version, and follow authoritative release artifacts.',
+    'Install the current AgentSight release from crates.io or GitHub Releases, and check the official Homebrew tap status for Linux x86-64.',
   alternates: { canonical: '/releases/' },
 };
 
@@ -18,8 +18,9 @@ export default function ReleasesPage() {
           <Eyebrow>Releases</Eyebrow>
           <h1>Install the released profiler, then verify the exact version.</h1>
           <p className="hero-lede">
-            Cargo and GitHub Releases are the supported distribution paths described by the product
-            repository. Use the tag and artifact you tested in any repeatable audit workflow.
+            Cargo and GitHub Releases are the current-release distribution paths. An official Homebrew
+            tap also exists for Linux x86-64, but verify its formula version before using it in a
+            repeatable deployment.
           </p>
         </div>
       </section>
@@ -33,6 +34,13 @@ export default function ReleasesPage() {
               unsuffixed compatibility asset remains x86_64; choose the architecture-specific artifact
               when you need an explicitly pinned deployment. The website does not mirror binaries, so
               GitHub Releases remains the authoritative download location.
+            </p>
+            <p>
+              The official Homebrew tap is available on Linux x86-64, but its formula can lag the
+              current AgentSight release. If you use it, run <code>brew tap eunomia-bpf/tap</code> and
+              <code> brew install eunomia-bpf/tap/agentsight</code>, then verify the installed version
+              with <code>agentsight --version</code>. Use Cargo or the current GitHub release when you
+              need the latest published AgentSight version.
             </p>
             <div className="hero-actions">
               <a className="button button-accent" href={`${site.repository}/releases/latest`}>Latest GitHub release</a>
