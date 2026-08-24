@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, recorded-demo coverage, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, distributed Node access, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, audit provenance, Docker-backed sessions, recorded-demo coverage, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,22 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.26 fixes the recorded demo so it loads a recorded LiveOverview alongside the session snapshot. The demo now exercises the normal Overview, Conversation, Process Tree & AI Prompts, and Analysis paths with coherent Codex and Claude sample data for processes, resources, tool calls, network activity, failures, plans, and source-reported subscriptions.',
+      'v1.0.28 preserves row-level provenance for audit and LLM records across live capture, SQLite reconstruction, agent-native session parsing, and legacy data. The additive view_source and confidence fields keep lineage and correlation quality visible instead of replacing them with a generic persisted value; confidence remains source-specific rather than a global probability score.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Container sessions',
+    title: 'Bind can include agent-native sessions from named Docker containers',
+    description:
+      'v1.0.27 adds repeatable agentsight bind --docker-container NAME support. The host runs AgentSight’s existing discovery and provider messaging inside the named container through a bounded JSONL bridge, keeps provider credentials and state in the container, merges those sessions into the normal snapshot/detail/message APIs, and fails closed on ambiguous or unavailable peers. Cursor is observable through the bridge but remains message-read-only.',
+    href: 'https://github.com/eunomia-bpf/agentsight/pull/195',
+  },
+  {
+    label: 'Recorded demo',
+    title: 'Recorded Overview and session detail use one coherent fixture',
+    description:
+      'v1.0.26 fixes the recorded demo so it loads a recorded LiveOverview alongside the session snapshot. The demo exercises the normal Overview, Conversation, Process Tree & AI Prompts, and Analysis paths with coherent Codex and Claude sample data for processes, resources, tool calls, network activity, failures, plans, and source-reported subscriptions.',
+    href: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.26',
   },
   {
     label: 'Messaging reliability',
