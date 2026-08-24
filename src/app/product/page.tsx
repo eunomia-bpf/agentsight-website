@@ -7,7 +7,7 @@ import { productCommit, site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Product',
   description:
-    `How AgentSight v${site.version} moves from an organization-wide machine overview to one Node and one agent session, with source-reported usage, session analysis, and Linux system capture when needed.`,
+    `How AgentSight v${site.version} moves from an organization-wide machine overview to one Node and one agent session, with source-reported usage, provenance-aware audit data, container-backed sessions, and Linux system capture when needed.`,
   alternates: { canonical: '/product/' },
 };
 
@@ -34,6 +34,9 @@ const productAreas = [
 
 const sources = [
   ['Current AgentSight release', site.releaseUrl],
+  ['Audit-event provenance and persisted confidence (PR #204)', 'https://github.com/eunomia-bpf/agentsight/pull/204'],
+  ['Docker-backed native session discovery and messaging (PR #195)', 'https://github.com/eunomia-bpf/agentsight/pull/195'],
+  ['Snapshot schema and provenance fields', `${source}/docs/snapshot-schema.md`],
   ['Agent usage, subscription metadata, and Analysis workspace (PR #179)', 'https://github.com/eunomia-bpf/agentsight/pull/179'],
   ['Multi-machine organization overview and browser-only aggregation (PR #180)', 'https://github.com/eunomia-bpf/agentsight/pull/180'],
   ['Google/GitHub provider-status visibility without hiding configuration errors (PR #184)', 'https://github.com/eunomia-bpf/agentsight/pull/184'],
@@ -54,7 +57,8 @@ export default function ProductPage() {
             AgentSight v{site.version} gives signed-in users an All machines organization view, while a
             Direct or local Node keeps its own machine overview. Select a Node and then a session to open
             Conversation, Process Tree &amp; AI Prompts, or Analysis. Portable agent-native history works on
-            Windows, macOS, and Linux; Linux can add eBPF-backed system capture.
+            Windows, macOS, and Linux; named Docker containers can contribute their native sessions through
+            the same Node API; Linux can add eBPF-backed system capture.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
@@ -170,6 +174,58 @@ export default function ProductPage() {
       <section className="section">
         <div className="shell split-section">
           <div>
+            <Eyebrow>Docker-backed native sessions</Eyebrow>
+            <h2>A host Node can include named containers without copying provider credentials to the host.</h2>
+            <p>
+              v1.0.27 added repeatable <code>agentsight bind --docker-container NAME</code> sources. The host
+              invokes a bounded AgentSight JSONL bridge inside each named container and reuses the same native
+              session discovery, exact-session lookup, and provider messaging paths used by a local Node. Claude
+              Code, Codex, Gemini CLI, and Cursor sessions can be discovered this way; resumable messaging is
+              currently available for Claude Code, Codex, and Gemini CLI, while Cursor remains observation-only.
+            </p>
+            <p>
+              Session identifiers are not guessed across sources: local/container or cross-container collisions
+              return a conflict, and an unavailable peer makes exact routing fail closed. A saved <code>--db</code>
+              capture cannot be combined with Docker session sources because saved captures are read-only.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <p className="card-label">Docker trust boundary</p>
+            <p><strong>Credentials</strong></p><p>Provider credentials and native session state remain inside the container.</p>
+            <p><strong>Authorization</strong></p><p>Docker socket access is still daemon-wide authority; naming a container constrains AgentSight behavior, not Docker itself.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-white">
+        <div className="shell split-section">
+          <div>
+            <Eyebrow>Audit provenance</Eyebrow>
+            <h2>Persisted rows keep where they came from and how their correlation was derived.</h2>
+            <p>
+              v1.0.28 preserves <code>view_source</code> and <code>confidence</code> on audit and LLM rows across
+              capture, SQLite persistence, reconstruction, and agent-native session parsing. A directly captured
+              row can therefore remain distinguishable from one reconstructed from normalized SQLite data or parsed
+              from a native agent transcript instead of being rewritten to a generic persisted source.
+            </p>
+            <p>
+              Confidence is row- and source-specific. For example, an exact captured request/response correlation
+              and a heuristic reconstruction can carry different values, but those numbers are not a shared global
+              probability scale and should not be compared as though they were calibrated across sources.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <p className="card-label">Lineage values</p>
+            <p><strong>view</strong></p><p>Emitted directly from captured events.</p>
+            <p><strong>sqlite / agent_native_session</strong></p><p>Reconstructed from normalized storage or parsed from native session files.</p>
+            <p><strong>unknown</strong></p><p>Legacy or otherwise unclassified provenance.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell split-section">
+          <div>
             <Eyebrow>Live Node versus saved capture</Eyebrow>
             <h2>A saved database is useful history, but it is not a live machine.</h2>
             <p>
@@ -254,8 +310,8 @@ export default function ProductPage() {
           <Eyebrow>Primary sources</Eyebrow>
           <h2>This workflow is pinned to the released v{site.version} implementation.</h2>
           <p>
-            Reviewed on 16 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.
-            The fleet, usage, and session-analysis surfaces changed materially after v1.0.17, so use the
+            Reviewed on 24 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.
+            Container-backed session routing and row-level audit provenance changed after v1.0.26, so use the
             exact release and source links below when a deployment or audit depends on a specific version.
           </p>
           <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>

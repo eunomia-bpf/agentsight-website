@@ -6,7 +6,7 @@ import { productCommit, site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Architecture',
   description:
-    'How AgentSight v1.0.24 separates native capture, bounded WebAssembly Components, Node-local runtime data, Direct access, Controller coordination, and browser-side fleet aggregation.',
+    `How AgentSight v${site.version} separates native capture, bounded WebAssembly Components, Node-local runtime data, Docker-backed session sources, Direct access, Controller coordination, and browser-side fleet aggregation.`,
   alternates: { canonical: '/architecture/' },
 };
 
@@ -21,7 +21,7 @@ const planes = [
 const extensionBoundaries = [
   ['Native capture substrate', 'agentsight-capture keeps platform capture such as eBPF, /proc, SSL, stdio, and system runners. Identity/capability enforcement and transport also remain native host responsibilities.'],
   ['Composable product extensions', 'The canonical ext/ tree now owns session parsing, analysis, semantic pprof, repository visualization, and web presentation boundaries without copying their algorithms into a new abstraction.'],
-  ['One shipped Wasm Component today', 'Only ext/session currently exports and executes a wasm32-wasip2 Component. Analysis, pprof, vis, and web are native or build-time boundaries in v1.0.24.'],
+  ['One shipped Wasm Component today', 'Only ext/session currently exports and executes a wasm32-wasip2 Component. Analysis, pprof, vis, and web remain native or build-time boundaries in the current release.'],
 ] as const;
 
 const modes = [
@@ -58,6 +58,8 @@ const sources = [
   [`AgentSight v${site.version} Node capability implementation`, `${productSource}/collector/src/server/capability.rs`],
   [`AgentSight v${site.version} Direct connection implementation`, `${productSource}/frontend/src/lib/connection.ts`],
   [`AgentSight v${site.version} fleet aggregation implementation`, `${productSource}/frontend/src/lib/fleetData.ts`],
+  [`AgentSight v${site.version} Docker session bridge implementation`, `${productSource}/collector/src/server/container_bridge.rs`],
+  ['Docker-backed native session discovery and messaging (PR #195)', 'https://github.com/eunomia-bpf/agentsight/pull/195'],
   ['Component boundary and session Wasm runtime (PR #187)', 'https://github.com/eunomia-bpf/agentsight/pull/187'],
   ['Relay reconnect refreshes the running Node version (PR #192)', 'https://github.com/eunomia-bpf/agentsight/pull/192'],
   ['Multi-machine organization overview and browser-memory data boundary (PR #180)', 'https://github.com/eunomia-bpf/agentsight/pull/180'],
@@ -76,7 +78,8 @@ export default function ArchitecturePage() {
             AgentSight separates the machine-level capture substrate from independently composable product
             features, while keeping detailed runtime data authoritative on Nodes. The current Component Model
             boundary is deliberately narrow: one session parser runs as bounded Wasm today; Direct and Controller
-            remain transports and coordination paths to the same Node protocol.
+            remain transports and coordination paths to the same Node protocol, and named Docker containers can
+            contribute native sessions through a bounded Node-local bridge.
           </p>
           <div className="hero-actions">
             <a className="button button-accent" href={site.demo}>Open AgentSight</a>
@@ -219,6 +222,33 @@ export default function ArchitecturePage() {
       </section>
 
       <section className="section">
+        <div className="shell split-section">
+          <div>
+            <Eyebrow>Docker session sources</Eyebrow>
+            <h2>A Node can bridge native agent sessions from named containers without moving provider credentials to the host.</h2>
+            <p>
+              v1.0.27 added repeatable <code>agentsight bind --docker-container NAME</code> sources. The host Node
+              starts AgentSight’s hidden JSONL bridge through <code>docker exec</code> inside each named container and
+              reuses the same native discovery, exact-session lookup, and provider messaging paths as local sessions.
+              Provider credentials and provider-native state remain inside the container rather than being serialized
+              across the bridge.
+            </p>
+            <p>
+              Exact routing is fail-closed: local/container and cross-container session-ID collisions return conflict,
+              and if a peer container cannot be checked AgentSight does not guess a destination. The bridge bounds frames,
+              operations, locks, and Docker commands. A saved <code>--db</code> source cannot be combined with Docker
+              sessions because saved captures are read-only.
+            </p>
+          </div>
+          <div className="detail-aside static-aside">
+            <p className="card-label">Trust boundary</p>
+            <p><strong>AgentSight scope</strong></p><p>The named-container option constrains which container sources AgentSight uses.</p>
+            <p><strong>Docker authority</strong></p><p>Docker socket access is normally daemon-wide and host-root equivalent; the option does not narrow Docker authorization itself.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="shell">
           <div className="section-heading">
             <div><Eyebrow>Controller data boundary</Eyebrow><h2>Controller coordinates access; it does not persist detailed Node payloads.</h2></div>
@@ -343,7 +373,7 @@ export default function ArchitecturePage() {
         <div className="shell narrow source-section">
           <Eyebrow>Primary sources</Eyebrow>
           <h2>Architecture claims are pinned to the released implementation.</h2>
-          <p>Reviewed on 16 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
+          <p>Reviewed on 24 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
           <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
         </div>
       </section>
