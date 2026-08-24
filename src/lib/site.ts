@@ -1,4 +1,4 @@
-export const productCommit = '92d634ec02d116a52acae62eb3b9b00c771e0b9d';
+export const productCommit = 'c41457cb28be68a72c6f5af8f8bf3e59a2d87bc2';
 
 export const site = {
   name: 'AgentSight',
@@ -9,9 +9,9 @@ export const site = {
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
   docs: 'https://eunomia.dev/agentsight/',
   demo: 'https://app.agentsight.us/',
-  version: '1.0.26',
-  releaseDate: '2026-08-22',
-  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.26',
+  version: '1.0.28',
+  releaseDate: '2026-08-24',
+  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.28',
   productCommit,
   assetBase: `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}`,
 } as const;
