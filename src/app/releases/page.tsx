@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'AgentSight releases',
   description:
-    'Install AgentSight from crates.io or GitHub Releases, verify the selected version, and follow authoritative release artifacts.',
+    'Install AgentSight through the official Homebrew tap, crates.io, or GitHub Releases, then verify the selected version.',
   alternates: { canonical: '/releases/' },
 };
 
@@ -18,8 +18,8 @@ export default function ReleasesPage() {
           <Eyebrow>Releases</Eyebrow>
           <h1>Install the released profiler, then verify the exact version.</h1>
           <p className="hero-lede">
-            Cargo and GitHub Releases are the supported distribution paths described by the product
-            repository. Use the tag and artifact you tested in any repeatable audit workflow.
+            Homebrew on Linux x86-64, Cargo, and GitHub Releases are supported distribution paths.
+            Use the installation method and release artifact you tested in any repeatable audit workflow.
           </p>
         </div>
       </section>
@@ -29,7 +29,9 @@ export default function ReleasesPage() {
             <Eyebrow>Install</Eyebrow>
             <h2>Start from the current release artifacts.</h2>
             <p>
-              Current GitHub Releases publish Linux binaries for both x86_64 and aarch64. The
+              On Linux x86-64, install through the official Homebrew tap. Cargo remains available
+              through crates.io. Current GitHub Releases publish Linux binaries for both x86_64 and
+              aarch64. The
               unsuffixed compatibility asset remains x86_64; choose the architecture-specific artifact
               when you need an explicitly pinned deployment. The website does not mirror binaries, so
               GitHub Releases remains the authoritative download location.
@@ -39,7 +41,7 @@ export default function ReleasesPage() {
               <a className="button button-outline" href="https://crates.io/crates/agentsight">agentsight on crates.io</a>
             </div>
           </div>
-          <CommandBlock commands={['cargo install agentsight', 'agentsight --version']} />
+          <CommandBlock commands={['brew tap eunomia-bpf/tap', 'brew install eunomia-bpf/tap/agentsight', 'agentsight --version']} />
         </div>
       </section>
     </SiteShell>
