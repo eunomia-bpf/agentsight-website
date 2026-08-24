@@ -6,8 +6,8 @@
 - Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
 - Current authoritative product release: **AgentSight v1.0.28**, tag and release commit `c41457cb28be68a72c6f5af8f8bf3e59a2d87bc2`, dated 24 August 2026.
-- The website baseline at the start of the 24 August cycle was v1.0.26 at `main` commit `db733576d05b54bad90d69c38878a408ea7a32fb`, with rendered source marker `936bc397c658ed3cabd953c161ae4eee34f09bfa`.
-- A v1.0.28 synchronization is being delivered in the 24 August cycle. It updates the existing Product, Architecture, Changelog, release identity, and `llms.txt` canonicals rather than adding a release-specific landing page.
+- The website is synchronized to v1.0.28 through rendered PR `#81`, squash commit `23d241f100fbe107fe88828d78840101d454cccd`.
+- The publication branch was regenerated as `site` commit `92ece8c939a90e8faaa64b685df2504090075e6b` at `2026-08-24T16:37:27Z`, and `site/.source-sha` exactly identifies the rendered squash commit.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` has not moved beyond it.
 - Runtime analytics remains GA4 with path-only URL reporting; query strings, Google signals, and ad-personalization signals remain excluded/disabled by repository policy.
 - Repository-hosted model/SEO scheduler: none. The recurring external operations schedule remains enabled.
@@ -33,9 +33,13 @@
 
 ## Production and public verification
 
-- At the start of the 24 August cycle, direct canonical-homepage retrieval was healthy and showed the expected published v1.0.26 generation. There was no production incident requiring rollback or cache repair.
-- The 23 August repository-replay Blog remains delivered through rendered squash commit `936bc397c658ed3cabd953c161ae4eee34f09bfa`; the `site` branch source marker matched that commit at cycle start.
-- Immediate public search still does not reliably surface the repository-replay article. This remains index/crawler freshness rather than evidence of a missing route because the exact publication branch contains the canonical.
+- PR `#81` exact final head `f306b4e99f86cbf10e4a98442339aa16fe4dce6a` passed Website CI `32751666946`, including the autonomous SEO scope guard, `npm ci`, `npm run verify`, static export, and artifact upload.
+- Exact static artifact `9529260355` has digest `sha256:15c93f93158bb20de73d2268e37ad6327e0de1d6aa90a47a22c0d4027d47cf05`.
+- Static review found 39 normal generated pages and 39 sitemap URLs, unchanged from the prior baseline. Every normal page has exactly one canonical and one H1.
+- Generated homepage, Product, Architecture, Changelog, and `llms.txt` expose v1.0.28 and the new container/provenance boundaries. The repository-replay Blog remains pinned to the v1.0.26 source version it actually reviewed.
+- PR `#81` was squash-merged as `23d241f100fbe107fe88828d78840101d454cccd`; `site/.source-sha` exactly matches it after publication.
+- Immediate independent canonical retrieval after publication still returned the older v1.0.26 homepage generation. The Architecture crawler exposed a last-week v1.0.15 generation, and Product returned a cache miss. Exact build/publication evidence is internally consistent, so this is currently a crawler/CDN freshness qualification rather than a rendered publication incident.
+- Do not make a cache-forcing content change solely from this mismatch. Recheck the canonical pages in a later operating cycle and investigate production routing only if stale direct retrieval persists independently after normal freshness time.
 - Public package/readme indexes can lag the authoritative repository version and are not used as product release truth.
 
 ## Analytics and search evidence
