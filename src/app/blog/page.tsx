@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const dockerSessionsArticle = {
+  title: 'How AgentSight observes AI agent sessions inside Docker',
+  description:
+    'See how the Docker-backed native-session bridge keeps provider state in the container, routes exact sessions, bounds JSONL operations, and separates AgentSight scope from Docker daemon authority.',
+  href: '/blog/observe-ai-agent-sessions-in-docker/',
+};
 const repositoryReplayArticle = {
   title: 'What repository replay can tell you about a coding agent',
   description:
@@ -36,6 +42,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: dockerSessionsArticle.title, url: `${site.url}${dockerSessionsArticle.href}` },
       { '@type': 'WebPage', name: repositoryReplayArticle.title, url: `${site.url}${repositoryReplayArticle.href}` },
       { '@type': 'WebPage', name: overheadArticle.title, url: `${site.url}${overheadArticle.href}` },
     ],
@@ -53,6 +60,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Container session architecture · August 2026</p>
+            <h2><Link href={dockerSessionsArticle.href}>{dockerSessionsArticle.title}</Link></h2>
+            <p>{dockerSessionsArticle.description}</p>
+            <Link className="arrow-link" href={dockerSessionsArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Agent replay methods · August 2026</p>
             <h2><Link href={repositoryReplayArticle.href}>{repositoryReplayArticle.title}</Link></h2>
