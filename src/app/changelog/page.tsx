@@ -6,7 +6,7 @@ import { site } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Changelog',
   description:
-    'Follow AgentSight releases, audit provenance, Docker-backed sessions, recorded-demo coverage, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, reports, repository replay, and Agent Flamegraph updates.',
+    'Follow AgentSight releases, installation paths, repository skills, audit provenance, Docker-backed sessions, recorded-demo coverage, session messaging, extension boundaries, fleet and session analysis, portable agent-native workflows, reports, repository replay, and Agent Flamegraph updates.',
   alternates: { canonical: '/changelog/' },
 };
 
@@ -15,8 +15,22 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.28 preserves row-level provenance for audit and LLM records across live capture, SQLite reconstruction, agent-native session parsing, and legacy data. The additive view_source and confidence fields keep lineage and correlation quality visible instead of replacing them with a generic persisted value; confidence remains source-specific rather than a global probability score.',
+      'v1.0.30 adds a repository-maintenance bridge for shared agent skills: the AgentSight repository pins eunomia-bpf/agent-skills under .agents/sources, provides small Bash and PowerShell sync entrypoints, and keeps generated .agents/skills links out of Git. The release does not change AgentSight product runtime code or existing repository-specific skills.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Installation',
+    title: 'Homebrew installation is documented in the product repository',
+    description:
+      'v1.0.29 documents the official eunomia-bpf/tap Homebrew path for Linux x86-64, including the tap, formula install, and agentsight --version verification commands. Cargo and architecture-specific GitHub release binaries remain available.',
+    href: 'https://github.com/eunomia-bpf/agentsight/pull/196',
+  },
+  {
+    label: 'Audit provenance',
+    title: 'Audit and LLM rows preserve source provenance and confidence',
+    description:
+      'v1.0.28 preserves row-level provenance for audit and LLM records across live capture, SQLite reconstruction, agent-native session parsing, and legacy data. The additive view_source and confidence fields keep lineage and correlation quality visible; confidence remains source-specific rather than a global probability score.',
+    href: 'https://github.com/eunomia-bpf/agentsight/pull/204',
   },
   {
     label: 'Container sessions',
