@@ -5,12 +5,12 @@
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
-- Current authoritative product release: **AgentSight v1.0.30**, tag and release commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026.
+- Current authoritative product release: **AgentSight v1.0.30**, tag and release commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Product `master` still equals that release commit on 26 August; no newer product drift is present.
 - v1.0.29 / product PR `#196` adds official Homebrew installation documentation for Linux x86-64. v1.0.30 / product PR `#206` adds repository-maintenance plumbing for shared agent skills without changing AgentSight runtime code or existing repository-specific skills.
 - The website release/source identity is synchronized to v1.0.30 through rendered PR `#84`, squash commit `9e22a1aa8f6dd28091843f5041a795144cb2b492`.
 - The newest substantive publication is `/blog/observe-ai-agent-sessions-in-docker/`, delivered through rendered PR `#85`, squash commit `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1`.
-- The current publication branch `site/.source-sha` exactly identifies `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1` after the newest content publication.
-- Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` has not moved beyond it.
+- The current publication branch `site/.source-sha` exactly identifies `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1`.
+- Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` remains the same commit.
 - Runtime analytics remains GA4 with path-only URL reporting; query strings, Google signals, and ad-personalization signals remain excluded/disabled by repository policy.
 - Repository-hosted model/SEO scheduler: none. The recurring external operations schedule remains enabled.
 
@@ -25,7 +25,7 @@
 - Ambiguous local/container or cross-container session identifiers return conflict; unavailable peers make exact routing fail closed.
 - Saved `--db` captures cannot be combined with Docker session sources because saved captures are read-only.
 - Docker socket access is still daemon-wide authority in normal Docker deployments; a named-container option constrains AgentSight behavior, not Docker authorization.
-- The dedicated `/blog/observe-ai-agent-sessions-in-docker/` article now documents the source-level protocol, bounds, routing behavior, container execution identity, Codex sandbox consequence, and Docker trust boundary against v1.0.30.
+- The dedicated `/blog/observe-ai-agent-sessions-in-docker/` article documents the source-level protocol, bounds, routing behavior, container execution identity, Codex sandbox consequence, and Docker trust boundary against v1.0.30.
 
 ### Audit provenance
 
@@ -36,33 +36,34 @@
 
 ## Production and public verification
 
-- Product-sync PR `#84` exact final head `d49f5d738042b484d6920266b0cf28401c3deff8` passed Website CI `32873776714`, including the autonomous SEO scope guard, `npm ci`, `npm run verify`, static export, and artifact upload.
-- PR `#84` was squash-merged as `9e22a1aa8f6dd28091843f5041a795144cb2b492`; exact `Publish static site` run `32873880632` completed successfully at `2026-08-25T16:46:31Z` and the publication source marker matched that squash commit.
-- Docker-session article PR `#85` exact final head `bd0817962198166decb7c60c752e69974289009b` passed Website CI `32874460159` with the same required gates.
-- PR `#85` was squash-merged as `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1`; exact `Publish static site` run `32874567821` completed successfully at `2026-08-25T16:53:27Z` and `site/.source-sha` exactly matches the squash commit.
-- Generated `site` content contains the new Docker-session article with its expected title, canonical URL, description, article metadata, and pinned v1.0.30 source links. Generated `sitemap.xml` contains its canonical route with an August 25 last-modified value.
-- Immediate independent public crawler retrieval after the 25 August publications still exposed the previous v1.0.28 homepage generation; `/blog/` and `/llms.txt` produced crawler cache misses and the new article was not yet present in the crawler search cache. Exact build/publication evidence is internally consistent, matching the short-lived crawler/CDN freshness behavior observed after the prior cycle. Treat this as a freshness qualification rather than a production incident unless stale independent retrieval persists beyond normal freshness time.
+- Product-sync PR `#84` passed exact-head Website CI and was squash-merged as `9e22a1aa8f6dd28091843f5041a795144cb2b492`; its exact `Publish static site` run completed successfully.
+- Docker-session article PR `#85` passed exact-head Website CI and was squash-merged as `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1`; exact `Publish static site` run `32874567821` completed successfully at `2026-08-25T16:53:27Z`.
+- Generated `site` content contains the Docker-session article and `sitemap.xml` contains its canonical route with an August 25 last-modified value.
+- Direct public homepage retrieval on 26 August now serves the current **v1.0.30** generation, resolving the homepage freshness qualification recorded immediately after the 25 August publications.
+- Public search caches remain behind production: one website search snapshot still exposes v1.0.25 copy and the new Docker-session article is not yet surfaced by the checked search index. Treat this as directional indexing lag, not a production incident, because direct production retrieval and the exact generated publication source agree.
 - Public package/readme indexes can lag the authoritative repository version and are not used as product release truth.
 
 ## Analytics and search evidence
 
 - Google Drive artifact folder: `agentsight.us SEO Weekly CSV`.
-- Verified weekly GA4 landing-page and Search Console artifact families exist for 3–9 August and 10–16 August.
-- Both verified weekly families were generated the morning after their windows ended, before the configured three-day finalization lag. They remain directional snapshots rather than finalized weekly KPIs until a post-lag refresh exists.
-- No `2026-08-17_to_2026-08-23` export is visible on 25 August. Under the three-day lag that window is not final until 26 August, so the absence is not a technical defect.
+- Verified weekly GA4 landing-page and Search Console artifact families exist for 3–9 August and 10–16 August only.
+- Both verified weekly families were generated the morning after their windows ended, before the configured three-day finalization lag. They remain directional snapshots rather than finalized weekly KPIs.
+- On **26 August**, the 17–23 August window has reached the configured three-day finalization cutoff, but no matching GA4/GSC artifact family or post-lag refresh is visible. The external exporter-timing blocker is therefore active for the newest finalized weekly window.
+- The unchanged 10–16 August GSC date snapshot contains rows through 15 August but no 16 August row; its directional aggregate is 5 clicks / 189 impressions, 2.65% CTR, weighted average position about 14.18.
+- The unchanged 10–16 August GA4 landing-page snapshot contains 19 homepage sessions and 1 `/guides/` session. It remains pre-finalization evidence.
 - Cloudflare analytics is not configured.
-- Public brand search has a naming collision with an unrelated Shopify app called “AgentSight: AI Agent SEO”, launched in July 2026. Treat this as directional brand-search ambiguity, not as a verified backlink, endorsement, ranking cause, or reason for reactive renaming.
-- No new independently verified external link to an `agentsight.us` canonical was established in the 25 August patrol.
+- Generic public brand search remains ambiguous. In addition to the unrelated Shopify app previously recorded, `agentsight.io` is a separate conversation-analytics/client-dashboard product that prominently occupies generic AgentSight results. This is a naming collision, not a verified backlink, endorsement, ranking cause, or reason for reactive renaming.
+- No new independently verified external link to an `agentsight.us` canonical was established in the 26 August patrol.
 
 ## Content clock
 
 - Latest qualifying substantive publication: `/blog/observe-ai-agent-sessions-in-docker/`.
-- Exact substantive publication time: `2026-08-25T16:53:27Z` (09:53:27 PDT), defined by the successful exact `Publish static site` run for the article squash commit.
-- The prior 48-hour deadline was `2026-08-25T16:37:33Z`; this cycle missed it by 15 minutes 54 seconds while completing a higher-priority confirmed product-release drift repair. The miss is recorded rather than masked by filler content.
-- Next normal rolling 48-hour deadline: `2026-08-27T16:53:27Z` (09:53:27 PDT).
-- Prefer the next substantive outcome only when it adds a distinct reader answer, first-party experiment, or evidence-backed comparison; do not create thin cadence content.
+- Exact substantive publication time: `2026-08-25T16:53:27Z` (09:53:27 PDT).
+- Next rolling 48-hour deadline: `2026-08-27T16:53:27Z` (09:53:27 PDT).
+- A no-rendered-change cycle on 26 August remains allowed because the next scheduled daily cycle is approximately 09:00 PDT on 27 August, before the deadline. The remaining margin is only about 53 minutes, so the 27 August cycle should treat qualifying content as an immediate deadline after higher-priority production/factual repairs.
+- The 26 August cycle does not reset the content clock: no product drift or reproducible technical defect justified a rendered change, and no new finalized analytics exists to support a separate site experiment.
 
 ## Human-only blockers
 
-- **Google SEO export finalization timing:** the external Apps Script exporter needs a post-three-day-lag refresh for completed weekly GA4/GSC windows. The scheduled operator can inspect Drive but cannot execute or configure that Apps Script project.
+- **Google SEO export finalization timing:** the external Apps Script exporter needs a post-three-day-lag refresh for completed weekly GA4/GSC windows. As of 26 August the now-final 17–23 August window has no matching export at all, while older windows remain pre-lag snapshots. The scheduled operator can inspect Drive but cannot execute or configure that Apps Script project.
 - **npm scoped first publication:** `@eunomia-bpf/agentsight@1.0.0` still lacks independently verified public npm publication. Do not advertise it as an install path until an authorized npm administrator completes and verifies first publication.
