@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const auditProvenanceArticle = {
+  title: 'How to read AgentSight audit provenance and confidence',
+  description:
+    'Understand direct capture, SQLite reconstruction, native agent sessions, correlation confidence, legacy fallbacks, and how to preserve evidence lineage in exported snapshots.',
+  href: '/blog/read-agentsight-audit-provenance/',
+};
 const dockerSessionsArticle = {
   title: 'How AgentSight observes AI agent sessions inside Docker',
   description:
@@ -42,6 +48,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: auditProvenanceArticle.title, url: `${site.url}${auditProvenanceArticle.href}` },
       { '@type': 'WebPage', name: dockerSessionsArticle.title, url: `${site.url}${dockerSessionsArticle.href}` },
       { '@type': 'WebPage', name: repositoryReplayArticle.title, url: `${site.url}${repositoryReplayArticle.href}` },
       { '@type': 'WebPage', name: overheadArticle.title, url: `${site.url}${overheadArticle.href}` },
@@ -60,6 +67,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Evidence interpretation · August 2026</p>
+            <h2><Link href={auditProvenanceArticle.href}>{auditProvenanceArticle.title}</Link></h2>
+            <p>{auditProvenanceArticle.description}</p>
+            <Link className="arrow-link" href={auditProvenanceArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Container session architecture · August 2026</p>
             <h2><Link href={dockerSessionsArticle.href}>{dockerSessionsArticle.title}</Link></h2>

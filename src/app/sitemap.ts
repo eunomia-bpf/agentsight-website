@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const overheadUpdated = new Date('2026-08-21T00:00:00Z');
   const repositoryReplayUpdated = new Date('2026-08-23T00:00:00Z');
   const dockerSessionsUpdated = new Date('2026-08-25T00:00:00Z');
+  const auditProvenanceUpdated = new Date('2026-08-27T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -84,6 +85,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/observe-ai-agent-sessions-in-docker/`,
       lastModified: dockerSessionsUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/read-agentsight-audit-provenance/`,
+      lastModified: auditProvenanceUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
