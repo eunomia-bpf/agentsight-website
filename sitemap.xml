@@ -109,6 +109,12 @@
 <priority>0.8</priority>
 </url>
 <url>
+<loc>https://agentsight.us/blog/when-agentsight-works-without-ebpf/</loc>
+<lastmod>2026-08-29T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
 <loc>https://agentsight.us/use-cases/profile-slow-expensive-agent-runs/</loc>
 <lastmod>2026-08-08T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>

@@ -1,0 +1,412 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"default"]
+3:I[37457,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"default"]
+f:I[68027,["/_next/static/chunks/1z6x88ihszho0.js"],"default",1]
+:HL["/_next/static/chunks/3qsftj3dl-hsh.css","style"]
+4:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+0:{"P":null,"c":["","blog","when-agentsight-works-without-ebpf",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":["when-agentsight-works-without-ebpf",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3qsftj3dl-hsh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1z6x88ihszho0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","style",null,{"children":"$4"}],"$L5","$L6","$L7"],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],"$L8","$L9"]}]}]]}],{"children":["$La",{"children":["$Lb",{"children":["$Lc",{},null,false,null]},null,false,"$@d"]},null,false,"$@d"]},null,false,null],"$Le",false]],"m":"$undefined","G":["$f",["$L10"]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"agentsight-ba3211c47370e58fda3a7d20"}
+11:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/3rdqn8rx95pw7.js"],""]
+12:I[79520,["/_next/static/chunks/1z6x88ihszho0.js"],""]
+1a:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"ViewportBoundary"]
+1c:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"MetadataBoundary"]
+1d:"$Sreact.suspense"
+5:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+6:["$","main",null,{"children":["$","section",null,{"className":"page-hero compact-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","p",null,{"className":"eyebrow","children":"404"}],["$","h1",null,{"children":"This profile path does not exist."}],["$","p",null,{"className":"hero-lede","children":"Return to the product overview or browse the current guides and use cases."}],["$","div",null,{"className":"hero-actions","children":[["$","$L11",null,{"className":"button button-accent","href":"/","children":"AgentSight home"}],["$","$L11",null,{"className":"button button-outline","href":"/guides/","children":"Browse guides"}]]}]]}]}]}]
+7:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L11",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L11",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L11",null,{"href":"/architecture/","children":"Architecture"}],["$","$L11",null,{"href":"/integrations/","children":"Integrations"}],["$","$L11",null,{"href":"/compare/","children":"Compare"}],["$","$L11",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L11",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L11",null,{"href":"/releases/","children":"Releases"}],["$","$L11",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L11",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.30"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+8:["$","$L12",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-VVRNSCMWBX","strategy":"afterInteractive"}]
+9:["$","$L12",null,{"id":"google-analytics","strategy":"afterInteractive","dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){window.dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-VVRNSCMWBX', {\n                page_location: window.location.origin + window.location.pathname,\n                page_path: window.location.pathname,\n                page_title: document.title,\n                allow_google_signals: false,\n                allow_ad_personalization_signals: false\n              });\n            "}}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+13:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+c:["$","$1","c",{"children":[[["$","style",null,{"children":"$13"}],"$L14","$L15","$L16"],["$L17"],"$L18"]}]
+19:[]
+d:"$W19"
+e:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],null]}]
+10:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3qsftj3dl-hsh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+2e:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+14:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+15:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"When AgentSight works without eBPF—and when it does not\",\"description\":\"A source-level guide to AgentSight v1.0.30 native-session mode: which top, bind, vis, and report workflows work without sudo or eBPF, what evidence they contain, and when record or eBPF debug is still required.\",\"url\":\"https://agentsight.us/blog/when-agentsight-works-without-ebpf/\",\"datePublished\":\"2026-08-29\",\"dateModified\":\"2026-08-29\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L11",null,{"href":"/","children":"Home"}],["$","$L11",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"Without eBPF"}]]}],["$","p",null,{"className":"eyebrow","children":"Evidence modes · AgentSight v1.0.30 · 29 August 2026"}],["$","h1",null,{"children":"When AgentSight works without eBPF—and when it does not"}],["$","p",null,{"className":"hero-lede","children":["AgentSight is often described as an eBPF observability tool, but several everyday workflows do not need eBPF at all. ",["$","code",null,{"children":"top"}],", ",["$","code",null,{"children":"bind"}],", ",["$","code",null,{"children":"vis"}],", and ",["$","code",null,{"children":"report"}]," can use agent-native session files on Windows, macOS, or Linux. The important distinction is not just privilege or platform: native sessions and an eBPF recording answer different evidence questions."]}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":[["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"The short answer"}],["$","p",null,{"children":["Use the no-eBPF path when the question can be answered from local agent state: which sessions exist, what model and token information the agent recorded, which native Tool actions are present, how coding activity moved through a repository, or which local session you want to open in the hosted app. AgentSight v1.0.30 explicitly documents native-session support for ",["$","code",null,{"children":"top"}],", ",["$","code",null,{"children":"bind"}],",",["$","code",null,{"children":"vis"}],", and ",["$","code",null,{"children":"report"}]," without requiring eBPF."]}],["$","p",null,{"children":["Use ",["$","code",null,{"children":"record"}]," or an eBPF-backed debug command when the question is independent system behavior: what processes actually executed, which files were opened at the kernel boundary, what resource activity happened, or which TLS/plaintext traffic crossed the instrumented runtime boundary. On Linux, those capture paths require the privileges needed to load the probes."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"What works without eBPF"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"820px","fontSize":"0.92rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Workflow"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"No-eBPF input"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Useful for"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Important limit"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":["$","code",null,{"children":"agentsight top"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Local agent sessions plus process snapshots."}],"$L1f","$L20"]}],"$L21","$L22","$L23"]}]]}]}]]}],"$L24","$L25","$L26","$L27","$L28","$L29","$L2a","$L2b","$L2c"]}],"$L2d"]}]}]]}]
+16:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L11",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L11",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L11",null,{"href":"/architecture/","children":"Architecture"}],["$","$L11",null,{"href":"/integrations/","children":"Integrations"}],["$","$L11",null,{"href":"/compare/","children":"Compare"}],["$","$L11",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L11",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L11",null,{"href":"/releases/","children":"Releases"}],["$","$L11",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L11",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.30"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/3rdqn8rx95pw7.js","async":true,"nonce":"$undefined"}]
+18:["$","$L2e",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@2f"}]}]
+1f:["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Live session inventory, model/token state, process CPU/RSS, and a quick machine view."}]
+20:["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Without eBPF privilege, it does not become an independent kernel event trace."}]
+21:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"agentsight bind"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Live host processes and the local agent-session index, or an explicit saved DB."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Opening local AgentSight data in the hosted or self-hosted browser UI."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The browser sees the evidence available to the Node; binding does not create missing system evidence."}]]}]
+22:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"agentsight vis"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Matching local Claude, Codex, and Gemini sessions."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Repository replay and portable Agent Nebula artifacts."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Native Tool/file actions are not proof of every low-level filesystem effect."}]]}]
+23:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"agentsight report"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Saved AgentSight DBs or supported local agent sessions, depending on the report."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Structured summaries, token analysis, native-session inspection, or saved-record queries."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The evidence lineage depends on whether the row came from a recording, reconstruction, or native session."}]]}]
+24:["$","section",null,{"children":[["$","h2",null,{"children":[["$","code",null,{"children":"top"}]," is intentionally hybrid"]}],["$","p",null,{"children":["The usage guide describes ",["$","code",null,{"children":"top"}]," as the normal live view and makes sudo optional. Without eBPF privileges, it falls back to process snapshots and agent-native sessions. If sudo is already available on Linux, AgentSight can enable the richer eBPF-backed live capture automatically. This makes",["$","code",null,{"children":"agentsight top"}]," a useful first command on a laptop because the command remains useful even when the kernel tracing path is unavailable."]}],["$","p",null,{"children":"That convenience should not erase the source boundary. A native session can tell AgentSight about model, token, tool, and session facts that the agent persisted. A process snapshot can tell it what is running and expose current CPU/RSS. Neither source, by itself, proves the complete sequence of file and process events that an independent eBPF recording can observe."}]]}]
+25:["$","section",null,{"children":[["$","h2",null,{"children":[["$","code",null,{"children":"bind"}]," is a presentation path, not a recording mode"]}],["$","p",null,{"children":["Running ",["$","code",null,{"children":"agentsight bind"}]," starts a local Node and lets the browser query it. With no",["$","code",null,{"children":"--db"}],", v1.0.30 builds the Node around a live host view and the local session index. With",["$","code",null,{"children":"--db"}],", it serves a saved capture. The command is unprivileged because its job is to expose evidence AgentSight can already read; it does not silently start eBPF recording just because the hosted app is open."]}],["$","p",null,{"children":["This distinction is useful operationally. You can inspect native Claude, Codex, or Gemini history from a browser on macOS or Windows, or on a Linux machine where you do not want to grant probe-loading privilege. If the investigation later needs independent system events, reproduce the workload under",["$","code",null,{"children":"record"}]," on a supported Linux host rather than interpreting a browser connection as stronger capture."]}]]}]
+26:["$","section",null,{"children":[["$","h2",null,{"children":"Repository replay is native-session evidence by design"}],["$","p",null,{"children":[["$","code",null,{"children":"agentsight vis"}]," is the clearest example of why “no eBPF” does not mean “no useful evidence.” It scans matching local Claude, Codex, and Gemini sessions and reconstructs an ordered repository trajectory. That is enough to show where an agent moved through a worktree, which native file actions it recorded, and how activity changed over time. It is particularly useful when the run already happened and no recorder was active."]}],["$","p",null,{"children":["The evidence model is deliberately bounded. A native Tool action describes what the agent recorded it invoked; optional system observations can independently describe low-level effects; only session semantic content can answer why an action was chosen. For a deeper treatment of that boundary, see"," ",["$","$L11",null,{"href":"/blog/replay-coding-agent-repository-changes/","children":"the Agent Nebula replay methods guide"}],"."]}]]}]
+27:["$","section",null,{"children":[["$","h2",null,{"children":[["$","code",null,{"children":"report"}]," can mix evidence classes, so provenance matters"]}],["$","p",null,{"children":["Some reports operate on an AgentSight SQLite recording, while others can summarize local agent sessions. The README exposes ",["$","code",null,{"children":"agentsight report --local"}]," for native Claude/Codex/Gemini history and lets token reporting fall back to local agent sessions when appropriate. A saved ",["$","code",null,{"children":"record"}]," database, by contrast, can contain system capture and reconstructed model activity."]}],["$","p",null,{"children":["Do not collapse those sources into one trust level. AgentSight carries provenance such as native-session, direct-view, SQLite reconstruction, and legacy/unknown lineage in its audit model. If you are comparing or exporting evidence, preserve that source rather than treating every row as if it came from a kernel probe. The ",["$","$L11",null,{"href":"/blog/read-agentsight-audit-provenance/","children":"audit provenance guide"}]," explains the current confidence and lineage semantics."]}]]}]
+28:["$","section",null,{"children":[["$","h2",null,{"children":"What requires eBPF today"}],["$","p",null,{"children":["The documented boundary is straightforward: ",["$","code",null,{"children":"record"}]," and the eBPF-backed debug commands are Linux capture workflows. The usage guide says commands that load eBPF probes should run with sudo, with",["$","code",null,{"children":"top"}]," as the notable command that can remain useful without it. ",["$","code",null,{"children":"record"}]," starts the normal durable capture path with SSL, process, system, and web-view collection and saves an AgentSight SQLite session for later reporting."]}],["$","pre",null,{"children":["$","code",null,{"children":"# No eBPF required for the native-session path\nagentsight top\nagentsight report --local\nagentsight vis\nagentsight bind\n\n# Linux system-boundary recording\nsudo agentsight record -- claude\n\n# Advanced eBPF-backed debug capture\nsudo agentsight debug trace --server -c claude\nsudo agentsight debug ssl --http-parser"}]}]]}]
+29:["$","section",null,{"children":[["$","h2",null,{"children":"Use the evidence question to choose the mode"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"780px","fontSize":"0.92rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Question"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Start with"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Why"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Which local agent sessions exist and what tokens/models did they report?"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["Native ",["$","code",null,{"children":"top"}]," or ",["$","code",null,{"children":"report --local"}]]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The agent already persisted the relevant session facts."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"How did an existing coding run move through this repository?"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"vis"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Repository replay is designed around ordered native Tool/file actions."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"I want to browse native history from another browser."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"bind"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Binding presents local evidence; it does not require probe loading."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Which child processes and low-level file effects actually occurred during this run?"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"record"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Independent system-boundary evidence is the point of the Linux capture path."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"What plaintext model traffic crossed a supported TLS/runtime boundary?"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":[["$","code",null,{"children":"record"}]," or ",["$","code",null,{"children":"debug ssl"}]]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"That evidence comes from runtime/system instrumentation rather than native transcript files."}]]}]]}]]}]}]]}]
+2a:["$","section",null,{"children":[["$","h2",null,{"children":"No-eBPF mode is not a weaker version of the same dataset"}],["$","p",null,{"children":"The most common mistake is to think of native mode as “eBPF mode with fewer events.” It is better to see the two paths as different sensors. Native sessions are close to agent semantics and often contain model, tool, token, and conversation context that a system tracer would have to reconstruct. eBPF observation is independent of those agent logs and is better at real process, file, network, and runtime effects. Each source can be stronger for a different question."}],["$","p",null,{"children":["That is the same system-boundary principle behind AgentSight more broadly: use native telemetry where it is authoritative, use independent observation where the run crosses process or system boundaries, and keep the lineage visible when the two are correlated. The broader comparison is in"," ",["$","$L11",null,{"href":"/blog/system-boundary-observability/","children":"Why AI agent observability needs a system boundary"}],"."]}]]}]
+2b:["$","section",null,{"children":[["$","h2",null,{"children":"Practical platform guidance"}],["$","p",null,{"children":["On macOS and Windows, start with the native-session commands because the README explicitly supports",["$","code",null,{"children":"top"}],", ",["$","code",null,{"children":"bind"}],", ",["$","code",null,{"children":"vis"}],", and ",["$","code",null,{"children":"report"}]," from agent-native files. On Linux, the same commands work without granting eBPF privilege, while ",["$","code",null,{"children":"top"}]," can take advantage of richer capture when sudo is already available. Move to ",["$","code",null,{"children":"record"}]," when your question requires independent system evidence and the host can safely grant the required Linux tracing privilege."]}],["$","p",null,{"children":["If the data will leave the machine, review the evidence first. Native session history can include prompts, responses, repository paths, tool results, and other sensitive development context; recorded system data can include paths, network targets, headers, or payload material. The ",["$","$L11",null,{"href":"/security/","children":"security and data handling page"}]," is the right boundary before sharing either form."]}]]}]
+2c:["$","section",null,{"children":[["$","h2",null,{"children":"Primary sources"}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/README.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/README.md","children":"AgentSight v1.0.30 README: platform prerequisites, no-eBPF commands, record workflow, native-session report, and repository replay"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/docs/usage.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/docs/usage.md","children":"AgentSight v1.0.30 usage guide: top fallback, record boundary, bind behavior, local session index, and vis without sudo"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/ext/analysis/src/sources/agent_native.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/ext/analysis/src/sources/agent_native.rs","children":"AgentSight v1.0.30 native analysis source"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/ext/session/src/parser.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/ext/session/src/parser.rs","children":"AgentSight v1.0.30 native session parser"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/collector/src/cmd_bind.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/934f441eff8ca210807333633f47b2efcb8cd020/collector/src/cmd_bind.rs","children":"AgentSight v1.0.30 bind implementation: live-host and local-session Node path"}]}]]}]]}]
+2d:["$","aside",null,{"className":"article-aside","children":[["$","div",null,{"className":"aside-card","children":[["$","p",null,{"className":"eyebrow","children":"Decision"}],["$","h2",null,{"children":"Native first when the agent log owns the fact. Record when the machine must own the fact."}],["$","p",null,{"children":"Platform support and sudo are practical constraints, but the stronger rule is evidentiary: choose the sensor that can actually establish the claim you need."}]]}],["$","div",null,{"className":"aside-card","children":[["$","p",null,{"className":"eyebrow","children":"Related"}],["$","ul",null,{"children":[["$","li",null,{"children":["$","$L11",null,{"href":"/blog/system-boundary-observability/","children":"System-boundary observability"}]}],["$","li",null,{"children":["$","$L11",null,{"href":"/blog/replay-coding-agent-repository-changes/","children":"Repository replay methods"}]}],["$","li",null,{"children":["$","$L11",null,{"href":"/blog/read-agentsight-audit-provenance/","children":"Audit provenance and confidence"}]}],["$","li",null,{"children":["$","$L11",null,{"href":"/security/","children":"Security and data handling"}]}]]}]]}]]}]
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]
+30:I[27201,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"IconMark"]
+1e:[["$","title","0",{"children":"When AgentSight works without eBPF—and when it does not | AgentSight"}],["$","meta","1",{"name":"description","content":"A source-level guide to AgentSight v1.0.30 native-session mode: which top, bind, vis, and report workflows work without sudo or eBPF, what evidence they contain, and when record or eBPF debug is still required."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/when-agentsight-works-without-ebpf/"}],["$","meta","13",{"property":"og:title","content":"When AgentSight works without eBPF—and when it does not"}],["$","meta","14",{"property":"og:description","content":"Choose between native agent-session evidence and independent eBPF system observation without treating one source as stronger evidence than it is."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/when-agentsight-works-without-ebpf/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L30","22",{}]]
+2f:null
