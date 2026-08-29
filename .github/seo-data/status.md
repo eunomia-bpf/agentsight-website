@@ -8,8 +8,8 @@
 - Current authoritative product release: **AgentSight v1.0.30**, tag and release commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Product `master` still equals that release commit on 29 August; no newer product drift is present.
 - v1.0.29 / product PR `#196` adds official Homebrew installation documentation for Linux x86-64. v1.0.30 / product PR `#206` adds repository-maintenance plumbing for shared agent skills without changing AgentSight runtime code or existing repository-specific skills.
 - The website release/source identity is synchronized to v1.0.30 through rendered PR `#84`, squash commit `9e22a1aa8f6dd28091843f5041a795144cb2b492`.
-- The newest substantive publication is `/blog/how-agentsight-direct-node-credentials-work/`, delivered through rendered PR `#91`, squash commit `85ecaabe609b2bcf88f37a04b028dfea4481fb3b`.
-- The current publication branch `site/.source-sha` exactly identifies `85ecaabe609b2bcf88f37a04b028dfea4481fb3b`.
+- The newest substantive publication is `/blog/when-agentsight-works-without-ebpf/`, delivered through rendered PR `#94`, squash commit `d99642e923ad5bad35c06fbeaaf7451387a1f593`.
+- The current publication branch `site/.source-sha` exactly identifies `d99642e923ad5bad35c06fbeaaf7451387a1f593`.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` remains the same commit.
 - Runtime analytics remains GA4 with path-only URL reporting; query strings, Google signals, and ad-personalization signals remain excluded/disabled by repository policy.
 - Repository-hosted model/SEO scheduler: none. The recurring external operations schedule remains enabled.
@@ -44,8 +44,16 @@
 - Controller relay maps an authorized route to one semantic Node action and mints a Node-local capability with a 60-second TTL before forwarding the operation to the local Node protocol.
 - The relay client allowlists snapshot, overview, session-read, and session-message shapes; it also bounds in-flight requests, request duration, and response size.
 - Optional signed-in cross-browser Direct sync is explicit. Controller encrypts the endpoint/bootstrap configuration with AES-256-GCM using an HKDF-SHA-256 key derived from a 32-byte Controller secret plus the user/Node identity; D1 stores ciphertext/IV/version rather than plaintext.
-- `/blog/how-agentsight-direct-node-credentials-work/` now owns the source-level credential-lifecycle and connection-mode trust decision.
-- On 29 August, a homepage factual drift was found: the `agentsight bind` card still called the key “process-lifetime,” while v1.0.30 stores and reuses it across Node restarts. A focused rendered repair replaces only that stale lifetime description with the persistent-bootstrap/scoped-capability model.
+- `/blog/how-agentsight-direct-node-credentials-work/` owns the source-level credential-lifecycle and connection-mode trust decision.
+- On 29 August, a homepage factual drift was found: the `agentsight bind` card still called the key “process-lifetime,” while v1.0.30 stores and reuses it across Node restarts. Rendered PR `#93` corrected only that stale lifetime description to the persistent-bootstrap/scoped-capability model. The generated production branch contains the corrected sentence; a public crawler can still return the pre-repair copy, which is treated as cache/retrieval freshness rather than source drift.
+
+### Native-session versus eBPF evidence boundary
+
+- AgentSight v1.0.30 can use agent-native session state for `top`, `bind`, `vis`, and relevant `report` workflows without requiring eBPF on Windows, macOS, or Linux.
+- Native-session evidence answers questions owned by the agent’s local state, such as session identity, model/token fields the provider recorded, native tool actions, and repository activity reconstructed from supported session histories.
+- `record` and eBPF-backed debug remain Linux capture paths for independent system-boundary evidence such as process execution, file opens, resource activity, and instrumented TLS/plaintext behavior.
+- Native sessions and eBPF recordings are different sensors with different provenance, not the same dataset at two fidelity levels.
+- `/blog/when-agentsight-works-without-ebpf/` owns the practical command/privilege/evidence-mode decision for this boundary against v1.0.30.
 
 ## Production and public verification
 
@@ -53,10 +61,12 @@
 - Docker-session article PR `#85` passed exact-head Website CI and was squash-merged as `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1`; exact `Publish static site` run `32874567821` completed successfully on 25 August.
 - The 26 August metadata-only operating PR `#88` eventually received successful exact-head Website CI run `32990458502` and was squash-merged on 27 August as `3479e3e50e2a1ad20f1ec5dae568d18f49b95fff`.
 - Audit-provenance article PR `#89` passed exact-head Website CI run `33092575514`, was squash-merged as `fe1424acd19dd1260af511036931e8ca2bdadadc`, and exact `Publish static site` run `33092749886` completed successfully at `2026-08-27T16:21:39Z`.
-- Direct-credential article PR `#91` passed exact-head Website CI run `33191900161` at head `c43994b358582f60b687c32723d52fd056883fd8`; its generated static-site artifact was inspected for the article route, title/description, canonical, OpenGraph metadata, TechArticle JSON-LD, Blog index, and sitemap.
-- PR `#91` was squash-merged as `85ecaabe609b2bcf88f37a04b028dfea4481fb3b`. Exact `Publish static site` run `33192009504` completed successfully at `2026-08-28T16:53:03Z`; push Website CI run `33192009367` also passed on the exact squash commit.
-- `site/.source-sha` exactly matches `85ecaabe609b2bcf88f37a04b028dfea4481fb3b`. Generated production content contains the Direct credential article with canonical `https://agentsight.us/blog/how-agentsight-direct-node-credentials-work/`, and generated `sitemap.xml` contains that route with an August 28 last-modified value.
-- Immediate public search/retrieval on 29 August still does not establish discovery of the new Direct-credential route. Search caches also expose older product versions. This remains an indexing/retrieval qualification rather than a confirmed production outage because the prior exact publish workflow, publication source marker, generated article, and generated sitemap agree.
+- Direct-credential article PR `#91` passed exact-head Website CI run `33191900161`, was squash-merged as `85ecaabe609b2bcf88f37a04b028dfea4481fb3b`, and exact `Publish static site` run `33192009504` completed successfully at `2026-08-28T16:53:03Z`.
+- Homepage factual-repair PR `#93` passed exact-head Website CI run `33264158595`, was squash-merged as `865e7087aba48ff344bce7436f9a0aab55f235f6`, and exact `Publish static site` run `33264205190` completed successfully at `2026-08-29T16:54:50Z`. The generated production homepage contains the corrected persistent-bootstrap/scoped-capability sentence.
+- No-eBPF evidence guide PR `#94` passed exact-head Website CI run `33264419403` at head `1d95cfc343f46e3db90be277dfa8b2047dd6718a`, passed a complete post-CI self-review, and was squash-merged as `d99642e923ad5bad35c06fbeaaf7451387a1f593`.
+- Exact `Publish static site` run `33264487636` completed successfully for `d99642e923ad5bad35c06fbeaaf7451387a1f593` at `2026-08-29T17:01:17Z`; exact push Website CI run `33264487646` also passed.
+- `site/.source-sha` exactly matches `d99642e923ad5bad35c06fbeaaf7451387a1f593`. Generated production content contains `/blog/when-agentsight-works-without-ebpf/` with the expected title, description, canonical URL, TechArticle JSON-LD, Blog index link, and sitemap entry.
+- Immediate public search/retrieval on 29 August does not yet establish discovery of either the new no-eBPF guide or the preceding Direct-credential article. A public crawler can also retain the pre-`#93` homepage sentence while the generated production branch already contains the repair. These are indexing/cache/retrieval qualifications rather than confirmed publication or deployment failures because exact workflows, the production source marker, generated routes, and sitemap agree.
 - Public package/readme/search indexes can lag the authoritative repository version and are not used as product release truth.
 
 ## Analytics and search evidence
@@ -72,10 +82,10 @@
 
 ## Content clock
 
-- Latest qualifying substantive publication: `/blog/how-agentsight-direct-node-credentials-work/`.
-- Exact publication time: `2026-08-28T16:53:03Z` (09:53:03 PDT).
-- Next rolling 48-hour deadline: `2026-08-30T16:53:03Z` (09:53:03 PDT).
-- Because normal daily execution is flexible within roughly one hour, relying on the 30 August cycle would not leave a reliable research/CI/merge/publication window before that deadline. After the higher-priority homepage factual repair, the 29 August cycle therefore requires one qualifying substantive publication.
+- Latest qualifying substantive publication: `/blog/when-agentsight-works-without-ebpf/`.
+- Exact publication time: `2026-08-29T17:01:17Z` (10:01:17 PDT).
+- Next rolling 48-hour deadline: `2026-08-31T17:01:17Z` (10:01:17 PDT).
+- The 29 August publication reset the content SLO well before the previous 30 August deadline.
 
 ## Human-only blockers
 
