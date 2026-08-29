@@ -104,7 +104,7 @@ const postRunQueries = [
   {
     command: 'agentsight bind',
     title: 'Open local data in the hosted app',
-    description: 'Start an unprivileged loopback Direct Node with a process-lifetime access key. Detailed session data stays on the Node while the hosted app reads it directly.',
+    description: 'Start an unprivileged loopback Direct Node with a locally stored bootstrap key; browser pairing exchanges it for a scoped Direct capability. Detailed session data stays on the Node while the hosted app reads it directly.',
     href: site.demo,
     link: 'Open the AgentSight app →',
   },
