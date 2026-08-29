@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const noEbpfArticle = {
+  title: 'When AgentSight works without eBPF—and when it does not',
+  description:
+    'Choose between agent-native session evidence and independent system observation: see which top, bind, vis, and report workflows work without sudo or eBPF, and when record is still the right sensor.',
+  href: '/blog/when-agentsight-works-without-ebpf/',
+};
 const directNodeCredentialsArticle = {
   title: 'How AgentSight Direct Node credentials work',
   description:
@@ -54,6 +60,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: noEbpfArticle.title, url: `${site.url}${noEbpfArticle.href}` },
       { '@type': 'WebPage', name: directNodeCredentialsArticle.title, url: `${site.url}${directNodeCredentialsArticle.href}` },
       { '@type': 'WebPage', name: auditProvenanceArticle.title, url: `${site.url}${auditProvenanceArticle.href}` },
       { '@type': 'WebPage', name: dockerSessionsArticle.title, url: `${site.url}${dockerSessionsArticle.href}` },
@@ -74,6 +81,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Evidence modes · August 2026</p>
+            <h2><Link href={noEbpfArticle.href}>{noEbpfArticle.title}</Link></h2>
+            <p>{noEbpfArticle.description}</p>
+            <Link className="arrow-link" href={noEbpfArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Remote-access architecture · August 2026</p>
             <h2><Link href={directNodeCredentialsArticle.href}>{directNodeCredentialsArticle.title}</Link></h2>
