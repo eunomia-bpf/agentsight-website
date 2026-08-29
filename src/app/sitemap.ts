@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const dockerSessionsUpdated = new Date('2026-08-25T00:00:00Z');
   const auditProvenanceUpdated = new Date('2026-08-27T00:00:00Z');
   const directNodeCredentialsUpdated = new Date('2026-08-28T00:00:00Z');
+  const noEbpfUpdated = new Date('2026-08-29T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -98,6 +99,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-direct-node-credentials-work/`,
       lastModified: directNodeCredentialsUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/when-agentsight-works-without-ebpf/`,
+      lastModified: noEbpfUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
