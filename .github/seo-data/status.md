@@ -3,96 +3,71 @@
 ## Current product and site state
 
 - Canonical product website: `https://agentsight.us/`.
-- Canonical installation, CLI, build, Docker, runtime configuration, and troubleshooting documentation: `https://eunomia.dev/agentsight/`.
+- Canonical installation/CLI/build/runtime documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
-- Current authoritative product release: **AgentSight v1.0.30**, tag and release commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Product `master` still equals that release commit on 30 August; no newer product drift is present.
-- v1.0.29 / product PR `#196` adds official Homebrew installation documentation for Linux x86-64. v1.0.30 / product PR `#206` adds repository-maintenance plumbing for shared agent skills without changing AgentSight runtime code or existing repository-specific skills.
-- The website release/source identity is synchronized to v1.0.30 through rendered PR `#84`, squash commit `9e22a1aa8f6dd28091843f5041a795144cb2b492`.
-- The newest substantive publication is `/blog/when-agentsight-works-without-ebpf/`, delivered through rendered PR `#94`, squash commit `d99642e923ad5bad35c06fbeaaf7451387a1f593`.
-- The current publication branch `site/.source-sha` exactly identifies `d99642e923ad5bad35c06fbeaaf7451387a1f593`.
-- Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` remains the same commit.
-- Runtime analytics remains GA4 with path-only URL reporting; query strings, Google signals, and ad-personalization signals remain excluded/disabled by repository policy.
-- Repository-hosted model/SEO scheduler: none. The recurring external operations schedule remains enabled.
+- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 31 August; no newer product drift is present.
+- Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
+- Latest substantive website publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, rendered PR `#97`, squash commit `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
+- Exact `Publish static site` run `33417485123` succeeded at `2026-08-31T17:04:12Z`.
+- Current `site` branch commit: `545978c4e4cadac44d62799bc24b0b97e9b6a762`; `site/.source-sha` exactly equals `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
+- Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
+- Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may still appear as a CI/deployment check and is not treated as analytics evidence.
 
-## Product boundaries retained from v1.0.27 and v1.0.28
+## Current public content ownership boundaries
 
-### Docker-backed native sessions
+- `/blog/how-agentsight-discovers-local-agent-sessions/`: provider-native discovery roots/formats, provider-specific ID resolution, Codex `state_5.sqlite` indexing, bounded list/detail behavior, caching/lazy hydration, Cursor subagent freshness/deduplication, and missing-session troubleshooting against v1.0.30.
+- `/blog/when-agentsight-works-without-ebpf/`: practical choice between native-session workflows and Linux eBPF/system-boundary capture.
+- `/blog/read-agentsight-audit-provenance/`: audit/LLM `view_source`, source-specific `confidence`, reconstruction, legacy fallback, and evidence-lineage interpretation.
+- `/blog/observe-ai-agent-sessions-in-docker/`: named-container native-session bridge, exact routing, bounds, provider state location, and Docker daemon trust boundary.
+- `/blog/how-agentsight-direct-node-credentials-work/`: persistent bootstrap key, URL-fragment pairing, Direct/relay scoped capabilities, and optional encrypted cross-browser Direct configuration.
+- `/blog/replay-coding-agent-repository-changes/`: native-session repository replay and its intent/system-evidence limits.
 
-- v1.0.27 / product PR `#195` adds repeatable `agentsight bind --docker-container NAME` sources.
-- The host Node invokes AgentSight’s existing native discovery and provider messaging inside named containers through a bounded JSONL bridge, then merges those sessions into the normal Node snapshot/detail/message APIs.
-- Provider credentials and provider-native state stay inside the container; parsed session evidence is returned to the host Node for the normal session APIs.
-- Native container discovery covers Claude Code, Codex, Gemini CLI, and Cursor. Resumable messaging covers Claude Code, Codex, and Gemini CLI; Cursor remains observation-only.
-- Ambiguous local/container or cross-container session identifiers return conflict; unavailable peers make exact routing fail closed.
-- Saved `--db` captures cannot be combined with Docker session sources because saved captures are read-only.
-- Docker socket access is still daemon-wide authority in normal Docker deployments; a named-container option constrains AgentSight behavior, not Docker authorization.
-- `/blog/observe-ai-agent-sessions-in-docker/` documents the source-level protocol, bounds, routing behavior, container execution identity, Codex sandbox consequence, and Docker trust boundary against v1.0.30.
+These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method.
 
-### Audit provenance
+## Native-session implementation facts retained from v1.0.30
 
-- v1.0.28 / product PR `#204` preserves `view_source` and optional `confidence` on audit and LLM rows across capture, persistence, reconstruction, and native-session parsing.
-- `view_source` distinguishes direct `view`, reconstructed `sqlite`, `agent_native_session`, and legacy/unclassified `unknown` provenance.
-- `confidence` is row- and source-specific correlation/reconstruction metadata. It is not a globally calibrated probability and must not be compared blindly across sources.
-- The live LLM correlator currently uses 0.95 for exact request-ID pairing, 0.75 for one pending request, 0.70 for a unique heuristic candidate, and 0.35 for an orphan response. SQLite prompt reconstruction can use 0.50; equal numbers from different sources do not imply equal semantics.
-- Legacy SQLite schemas retain compatible fallbacks: missing lineage is read as `unknown` and missing confidence as `null` rather than fabricated.
-- `/blog/read-agentsight-audit-provenance/` owns the reader decision about interpreting, comparing, deduplicating, and exporting these heterogeneous evidence rows.
+- Native discovery roots are Claude Code `~/.claude/projects`, Codex `$CODEX_HOME/sessions` when `CODEX_HOME` is absolute or `~/.codex/sessions` otherwise, Gemini CLI `~/.gemini/tmp`, and Cursor `~/.cursor/projects`.
+- Claude/Codex use JSONL session files, Gemini uses JSON session files, and Cursor uses JSONL under `agent-transcripts` with provider-specific normalization.
+- Current Codex can use a read-only `state_5.sqlite` thread index; when present, native analysis builds lightweight session rows from thread metadata before hydrating full rollout detail.
+- Ordinary native list discovery is bounded to at most 25 sessions; exact detail lookup keeps an ID-to-path index and parses only the requested candidate when possible.
+- Cursor discovery incorporates `subagents/*.jsonl` modification times and deduplicates same-stem candidates, preferring non-empty/newer windows.
+- Hydrated native detail is bounded: up to 1,000 prompts, 2,000 LLM responses, and 2,000 tool events, with independent text/collection budgets.
+- Native-session evidence and eBPF/system recordings remain different sensors. Native provider state is not promoted into independent proof of every process/file/network effect.
 
-### Direct Node credential and relay boundary
+## Production verification
 
-- v1.0.30 `agentsight bind` persists a private Node bootstrap key and uses it to pair browsers and authenticate the Node’s outbound relay connection.
-- The generated binding URL puts endpoint and bootstrap key in the URL fragment rather than the query string. The browser exchanges bootstrap authority for a normal Direct capability after probing the Node.
-- The current browser client requests a 12-hour Direct capability carrying `node.info`, `evidence.read`, `session.read`, and `session.message`; the Node persists capabilities longer than 10 minutes with their expiry so they can survive a restart.
-- Controller relay maps an authorized route to one semantic Node action and mints a Node-local capability with a 60-second TTL before forwarding the operation to the local Node protocol.
-- The relay client allowlists snapshot, overview, session-read, and session-message shapes; it also bounds in-flight requests, request duration, and response size.
-- Optional signed-in cross-browser Direct sync is explicit. Controller encrypts the endpoint/bootstrap configuration with AES-256-GCM using an HKDF-SHA-256 key derived from a 32-byte Controller secret plus the user/Node identity; D1 stores ciphertext/IV/version rather than plaintext.
-- `/blog/how-agentsight-direct-node-credentials-work/` owns the source-level credential-lifecycle and connection-mode trust decision.
-- On 29 August, a homepage factual drift was found: the `agentsight bind` card still called the key “process-lifetime,” while v1.0.30 stores and reuses it across Node restarts. Rendered PR `#93` corrected only that stale lifetime description to the persistent-bootstrap/scoped-capability model. On 30 August, a fresh direct public retrieval of the canonical homepage visibly returned the corrected sentence, resolving the prior direct-retrieval freshness qualification; search caches can still lag independently.
-
-### Native-session versus eBPF evidence boundary
-
-- AgentSight v1.0.30 can use agent-native session state for `top`, `bind`, `vis`, and relevant `report` workflows without requiring eBPF on Windows, macOS, or Linux.
-- Native-session evidence answers questions owned by the agent’s local state, such as session identity, model/token fields the provider recorded, native tool actions, and repository activity reconstructed from supported session histories.
-- `record` and eBPF-backed debug remain Linux capture paths for independent system-boundary evidence such as process execution, file opens, resource activity, and instrumented TLS/plaintext behavior.
-- Native sessions and eBPF recordings are different sensors with different provenance, not the same dataset at two fidelity levels.
-- `/blog/when-agentsight-works-without-ebpf/` owns the practical command/privilege/evidence-mode decision for this boundary against v1.0.30.
-
-## Production and public verification
-
-- Product-sync PR `#84` passed exact-head Website CI and was squash-merged as `9e22a1aa8f6dd28091843f5041a795144cb2b492`; its exact `Publish static site` run completed successfully.
-- Docker-session article PR `#85` passed exact-head Website CI and was squash-merged as `1dc1f5ce9d7f05a4a130385736a53ea72f0467a1`; exact `Publish static site` run `32874567821` completed successfully on 25 August.
-- The 26 August metadata-only operating PR `#88` eventually received successful exact-head Website CI run `32990458502` and was squash-merged on 27 August as `3479e3e50e2a1ad20f1ec5dae568d18f49b95fff`.
-- Audit-provenance article PR `#89` passed exact-head Website CI run `33092575514`, was squash-merged as `fe1424acd19dd1260af511036931e8ca2bdadadc`, and exact `Publish static site` run `33092749886` completed successfully at `2026-08-27T16:21:39Z`.
-- Direct-credential article PR `#91` passed exact-head Website CI run `33191900161`, was squash-merged as `85ecaabe609b2bcf88f37a04b028dfea4481fb3b`, and exact `Publish static site` run `33192009504` completed successfully at `2026-08-28T16:53:03Z`.
-- Homepage factual-repair PR `#93` passed exact-head Website CI run `33264158595`, was squash-merged as `865e7087aba48ff344bce7436f9a0aab55f235f6`, and exact `Publish static site` run `33264205190` completed successfully at `2026-08-29T16:54:50Z`. The generated production homepage contains the corrected persistent-bootstrap/scoped-capability sentence, and a fresh direct public retrieval on 30 August now visibly returns it.
-- No-eBPF evidence guide PR `#94` passed exact-head Website CI run `33264419403` at head `1d95cfc343f46e3db90be277dfa8b2047dd6718a`, passed a complete post-CI self-review, and was squash-merged as `d99642e923ad5bad35c06fbeaaf7451387a1f593`.
-- Exact `Publish static site` run `33264487636` completed successfully for `d99642e923ad5bad35c06fbeaaf7451387a1f593` at `2026-08-29T17:01:17Z`; exact push Website CI run `33264487646` also passed.
-- `site/.source-sha` exactly matches `d99642e923ad5bad35c06fbeaaf7451387a1f593`. Generated production content contains `/blog/when-agentsight-works-without-ebpf/` with the expected title, description, canonical URL, TechArticle JSON-LD, Blog index link, and sitemap entry.
-- Exact-title public search on 30 August still does not establish discovery of either the no-eBPF guide or the preceding Direct-credential article. This remains an indexing/search-freshness qualification rather than a publication failure because exact workflows, the production source marker, generated routes, and sitemap agree.
-- Public package/readme/search indexes can lag the authoritative repository version and are not used as product release truth.
+- PR `#97` final head `cdc719a8ba70e738b312c3f5a5620c7687b4cf7c` passed exact-head Website CI run `33417303675`, including SEO scope enforcement, `npm ci`, `npm run verify`, and static-site artifact upload. Artifact digest: `sha256:740a5edaf53499b30b3e242f4eeeaa043fe634c170e0c0f434e00174a2381803`.
+- Exact-head GitGuardian and Cloudflare Pages checks also succeeded before merge.
+- PR `#97` passed a complete post-CI from-scratch review and was squash-merged as `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
+- Exact production workflow `33417485123` succeeded from that exact `main` commit.
+- Generated production HTML contains the new article title, description, canonical URL, TechArticle JSON-LD, date, and body. Generated `sitemap.xml` contains the new route with 31 August lastmod; the prior no-eBPF article remains generated with its canonical metadata.
+- Immediate direct external retrieval of the new article/blog/sitemap was not independently established because the available public retrieval path returned cache misses. This is a **retrieval/indexing freshness qualification**, not a production incident: exact workflow state, `site/.source-sha`, generated article output, Blog source/index, and sitemap all agree. Recheck the canonical public route in a later cycle.
+- Public search can lag the authoritative repository/site branch and is not product-release truth.
 
 ## Analytics and search evidence
 
-- Google Drive artifact folder: `agentsight.us SEO Weekly CSV`.
-- Verified weekly GA4 landing-page and Search Console artifact families exist only for earlier windows through 10–16 August.
-- Both previously verified recent weekly families were generated the morning after their windows ended, before the configured three-day finalization lag. They remain directional snapshots rather than finalized weekly KPIs.
-- On **30 August**, the 17–23 August window is past the configured three-day finalization cutoff, but no matching artifact is present in the exact configured folder. The external exporter-timing blocker remains active for the newest finalized weekly window.
-- The unchanged 10–16 August GSC date snapshot contains rows through 15 August but no 16 August row; its directional aggregate is 5 clicks / 189 impressions, 2.65% CTR, weighted average position about 14.18.
-- The unchanged 10–16 August GA4 landing-page snapshot contains 19 homepage sessions and 1 `/guides/` session. It remains pre-finalization evidence.
-- Cloudflare analytics is not configured.
-- Generic public brand search remains ambiguous with unrelated products using the AgentSight name. Search-only discoveries are not treated as backlinks or ranking evidence without verifying the target.
+- Configured Drive folder: `agentsight.us SEO Weekly CSV`.
+- A new `2026-08-24_to_2026-08-30` GA4/GSC family appeared on 31 August around 09:05 PDT. Because it was produced the morning immediately after the window ended, it is inside the configured three-day lag and remains **directional only**.
+- Directional 24–30 GA4 landing export: 17 sessions across listed rows, including 11 homepage sessions and 2 `(not set)` sessions; no key events in the listed rows.
+- Directional 24–30 GSC date export contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62.
+- The now-final `2026-08-17_to_2026-08-23` family remains absent. The exporter therefore produced a newer next-morning family without backfilling/refreshing the finalized missing window; current finalized week-over-week analysis remains blocked.
+- Older 10–16 August evidence also remains pre-lag; its GSC date export omitted 16 August.
+- Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
+- Exact-title public searches do not yet establish indexing for the recent Direct/no-eBPF/local-discovery articles. Treat that as search freshness until source/deployment evidence disagrees.
 
 ## npm publication state
 
-- The former scoped-npm first-publication blocker is resolved. On v1.0.30 release commit `934f441eff8ca210807333633f47b2efcb8cd020`, GitHub Actions workflow run `32803690960` completed `Publish @eunomia-bpf/agentsight` successfully.
-- The exact job log synced package version 1.0.30, validated the package, executed `npm publish --access public`, published npm provenance, and completed with `+ @eunomia-bpf/agentsight@1.0.30`.
-- This resolution does not itself make npm a website-recommended installation path. Public installation guidance remains tied to the current authoritative product README and release documentation.
+- The former scoped-npm first-publication blocker is resolved. v1.0.30 release commit `934f441eff8ca210807333633f47b2efcb8cd020` successfully published `@eunomia-bpf/agentsight@1.0.30` with provenance.
+- This does not itself make npm a website-recommended install path; public install guidance continues to follow the authoritative product README/release documentation.
 
 ## Content clock
 
-- Latest qualifying substantive publication: `/blog/when-agentsight-works-without-ebpf/`.
-- Exact publication time: `2026-08-29T17:01:17Z` (10:01:17 PDT).
-- Next rolling 48-hour deadline: `2026-08-31T17:01:17Z` (10:01:17 PDT).
-- A normal 31 August daily cycle can still execute before the deadline, so the 30 August cycle does not require a filler publication in the absence of a higher-priority rendered change.
+- Previous qualifying publication: `/blog/when-agentsight-works-without-ebpf/`, production completion `2026-08-29T17:01:17Z` (10:01:17 PDT).
+- Previous 48-hour deadline: `2026-08-31T17:01:17Z` (10:01:17 PDT).
+- New qualifying publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, production completion `2026-08-31T17:04:12Z` (10:04:12 PDT).
+- **31 August SLO result: missed by 2 minutes 55 seconds.** Publication time is recorded from the exact successful production workflow rather than PR creation or merge time.
+- Next rolling 48-hour deadline: `2026-09-02T17:04:12Z` (10:04:12 PDT).
 
 ## Human-only blockers
 
-- **Google SEO export finalization timing:** the external Apps Script exporter needs a post-three-day-lag refresh for completed weekly GA4/GSC windows. As of 30 August the final 17–23 August window still has no matching export, while older windows remain pre-lag snapshots. The scheduled operator can inspect Drive but cannot execute or configure that Apps Script project.
+- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to generate or refresh completed weekly GA4/GSC windows after the configured three-day finalization cutoff and specifically backfill 17–23 August. The current scheduled operator can inspect Drive but has no connected Apps Script execution/configuration surface.
