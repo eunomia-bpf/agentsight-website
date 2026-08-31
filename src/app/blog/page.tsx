@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const localSessionDiscoveryArticle = {
+  title: 'How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions',
+  description:
+    'Follow the v1.0.30 discovery path from provider-native files and Codex state_5.sqlite through bounded session indexing, provider-specific IDs, Cursor subagents, caching, and lazy detail hydration.',
+  href: '/blog/how-agentsight-discovers-local-agent-sessions/',
+};
 const noEbpfArticle = {
   title: 'When AgentSight works without eBPF—and when it does not',
   description:
@@ -60,6 +66,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: localSessionDiscoveryArticle.title, url: `${site.url}${localSessionDiscoveryArticle.href}` },
       { '@type': 'WebPage', name: noEbpfArticle.title, url: `${site.url}${noEbpfArticle.href}` },
       { '@type': 'WebPage', name: directNodeCredentialsArticle.title, url: `${site.url}${directNodeCredentialsArticle.href}` },
       { '@type': 'WebPage', name: auditProvenanceArticle.title, url: `${site.url}${auditProvenanceArticle.href}` },
@@ -81,6 +88,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Native session internals · August 2026</p>
+            <h2><Link href={localSessionDiscoveryArticle.href}>{localSessionDiscoveryArticle.title}</Link></h2>
+            <p>{localSessionDiscoveryArticle.description}</p>
+            <Link className="arrow-link" href={localSessionDiscoveryArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Evidence modes · August 2026</p>
             <h2><Link href={noEbpfArticle.href}>{noEbpfArticle.title}</Link></h2>
