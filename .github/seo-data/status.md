@@ -5,7 +5,7 @@
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation/CLI/build/runtime documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
-- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 31 August; no newer product drift is present.
+- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 1 September; no newer product drift is present.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
 - Latest substantive website publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, rendered PR `#97`, squash commit `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
 - Exact `Publish static site` run `33417485123` succeeded at `2026-08-31T17:04:12Z`.
@@ -41,19 +41,27 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - PR `#97` passed a complete post-CI from-scratch review and was squash-merged as `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
 - Exact production workflow `33417485123` succeeded from that exact `main` commit.
 - Generated production HTML contains the new article title, description, canonical URL, TechArticle JSON-LD, date, and body. Generated `sitemap.xml` contains the new route with 31 August lastmod; the prior no-eBPF article remains generated with its canonical metadata.
-- Immediate direct external retrieval of the new article/blog/sitemap was not independently established because the available public retrieval path returned cache misses. This is a **retrieval/indexing freshness qualification**, not a production incident: exact workflow state, `site/.source-sha`, generated article output, Blog source/index, and sitemap all agree. Recheck the canonical public route in a later cycle.
-- Public search can lag the authoritative repository/site branch and is not product-release truth.
+- Fresh direct retrieval of the canonical homepage succeeds on 1 September and shows current v1.0.30 content plus the corrected Direct pairing/bootstrap-key wording.
+- Direct retrieval of the new local-session article and `sitemap.xml` through the available public retrieval path still returns a cache/retrieval error, and exact-title search does not yet establish indexing. This remains a **retrieval/indexing freshness qualification**, not a production incident: exact workflow state, `site/.source-sha`, generated article output, Blog source/index, and sitemap all agree.
+- Search-engine cached homepage text can still lag the canonical page and show superseded wording; public search is not product-release truth.
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- A new `2026-08-24_to_2026-08-30` GA4/GSC family appeared on 31 August around 09:05 PDT. Because it was produced the morning immediately after the window ended, it is inside the configured three-day lag and remains **directional only**.
+- No file in the configured folder has a 1 September modification timestamp; the latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT.
+- Because the 24–30 family was produced the morning immediately after the window ended, it remains inside the configured three-day lag and is **directional only**.
 - Directional 24–30 GA4 landing export: 17 sessions across listed rows, including 11 homepage sessions and 2 `(not set)` sessions; no key events in the listed rows.
 - Directional 24–30 GSC date export contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62.
-- The now-final `2026-08-17_to_2026-08-23` family remains absent. The exporter therefore produced a newer next-morning family without backfilling/refreshing the finalized missing window; current finalized week-over-week analysis remains blocked.
+- The now-final `2026-08-17_to_2026-08-23` family remains absent as of 1 September. The exporter therefore produced a newer next-morning family without backfilling/refreshing the finalized missing window; current finalized week-over-week analysis remains blocked.
 - Older 10–16 August evidence also remains pre-lag; its GSC date export omitted 16 August.
 - Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
-- Exact-title public searches do not yet establish indexing for the recent Direct/no-eBPF/local-discovery articles. Treat that as search freshness until source/deployment evidence disagrees.
+- Exact-title public searches still do not establish indexing for the newest local-session article. Treat that as search freshness until source/deployment evidence disagrees.
+
+## Off-site visibility
+
+- Alibaba Cloud Linux 4 Agentic Edition documentation, last updated 20 August 2026, lists AgentSight as a runtime-layer/core component and describes eBPF-based AI-agent observability for LLM API calls, token consumption, and process behavior.
+- Alibaba's `alibaba/anolisa` repository provides stronger provenance: its `NOTICE` states that `src/agentsight/` is based on `https://github.com/eunomia-bpf/agentsight` and credits eunomia-bpf contributors; the component README also names the Eunomia repository as its origin.
+- This is an independent downstream open-source/product reference, not a verified backlink to `agentsight.us`, customer proof, partnership claim, or endorsement. Earlier August operating records had already observed Alibaba Cloud's AgentSight documentation; the 1 September recheck strengthens provenance rather than establishing a new public relationship.
 
 ## npm publication state
 
@@ -64,9 +72,10 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 - Previous qualifying publication: `/blog/when-agentsight-works-without-ebpf/`, production completion `2026-08-29T17:01:17Z` (10:01:17 PDT).
 - Previous 48-hour deadline: `2026-08-31T17:01:17Z` (10:01:17 PDT).
-- New qualifying publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, production completion `2026-08-31T17:04:12Z` (10:04:12 PDT).
+- Current qualifying publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, production completion `2026-08-31T17:04:12Z` (10:04:12 PDT).
 - **31 August SLO result: missed by 2 minutes 55 seconds.** Publication time is recorded from the exact successful production workflow rather than PR creation or merge time.
-- Next rolling 48-hour deadline: `2026-09-02T17:04:12Z` (10:04:12 PDT).
+- Next rolling 48-hour deadline: `2026-09-02T17:04:12Z` (10:04:12 PDT). A normal 2 September daily cycle can still occur before that deadline.
+- 1 September is intentionally a metadata-only cycle: no production defect, product drift, newly finalized analytics, or distinct higher-priority rendered change justified manufacturing content today.
 
 ## Human-only blockers
 
