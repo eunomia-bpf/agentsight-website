@@ -5,17 +5,18 @@
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation/CLI/build/runtime documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
-- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 1 September; no newer product drift is present.
+- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 2 September; no newer product drift is present.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
-- Latest substantive website publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, rendered PR `#97`, squash commit `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
-- Exact `Publish static site` run `33417485123` succeeded at `2026-08-31T17:04:12Z`.
-- Current `site` branch commit: `545978c4e4cadac44d62799bc24b0b97e9b6a762`; `site/.source-sha` exactly equals `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
+- Latest substantive website publication: `/blog/how-agentsight-shares-versioned-agent-skills/`, rendered PR `#103`, squash commit `f8dc456ec0fbf04199b74114e9afaf25fea3d6db`.
+- Exact `Publish static site` run `33658176478` succeeded at `2026-09-02T16:59:04Z` (09:59:04 PDT).
+- Current production `site/.source-sha` exactly equals `f8dc456ec0fbf04199b74114e9afaf25fea3d6db`.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may still appear as a CI/deployment check and is not treated as analytics evidence.
 
 ## Current public content ownership boundaries
 
-- `/blog/how-agentsight-discovers-local-agent-sessions/`: provider-native discovery roots/formats, provider-specific ID resolution, Codex `state_5.sqlite` indexing, bounded list/detail behavior, caching/lazy hydration, Cursor subagent freshness/deduplication, and missing-session troubleshooting against v1.0.30.
+- `/blog/how-agentsight-shares-versioned-agent-skills/`: v1.0.30 shared-skills repository bridge — pinned `agent-skills` gitlink, generated `.agents/skills` links, Bash/PowerShell sync behavior, overwrite guards, Windows junction fallback, and the boundary between reusable and repository-specific skills.
+- `/blog/how-agentsight-discovers-local-agent-sessions/`: provider-native discovery roots/formats, provider-specific ID resolution, Codex `state_5.sqlite` indexing, bounded list/detail behavior, caching/lazy hydration, Cursor subagent freshness/deduplication, and missing-session troubleshooting.
 - `/blog/when-agentsight-works-without-ebpf/`: practical choice between native-session workflows and Linux eBPF/system-boundary capture.
 - `/blog/read-agentsight-audit-provenance/`: audit/LLM `view_source`, source-specific `confidence`, reconstruction, legacy fallback, and evidence-lineage interpretation.
 - `/blog/observe-ai-agent-sessions-in-docker/`: named-container native-session bridge, exact routing, bounds, provider state location, and Docker daemon trust boundary.
@@ -24,44 +25,43 @@
 
 These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method.
 
-## Native-session implementation facts retained from v1.0.30
+## Shared-agent-skills implementation facts retained from v1.0.30
 
-- Native discovery roots are Claude Code `~/.claude/projects`, Codex `$CODEX_HOME/sessions` when `CODEX_HOME` is absolute or `~/.codex/sessions` otherwise, Gemini CLI `~/.gemini/tmp`, and Cursor `~/.cursor/projects`.
-- Claude/Codex use JSONL session files, Gemini uses JSON session files, and Cursor uses JSONL under `agent-transcripts` with provider-specific normalization.
-- Current Codex can use a read-only `state_5.sqlite` thread index; when present, native analysis builds lightweight session rows from thread metadata before hydrating full rollout detail.
-- Ordinary native list discovery is bounded to at most 25 sessions; exact detail lookup keeps an ID-to-path index and parses only the requested candidate when possible.
-- Cursor discovery incorporates `subagents/*.jsonl` modification times and deduplicates same-stem candidates, preferring non-empty/newer windows.
-- Hydrated native detail is bounded: up to 1,000 prompts, 2,000 LLM responses, and 2,000 tool events, with independent text/collection budgets.
-- Native-session evidence and eBPF/system recordings remain different sensors. Native provider state is not promoted into independent proof of every process/file/network effect.
+- AgentSight pins `eunomia-bpf/agent-skills` as `.agents/sources/agent-skills`; the v1.0.30 product tree records pinned commit `80b46492986ec55b39d6c514d35e574afaa3c0ef`.
+- `scripts/sync-agent-skills.sh` initializes exactly that submodule and invokes the pinned pack's linker into `.agents/skills`; generated `/.agents/skills/` is ignored by Git.
+- The Bash linker considers only child directories containing `SKILL.md`, refuses to replace a real file/directory, and may replace an existing symbolic link.
+- The PowerShell linker similarly refuses ordinary existing paths, reuses a matching reparse point, and on Windows `Auto` mode may fall back from a symbolic link to a directory junction.
+- The pinned pack contains seven reusable workflows: six general open-source maintainer workflows plus `eunomia-community-patrol`.
+- The shared pack explicitly excludes skills tied to one consumer repository's content tree, publishing ledger, site paths, SEO operation, or repository-specific research workflow.
+- AgentSight's committed repo-local `skills/` prototypes are a separate mechanism. The v1.0.30 shared bridge is repository infrastructure, not evidence that AgentSight runtime executes every skill or that all coding agents consume `.agents/skills` identically.
 
 ## Production verification
 
-- PR `#97` final head `cdc719a8ba70e738b312c3f5a5620c7687b4cf7c` passed exact-head Website CI run `33417303675`, including SEO scope enforcement, `npm ci`, `npm run verify`, and static-site artifact upload. Artifact digest: `sha256:740a5edaf53499b30b3e242f4eeeaa043fe634c170e0c0f434e00174a2381803`.
-- Exact-head GitGuardian and Cloudflare Pages checks also succeeded before merge.
-- PR `#97` passed a complete post-CI from-scratch review and was squash-merged as `65202cca4331ea55d7a3cd376291abece5ec2fd0`.
-- Exact production workflow `33417485123` succeeded from that exact `main` commit.
-- Generated production HTML contains the new article title, description, canonical URL, TechArticle JSON-LD, date, and body. Generated `sitemap.xml` contains the new route with 31 August lastmod; the prior no-eBPF article remains generated with its canonical metadata.
-- Fresh direct retrieval of the canonical homepage succeeds on 1 September and shows current v1.0.30 content plus the corrected Direct pairing/bootstrap-key wording.
-- Direct retrieval of the new local-session article and `sitemap.xml` through the available public retrieval path still returns a cache/retrieval error, and exact-title search does not yet establish indexing. This remains a **retrieval/indexing freshness qualification**, not a production incident: exact workflow state, `site/.source-sha`, generated article output, Blog source/index, and sitemap all agree.
-- Search-engine cached homepage text can still lag the canonical page and show superseded wording; public search is not product-release truth.
+- PR `#103` final head `4cb54de066457248ffd9f1a2a3e9280fcb4f8572` passed exact-head Website CI run `33657886561`. The successful static-site artifact was `9857481266`, digest `sha256:501b88ef7ef52997dd4560a10ad774a7be319435500be2a571d19d62a506ff80`.
+- Exact-head GitGuardian and Cloudflare Pages checks succeeded. Copilot review covered 3/3 changed files and produced zero review comments.
+- After CI was green, the complete base-to-head diff and downloaded generated static-site artifact were reviewed from scratch.
+- PR `#103` was squash-merged as `f8dc456ec0fbf04199b74114e9afaf25fea3d6db`.
+- Exact production workflow `33658176478` succeeded from that exact `main` commit at `2026-09-02T16:59:04Z`.
+- Production `site/.source-sha` exactly matches `f8dc456ec0fbf04199b74114e9afaf25fea3d6db`.
+- Generated production HTML contains the new article title, description, canonical URL, Open Graph metadata, and TechArticle body. Generated `sitemap.xml` contains `/blog/how-agentsight-shares-versioned-agent-skills/` with `2026-09-02` lastmod.
+- Fresh direct retrieval of the canonical homepage succeeds and shows current v1.0.30 content.
+- The available public retrieval path could not independently fetch the new article route immediately after publication, and exact-title search initially returned no results. This remains a **retrieval/indexing freshness qualification**, not a production incident, because exact workflow state, `site/.source-sha`, generated production HTML, Blog hub source, and sitemap agree.
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- No file in the configured folder has a 1 September modification timestamp; the latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT.
-- Because the 24–30 family was produced the morning immediately after the window ended, it remains inside the configured three-day lag and is **directional only**.
-- Directional 24–30 GA4 landing export: 17 sessions across listed rows, including 11 homepage sessions and 2 `(not set)` sessions; no key events in the listed rows.
-- Directional 24–30 GSC date export contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62.
-- The now-final `2026-08-17_to_2026-08-23` family remains absent as of 1 September. The exporter therefore produced a newer next-morning family without backfilling/refreshing the finalized missing window; current finalized week-over-week analysis remains blocked.
-- Older 10–16 August evidence also remains pre-lag; its GSC date export omitted 16 August.
+- The `2026-08-17_to_2026-08-23` family remains completely absent as of 2 September.
+- The latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT. On 2 September the window has reached the configured three-day finalization boundary, but no post-lag refresh is present; the stored files are still the next-morning snapshot.
+- The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero.
+- The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62.
+- Because the missing 17–23 family was never backfilled and the now-finalization-eligible 24–30 family remains stale/incomplete, fresh finalized week-over-week analysis is blocked.
 - Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
-- Exact-title public searches still do not establish indexing for the newest local-session article. Treat that as search freshness until source/deployment evidence disagrees.
 
 ## Off-site visibility
 
-- Alibaba Cloud Linux 4 Agentic Edition documentation, last updated 20 August 2026, lists AgentSight as a runtime-layer/core component and describes eBPF-based AI-agent observability for LLM API calls, token consumption, and process behavior.
-- Alibaba's `alibaba/anolisa` repository provides stronger provenance: its `NOTICE` states that `src/agentsight/` is based on `https://github.com/eunomia-bpf/agentsight` and credits eunomia-bpf contributors; the component README also names the Eunomia repository as its origin.
-- This is an independent downstream open-source/product reference, not a verified backlink to `agentsight.us`, customer proof, partnership claim, or endorsement. Earlier August operating records had already observed Alibaba Cloud's AgentSight documentation; the 1 September recheck strengthens provenance rather than establishing a new public relationship.
+- Alibaba Cloud Linux 4 Agentic Edition documentation lists AgentSight as a runtime-layer/core component and describes eBPF-based AI-agent observability.
+- Alibaba's `alibaba/anolisa` repository provides primary-source provenance: its `NOTICE` states that `src/agentsight/` is based on `https://github.com/eunomia-bpf/agentsight` and credits eunomia-bpf contributors.
+- This is an independent downstream open-source/product reference, not a verified backlink to `agentsight.us`, customer proof, partnership claim, or endorsement.
 
 ## npm publication state
 
@@ -70,13 +70,12 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Content clock
 
-- Previous qualifying publication: `/blog/when-agentsight-works-without-ebpf/`, production completion `2026-08-29T17:01:17Z` (10:01:17 PDT).
-- Previous 48-hour deadline: `2026-08-31T17:01:17Z` (10:01:17 PDT).
-- Current qualifying publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, production completion `2026-08-31T17:04:12Z` (10:04:12 PDT).
-- **31 August SLO result: missed by 2 minutes 55 seconds.** Publication time is recorded from the exact successful production workflow rather than PR creation or merge time.
-- Next rolling 48-hour deadline: `2026-09-02T17:04:12Z` (10:04:12 PDT). A normal 2 September daily cycle can still occur before that deadline.
-- 1 September is intentionally a metadata-only cycle: no production defect, product drift, newly finalized analytics, or distinct higher-priority rendered change justified manufacturing content today.
+- Previous qualifying publication: `/blog/how-agentsight-discovers-local-agent-sessions/`, production completion `2026-08-31T17:04:12Z` (10:04:12 PDT).
+- Previous rolling deadline: `2026-09-02T17:04:12Z` (10:04:12 PDT).
+- Current qualifying publication: `/blog/how-agentsight-shares-versioned-agent-skills/`, production completion `2026-09-02T16:59:04Z` (09:59:04 PDT).
+- **2 September SLO result: met by 5 minutes 8 seconds.** Publication time is recorded from the exact successful production workflow rather than PR creation or merge time.
+- Next rolling 48-hour deadline: `2026-09-04T16:59:04Z` (09:59:04 PDT).
 
 ## Human-only blockers
 
-- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to generate or refresh completed weekly GA4/GSC windows after the configured three-day finalization cutoff and specifically backfill 17–23 August. The current scheduled operator can inspect Drive but has no connected Apps Script execution/configuration surface.
+- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and refresh 24–30 August after the configured finalization cutoff. The current scheduled operator can inspect Drive but has no connected Apps Script execution/configuration surface.
