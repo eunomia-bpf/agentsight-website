@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const sharedSkillsArticle = {
+  title: 'How AgentSight shares versioned agent skills without copying them',
+  description:
+    'Follow the v1.0.30 bridge from a pinned agent-skills submodule through generated .agents/skills links, overwrite guards, and the Windows junction fallback.',
+  href: '/blog/how-agentsight-shares-versioned-agent-skills/',
+};
 const localSessionDiscoveryArticle = {
   title: 'How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions',
   description:
@@ -66,6 +72,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: sharedSkillsArticle.title, url: `${site.url}${sharedSkillsArticle.href}` },
       { '@type': 'WebPage', name: localSessionDiscoveryArticle.title, url: `${site.url}${localSessionDiscoveryArticle.href}` },
       { '@type': 'WebPage', name: noEbpfArticle.title, url: `${site.url}${noEbpfArticle.href}` },
       { '@type': 'WebPage', name: directNodeCredentialsArticle.title, url: `${site.url}${directNodeCredentialsArticle.href}` },
@@ -88,6 +95,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Skill distribution · September 2026</p>
+            <h2><Link href={sharedSkillsArticle.href}>{sharedSkillsArticle.title}</Link></h2>
+            <p>{sharedSkillsArticle.description}</p>
+            <Link className="arrow-link" href={sharedSkillsArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Native session internals · August 2026</p>
             <h2><Link href={localSessionDiscoveryArticle.href}>{localSessionDiscoveryArticle.title}</Link></h2>
