@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const noEbpfUpdated = new Date('2026-08-29T00:00:00Z');
   const localSessionDiscoveryUpdated = new Date('2026-08-31T00:00:00Z');
   const sharedSkillsUpdated = new Date('2026-09-02T00:00:00Z');
+  const systemBoundaryUpdated = new Date('2026-09-03T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -124,7 +125,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...pages.map((page) => ({
       url: `${site.url}${contentPath(page)}`,
-      lastModified: existingUpdated,
+      lastModified:
+        page.kind === 'blog' && page.slug === 'system-boundary-observability'
+          ? systemBoundaryUpdated
+          : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: page.kind === 'landing' ? 0.7 : 0.75,
     })),
