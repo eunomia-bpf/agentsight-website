@@ -68,7 +68,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - PR `#107` was squash-merged as `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
 - Exact production workflow `33897496330` succeeded from that exact `main` commit at `2026-09-04T16:53:04Z`.
 - Production `site/.source-sha` exactly matches `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
-- Generated production HTML for `/blog/how-agentsight-evolves-agent-skills/` contains the intended v1.0.30 title/description, canonical URL, and article Open Graph metadata. Generated `sitemap.xml` contains that route with `2026-09-04` lastmod.
+- Generated production HTML for `/blog/how-agentsight-evolves-agent-skills/` contains the intended v1.0.30 title/description, canonical URL, and article Open Graph metadata. Generated `sitemap.xml` contains that route with `2026-09-04T00:00:00.000Z` lastmod.
 - Immediate exact-title search after publication did not yet index the new page. This is a retrieval/indexing freshness qualification, not a production incident, because exact workflow state, `site/.source-sha`, generated production HTML, and sitemap all agree.
 - Fresh public search for the homepage returns the current v1.0.30 observe → diagnose → evolve → evaluate content. The system-boundary article still shows mixed search-cache freshness in some retrieval paths, with refreshed body text alongside an older v1.0.3 snippet.
 
