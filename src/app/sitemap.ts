@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const localSessionDiscoveryUpdated = new Date('2026-08-31T00:00:00Z');
   const sharedSkillsUpdated = new Date('2026-09-02T00:00:00Z');
   const systemBoundaryUpdated = new Date('2026-09-03T00:00:00Z');
+  const skillEvolutionUpdated = new Date('2026-09-04T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -120,6 +121,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-shares-versioned-agent-skills/`,
       lastModified: sharedSkillsUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/how-agentsight-evolves-agent-skills/`,
+      lastModified: skillEvolutionUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
