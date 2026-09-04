@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const skillEvolutionArticle = {
+  title: 'How AgentSight turns repeated agent failures into skill changes',
+  description:
+    'Follow the v1.0.30 evidence-gated loop from trajectory source validation and failure ownership through bounded skill patches, held-out evaluation, promotion, and rollback.',
+  href: '/blog/how-agentsight-evolves-agent-skills/',
+};
 const sharedSkillsArticle = {
   title: 'How AgentSight shares versioned agent skills without copying them',
   description:
@@ -72,6 +78,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: skillEvolutionArticle.title, url: `${site.url}${skillEvolutionArticle.href}` },
       { '@type': 'WebPage', name: sharedSkillsArticle.title, url: `${site.url}${sharedSkillsArticle.href}` },
       { '@type': 'WebPage', name: localSessionDiscoveryArticle.title, url: `${site.url}${localSessionDiscoveryArticle.href}` },
       { '@type': 'WebPage', name: noEbpfArticle.title, url: `${site.url}${noEbpfArticle.href}` },
@@ -95,6 +102,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Skill evolution · September 2026</p>
+            <h2><Link href={skillEvolutionArticle.href}>{skillEvolutionArticle.title}</Link></h2>
+            <p>{skillEvolutionArticle.description}</p>
+            <Link className="arrow-link" href={skillEvolutionArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Skill distribution · September 2026</p>
             <h2><Link href={sharedSkillsArticle.href}>{sharedSkillsArticle.title}</Link></h2>
