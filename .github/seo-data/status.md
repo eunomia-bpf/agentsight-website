@@ -5,16 +5,17 @@
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation/CLI/build/runtime documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
-- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 3 September; no newer product release drift is present.
+- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 4 September; no newer product release or unreleased `master` drift is present.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
-- Latest qualifying substantive publication is the major evergreen refresh of `/blog/system-boundary-observability/`, rendered PR `#105`, squash commit `65bdccef66f50490a7f929b74ccc90afa34ad1ad`.
-- Exact `Publish static site` run `33782122899` succeeded at `2026-09-03T17:02:26Z` (10:02:26 PDT).
-- Current production `site/.source-sha` exactly equals `65bdccef66f50490a7f929b74ccc90afa34ad1ad`.
+- Latest qualifying substantive publication: `/blog/how-agentsight-evolves-agent-skills/`, rendered PR `#107`, squash commit `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
+- Exact `Publish static site` run `33897496330` succeeded at `2026-09-04T16:53:04Z` (09:53:04 PDT).
+- Current production `site/.source-sha` exactly equals `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may still appear as a CI/deployment check and is not treated as analytics evidence.
 
 ## Current public content ownership boundaries
 
+- `/blog/how-agentsight-evolves-agent-skills/`: v1.0.30 repository-local skill-evolution method — source-fidelity gates, workload strata, failure ownership, durable-memory placement, candidate patch boundaries, leak-resistant held-out evaluation, promotion verdicts, and rollback. It explicitly does not claim autonomous runtime self-editing.
 - `/blog/system-boundary-observability/`: broad architecture and reader decision across native agent telemetry, tool-protocol evidence, independent system execution, provider traffic, and cross-boundary correlation. The 3 September refresh also owns the exact AgentSight v1.0.30 OpenTelemetry export/provenance boundary.
 - `/blog/how-agentsight-shares-versioned-agent-skills/`: v1.0.30 shared-skills repository bridge — pinned `agent-skills` gitlink, generated `.agents/skills` links, Bash/PowerShell sync behavior, overwrite guards, Windows junction fallback, and the boundary between reusable and repository-specific skills.
 - `/blog/how-agentsight-discovers-local-agent-sessions/`: provider-native discovery roots/formats, provider-specific ID resolution, Codex `state_5.sqlite` indexing, bounded list/detail behavior, caching/lazy hydration, Cursor subagent freshness/deduplication, and missing-session troubleshooting.
@@ -25,6 +26,18 @@
 - `/blog/replay-coding-agent-repository-changes/`: native-session repository replay and its intent/system-evidence limits.
 
 These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method.
+
+## Skill-evolution method retained from v1.0.30
+
+- `skills/evolve-agent-skills/SKILL.md` treats trajectories as evidence rather than instructions and separates analysis/proposal from promotion claims.
+- Source coverage is inventoried before behavioral aggregation: source roots, discovery rules, time ranges, parse results, stable identity, parent/child/reviewer lineage, runtime, repository state, and coverage gaps are explicit.
+- Human-interactive parents, delegated children/reviewers, benchmark/replay/synthetic/exec workloads, evaluator/checker runs, and unknown records are kept as separate strata until synthesis.
+- Failure classification separates source-fidelity and metric defects from routing, claim/evidence drift, review priming, retry/churn, stale-state, workflow-duplication, overgeneralized-memory, skill-bloat, workload-leakage, and outcome-blindness problems.
+- Durable-memory placement is intentionally narrow: project facts stay project-local; one reproducible failure is generally a regression fixture; repeated project workflow can become a project-local skill; repeated general procedures can justify a shared skill; parser/identity defects belong in observability implementation; sparse evidence can remain an analysis note.
+- A candidate patch package must name the failure, current/desired observable behavior, smallest file set, mechanism, non-goals, regression risks, positive/negative/boundary evals, and rollback condition.
+- Promotion uses frozen baseline/candidate revisions, held-out P/U/R/A tasks, leakage controls, layered grading, repeated trials where stochastic, and a predeclared decision rule.
+- Verdicts are `observe`, `propose`, `pilot`, `promote`, `reject`, or `rollback`; an explicitly requested local edit can be `propose`, but a causal improvement or promotion claim requires valid comparison evidence.
+- This is a checked-in repository workflow. It is not evidence that every AgentSight user executes it or that the runtime automatically edits/deploys production skills.
 
 ## System-boundary / OpenTelemetry facts retained from v1.0.30
 
@@ -48,24 +61,24 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
-- PR `#105` final head `567a252c31259f3827d6f906b89ea7911e4ea956` passed exact-head Website CI run `33781612879`; the scope guard, `npm ci`, `npm run verify`, and static-site artifact upload all succeeded.
-- The successful static-site artifact was `9903796847`, digest `sha256:94a8e8bfd6b4242a136a5bb2757392a5930fe4e791c5edc64bcb9602902d0235`.
-- Exact-head GitGuardian and Cloudflare Pages checks succeeded. No blocking review thread was present at the final review gate.
-- After CI was green, the complete base-to-head diff and downloaded generated static-site artifact were reviewed from scratch.
-- PR `#105` was squash-merged as `65bdccef66f50490a7f929b74ccc90afa34ad1ad`.
-- Exact production workflow `33782122899` succeeded from that exact `main` commit at `2026-09-03T17:02:26Z`.
-- Production `site/.source-sha` exactly matches `65bdccef66f50490a7f929b74ccc90afa34ad1ad`.
-- Generated production HTML for `/blog/system-boundary-observability/` contains the refreshed v1.0.30 description, canonical URL, article Open Graph/Twitter metadata, and updated substantive body. Generated `sitemap.xml` contains that route with `2026-09-03` lastmod.
-- Fresh direct retrieval of the canonical homepage succeeds and shows current v1.0.30 content.
-- Immediately after publication, the available direct retrieval path for the refreshed system-boundary article still returned an older cached v1.0.3 copy. This is a **retrieval/CDN/indexing freshness qualification**, not a production incident, because exact workflow state, `site/.source-sha`, generated production HTML, and sitemap all agree. Recheck the public route in a later cycle; do not manufacture a cache-forcing change without evidence of an origin defect.
+- PR `#107` exact head `37d89686268c9f9e7e1234715a84b69bcf52f851` passed Website CI run `33897228086`; the autonomous SEO scope guard, `npm ci`, `npm run verify`, and static-site artifact upload all succeeded.
+- Successful static-site artifact `9946219497`, digest `sha256:234df7563f6719192f149211e1effc126aed123ad6a98328ea34e1a3332ebaf8`, was downloaded and inspected.
+- Exact-head GitGuardian succeeded and Cloudflare Pages reported a successful preview deployment. No unresolved review thread was present at the final review gate.
+- After CI was green, the complete base-to-head diff and generated static-site artifact were reviewed from scratch.
+- PR `#107` was squash-merged as `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
+- Exact production workflow `33897496330` succeeded from that exact `main` commit at `2026-09-04T16:53:04Z`.
+- Production `site/.source-sha` exactly matches `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
+- Generated production HTML for `/blog/how-agentsight-evolves-agent-skills/` contains the intended v1.0.30 title/description, canonical URL, and article Open Graph metadata. Generated `sitemap.xml` contains that route with `2026-09-04` lastmod.
+- Immediate exact-title search after publication did not yet index the new page. This is a retrieval/indexing freshness qualification, not a production incident, because exact workflow state, `site/.source-sha`, generated production HTML, and sitemap all agree.
+- Fresh public search for the homepage returns the current v1.0.30 observe → diagnose → evolve → evaluate content. The system-boundary article still shows mixed search-cache freshness in some retrieval paths, with refreshed body text alongside an older v1.0.3 snippet.
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- The `2026-08-17_to_2026-08-23` family remains completely absent as of 3 September.
-- The latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT. No post-lag refresh is present; the stored files remain the next-morning snapshot even though the completed window is now beyond the configured three-day finalization lag.
-- The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero.
-- The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62.
+- The `2026-08-17_to_2026-08-23` family remains completely absent as of 4 September.
+- The latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT. No post-lag refresh is present; the stored files remain the next-morning snapshot even though the completed window is beyond the configured three-day finalization lag.
+- The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero. Public-safe SHA-256: `2372c487f122aa3aabb72a1008408619d2036d06061542f92df898163afc1f3a`.
+- The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62. Public-safe SHA-256: `70d69b7fd6a372d2ffec14cfb77dace8abfd63113e3027ddaeb499f6a6024f99`.
 - Because the missing 17–23 family was never backfilled and the 24–30 family remains stale/incomplete, fresh finalized week-over-week analysis is blocked.
 - Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
 
@@ -82,10 +95,11 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Content clock
 
-- Previous qualifying publication: `/blog/how-agentsight-shares-versioned-agent-skills/`, production completion `2026-09-02T16:59:04Z` (09:59:04 PDT).
-- Current qualifying publication: major evergreen refresh of `/blog/system-boundary-observability/`, production completion `2026-09-03T17:02:26Z` (10:02:26 PDT).
-- The publication time is recorded from exact successful production workflow `33782122899`, not PR creation or merge time.
-- Next rolling 48-hour deadline: `2026-09-05T17:02:26Z` (10:02:26 PDT).
+- Previous qualifying publication: major evergreen refresh of `/blog/system-boundary-observability/`, production completion `2026-09-03T17:02:26Z` (10:02:26 PDT).
+- Current qualifying publication: `/blog/how-agentsight-evolves-agent-skills/`, production completion `2026-09-04T16:53:04Z` (09:53:04 PDT).
+- The publication time is recorded from exact successful production workflow `33897496330`, not PR creation or merge time.
+- The current publication completed approximately 24 hours 9 minutes before the prior rolling deadline.
+- Next rolling 48-hour deadline: `2026-09-06T16:53:04Z` (09:53:04 PDT).
 
 ## Human-only blockers
 
