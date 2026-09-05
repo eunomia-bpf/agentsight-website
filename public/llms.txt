@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.30
+Current release: v1.0.31
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -29,6 +29,8 @@ Hosted app: https://app.agentsight.us/
 - https://agentsight.us/blog/
 
 ## Product capabilities
+
+AgentSight v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.
 
 AgentSight v1.0.30 adds repository-maintenance plumbing for shared agent skills. The AgentSight repository pins `eunomia-bpf/agent-skills` under `.agents/sources`, provides small Bash and PowerShell sync entrypoints, and keeps generated `.agents/skills` links out of Git. The release does not change AgentSight runtime code or existing repository-specific skills.
 

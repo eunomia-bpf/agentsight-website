@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.30 adds a repository-maintenance bridge for shared agent skills: the AgentSight repository pins eunomia-bpf/agent-skills under .agents/sources, provides small Bash and PowerShell sync entrypoints, and keeps generated .agents/skills links out of Git. The release does not change AgentSight product runtime code or existing repository-specific skills.',
+      'v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Repository skills',
+    title: 'Shared agent skills stay versioned without committing generated links',
+    description:
+      'v1.0.30 adds a repository-maintenance bridge for shared agent skills: the AgentSight repository pins eunomia-bpf/agent-skills under .agents/sources, provides small Bash and PowerShell sync entrypoints, and keeps generated .agents/skills links out of Git. The release does not change AgentSight product runtime code or existing repository-specific skills.',
+    href: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.30',
   },
   {
     label: 'Installation',
