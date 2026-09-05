@@ -5,11 +5,12 @@
 - Canonical product website: `https://agentsight.us/`.
 - Canonical installation/CLI/build/runtime documentation: `https://eunomia.dev/agentsight/`.
 - Authoritative product repository: `eunomia-bpf/agentsight`.
-- Current authoritative release: **AgentSight v1.0.30**, tag/release/product `master` commit `934f441eff8ca210807333633f47b2efcb8cd020`, published 25 August 2026. Rechecked 4 September; no newer product release or unreleased `master` drift is present.
+- Current authoritative release: **AgentSight v1.0.31**, tag/release/product `master` commit `bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3`, published 5 September 2026.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
-- Latest qualifying substantive publication: `/blog/how-agentsight-evolves-agent-skills/`, rendered PR `#107`, squash commit `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
-- Exact `Publish static site` run `33897496330` succeeded at `2026-09-04T16:53:04Z` (09:53:04 PDT).
-- Current production `site/.source-sha` exactly equals `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
+- Latest rendered product-fact synchronization: PR `#109`, squash commit `e7f8198835012045d33de81c7492dbaf75c39f2c`, which moved current-release metadata, changelog, and `llms.txt` to v1.0.31.
+- Exact `Publish static site` run `33977574363` succeeded from `e7f8198835012045d33de81c7492dbaf75c39f2c` at `2026-09-05T16:21:33Z` (09:21:33 PDT).
+- Current production `site/.source-sha` exactly equals `e7f8198835012045d33de81c7492dbaf75c39f2c`.
+- Latest qualifying substantive publication remains `/blog/how-agentsight-evolves-agent-skills/`, rendered PR `#107`, squash commit `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`, published `2026-09-04T16:53:04Z` (09:53:04 PDT). The v1.0.31 release-fact sync does not reset the substantive-content clock.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may still appear as a CI/deployment check and is not treated as analytics evidence.
 
@@ -25,7 +26,17 @@
 - `/blog/how-agentsight-direct-node-credentials-work/`: persistent bootstrap key, URL-fragment pairing, Direct/relay scoped capabilities, and optional encrypted cross-browser Direct configuration.
 - `/blog/replay-coding-agent-repository-changes/`: native-session repository replay and its intent/system-evidence limits.
 
-These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method.
+These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method. Version labels on existing research pages remain pinned to the exact product snapshot they analyzed rather than being bulk-updated when a new release ships.
+
+## v1.0.31 frontend-usability facts
+
+- v1.0.31 is a focused frontend usability release derived from product PR `#209`.
+- Fleet machine overviews can become visible progressively as individual Nodes finish loading instead of waiting for all Node reads to settle first.
+- Redundant relay-status probes were removed from the fleet loading path, and process/analysis views are loaded on demand rather than eagerly with every session detail.
+- Narrow-screen fleet/session layouts keep important controls, tabs, dialogs, and content reachable; long chat messages wrap instead of forcing unusable horizontal overflow.
+- Live session messaging preserves IME composition and isolates asynchronous send completion from a session view that has already been replaced.
+- Ambiguous HTTPS message-write failures are not automatically replayed, avoiding accidental duplicate submissions when delivery status is unknown.
+- The product PR explicitly leaves authentication, capability, organization, and backend policy unchanged. Do not infer a security-model or Controller-policy change from this release.
 
 ## Skill-evolution method retained from v1.0.30
 
@@ -61,22 +72,21 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
-- PR `#107` exact head `37d89686268c9f9e7e1234715a84b69bcf52f851` passed Website CI run `33897228086`; the autonomous SEO scope guard, `npm ci`, `npm run verify`, and static-site artifact upload all succeeded.
-- Successful static-site artifact `9946219497`, digest `sha256:234df7563f6719192f149211e1effc126aed123ad6a98328ea34e1a3332ebaf8`, was downloaded and inspected.
-- Exact-head GitGuardian succeeded and Cloudflare Pages reported a successful preview deployment. No unresolved review thread was present at the final review gate.
-- After CI was green, the complete base-to-head diff and generated static-site artifact were reviewed from scratch.
-- PR `#107` was squash-merged as `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
-- Exact production workflow `33897496330` succeeded from that exact `main` commit at `2026-09-04T16:53:04Z`.
-- Production `site/.source-sha` exactly matches `632d0d8437b4a4cd5cbcbbfb7826996fbf628b5d`.
-- Generated production HTML for `/blog/how-agentsight-evolves-agent-skills/` contains the intended v1.0.30 title/description, canonical URL, and article Open Graph metadata. Generated `sitemap.xml` contains that route with `2026-09-04T00:00:00.000Z` lastmod.
-- Immediate exact-title search after publication did not yet index the new page. This is a retrieval/indexing freshness qualification, not a production incident, because exact workflow state, `site/.source-sha`, generated production HTML, and sitemap all agree.
-- Fresh public search for the homepage returns the current v1.0.30 observe → diagnose → evolve → evaluate content. The system-boundary article still shows mixed search-cache freshness in some retrieval paths, with refreshed body text alongside an older v1.0.3 snippet.
+- Rendered PR `#109` exact head `64506ad8a034819804d8782e9b2fdd6238330ec8` passed Website CI run `33977429448`; the autonomous SEO scope guard, `npm ci`, `npm run verify`, and static-site artifact upload all succeeded.
+- Successful static-site artifact `9972731967`, digest `sha256:53a89a1c81d566610eae10c6f96ed3a0d1acfee8d8d5bb52da89b3e9713434bf`, was downloaded and inspected. Generated homepage and changelog output showed v1.0.31, while representative v1.0.30 research content retained its exact source/version scope.
+- Exact-head GitGuardian, Copilot review, and Cloudflare Pages preview all succeeded. Copilot reviewed 3/3 changed files with zero comments; no unresolved review thread was present at the final review gate.
+- After CI was green, the complete base-to-head diff, review state, and generated artifact were reviewed from scratch. The changed files were exactly `src/lib/site.ts`, `src/app/changelog/page.tsx`, and `public/llms.txt`.
+- PR `#109` was squash-merged as `e7f8198835012045d33de81c7492dbaf75c39f2c`.
+- Exact production workflow `33977574363` succeeded from that exact `main` commit at `2026-09-05T16:21:33Z` (09:21:33 PDT), including publication-source validation, `npm ci`, `npm run verify`, and generated-file publication to `site`.
+- Production `site/.source-sha` exactly matches `e7f8198835012045d33de81c7492dbaf75c39f2c`.
+- Generated production homepage HTML reports SoftwareApplication version 1.0.31, links the v1.0.31 release, and pins product assets to `bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3`. Generated `/changelog/` HTML leads with AgentSight 1.0.31 and retains v1.0.30 history.
+- Immediate direct public retrieval after publication still exposed stale v1.0.30 text. This is a CDN/retrieval freshness qualification, not a production incident, because the exact workflow state, `site/.source-sha`, and generated production HTML all agree on v1.0.31. No cache-forcing change was made.
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- The `2026-08-17_to_2026-08-23` family remains completely absent as of 4 September.
-- The latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT. No post-lag refresh is present; the stored files remain the next-morning snapshot even though the completed window is beyond the configured three-day finalization lag.
+- The `2026-08-17_to_2026-08-23` family remains completely absent as of 5 September.
+- The latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT. No post-lag refresh is present by 5 September; the stored files remain the next-morning snapshot even though the completed window is beyond the configured three-day finalization lag.
 - The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero. Public-safe SHA-256: `2372c487f122aa3aabb72a1008408619d2036d06061542f92df898163afc1f3a`.
 - The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position ~20.62. Public-safe SHA-256: `70d69b7fd6a372d2ffec14cfb77dace8abfd63113e3027ddaeb499f6a6024f99`.
 - Because the missing 17–23 family was never backfilled and the 24–30 family remains stale/incomplete, fresh finalized week-over-week analysis is blocked.
@@ -98,8 +108,8 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Previous qualifying publication: major evergreen refresh of `/blog/system-boundary-observability/`, production completion `2026-09-03T17:02:26Z` (10:02:26 PDT).
 - Current qualifying publication: `/blog/how-agentsight-evolves-agent-skills/`, production completion `2026-09-04T16:53:04Z` (09:53:04 PDT).
 - The publication time is recorded from exact successful production workflow `33897496330`, not PR creation or merge time.
-- The current publication completed approximately 24 hours 9 minutes before the prior rolling deadline.
-- Next rolling 48-hour deadline: `2026-09-06T16:53:04Z` (09:53:04 PDT).
+- The v1.0.31 release-fact synchronization published 5 September is a material rendered correction but does not qualify as a substantive search-facing technical article or major evergreen refresh, so it does not reset this clock.
+- Next rolling 48-hour deadline: `2026-09-06T16:53:04Z` (09:53:04 PDT). The next normal cycle should prioritize qualifying content before that deadline after any higher-priority production or product repair.
 
 ## Human-only blockers
 
