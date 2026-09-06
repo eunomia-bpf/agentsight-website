@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const progressiveFleetArticle = {
+  title: 'How AgentSight keeps a multi-node agent fleet responsive when one Node is slow',
+  description:
+    'Trace the v1.0.31 frontend from concurrent per-Node probes through incremental fleet rendering, stale-refresh guards, transport fallbacks, and lazy session views.',
+  href: '/blog/how-agentsight-loads-agent-fleets-progressively/',
+};
 const skillEvolutionArticle = {
   title: 'How AgentSight turns repeated agent failures into skill changes',
   description:
@@ -78,6 +84,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: progressiveFleetArticle.title, url: `${site.url}${progressiveFleetArticle.href}` },
       { '@type': 'WebPage', name: skillEvolutionArticle.title, url: `${site.url}${skillEvolutionArticle.href}` },
       { '@type': 'WebPage', name: sharedSkillsArticle.title, url: `${site.url}${sharedSkillsArticle.href}` },
       { '@type': 'WebPage', name: localSessionDiscoveryArticle.title, url: `${site.url}${localSessionDiscoveryArticle.href}` },
@@ -102,6 +109,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Fleet UI internals · September 2026</p>
+            <h2><Link href={progressiveFleetArticle.href}>{progressiveFleetArticle.title}</Link></h2>
+            <p>{progressiveFleetArticle.description}</p>
+            <Link className="arrow-link" href={progressiveFleetArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Skill evolution · September 2026</p>
             <h2><Link href={skillEvolutionArticle.href}>{skillEvolutionArticle.title}</Link></h2>
