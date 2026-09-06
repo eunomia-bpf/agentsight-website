@@ -11,6 +11,7 @@
 - Exact production `Publish static site` run for that publication: `34046834602`, conclusion `success`.
 - Current production `site/.source-sha` exactly equals `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
 - The previous 48-hour deadline was `2026-09-06T16:53:04Z`; exact production completion was two seconds later, so the SLO missed by **2 seconds**. The new rolling deadline is `2026-09-08T16:53:06Z` (09:53:06 PDT).
+- Same-day owner-invoked recheck at `2026-09-06T17:06:20Z` found no product/release or shared-skill drift, no newer finalized Google export family, and no site-owned production defect; the next normal daily cycle can still occur before the 8 September content deadline.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
@@ -53,6 +54,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Generated production article HTML contains the intended title, v1.0.31 description, and canonical URL. Production `sitemap.xml` contains the new route and records both it and `/blog/` with `2026-09-06T00:00:00.000Z` last-modified timestamps.
 - Immediate exact-title public search did not yet surface the new route. With exact deployment, publication marker, generated HTML, and sitemap all agreeing, this is an indexing/retrieval freshness qualification rather than a production incident.
 - A fresh direct public homepage read now exposes v1.0.31, closing the 5 September homepage/CDN freshness qualification.
+- The same-day recheck again found search-index lag only: cached public-search results may still describe v1.0.30 and the new fleet article is not yet surfaced by exact-title/site search, while direct homepage retrieval remains current. No cache-forcing or duplicate-content change is justified.
 
 ## Analytics and search evidence
 
@@ -62,6 +64,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero. Public-safe SHA-256: `2372c487f122aa3aabb72a1008408619d2036d06061542f92df898163afc1f3a`.
 - The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position approximately 20.62. Public-safe SHA-256: `70d69b7fd6a372d2ffec14cfb77dace8abfd63113e3027ddaeb499f6a6024f99`.
 - Because the missing 17–23 family was never backfilled and the 24–30 family remains stale/incomplete, fresh finalized week-over-week analysis is blocked.
+- Same-day direct Drive re-enumeration after the #112 closeout found no newer family or post-lag refresh, so no new finalized comparison is available.
 - Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
 
 ## Off-site visibility
