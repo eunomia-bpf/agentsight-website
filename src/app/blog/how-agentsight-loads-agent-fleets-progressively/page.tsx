@@ -269,11 +269,11 @@ export default function ProgressiveFleetLoadingArticle() {
             <section>
               <h2>How to inspect the behavior yourself</h2>
               <p>
-                The reproducible artifact for this article is the released source, not a synthetic timing number. Start at
-                <a href={`${productSource}/ext/web/page.tsx`}> <code>refreshFleet</code> in the v1.0.31 web page</a>. Follow the
+                The reproducible artifact for this article is the released source, not a synthetic timing number. Start at{' '}
+                <a href={`${productSource}/ext/web/page.tsx`}><code>refreshFleet</code> in the v1.0.31 web page</a>. Follow the
                 per-Node <code>map</code>, the transport loop, the in-probe <code>setFleetSamples</code>, and then the final
-                all-unreachable check after <code>Promise.all</code>. Next inspect
-                <a href={`${productSource}/ext/web/components/SessionWorkspace.tsx`}> the session workspace</a> for dynamic
+                all-unreachable check after <code>Promise.all</code>. Next inspect{' '}
+                <a href={`${productSource}/ext/web/components/SessionWorkspace.tsx`}>the session workspace</a> for dynamic
                 process/analysis imports and tab-scoped event processing.
               </p>
               <p>
