@@ -150,8 +150,9 @@ export default function PricingPage() {
           <Eyebrow>Primary source</Eyebrow>
           <h2>Pricing state is pinned to the released Controller.</h2>
           <p>
-            Reviewed on 13 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.
-            The current catalog and hosted-preview switch are defined in Controller source.
+            Last substantively reviewed on 7 September 2026. The source links below resolve against the site's
+            current AgentSight release, v{site.version} at <code>{productCommit}</code>. The current catalog and
+            hosted-preview switch are defined in Controller source.
           </p>
           <ul>
             <li><a href={`https://github.com/eunomia-bpf/agentsight/blob/${productCommit}/controller/src/access.ts`}>v{site.version} plan catalog and hosted-preview access model</a></li>

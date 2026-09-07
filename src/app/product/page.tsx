@@ -310,9 +310,10 @@ export default function ProductPage() {
           <Eyebrow>Primary sources</Eyebrow>
           <h2>This workflow is pinned to the released v{site.version} implementation.</h2>
           <p>
-            Reviewed on 24 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.
-            Container-backed session routing and row-level audit provenance changed after v1.0.26, so use the
-            exact release and source links below when a deployment or audit depends on a specific version.
+            Last substantively reviewed on 7 September 2026. The source links below resolve against the site's
+            current AgentSight release, v{site.version} at <code>{productCommit}</code>. Container-backed session
+            routing and row-level audit provenance changed after v1.0.26, so use the exact release and source links
+            below when a deployment or audit depends on a specific version.
           </p>
           <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
         </div>

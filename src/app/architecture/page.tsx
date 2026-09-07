@@ -373,7 +373,10 @@ export default function ArchitecturePage() {
         <div className="shell narrow source-section">
           <Eyebrow>Primary sources</Eyebrow>
           <h2>Architecture claims are pinned to the released implementation.</h2>
-          <p>Reviewed on 24 August 2026 against AgentSight v{site.version} at <code>{productCommit}</code>.</p>
+          <p>
+            Last substantively reviewed on 7 September 2026. The source links below resolve against the site's
+            current AgentSight release, v{site.version} at <code>{productCommit}</code>.
+          </p>
           <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
         </div>
       </section>
