@@ -9,9 +9,9 @@
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
 - Latest qualifying substantive publication: `/blog/how-agentsight-loads-agent-fleets-progressively/`, rendered PR `#111`, squash commit `95b7ded7319c3c8273051190379f22f6dd4d00a5`, exact production completion `2026-09-06T16:53:06Z` (09:53:06 PDT).
 - Exact production `Publish static site` run for that publication: `34046834602`, conclusion `success`.
-- Current production `site/.source-sha` exactly equals `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
+- Production `site/.source-sha` at the start of the 7 September cycle exactly equals `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
 - The previous 48-hour deadline was `2026-09-06T16:53:04Z`; exact production completion was two seconds later, so the SLO missed by **2 seconds**. The new rolling deadline is `2026-09-08T16:53:06Z` (09:53:06 PDT).
-- Same-day owner-invoked recheck at `2026-09-06T17:06:20Z` found no product/release or shared-skill drift, no newer finalized Google export family, and no site-owned production defect; the next normal daily cycle can still occur before the 8 September content deadline.
+- The 7 September cycle found no product/release or shared-skill drift. A normal 8 September daily cycle can still occur before the content deadline, so the current factual repair does not reset the substantive publication clock.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
@@ -50,21 +50,24 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - A from-scratch final review confirmed exactly three rendered files changed: the new article, the Blog hub, and sitemap.
 - PR `#111` was squash-merged as `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
 - Exact `Publish static site` run `34046834602` succeeded from that commit at `2026-09-06T16:53:06Z`.
-- Production `site/.source-sha` exactly matches `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
+- Production `site/.source-sha` exactly matched `95b7ded7319c3c8273051190379f22f6dd4d00a5` at the start of 7 September.
 - Generated production article HTML contains the intended title, v1.0.31 description, and canonical URL. Production `sitemap.xml` contains the new route and records both it and `/blog/` with `2026-09-06T00:00:00.000Z` last-modified timestamps.
-- Immediate exact-title public search did not yet surface the new route. With exact deployment, publication marker, generated HTML, and sitemap all agreeing, this is an indexing/retrieval freshness qualification rather than a production incident.
-- A fresh direct public homepage read now exposes v1.0.31, closing the 5 September homepage/CDN freshness qualification.
-- The same-day recheck again found search-index lag only: cached public-search results may still describe v1.0.30 and the new fleet article is not yet surfaced by exact-title/site search, while direct homepage retrieval remains current. No cache-forcing or duplicate-content change is justified.
+- Immediate exact-title public search still does not surface the fleet-loading route. Direct homepage retrieval is current v1.0.31, while some indexed pages retain cached v1.0.30 text; with exact deployment artifacts agreeing, this remains indexing/retrieval freshness rather than a production incident.
+- The 7 September public search pass exposed a separate site-owned factual defect: `/product/`, `/architecture/`, and `/pricing/` combined old fixed review dates (13 or 24 August) with the dynamically current `site.version`/`productCommit`, producing impossible claims that those August reviews were performed against the 5 September v1.0.31 release. The current rendered repair revalidates those source sections against v1.0.31 and separates the fixed substantive-review date from the dynamically current source target so a future release cannot silently rewrite the historical review claim.
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- The `2026-08-17_to_2026-08-23` family remains completely absent as of 6 September.
-- The latest family remains `2026-08-24_to_2026-08-30`, generated 31 August around 09:05 PDT. No post-lag refresh is present even though the completed window is beyond the configured three-day finalization lag.
+- `2026-08-17_to_2026-08-23` remains completely absent as of 7 September.
+- `2026-08-24_to_2026-08-30` remains the next-morning 31 August family. No post-lag refresh is present even though the completed window is beyond the configured three-day finalization lag; its GSC date export still omits 30 August.
 - The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero. Public-safe SHA-256: `2372c487f122aa3aabb72a1008408619d2036d06061542f92df898163afc1f3a`.
 - The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position approximately 20.62. Public-safe SHA-256: `70d69b7fd6a372d2ffec14cfb77dace8abfd63113e3027ddaeb499f6a6024f99`.
-- Because the missing 17–23 family was never backfilled and the 24–30 family remains stale/incomplete, fresh finalized week-over-week analysis is blocked.
-- Same-day direct Drive re-enumeration after the #112 closeout found no newer family or post-lag refresh, so no new finalized comparison is available.
+- A new `2026-08-31_to_2026-09-06` family was generated 7 September around 09:05 PDT, the morning immediately after the covered window. It is therefore **pre-finalization directional evidence**, not a finalized weekly KPI family.
+- The new GA4 organic landing file lists 12 sessions / 11 active users, all on `/`, engagement rate `58.33%`, and zero listed key events. Public-safe SHA-256: `45a3ab61f21fdfcce3d8ef6ba7c8ce301a353a2bb2a95fc0ef090069a322ffe9`.
+- The new GSC date file contains 31 August through 5 September but omits 6 September: 4 clicks / 260 impressions / 1.54% CTR / weighted average position approximately 11.68. Public-safe SHA-256: `dc3a35240a6b2d311d36a873bccf74e26d34e8dfcdac7866c573cab2d46bc67e`.
+- Like-for-like only as six-day next-morning snapshots, impressions rose from 180 to 260 and apparent weighted position improved from approximately 20.62 to 11.68, while clicks fell from 9 to 4 and CTR from 5.00% to 1.54%. This is directional and must not be reported as finalized week-over-week performance.
+- Directional GSC page rows in the new family include homepage 4 clicks / 123 impressions / average position approximately 5.50, `/integrations/cursor/` 25 impressions, `/releases/` 17, `/blog/read-agentsight-audit-provenance/` 12, `/use-cases/audit-mcp-servers-skills-plugins/` 12, `/guides/agent-flamegraph/` 11, and `/blog/` 11.
+- The new next-morning family confirms that the exporter continues to run, but the missing 17–23 family and stale/incomplete 24–30 family still block fresh finalized week-over-week analysis.
 - Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
 
 ## Off-site visibility
@@ -72,6 +75,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Alibaba Cloud Linux 4 Agentic Edition documentation lists AgentSight as a runtime-layer/core component and describes eBPF-based AI-agent observability.
 - Alibaba's `alibaba/anolisa` repository provides primary-source provenance: its `NOTICE` states that `src/agentsight/` is based on `https://github.com/eunomia-bpf/agentsight` and credits eunomia-bpf contributors.
 - This is an independent downstream open-source/product reference, not a verified backlink to `agentsight.us`, customer proof, partnership claim, or endorsement.
+- The bounded 7 September search scan did not establish a new independently verified external link or citation requiring a status change.
 
 ## npm publication state
 
@@ -80,4 +84,4 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Human-only blockers
 
-- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and refresh 24–30 August after the configured finalization cutoff. The current operator can inspect Drive but has no connected Apps Script execution/configuration surface.
+- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and refresh 24–30 August after the configured finalization cutoff. A new 31 August–6 September next-morning family exists but is still inside its own three-day lag and again omits the boundary date in GSC. The current operator can inspect Drive but has no connected Apps Script execution/configuration surface.
