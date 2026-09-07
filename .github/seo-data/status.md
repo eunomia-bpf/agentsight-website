@@ -9,9 +9,9 @@
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
 - Latest qualifying substantive publication: `/blog/how-agentsight-loads-agent-fleets-progressively/`, rendered PR `#111`, squash commit `95b7ded7319c3c8273051190379f22f6dd4d00a5`, exact production completion `2026-09-06T16:53:06Z` (09:53:06 PDT).
 - Exact production `Publish static site` run for that publication: `34046834602`, conclusion `success`.
-- Production `site/.source-sha` at the start of the 7 September cycle exactly equals `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
+- Current production `site/.source-sha` exactly equals the 7 September factual-repair commit `d30e4f5bc5fbc9ffce3fb02b54d487a45b38b1c2`.
 - The previous 48-hour deadline was `2026-09-06T16:53:04Z`; exact production completion was two seconds later, so the SLO missed by **2 seconds**. The new rolling deadline is `2026-09-08T16:53:06Z` (09:53:06 PDT).
-- The 7 September cycle found no product/release or shared-skill drift. A normal 8 September daily cycle can still occur before the content deadline, so the current factual repair does not reset the substantive publication clock.
+- The 7 September cycle found no product/release or shared-skill drift. Its factual repair does not reset the substantive publication clock, so a normal 8 September daily cycle still needs to publish a qualifying outcome before the deadline if no higher-priority repair intervenes.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
@@ -50,10 +50,17 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - A from-scratch final review confirmed exactly three rendered files changed: the new article, the Blog hub, and sitemap.
 - PR `#111` was squash-merged as `95b7ded7319c3c8273051190379f22f6dd4d00a5`.
 - Exact `Publish static site` run `34046834602` succeeded from that commit at `2026-09-06T16:53:06Z`.
-- Production `site/.source-sha` exactly matched `95b7ded7319c3c8273051190379f22f6dd4d00a5` at the start of 7 September.
 - Generated production article HTML contains the intended title, v1.0.31 description, and canonical URL. Production `sitemap.xml` contains the new route and records both it and `/blog/` with `2026-09-06T00:00:00.000Z` last-modified timestamps.
 - Immediate exact-title public search still does not surface the fleet-loading route. Direct homepage retrieval is current v1.0.31, while some indexed pages retain cached v1.0.30 text; with exact deployment artifacts agreeing, this remains indexing/retrieval freshness rather than a production incident.
-- The 7 September public search pass exposed a separate site-owned factual defect: `/product/`, `/architecture/`, and `/pricing/` combined old fixed review dates (13 or 24 August) with the dynamically current `site.version`/`productCommit`, producing impossible claims that those August reviews were performed against the 5 September v1.0.31 release. The current rendered repair revalidates those source sections against v1.0.31 and separates the fixed substantive-review date from the dynamically current source target so a future release cannot silently rewrite the historical review claim.
+- The 7 September public search pass exposed a separate site-owned factual defect: `/product/`, `/architecture/`, and `/pricing/` combined old fixed review dates (13 or 24 August) with the dynamically current `site.version`/`productCommit`, producing impossible claims that those August reviews were performed against the 5 September v1.0.31 release.
+- Rendered repair PR `#114` final exact head `29d477af5d512ea0baef0c565279b7ec707e8a70` passed Website CI run `34145208007`, including scope guard, `npm ci`, `npm run verify`, and static artifact upload. GitGuardian and Cloudflare Pages preview succeeded. Copilot reviewed all 6 changed files, produced 0 inline comments, and recommended approval; there were no review threads.
+- Exact-head static artifact `10027398228`, digest `sha256:37f1edcd3099be923d32f41c21074734b893945ce230adcf8a0a0ef54209b2f7`, was inspected before merge. The three affected routes contain `Last substantively reviewed on 7 September 2026` plus current v1.0.31 / full `bb99b66f...` source identity; the old impossible date/version wording is absent. `sitemap.xml` is byte-identical because no route or sitemap metadata changed.
+- Final base-to-head review found exactly 6 files: the three narrow source-review paragraphs plus the daily/status/block operating records. No unrelated source, route, metadata, analytics, sitemap, workflow, or product-repository change was included.
+- PR `#114` was squash-merged as `d30e4f5bc5fbc9ffce3fb02b54d487a45b38b1c2`.
+- Exact `Publish static site` run `34145435986` succeeded from that commit; the publish job completed at `2026-09-07T16:56:17Z` (09:56:17 PDT). Production `site/.source-sha` exactly matches `d30e4f5bc5fbc9ffce3fb02b54d487a45b38b1c2`.
+- Production Product/Architecture/Pricing page blob SHAs exactly match the inspected exact-head artifact: `9fe0b34dad776246e1b40ed8d955e34f21b5dc73`, `9280aec4bfcf84ea13ac2fc80cee0a4dff207568`, and `65b2ebd90ea88af982c86bf1938e6d86498b9e0b` respectively. Their title/description/canonical metadata remain correct.
+- Immediate public retrieval remains cache-inconsistent: the Product crawler still returned the old August review sentence and Architecture/Pricing were older cached snapshots after publication. Exact publish workflow, source marker, inspected artifact, and production page blobs all agree, so this remains CDN/search retrieval freshness rather than a production incident. No cache-forcing change was made.
+- The 7 September factual repair is not a qualifying substantive technical publication. The rolling content deadline remains `2026-09-08T16:53:06Z` (09:53:06 PDT).
 
 ## Analytics and search evidence
 
