@@ -23,18 +23,12 @@ export const metadata: Metadata = {
 };
 
 const sources = [
-  [
-    'AgentSight v1.0.31 monitor implementation and SQLite schema',
-    `${productSource}/collector/src/cmd_monitor.rs`,
-  ],
+  ['AgentSight v1.0.31 monitor implementation and SQLite schema', `${productSource}/collector/src/cmd_monitor.rs`],
   [
     'AgentSight v1.0.31 installation guide: monitor/bind roles, service setup, and retained local data',
     `${productSource}/docs/installation.md`,
   ],
-  [
-    'AgentSight v1.0.31 README: monitor storage and local-data handling',
-    `${productSource}/README.md`,
-  ],
+  ['AgentSight v1.0.31 README: monitor storage and local-data handling', `${productSource}/README.md`],
   [
     'AgentSight system-friction source guide: monitor DBs are sampled/windowed evidence rather than complete traces',
     `${productSource}/skills/agentsight-system-friction/references/agentsight-sources.md`,
@@ -101,27 +95,10 @@ export default function BackgroundMonitorArticle() {
               <h2>One monitor loop has two resolutions</h2>
               <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '820px', fontSize: '0.92rem' }}>
-                  <thead>
-                    <tr>
-                      <th style={header}>Resolution</th>
-                      <th style={header}>Persisted data</th>
-                      <th style={header}>Useful question</th>
-                      <th style={header}>Do not infer</th>
-                    </tr>
-                  </thead>
+                  <thead><tr><th style={header}>Resolution</th><th style={header}>Persisted data</th><th style={header}>Useful question</th><th style={header}>Do not infer</th></tr></thead>
                   <tbody>
-                    <tr>
-                      <td style={cell}>Every ~2 seconds</td>
-                      <td style={cell}>Session identity, process count, CPU ms, RSS bytes, read/write byte deltas, file-target count, network-target count.</td>
-                      <td style={cell}>When was this session active, resource-heavy, or associated with many visible targets?</td>
-                      <td style={cell}>The exact process/file/network event sequence inside the window.</td>
-                    </tr>
-                    <tr>
-                      <td style={cell}>At ~30-second boundaries</td>
-                      <td style={cell}>Bounded process rows plus bounded file and network target rows for that window.</td>
-                      <td style={cell}>Which concrete processes or targets are representative near this part of the run?</td>
-                      <td style={cell}>That omitted rows never existed; detail is intentionally sampled and bounded.</td>
-                    </tr>
+                    <tr><td style={cell}>Every ~2 seconds</td><td style={cell}>Session identity, process count, CPU ms, RSS bytes, read/write byte deltas, file-target count, network-target count.</td><td style={cell}>When was this session active, resource-heavy, or associated with many visible targets?</td><td style={cell}>The exact process/file/network event sequence inside the window.</td></tr>
+                    <tr><td style={cell}>At ~30-second boundaries</td><td style={cell}>Bounded process rows plus bounded file and network target rows for that window.</td><td style={cell}>Which concrete processes or targets are representative near this part of the run?</td><td style={cell}>That omitted rows never existed; detail is intentionally sampled and bounded.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -156,10 +133,9 @@ export default function BackgroundMonitorArticle() {
                 PID reuse does not silently attach another process&apos;s descriptors to the old session.
               </p>
               <p>
-                This has an important interpretation boundary. A path appearing in a monitor DB means it was visible as an
-                open descriptor at a sampling point. A path missing from the DB does not prove it was never opened, read,
-                written, renamed, or deleted between samples. For a review that depends on exact low-level file events, use a
-                recording source designed to capture those events.
+                A path appearing in a monitor DB means it was visible as an open descriptor at a sampling point. A path
+                missing from the DB does not prove it was never opened, read, written, renamed, or deleted between samples.
+                For a review that depends on exact low-level file events, use a recording source designed to capture them.
               </p>
             </section>
 
@@ -204,10 +180,10 @@ export default function BackgroundMonitorArticle() {
               </p>
               <p>
                 So in v1.0.31, a monitor process that runs continuously across a week boundary can continue writing to the
-                file named for its start week until it restarts. The installation guide already recommends restarting the
-                user service or scheduled task after replacing the binary; a restart also causes the next monitor process to
-                select the then-current week filename. Do not assume filename alone proves every row belongs to that ISO week;
-                use the stored window timestamps when analyzing boundaries.
+                file named for its start week until it restarts. The installation guide recommends restarting the user service
+                or scheduled task after replacing the binary; a restart also causes the next monitor process to select the
+                then-current week filename. Do not assume filename alone proves every row belongs to that ISO week; use the
+                stored window timestamps when analyzing boundaries.
               </p>
             </section>
 
@@ -246,12 +222,7 @@ export default function BackgroundMonitorArticle() {
               <h2>Use monitor evidence for trends; switch sources for exact causality</h2>
               <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '760px', fontSize: '0.92rem' }}>
-                  <thead>
-                    <tr>
-                      <th style={header}>Question</th>
-                      <th style={header}>Best starting evidence</th>
-                    </tr>
-                  </thead>
+                  <thead><tr><th style={header}>Question</th><th style={header}>Best starting evidence</th></tr></thead>
                   <tbody>
                     <tr><td style={cell}>Which agent sessions were active during a CPU/RSS spike?</td><td style={cell}>Monitor windows.</td></tr>
                     <tr><td style={cell}>Which file or endpoint was visible near a sampled spike?</td><td style={cell}>Monitor detail rows, with the sampling caveat preserved.</td></tr>
@@ -282,9 +253,7 @@ export default function BackgroundMonitorArticle() {
 
             <section>
               <h2>Primary sources</h2>
-              <ul>
-                {sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}
-              </ul>
+              <ul>{sources.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
             </section>
           </article>
 
@@ -294,7 +263,7 @@ export default function BackgroundMonitorArticle() {
             <Link href="/blog/read-agentsight-audit-provenance/">Preserve audit provenance</Link>
             <Link href="/blog/how-agentsight-direct-node-credentials-work/">Understand the Direct Node boundary</Link>
             <hr />
-            <a className="button button-accent" href={site.repo}>Inspect AgentSight source</a>
+            <a className="button button-accent" href={site.repository}>Inspect AgentSight source</a>
           </aside>
         </div>
       </section>
