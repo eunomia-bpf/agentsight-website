@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const backgroundMonitorArticle = {
+  title: 'How AgentSight background monitoring samples agent sessions',
+  description:
+    'Trace the v1.0.31 monitor from two-second aggregate windows through 30-second bounded detail samples, weekly SQLite naming, process/file/network semantics, and sampled-evidence limits.',
+  href: '/blog/how-agentsight-background-monitoring-works/',
+};
 const progressiveFleetArticle = {
   title: 'How AgentSight keeps a multi-node agent fleet responsive when one Node is slow',
   description:
@@ -84,6 +90,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: backgroundMonitorArticle.title, url: `${site.url}${backgroundMonitorArticle.href}` },
       { '@type': 'WebPage', name: progressiveFleetArticle.title, url: `${site.url}${progressiveFleetArticle.href}` },
       { '@type': 'WebPage', name: skillEvolutionArticle.title, url: `${site.url}${skillEvolutionArticle.href}` },
       { '@type': 'WebPage', name: sharedSkillsArticle.title, url: `${site.url}${sharedSkillsArticle.href}` },
@@ -109,6 +116,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Sampling internals · September 2026</p>
+            <h2><Link href={backgroundMonitorArticle.href}>{backgroundMonitorArticle.title}</Link></h2>
+            <p>{backgroundMonitorArticle.description}</p>
+            <Link className="arrow-link" href={backgroundMonitorArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Fleet UI internals · September 2026</p>
             <h2><Link href={progressiveFleetArticle.href}>{progressiveFleetArticle.title}</Link></h2>
