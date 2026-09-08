@@ -1,0 +1,208 @@
+1:"$Sreact.fragment"
+8:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/3rdqn8rx95pw7.js"],""]
+18:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+2:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+0:{"rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3","$L4","$L5"],["$L6"],"$L7"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"agentsight-2253cbe511dd0b9abf135286"}
+3:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L8",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L8","/product/",{"href":"/product/","children":"Product"}],["$","$L8","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L8","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L8","/product/",{"href":"/product/","children":"Product"}],["$","$L8","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L8","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+4:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"How AgentSight background monitoring samples agent sessions\",\"description\":\"A source-level guide to AgentSight v1.0.31 monitor: two-second aggregate windows, 30-second bounded detail samples, weekly SQLite files, process/file/network semantics, and the limits of sampled evidence.\",\"url\":\"https://agentsight.us/blog/how-agentsight-background-monitoring-works/\",\"datePublished\":\"2026-09-08\",\"dateModified\":\"2026-09-08\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L8",null,{"href":"/","children":"Home"}],["$","$L8",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"Background monitor"}]]}],["$","p",null,{"className":"eyebrow","children":"Sampling internals · AgentSight v1.0.31 · 8 September 2026"}],["$","h1",null,{"children":"How AgentSight background monitoring samples agent sessions"}],["$","p",null,{"className":"hero-lede","children":[["$","code",null,{"children":"agentsight monitor"}]," is deliberately different from a full recording. It watches matched agent process families continuously and writes a compact local history: aggregate resource and target counts every two seconds, with bounded process, file, and network detail at 30-second boundaries. That makes the monitor database useful for long-running operational evidence, but it also creates limits that matter when you interpret it."]}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":[["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"The short answer"}],["$","p",null,{"children":["AgentSight v1.0.31 samples up to 25 matched live agent sessions on a two-second loop. Every sampled session gets a ",["$","code",null,{"children":"monitor_windows"}]," row with process count, CPU delta, resident memory, read/write byte deltas, and counts of visible file and network targets. Detailed process and target rows are not written on every loop: the implementation stores them only when a sample crosses a 30-second boundary."]}],["$","p",null,{"children":["The result is a local SQLite database under ",["$","code",null,{"children":"~/.agentsight/monitor"}],". The product itself describes these DBs as sampled, windowed evidence rather than a complete trace. If you need the exact sequence of process, file, or TLS events for one bounded run, use the durable ",["$","code",null,{"children":"record"}]," path instead of inferring missing events from a background monitor window."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"One monitor loop has two resolutions"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"820px","fontSize":"0.92rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Resolution"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Persisted data"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Useful question"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Do not infer"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":"Every ~2 seconds"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Session identity, process count, CPU ms, RSS bytes, read/write byte deltas, file-target count, network-target count."}],"$L9","$La"]}],"$Lb"]}]]}]}],"$Lc"]}],"$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16"]}],"$L17"]}]}]]}]
+5:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L8",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L8",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L8",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L8",null,{"href":"/architecture/","children":"Architecture"}],["$","$L8",null,{"href":"/integrations/","children":"Integrations"}],["$","$L8",null,{"href":"/compare/","children":"Compare"}],["$","$L8",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L8",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L8",null,{"href":"/releases/","children":"Releases"}],["$","$L8",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L8",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.31"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/3rdqn8rx95pw7.js","async":true}]
+7:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+9:["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"When was this session active, resource-heavy, or associated with many visible targets?"}]
+a:["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The exact process/file/network event sequence inside the window."}]
+b:["$","tr",null,{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"At ~30-second boundaries"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Bounded process rows plus bounded file and network target rows for that window."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Which concrete processes or targets are representative near this part of the run?"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"That omitted rows never existed; detail is intentionally sampled and bounded."}]]}]
+c:["$","p",null,{"children":"The 30-second gate is implemented by comparing the integer 30-second bucket containing the start and end of the current two-second window. It is therefore a boundary sample, not a second independent timer that records an exhaustive 30 seconds of events."}]
+d:["$","section",null,{"children":[["$","h2",null,{"children":"The aggregate row is richer than a process count"}],["$","p",null,{"children":"For each matched session, the monitor walks the current process family. It computes CPU time as a delta from the previous process snapshot, reads current RSS, and derives read/write byte deltas from per-process I/O counters. The row also carries the root PID together with its process start-time ticks. That extra start-time identity matters because a PID can be reused after a process exits."}],["$","p",null,{"children":["The ",["$","code",null,{"children":"tracked_sessions"}]," table keeps first/last-seen timestamps, agent type, match evidence and confidence, optional native-session path, command, working directory, and a running status. Its key combines session ID, root PID, and root process start time rather than assuming the numeric PID is globally stable."]}]]}]
+e:["$","section",null,{"children":[["$","h2",null,{"children":"File targets are open-descriptor observations, not file-operation logs"}],["$","p",null,{"children":["The monitor's file view is built from ",["$","code",null,{"children":"/proc/<pid>/fd"}],". For every process in the matched family, AgentSight scans current descriptor targets, keeps absolute paths, and excludes the common",["$","code",null,{"children":"/dev/null"}]," and ",["$","code",null,{"children":"/dev/zero"}],"sinks. It re-checks the process start time around the scan so PID reuse does not silently attach another process's descriptors to the old session."]}],["$","p",null,{"children":"A path appearing in a monitor DB means it was visible as an open descriptor at a sampling point. A path missing from the DB does not prove it was never opened, read, written, renamed, or deleted between samples. For a review that depends on exact low-level file events, use a recording source designed to capture them."}]]}]
+f:["$","section",null,{"children":[["$","h2",null,{"children":"Network targets are sampled IP endpoints, not HTTP requests"}],["$","p",null,{"children":["Socket descriptors are resolved through Linux ",["$","code",null,{"children":"/proc"}]," TCP tables. The implementation maps socket inodes to IPv4 or IPv6 endpoints and stores an address plus port. It does not turn that row into a DNS name, HTTP route, request body, or security verdict. A target such as ",["$","code",null,{"children":"203.0.113.10:443"}]," is an endpoint observation at that sampling boundary."]}],["$","p",null,{"children":"This is intentionally different from AgentSight's TLS/model-call capture. Background network samples are useful for “which destinations were visible around the resource spike?” They are not a replacement for the content and protocol evidence needed to explain a specific API call."}]]}]
+10:["$","section",null,{"children":[["$","h2",null,{"children":"Detailed rows are capped at the edges"}],["$","p",null,{"children":"A session can have many processes, paths, or sockets. To keep a long-running monitor database bounded, v1.0.31 uses a detail-edge limit of five. When there are more than ten candidate process rows, it stores up to five from the high end of a score ordered by CPU, then RSS, then I/O, and fills the remainder from the low end. File and network target details use the same five-plus-five shape, ranked primarily by observed count."}],["$","p",null,{"children":"The aggregate window still stores total process count and the number of distinct visible file/network targets. The detailed tables are therefore examples from the edges of the sampled set, not an exhaustive expansion of those totals. Treating the detail table row count as the real process or target count would be a measurement error."}]]}]
+11:["$","section",null,{"children":[["$","h2",null,{"children":"The “weekly DB” name has a restart boundary in v1.0.31"}],["$","p",null,{"children":["AgentSight names the default database by the local ISO week, for example",["$","code",null,{"children":"~/.agentsight/monitor/monitor-2026-W25.db"}],". One implementation detail is easy to miss: the database path is chosen when ",["$","code",null,{"children":"monitor"}]," starts and the store is opened once before the sampling loop. The loop does not reopen the database when the calendar crosses into another ISO week."]}],["$","p",null,{"children":"So in v1.0.31, a monitor process that runs continuously across a week boundary can continue writing to the file named for its start week until it restarts. The installation guide recommends restarting the user service or scheduled task after replacing the binary; a restart also causes the next monitor process to select the then-current week filename. Do not assume filename alone proves every row belongs to that ISO week; use the stored window timestamps when analyzing boundaries."}]]}]
+12:["$","section",null,{"children":[["$","h2",null,{"children":[["$","code",null,{"children":"monitor"}]," and ",["$","code",null,{"children":"bind"}]," solve different background jobs"]}],["$","p",null,{"children":["The installation guide separates the two explicitly. ",["$","code",null,{"children":"monitor"}]," samples active sessions and writes local weekly databases. ",["$","code",null,{"children":"bind"}]," serves the authenticated Node API and maintains the optional outbound Controller relay. Running the browser-facing Node does not mean the monitor is persisting a background history, and running the monitor does not expose a new browser API port."]}],["$","p",null,{"children":["On Linux, ",["$","code",null,{"children":"agentsight monitor install-service"}]," installs a per-user systemd service with",["$","code",null,{"children":"Restart=on-failure"}],". The built-in service installer is Linux-specific; the current installation guide uses a per-user scheduled task for Windows. Both are operational wrappers around the same",["$","code",null,{"children":"agentsight monitor"}]," subcommand."]}]]}]
+13:["$","section",null,{"children":[["$","h2",null,{"children":"The database is local, but the rows can still be sensitive"}],["$","p",null,{"children":"The monitor schema can persist commands, working directories, native-session paths, file paths, and network endpoints. The broader AgentSight README warns that saved logs and databases can contain sensitive prompts, responses, paths, headers, and network targets depending on the capture source. The installation guide also notes that removing startup units does not remove existing monitor databases."}],["$","p",null,{"children":["Operationally, treat ",["$","code",null,{"children":"~/.agentsight/monitor"}],"as retained evidence: set host-level permissions and retention according to the machine's data policy, and delete old databases separately only when their evidence is no longer needed. Do not commit them into a source repository as a convenient debugging artifact."]}]]}]
+14:["$","section",null,{"children":[["$","h2",null,{"children":"Use monitor evidence for trends; switch sources for exact causality"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"760px","fontSize":"0.92rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Question"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Best starting evidence"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Which agent sessions were active during a CPU/RSS spike?"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Monitor windows."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Which file or endpoint was visible near a sampled spike?"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Monitor detail rows, with the sampling caveat preserved."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Did a short-lived file open occur between samples?"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A full system recording, not absence from the monitor DB."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Which exact plaintext model request produced an action?"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Recorded model/TLS evidence plus correlated system activity."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"What did the agent itself persist about models, tools, or tokens?"}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Native agent-session evidence or the appropriate report path."}]]}]]}]]}]}]]}]
+15:["$","section",null,{"children":[["$","h2",null,{"children":"How to verify the behavior yourself"}],["$","p",null,{"children":["The reproducible source for this page is the v1.0.31 implementation. Start with"," ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_monitor.rs","children":["$","code",null,{"children":"cmd_monitor.rs"}]}],": inspect the two-second loop, 30-second detail gate, process and descriptor scans, edge-bounding functions, weekly path function, and SQLite schema. Then read"," ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/docs/installation.md","children":"the installation guide"}]," for the service lifecycle and the monitor/bind boundary."]}],["$","p",null,{"children":"If you are using a monitor DB for an investigation, keep the raw window timestamps and source version with your analysis. Those two fields are more reliable evidence than assuming the filename or a missing detail row means more than the implementation actually guarantees."}]]}]
+16:["$","section",null,{"children":[["$","h2",null,{"children":"Primary sources"}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_monitor.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_monitor.rs","children":"AgentSight v1.0.31 monitor implementation and SQLite schema"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/docs/installation.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/docs/installation.md","children":"AgentSight v1.0.31 installation guide: monitor/bind roles, service setup, and retained local data"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/README.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/README.md","children":"AgentSight v1.0.31 README: monitor storage and local-data handling"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/skills/agentsight-system-friction/references/agentsight-sources.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/skills/agentsight-system-friction/references/agentsight-sources.md","children":"AgentSight system-friction source guide: monitor DBs are sampled/windowed evidence rather than complete traces"}]}]]}]]}]
+17:["$","aside",null,{"className":"detail-aside","children":[["$","p",null,{"className":"card-label","children":"Continue exploring"}],["$","$L8",null,{"href":"/blog/when-agentsight-works-without-ebpf/","children":"Choose native-session vs system evidence"}],["$","$L8",null,{"href":"/blog/read-agentsight-audit-provenance/","children":"Preserve audit provenance"}],["$","$L8",null,{"href":"/blog/how-agentsight-direct-node-credentials-work/","children":"Understand the Direct Node boundary"}],["$","hr",null,{}],["$","a",null,{"className":"button button-accent","href":"https://github.com/eunomia-bpf/agentsight","children":"Inspect AgentSight source"}]]}]
+1a:null
