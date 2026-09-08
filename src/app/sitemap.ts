@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const systemBoundaryUpdated = new Date('2026-09-03T00:00:00Z');
   const skillEvolutionUpdated = new Date('2026-09-04T00:00:00Z');
   const progressiveFleetUpdated = new Date('2026-09-06T00:00:00Z');
+  const backgroundMonitorUpdated = new Date('2026-09-08T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -43,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? progressiveFleetUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? backgroundMonitorUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -134,6 +135,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-loads-agent-fleets-progressively/`,
       lastModified: progressiveFleetUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/how-agentsight-background-monitoring-works/`,
+      lastModified: backgroundMonitorUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
