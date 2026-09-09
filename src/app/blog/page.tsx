@@ -182,7 +182,9 @@ export default function BlogPage() {
             <p>{overheadArticle.description}</p>
             <Link className="arrow-link" href={overheadArticle.href}>Read the page</Link>
           </article>
-          {pages.map((page) => <ContentCard key={page.slug} page={page} />)}
+          {pages.map((page) => (
+            <ContentCard key={page.slug} page={page} />
+          ))}
         </div>
       </section>
     </SiteShell>
