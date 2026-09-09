@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ContentDetail } from '@/components/ContentPages';
 import { SystemBoundaryArticle } from '@/components/SystemBoundaryArticle';
+import { TlsTracingArticle } from '@/components/TlsTracingArticle';
 import { getPage, getPages } from '@/lib/public-content';
 import { contentMetadata } from '@/lib/metadata';
 
@@ -36,6 +37,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   }
+  if (slug === 'why-ai-agent-tls-traffic-is-hard-to-trace') {
+    const description =
+      'A source-level guide to finding the real plaintext boundary across shared OpenSSL, Node.js, stripped Bun/BoringSSL, rustls, containers, Electron agents, browsers, and local MCP.';
+    return {
+      ...contentMetadata(page),
+      description,
+      openGraph: {
+        type: 'article',
+        title: page.title,
+        description,
+        url: '/blog/why-ai-agent-tls-traffic-is-hard-to-trace/',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: page.title,
+        description,
+      },
+    };
+  }
   return contentMetadata(page);
 }
 
@@ -44,5 +64,6 @@ export default async function BlogDetailPage({ params }: Props) {
   const page = getPage('blog', slug);
   if (!page) notFound();
   if (slug === 'system-boundary-observability') return <SystemBoundaryArticle />;
+  if (slug === 'why-ai-agent-tls-traffic-is-hard-to-trace') return <TlsTracingArticle />;
   return <ContentDetail page={page} />;
 }
