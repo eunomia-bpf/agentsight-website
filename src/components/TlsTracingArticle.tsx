@@ -4,7 +4,7 @@ import type { ContentPage } from '@/lib/content';
 const productCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
 const productSource = `https://github.com/eunomia-bpf/agentsight/blob/${productCommit}`;
 
-const page: ContentPage = {
+export const tlsTracingPage: ContentPage = {
   kind: 'blog',
   slug: 'why-ai-agent-tls-traffic-is-hard-to-trace',
   title: 'Why AI agent TLS traffic is hard to trace',
@@ -125,5 +125,5 @@ const page: ContentPage = {
 };
 
 export function TlsTracingArticle() {
-  return <ContentDetail page={page} />;
+  return <ContentDetail page={tlsTracingPage} />;
 }
