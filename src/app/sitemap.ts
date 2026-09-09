@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const skillEvolutionUpdated = new Date('2026-09-04T00:00:00Z');
   const progressiveFleetUpdated = new Date('2026-09-06T00:00:00Z');
   const backgroundMonitorUpdated = new Date('2026-09-08T00:00:00Z');
+  const tlsTracingUpdated = new Date('2026-09-09T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -44,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? backgroundMonitorUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? tlsTracingUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -149,7 +150,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified:
         page.kind === 'blog' && page.slug === 'system-boundary-observability'
           ? systemBoundaryUpdated
-          : existingUpdated,
+          : page.kind === 'blog' && page.slug === 'why-ai-agent-tls-traffic-is-hard-to-trace'
+            ? tlsTracingUpdated
+            : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: page.kind === 'landing' ? 0.7 : 0.75,
     })),
