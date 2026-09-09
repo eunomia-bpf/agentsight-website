@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ContentCard } from '@/components/ContentPages';
+import { tlsTracingPage } from '@/components/TlsTracingArticle';
 import { Eyebrow, JsonLd } from '@/components/PageParts';
 import { SiteShell } from '@/components/SiteShell';
 import { contentPath, getPages } from '@/lib/public-content';
@@ -182,7 +183,12 @@ export default function BlogPage() {
             <p>{overheadArticle.description}</p>
             <Link className="arrow-link" href={overheadArticle.href}>Read the page</Link>
           </article>
-          {pages.map((page) => <ContentCard key={page.slug} page={page} />)}
+          {pages.map((page) => (
+            <ContentCard
+              key={page.slug}
+              page={page.slug === tlsTracingPage.slug ? tlsTracingPage : page}
+            />
+          ))}
         </div>
       </section>
     </SiteShell>
