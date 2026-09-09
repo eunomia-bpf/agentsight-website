@@ -11,6 +11,7 @@
 - Exact production `Publish static site` run for that publication: `34253555793`, conclusion `success`.
 - Current production `site/.source-sha` exactly equals `b5149c564002664f1cfaf4a1e59fa270a511d8a8`.
 - The prior rolling deadline was `2026-09-08T16:53:06Z`; exact production completion was **1 minute 25 seconds early**. The new rolling deadline is `2026-09-10T16:51:41Z` (09:51:41 PDT).
+- Current prepared publication: PR `#119`, `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`, refreshes the existing canonical TLS article in place for AgentSight v1.0.31. It is not a qualifying publication until exact-head CI, final review, squash merge, exact production publication, and public acceptance complete.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
@@ -18,6 +19,7 @@
 
 - `/blog/how-agentsight-background-monitoring-works/`: v1.0.31 background-monitor persistence semantics — two-second aggregate windows, 30-second bounded detail sampling, process/resource deltas, open-descriptor file targets, sampled IP:port network targets, PID/start-time identity, five-plus-five detail bounding, and the start-week filename/restart boundary. It explicitly does not treat monitor DBs as complete event traces or missing sampled rows as proof that an event never occurred.
 - `/blog/how-agentsight-loads-agent-fleets-progressively/`: v1.0.31 fleet frontend latency/failure isolation — concurrent per-Node probes, incremental sample publication, Direct/relay per-Node behavior, generation guards, global refresh barrier, lazy process/analysis views, request timeouts, and the read/write retry boundary. It does not claim a general device/network latency benchmark or an auth/backend-policy change.
+- `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`: existing canonical TLS-diagnostics owner being refreshed in PR `#119` for v1.0.31. It distinguishes attachment, plaintext-hook, protocol-parser, and non-TLS evidence-path failures across Node OpenSSL, stripped Bun/BoringSSL, rustls, Electron/Cursor, Docker/Kubernetes, browsers, and local MCP stdio. The page should remain a single `ContentPage` registry entry rather than a duplicate route override.
 - `/blog/how-agentsight-evolves-agent-skills/`: v1.0.30 repository-local skill-evolution method — source-fidelity gates, workload strata, failure ownership, durable-memory placement, candidate patch boundaries, held-out evaluation, promotion verdicts, and rollback. It does not claim autonomous runtime self-editing.
 - `/blog/system-boundary-observability/`: broad architecture and reader decision across native agent telemetry, tool-protocol evidence, independent system execution, provider traffic, cross-boundary correlation, and the v1.0.30 OpenTelemetry export/provenance boundary.
 - `/blog/how-agentsight-shares-versioned-agent-skills/`: v1.0.30 shared-skills repository bridge — pinned shared-skill submodule, generated `.agents/skills` links, overwrite guards, and Windows junction fallback.
@@ -53,6 +55,17 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Ambiguous HTTPS write failures are not automatically replayed; fallback after such a failure is limited to safe read methods (`GET`/`HEAD`).
 - Product PR `#209` explicitly leaves authentication, capability, organization, and backend policy unchanged. Its build/browser validation is not a general physical-device latency benchmark.
 
+## v1.0.31 TLS tracing facts
+
+- AgentSight v1.0.31 `record` resolves commands through `PATH`, symlinks, and shebang interpreters so wrapper scripts can lead to the actual executable that owns TLS.
+- Node-based agents are treated as embedded-OpenSSL cases; `record -c node` has a Node-specific discovery path, while `--binary-path` remains the override for selecting a specific executable.
+- Claude Code's Bun/BoringSSL path remains version-sensitive: `sslsniff` tries symbols first, then validates stripped-binary byte patterns and known relative placement for supported Bun 1.3.x builds.
+- rustls detection is separate from OpenSSL/BoringSSL tracing. The current `codex_offsets.h` path identifies supported rustls plaintext instruction sequences rather than looking for `SSL_read` or `SSL_write`.
+- Electron/IDE agents can fail at platform, helper-process, or protocol-parser boundaries even when transport capture works. Cursor remains better supported through native local session files for many questions.
+- Docker and `k8s://` forms are executable resolvers that find the host process owning TLS; they do not create a separate tracing primitive.
+- Browser plaintext capture and local MCP stdio capture belong to `browsertrace` and `stdiocap` respectively, not to the TLS `sslsniff` path.
+- Plaintext capture can expose prompts, responses, headers, tool payloads, and other sensitive development telemetry. Negative claims must stay scoped to the exact binary, filter, hook, and parser that were verified.
+
 ## Production verification
 
 - Rendered PR `#117` initially failed exact-head Website CI run `34253105838` because the new article referenced nonexistent `site.repo`. The exact TypeScript failure was fixed to the existing `site.repository`; the failing head was not merged.
@@ -66,6 +79,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Direct public homepage retrieval is current v1.0.31. Immediate public `/blog/` retrieval returned a crawler cache miss and exact-title search did not yet surface the new article. Exact workflow, production marker, generated HTML, and sitemap agree, so this is indexing/retrieval freshness rather than a production incident. No cache-forcing change was made.
 - Previous fleet publication PR `#111` was squash-merged as `95b7ded7319c3c8273051190379f22f6dd4d00a5`; exact `Publish static site` run `34046834602` completed at `2026-09-06T16:53:06Z`, two seconds after its prior deadline. That historical 2-second miss remains recorded and is superseded by the new Sep10 rolling deadline.
 - The 7 September factual repair PR `#114` corrected impossible review-date/current-version combinations on Product/Architecture/Pricing and was squash-merged as `d30e4f5bc5fbc9ffce3fb02b54d487a45b38b1c2`. Its exact publish run `34145435986` succeeded at `2026-09-07T16:56:17Z`; the repair did not reset the substantive content clock.
+- PR `#119` had a patrol finding at head `159df59b11917cb9ce2546f604841a9cbad71000`: the TLS refresh used a dedicated renderer while the public-content registry still carried stale v1.0.3 page data for the same canonical slug, and this file had not been refreshed for the 9 September cycle. The corrective branch update consolidates the TLS article back into one `ContentPage` registry record and removes the temporary route/hub substitution glue. Final CI, review, merge, exact production deployment, and live acceptance remain pending.
 
 ## Analytics and search evidence
 
@@ -74,7 +88,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - `2026-08-24_to_2026-08-30` remains the next-morning 31 August family. No post-lag refresh is present even though the completed window is beyond the configured three-day finalization lag; its GSC date export still omits 30 August.
 - The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero. Public-safe SHA-256: `2372c487f122aa3aabb72a1008408619d2036d06061542f92df898163afc1f3a`.
 - The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position approximately 20.62. Public-safe SHA-256: `70d69b7fd6a372d2ffec14cfb77dace8abfd63113e3027ddaeb499f6a6024f99`.
-- The `2026-08-31_to_2026-09-06` family was generated 7 September around 09:05 PDT, the morning immediately after the covered window. It remains **pre-finalization directional evidence**, not a finalized weekly KPI family.
+- The `2026-08-31_to_2026-09-06` family was generated 7 September around 09:05 PDT, the morning immediately after the covered window. As of 9 September, that window has reached the configured three-day finalization boundary without a post-lag refresh, so it remains directional rather than finalized KPI evidence.
 - The newest GA4 organic landing file lists 12 sessions / 11 active users, all on `/`, engagement rate `58.33%`, and zero listed key events. Public-safe SHA-256: `45a3ab61f21fdfcce3d8ef6ba7c8ce301a353a2bb2a95fc0ef090069a322ffe9`.
 - The newest GSC date file contains 31 August through 5 September but omits 6 September: 4 clicks / 260 impressions / 1.54% CTR / weighted average position approximately 11.68. Public-safe SHA-256: `dc3a35240a6b2d311d36a873bccf74e26d34e8dfcdac7866c573cab2d46bc67e`.
 - Like-for-like only as six-day next-morning snapshots, impressions rose from 180 to 260 and apparent weighted position improved from approximately 20.62 to 11.68, while clicks fell from 9 to 4 and CTR from 5.00% to 1.54%. This remains directional and must not be reported as finalized week-over-week performance.
@@ -97,4 +111,4 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Human-only blockers
 
-- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and refresh 24–30 August after the configured finalization cutoff. The 31 August–6 September next-morning family exists but remains inside its own three-day lag on 8 September and again omits the boundary date in GSC. The current operator can inspect Drive but has no connected Apps Script execution/configuration surface.
+- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and post-lag refresh 24–30 August and 31 August–6 September after the configured finalization cutoff. The 31 August–6 September next-morning family exists but has now reached its finalization boundary and still omits the boundary date in GSC. The current operator can inspect Drive but has no connected Apps Script execution/configuration surface.

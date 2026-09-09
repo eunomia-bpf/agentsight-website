@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ContentDetail } from '@/components/ContentPages';
 import { SystemBoundaryArticle } from '@/components/SystemBoundaryArticle';
-import { TlsTracingArticle, tlsTracingPage } from '@/components/TlsTracingArticle';
 import { getPage, getPages } from '@/lib/public-content';
 import { contentMetadata } from '@/lib/metadata';
 
@@ -37,9 +36,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   }
-  if (slug === 'why-ai-agent-tls-traffic-is-hard-to-trace') {
-    return contentMetadata(tlsTracingPage);
-  }
   return contentMetadata(page);
 }
 
@@ -48,6 +44,5 @@ export default async function BlogDetailPage({ params }: Props) {
   const page = getPage('blog', slug);
   if (!page) notFound();
   if (slug === 'system-boundary-observability') return <SystemBoundaryArticle />;
-  if (slug === 'why-ai-agent-tls-traffic-is-hard-to-trace') return <TlsTracingArticle />;
   return <ContentDetail page={page} />;
 }
