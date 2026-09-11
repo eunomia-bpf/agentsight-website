@@ -8,9 +8,9 @@ import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
 const tokenReconciliationArticle = {
-  title: 'How AgentSight reconciles token usage without double-counting',
+  title: 'How AgentSight reconciles overlapping token usage',
   description:
-    'Trace the v1.0.31 report path from raw token observations through source precedence, Gemini network/stdout reconciliation, native-session fallback, and grouping semantics.',
+    'Trace the v1.0.31 report path from raw token observations through keyed source precedence, Gemini network/stdout reconciliation, native-session fallback, and grouping semantics.',
   href: '/blog/how-agentsight-reconciles-token-usage/',
 };
 const backgroundMonitorArticle = {
