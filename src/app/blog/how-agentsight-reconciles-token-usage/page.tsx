@@ -9,15 +9,15 @@ const productSource = `https://github.com/eunomia-bpf/agentsight/blob/${productC
 const articlePath = '/blog/how-agentsight-reconciles-token-usage/';
 
 export const metadata: Metadata = {
-  title: 'How AgentSight reconciles token usage without double-counting',
+  title: 'How AgentSight reconciles overlapping token usage',
   description:
-    'A source-level guide to AgentSight v1.0.31 token accounting: DB versus native-session inputs, source priority, Gemini reconciliation, grouping semantics, missing usage, and billing limits.',
+    'A source-level guide to AgentSight v1.0.31 token accounting: DB versus native-session inputs, keyed source priority, Gemini reconciliation, grouping semantics, missing usage, and billing limits.',
   alternates: { canonical: articlePath },
   openGraph: {
     type: 'article',
-    title: 'How AgentSight reconciles token usage without double-counting',
+    title: 'How AgentSight reconciles overlapping token usage',
     description:
-      'Trace agentsight report token from raw observations to effective token rows, including source precedence, Gemini network/stdout reconciliation, native-session fallback, and interpretation limits.',
+      'Trace agentsight report token from raw observations to effective token rows, including keyed source precedence, Gemini network/stdout reconciliation, native-session fallback, and interpretation limits.',
     url: articlePath,
   },
 };
@@ -26,6 +26,7 @@ const sources = [
   ['AgentSight v1.0.31 report CLI and DB/native-session selection', `${productSource}/collector/src/main.rs`],
   ['AgentSight v1.0.31 report loader and token-query path', `${productSource}/collector/src/cli_db.rs`],
   ['AgentSight v1.0.31 effective-token reconciliation and grouping', `${productSource}/ext/analysis/src/view/mod.rs`],
+  ['AgentSight v1.0.31 native-session discovery and Codex state database path', `${productSource}/ext/analysis/src/sources/agent_native.rs`],
   ['AgentSight v1.0.31 native-session parsers and Codex token-count extraction', `${productSource}/ext/session/src/parser.rs`],
   ['AgentSight v1.0.31 agent-session normalization contract', `${productSource}/docs/agent-session.md`],
   ['AgentSight v1.0.31 agent-specific notes, including Cursor token availability', `${productSource}/docs/agents.md`],
@@ -39,7 +40,7 @@ export default function TokenReconciliationArticle() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
-    headline: 'How AgentSight reconciles token usage without double-counting',
+    headline: 'How AgentSight reconciles overlapping token usage',
     description: metadata.description,
     url: `${site.url}${articlePath}`,
     datePublished: '2026-09-11',
@@ -59,13 +60,13 @@ export default function TokenReconciliationArticle() {
             <span aria-current="page">Token reconciliation</span>
           </nav>
           <Eyebrow>Token accounting internals · AgentSight v1.0.31 · 11 September 2026</Eyebrow>
-          <h1>How AgentSight reconciles token usage without double-counting</h1>
+          <h1>How AgentSight reconciles overlapping token usage</h1>
           <p className="hero-lede">
             <code>agentsight report token</code> does not blindly sum every token-looking row that AgentSight has seen.
-            A recorded run can contain overlapping network response usage, orphan response usage, CLI statistics,
-            telemetry, and agent-native session data. AgentSight first selects an effective observation for each call or
-            aggregate source, then groups those selected rows. That reconciliation layer is what makes the report useful—and
-            it is also where its limits become clear.
+            A recorded run can contain network response usage, orphan response usage, CLI statistics, telemetry, and
+            agent-native session data. AgentSight applies a keyed effective-token selection plus a separate Gemini
+            aggregate rule before it groups report rows. Those rules remove several important overlap cases, but they are
+            not a universal cross-source join—and that boundary matters when you interpret a total.
           </p>
         </div>
       </section>
@@ -82,9 +83,10 @@ export default function TokenReconciliationArticle() {
                 <code>--local</code> forces the native-session path.
               </p>
               <p>
-                The report then calls <code>effective_tokens()</code> before aggregation. That function resolves duplicate or
-                overlapping observations using source precedence, a special Gemini network-versus-stdout rule, and confidence
-                as a same-source tie breaker. Only those effective rows feed the model/provider/process/directory summaries.
+                The report then calls <code>effective_tokens()</code> before aggregation. That function performs two kinds of
+                reconciliation: source precedence for rows that resolve to the same selection key, and a special Gemini
+                network-versus-stdout aggregate rule. Only the resulting effective rows feed the
+                model/provider/process/directory summaries.
               </p>
             </section>
 
@@ -93,37 +95,45 @@ export default function TokenReconciliationArticle() {
               <p>
                 AgentSight can learn token usage at several boundaries. A captured model response can carry provider usage.
                 An otherwise unpaired response can still expose usage. Gemini CLI can print aggregate statistics. Claude
-                telemetry can contain usage. Local agent transcripts can provide another copy or a backfill when no live
-                response was observed. Keeping these as separate observations preserves provenance, but summing them directly
-                would count the same work more than once.
+                telemetry can contain usage. Local agent transcripts can contribute session-level usage. Keeping these as
+                separate observations preserves provenance, while the report layer can reconcile overlap that it can identify
+                safely.
               </p>
               <p>
                 The materialized view therefore keeps raw token-usage rows and derives an effective set for reporting. The
-                exported snapshot summary and <code>token_summary</code> both use that effective set, so the deduplication rule
-                is shared rather than being a formatting trick specific to the CLI table.
+                exported snapshot summary and <code>token_summary</code> both use that effective set, so the reconciliation
+                rule is shared rather than being a formatting trick specific to the CLI table.
               </p>
             </section>
 
             <section>
-              <h2>Source precedence prefers the closest observed response</h2>
-              <p>The v1.0.31 source priority is explicit in the implementation:</p>
+              <h2>Source precedence is keyed, not a universal join</h2>
+              <p>The v1.0.31 source priority used when two rows share the same selection key is explicit:</p>
               <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '760px', fontSize: '0.92rem' }}>
                   <thead><tr><th style={header}>Priority</th><th style={header}>Source</th><th style={header}>Interpretation</th></tr></thead>
                   <tbody>
                     <tr><td style={cell}>1</td><td style={cell}><code>response_usage</code></td><td style={cell}>Usage attached to a network-observed model response.</td></tr>
                     <tr><td style={cell}>2</td><td style={cell}><code>orphan_response_usage</code></td><td style={cell}>Response usage observed even when the normal request/call correlation is incomplete.</td></tr>
-                    <tr><td style={cell}>3</td><td style={cell}><code>gemini_cli_stdout_stats</code></td><td style={cell}>Gemini CLI aggregate statistics, subject to the separate reconciliation rule below.</td></tr>
+                    <tr><td style={cell}>3</td><td style={cell}><code>gemini_cli_stdout_stats</code></td><td style={cell}>Gemini CLI aggregate statistics, also subject to the separate aggregate rule below.</td></tr>
                     <tr><td style={cell}>4</td><td style={cell}><code>claude_telemetry</code></td><td style={cell}>Usage from Claude telemetry.</td></tr>
-                    <tr><td style={cell}>5</td><td style={cell}>agent-native session</td><td style={cell}>Transcript/session usage used as enrichment or backfill when higher-priority evidence is absent.</td></tr>
+                    <tr><td style={cell}>5</td><td style={cell}>agent-native session</td><td style={cell}>Usage imported from a provider-native session.</td></tr>
+                    <tr><td style={cell}>6</td><td style={cell}>other / unrecognized source</td><td style={cell}>Any source not matched by the named cases above.</td></tr>
                   </tbody>
                 </table>
               </div>
               <p>
-                For observations that resolve to the same call key, the lower numeric priority wins. When the source priority
-                is equal, the implementation prefers the higher confidence value, then uses a stable ID ordering to make the
-                choice deterministic. The intended policy is stated directly in the source: network-observed response usage is
-                primary; native session logs enrich or backfill rather than being added on top of it.
+                For non-Gemini-stdout rows, the selection key is <code>llm_call_id</code> when it is non-empty; otherwise the
+                row ID is used. For Gemini stdout rows, AgentSight builds a synthetic key from PID and model. Within one key,
+                the lower numeric source priority wins. Equal-priority rows are broken by higher confidence and then a stable
+                ID ordering.
+              </p>
+              <p>
+                The code comment says network-observed response usage is the primary fact source and native session logs are
+                intended to enrich or backfill when no network call was captured. But v1.0.31 does not generally re-key a
+                native session&apos;s <code>{'{session_id}-{model}'}</code> row to a live response&apos;s call ID. If the keys differ,
+                both rows can survive <code>effective_tokens()</code>. Treat source precedence as keyed de-duplication, not as
+                proof that every network/native copy has been correlated and removed.
               </p>
             </section>
 
@@ -136,9 +146,9 @@ export default function TokenReconciliationArticle() {
               </p>
               <p>
                 If the network sum is at least as large as the stdout total, the stdout aggregate is dropped. If the stdout
-                total is larger, the overlapping network rows for that process/model are dropped and the largest stdout total
-                is retained. Smaller intermediate stdout totals are also discarded. The rule is deliberately conservative:
-                choose one accounting path for the aggregate instead of adding two views of the same usage.
+                total is larger, the network rows for that process/model are dropped and the largest stdout total is retained.
+                Smaller intermediate stdout totals are also discarded. This rule is deliberately separate from the call-key
+                precedence above: it chooses one accounting path for this Gemini aggregate instead of adding both views.
               </p>
             </section>
 
@@ -160,17 +170,24 @@ export default function TokenReconciliationArticle() {
             </section>
 
             <section>
-              <h2>Codex totals are read as cumulative provider state</h2>
+              <h2>Codex has separate cumulative-session and response-level paths</h2>
               <p>
-                Codex session JSONL contains <code>token_count</code> events. The v1.0.31 parser walks the session from the end
-                and takes the latest available <code>total_token_usage</code> object, accepting the newer
-                <code>last_token_usage</code> shape when present. This is different from treating every token-count event as a
-                new billable increment: the parser is looking for the most recent cumulative usage snapshot for the session.
+                Codex session JSONL contains <code>token_count</code> events. For the native session&apos;s cumulative token
+                summary, v1.0.31 <code>codex_total_token_usage()</code> walks the transcript from the end and returns the latest
+                <code>info.total_token_usage</code> object it can parse. It does not add every token-count event as a new
+                billable increment.
               </p>
               <p>
-                Codex discovery can also use its local state database to build a fast bounded session index with a
-                source-reported token total before a rollout file is fully hydrated. The discovery index and the detailed
-                token report are related evidence paths, but they should not be independently summed as separate usage.
+                There is a separate response-parsing path: when AgentSight constructs the latest parsed LLM response and that
+                response does not already carry a total, the parser can use <code>last_token_usage</code> as a fallback. That
+                fallback does not make <code>last_token_usage</code> the cumulative native-session total. Keeping the two paths
+                distinct is important when a rollout contains one shape but not the other.
+              </p>
+              <p>
+                Codex discovery can also use <code>~/.codex/state_5.sqlite</code>. The v1.0.31 native source queries the recent
+                <code>threads</code> rows, takes the source-reported <code>tokens_used</code>, and prefers a rollout-derived
+                cumulative usage when the rollout summary is available. That state database is a bounded discovery/index path,
+                not another token total that should be added independently to the hydrated session.
               </p>
             </section>
 
@@ -221,10 +238,11 @@ agentsight report token --db ./agentsight-run.db --group-by dir
 # Deliberately ignore saved DBs and use supported local agent histories
 agentsight report --local token --group-by model --json`}</code></pre>
               <p>
-                If a total looks surprising, inspect the run&apos;s source provenance before doing arithmetic by hand. A higher-
-                priority response row replacing a native-session copy is expected. So is a Gemini stdout aggregate replacing
-                a smaller set of observed response rows. The useful debugging question is “which evidence source won, and why?”
-                rather than “why did every raw row not get added?”
+                If a total looks surprising, inspect the run&apos;s source provenance before doing arithmetic by hand. Rows that
+                share a selection key can replace one another according to source priority; rows with different keys can both
+                survive. Separately, Gemini stdout can replace a smaller network aggregate for the same PID/model. The useful
+                debugging questions are therefore “which rows shared a key?”, “which source won that key?”, and “did the
+                Gemini aggregate rule apply?”
               </p>
             </section>
 
@@ -233,8 +251,8 @@ agentsight report --local token --group-by model --json`}</code></pre>
               <p>
                 A missing usage field can mean the provider did not persist it, the local-session format no longer includes
                 it, a live capture did not observe the response boundary, or the selected source genuinely reported no value.
-                These cases are not interchangeable. The source-priority system prevents overlap from inflating totals, but it
-                cannot manufacture token accounting that the underlying source never emitted.
+                These cases are not interchangeable. The effective-token rules remove overlap in the cases they explicitly
+                reconcile, but they do not manufacture missing accounting or provide a universal cross-source correlation.
               </p>
               <p>
                 Keep negative claims scoped to the evidence source. “This report has no token total for the session” is
@@ -247,11 +265,13 @@ agentsight report --local token --group-by model --json`}</code></pre>
               <p>
                 Read <a href={`${productSource}/collector/src/main.rs`}><code>collector/src/main.rs</code></a> for CLI and
                 DB/native selection, then <a href={`${productSource}/collector/src/cli_db.rs`}><code>cli_db.rs</code></a> for
-                materialized-view loading. The reconciliation itself is in{' '}
+                materialized-view loading. The keyed and Gemini reconciliation rules are in{' '}
                 <a href={`${productSource}/ext/analysis/src/view/mod.rs`}><code>effective_tokens()</code></a> and the adjacent
-                source-priority function. Finally, inspect{' '}
+                source-priority function. Inspect{' '}
+                <a href={`${productSource}/ext/analysis/src/sources/agent_native.rs`}><code>agent_native.rs</code></a> for
+                native-session row construction and Codex <code>state_5.sqlite</code> discovery, then{' '}
                 <a href={`${productSource}/ext/session/src/parser.rs`}><code>ext/session/src/parser.rs</code></a> for the
-                provider-native token shapes.
+                provider-native token shapes and cumulative Codex helper.
               </p>
               <p>
                 For an investigation, record the AgentSight version, whether the input was a DB or native sessions, the group
