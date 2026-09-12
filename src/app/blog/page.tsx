@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const tokenReconciliationArticle = {
+  title: 'How AgentSight reconciles overlapping token usage',
+  description:
+    'Trace the v1.0.31 report path from raw token observations through keyed source precedence, Gemini network/stdout reconciliation, native-session fallback, and grouping semantics.',
+  href: '/blog/how-agentsight-reconciles-token-usage/',
+};
 const backgroundMonitorArticle = {
   title: 'How AgentSight background monitoring samples agent sessions',
   description:
@@ -90,6 +96,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: tokenReconciliationArticle.title, url: `${site.url}${tokenReconciliationArticle.href}` },
       { '@type': 'WebPage', name: backgroundMonitorArticle.title, url: `${site.url}${backgroundMonitorArticle.href}` },
       { '@type': 'WebPage', name: progressiveFleetArticle.title, url: `${site.url}${progressiveFleetArticle.href}` },
       { '@type': 'WebPage', name: skillEvolutionArticle.title, url: `${site.url}${skillEvolutionArticle.href}` },
@@ -116,6 +123,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Token accounting internals · September 2026</p>
+            <h2><Link href={tokenReconciliationArticle.href}>{tokenReconciliationArticle.title}</Link></h2>
+            <p>{tokenReconciliationArticle.description}</p>
+            <Link className="arrow-link" href={tokenReconciliationArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Sampling internals · September 2026</p>
             <h2><Link href={backgroundMonitorArticle.href}>{backgroundMonitorArticle.title}</Link></h2>

@@ -29,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const progressiveFleetUpdated = new Date('2026-09-06T00:00:00Z');
   const backgroundMonitorUpdated = new Date('2026-09-08T00:00:00Z');
   const tlsTracingUpdated = new Date('2026-09-09T00:00:00Z');
+  const tokenReconciliationUpdated = new Date('2026-09-11T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -45,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? tlsTracingUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? tokenReconciliationUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -142,6 +143,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-background-monitoring-works/`,
       lastModified: backgroundMonitorUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/how-agentsight-reconciles-token-usage/`,
+      lastModified: tokenReconciliationUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
