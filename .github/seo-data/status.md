@@ -7,15 +7,16 @@
 - Authoritative product repository: `eunomia-bpf/agentsight`.
 - Current authoritative release: **AgentSight v1.0.31**, tag/release/product `master` commit `bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3`, published 5 September 2026.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
-- Latest qualifying substantive publication: `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`, rendered PR `#119`, squash commit `a2acfac71e75e7ee41539c5acd583c1605d1a0bd`, exact production completion `2026-09-09T20:21:33Z` (13:21:33 PDT).
-- Exact production `Publish static site` run for that publication: `34400475435`, conclusion `success`.
-- Current production `site/.source-sha` exactly equals `a2acfac71e75e7ee41539c5acd583c1605d1a0bd`.
-- The prior rolling deadline was `2026-09-10T16:51:41Z`; exact production completion was **20 hours 30 minutes 8 seconds early**. The new rolling deadline is `2026-09-11T20:21:33Z` (13:21:33 PDT).
+- Latest qualifying substantive publication: `/blog/how-agentsight-reconciles-token-usage/`, rendered PR `#122`, squash commit `1d20018c989680c28f8b931a29fff229fd5108eb`, exact production completion `2026-09-12T16:08:44Z` (09:08:44 PDT).
+- Exact production `Publish static site` run for that publication: `34704301599`, conclusion `success`.
+- Current production `site/.source-sha` exactly equals `1d20018c989680c28f8b931a29fff229fd5108eb`.
+- The prior rolling deadline was `2026-09-11T20:21:33Z`; exact production completion was **19 hours 47 minutes 11 seconds late**. The new rolling deadline is `2026-09-14T16:08:44Z` (09:08:44 PDT).
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
 ## Current public content ownership boundaries
 
+- `/blog/how-agentsight-reconciles-token-usage/`: v1.0.31 token-report evidence semantics — DB versus native-session inputs, keyed source precedence, separate Gemini aggregate reconciliation, Codex cumulative-session versus response fallback paths, grouping, and missing-usage interpretation. It explicitly does not claim a universal network/native join or turn observed tokens into billing cost.
 - `/blog/how-agentsight-background-monitoring-works/`: v1.0.31 background-monitor persistence semantics — two-second aggregate windows, 30-second bounded detail sampling, process/resource deltas, open-descriptor file targets, sampled IP:port network targets, PID/start-time identity, five-plus-five detail bounding, and the start-week filename/restart boundary. It explicitly does not treat monitor DBs as complete event traces or missing sampled rows as proof that an event never occurred.
 - `/blog/how-agentsight-loads-agent-fleets-progressively/`: v1.0.31 fleet frontend latency/failure isolation — concurrent per-Node probes, incremental sample publication, Direct/relay per-Node behavior, generation guards, global refresh barrier, lazy process/analysis views, request timeouts, and the read/write retry boundary. It does not claim a general device/network latency benchmark or an auth/backend-policy change.
 - `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`: v1.0.31 TLS-diagnostics owner — attachment, plaintext-hook, protocol-parser, and non-TLS evidence-path failures across Node OpenSSL, stripped Bun/BoringSSL, rustls, Electron/Cursor, Docker/Kubernetes, browsers, and local MCP stdio. The page is a single `ContentPage` registry entry rather than a duplicate route override.
@@ -67,6 +68,10 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
+- Rendered PR `#122` initially received three Copilot findings at head `bdef093da9b6d5dc7d97cbaacce62322e5009fe8`: the source-priority table omitted the final fallback, Codex cumulative-session and latest-response token paths were conflated, and the `state_5.sqlite` implementation source was not linked. The final head `39a98d6f32d99c12a9d79b2d578683186ee8a6f6` corrected those findings and explicitly scoped precedence to rows sharing a selection key.
+- Final head `39a98d6f32d99c12a9d79b2d578683186ee8a6f6` passed exact-head Website CI run `34622703853`, GitGuardian, and Cloudflare preview `https://986e16aa.agentsight.pages.dev`. Independent local build, TypeScript, content, and static SEO snapshot validation also passed; the snapshot contained 49 pages and 49 sitemap URLs.
+- PR `#122` was squash-merged as `1d20018c989680c28f8b931a29fff229fd5108eb`. Exact `Publish static site` run `34704301599` succeeded and completed at `2026-09-12T16:08:44Z`; production `site/.source-sha` matches that squash commit.
+- Live verification immediately after publication returned HTTP 200 for the new article, Blog hub, sitemap, homepage, and the prior TLS article. The article exposed one matching canonical URL, GA4 tag `G-VVRNSCMWBX`, `TechArticle` JSON-LD, and the intended `state_5.sqlite` evidence boundary; the Blog hub linked it, the sitemap contained it with 11 September freshness, and the homepage remained on v1.0.31.
 - Rendered PR `#117` initially failed exact-head Website CI run `34253105838` because the new article referenced nonexistent `site.repo`. The exact TypeScript failure was fixed to the existing `site.repository`; the failing head was not merged.
 - Final rendered head `ea34d3737b4f95161c6eb02cc7358daef54ff856` passed Website CI run `34253422609`, including the autonomous SEO scope guard, `npm ci`, `npm run verify`, and static-site artifact upload.
 - Final base-to-head review found exactly four rendered-PR paths: the new article, Blog hub, sitemap, and 8 September daily record. No unrelated product, navigation, analytics, workflow, redirect, or repository-scope mutation was included.
