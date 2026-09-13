@@ -94,7 +94,7 @@ export default function OpenTelemetryGenAiExportArticle() {
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '760px', fontSize: '0.92rem' }}>
                   <thead><tr><th style={header}>Evidence</th><th style={header}>OTel GenAI export in v1.0.31</th><th style={header}>Interpretation</th></tr></thead>
                   <tbody>
-                    <tr><td style={cell}>Completed materialized LLM call</td><td style={cell}>Yes</td><td style={cell}>One CLIENT span with request/response metadata and timestamps.</td></tr>
+                    <tr><td style={cell}>Completed materialized LLM call</td><td style={cell}>Yes</td><td style={cell}>One CLIENT span. Parsed response fields appear when available; a completed SSE response whose body cannot be reparsed can still yield request attributes and HTTP status without parsed response/token fields.</td></tr>
                     <tr><td style={cell}>Prompt/completion content</td><td style={cell}>Opt-in</td><td style={cell}>Added only with <code>--otel-capture-content</code>.</td></tr>
                     <tr><td style={cell}>Process/file/network/resource evidence</td><td style={cell}>No automatic span mapping</td><td style={cell}>Remains AgentSight evidence unless another pipeline exports it separately.</td></tr>
                     <tr><td style={cell}>Tool/workflow rows</td><td style={cell}>Not emitted yet</td><td style={cell}>Current product docs explicitly list tool/workflow spans as a limitation.</td></tr>
@@ -118,10 +118,11 @@ export default function OpenTelemetryGenAiExportArticle() {
                 that correlation and token extraction happen before the sink.
               </p>
               <p>
-                This distinction also tightens the wording in the user documentation. The conceptual pipeline begins with
-                SSL/plaintext capture and HTTP reconstruction, but the OTel sink is not the component that pairs raw
-                <code>SSL_write</code>/<code>SSL_read</code> events by PID/TID. It consumes the completed call produced by the
-                shared materialized-view pipeline.
+                The pinned <code>docs/otel.md</code> diagram is looser: it labels <code>OtelExporter</code> as the step that
+                pairs request/response traffic by PID/TID. The v1.0.31 implementation is more precise than that diagram. Raw
+                SSL/plaintext events are parsed and materialized upstream; <code>OtelExporter::llm_call()</code> receives the
+                completed call and only maps that stable row to OTLP. For this source-level boundary, the code path is the
+                authoritative description rather than the simplified diagram.
               </p>
             </section>
 
@@ -144,10 +145,10 @@ export default function OpenTelemetryGenAiExportArticle() {
             <section>
               <h2>Which GenAI attributes are actually emitted?</h2>
               <p>
-                The mapping is intentionally small enough to audit. The span is a CLIENT span; its operation name is
-                <code>chat</code>, provider comes from the normalized call or API host, and <code>server.address</code> records
-                that host. Model/request parameters are copied when available, while response metadata and token usage are
-                derived from the completed response body.
+                The span is a CLIENT span; its operation name is <code>chat</code>, provider comes from the normalized call or
+                API host, and <code>server.address</code> records that host. Model/request parameters are copied when available,
+                while response metadata and token usage are derived from the completed response body. The table below covers
+                the emitted v1.0.31 mapping rather than only a representative subset.
               </p>
               <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '800px', fontSize: '0.92rem' }}>
@@ -155,12 +156,17 @@ export default function OpenTelemetryGenAiExportArticle() {
                   <tbody>
                     <tr><td style={cell}><code>gen_ai.operation.name</code></td><td style={cell}><code>chat</code></td><td style={cell}>Current exporter is model-call focused.</td></tr>
                     <tr><td style={cell}><code>gen_ai.provider.name</code></td><td style={cell}>Normalized provider or provider inferred from host.</td><td style={cell}>It is not an AgentSight process identity.</td></tr>
+                    <tr><td style={cell}><code>server.address</code></td><td style={cell}>Captured API host.</td><td style={cell}>A network destination, not a model/provider identity by itself.</td></tr>
                     <tr><td style={cell}><code>gen_ai.conversation.id</code></td><td style={cell}>Explicit recognized conversation/thread field.</td><td style={cell}>Not synthesized from a generic response ID.</td></tr>
                     <tr><td style={cell}><code>gen_ai.request.model</code></td><td style={cell}>Normalized model or request <code>model</code>.</td><td style={cell}>Absent when the capture cannot establish it.</td></tr>
+                    <tr><td style={cell}><code>gen_ai.request.max_tokens</code></td><td style={cell}>Request <code>max_tokens</code> or <code>max_output_tokens</code>.</td><td style={cell}>Emitted only when the request exposes an integer value.</td></tr>
+                    <tr><td style={cell}><code>gen_ai.request.temperature</code> / <code>gen_ai.request.top_p</code></td><td style={cell}>Request sampling parameters.</td><td style={cell}>Omitted when absent or non-numeric.</td></tr>
+                    <tr><td style={cell}><code>gen_ai.response.model</code> / <code>gen_ai.response.id</code></td><td style={cell}>Parsed response body.</td><td style={cell}>Requires a parseable response JSON carrying those fields.</td></tr>
                     <tr><td style={cell}><code>gen_ai.usage.input_tokens</code></td><td style={cell}><code>input_tokens</code> or <code>prompt_tokens</code>.</td><td style={cell}>Only when response usage exposes a matching integer field.</td></tr>
                     <tr><td style={cell}><code>gen_ai.usage.output_tokens</code></td><td style={cell}><code>output_tokens</code> or <code>completion_tokens</code>.</td><td style={cell}>Observed response usage, not a billing calculation.</td></tr>
                     <tr><td style={cell}><code>gen_ai.response.finish_reasons</code></td><td style={cell}>OpenAI-style choice reasons or Anthropic-style <code>stop_reason</code>.</td><td style={cell}>Omitted when the response shape has no recognized reason.</td></tr>
                     <tr><td style={cell}><code>http.response.status_code</code></td><td style={cell}>Captured HTTP response status.</td><td style={cell}>Status 400 or above also marks the span ERROR.</td></tr>
+                    <tr><td style={cell}><code>gen_ai.input.messages</code> / <code>gen_ai.output.messages</code></td><td style={cell}>Request messages/input and response JSON.</td><td style={cell}>Only with <code>--otel-capture-content</code>.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -210,10 +216,11 @@ export default function OpenTelemetryGenAiExportArticle() {
                 the AgentSight materialization path.
               </p>
               <p>
-                This is a useful failure-isolation property, but it also means that “the AgentSight run contains the call” and
-                “the collector accepted the span” are separate facts. Verify the collector or downstream backend when export
-                completeness matters; do not infer successful remote delivery only from the presence of a local AgentSight
-                call.
+                Those spawned POST tasks are not retained and awaited during <code>run_trace</code> shutdown. The trace loop
+                drops its stream and agent and returns; when the CLI&apos;s Tokio runtime then exits, an in-flight export may be
+                cancelled before the collector accepts it. “The AgentSight run contains the call” and “the collector accepted
+                the span” are therefore separate facts, especially near shutdown. Verify the collector or downstream backend
+                when export completeness matters; do not infer successful remote delivery only from the local call.
               </p>
             </section>
 
@@ -225,15 +232,17 @@ export default function OpenTelemetryGenAiExportArticle() {
                 binary path, SQLite DB, and web-server controls, but does not expose those OTel flags. The two commands share
                 trace infrastructure internally, but that does not make an unexposed flag part of the <code>record</code> CLI.
               </p>
-              <pre><code>{`# Export metadata-only GenAI spans to an OTLP/HTTP collector
-sudo agentsight debug trace --otel --otel-endpoint http://localhost:4318
+              <pre><code>{`# Scope one command family and export metadata-only GenAI spans
+sudo agentsight debug trace -c claude --otel --otel-endpoint http://localhost:4318
 
-# Opt in to prompt/completion content only when the collector policy permits it
-sudo agentsight debug trace --otel --otel-capture-content`}</code></pre>
+# Keep the same scope when opting in to prompt/completion content
+sudo agentsight debug trace -c claude --otel --otel-capture-content`}</code></pre>
               <p>
-                Installation and collector setup belong in the canonical AgentSight documentation. The important reproducible
-                check for this article is narrower: run a collector that exposes its received spans, issue one bounded model
-                request under <code>debug trace --otel</code>, and compare the emitted attributes with the local AgentSight call.
+                <code>debug trace</code> enables broad SSL and process monitoring by default, so use <code>-c</code>,
+                <code>--pid</code>, or an explicit <code>--binary-path</code> to bound a verification run. Installation and
+                collector setup belong in the canonical AgentSight documentation. For a reproducible check, run a collector
+                that exposes its received spans, issue one model request inside the selected scope, and compare the emitted
+                attributes with the local AgentSight call.
               </p>
             </section>
 
@@ -257,7 +266,7 @@ sudo agentsight debug trace --otel --otel-capture-content`}</code></pre>
               <p>
                 Start with <a href={`${productSource}/collector/src/cmd_debug.rs`}><code>cmd_debug.rs</code></a> for the CLI
                 flags and <a href={`${productSource}/collector/src/cmd_trace.rs`}><code>cmd_trace.rs</code></a> for where the
-                OTel sink is attached to the shared materialized view. Then read{' '}
+                OTel sink is attached to the shared materialized view and how shutdown returns. Then read{' '}
                 <a href={`${productSource}/ext/analysis/src/sinks/otel.rs`}><code>otel.rs</code></a> for completion gating,
                 trace-ID selection, attribute mapping, endpoint precedence, content opt-in, and asynchronous POST behavior.
                 Finally compare <a href={`${productSource}/collector/src/main.rs`}><code>main.rs</code></a> to keep the public
@@ -273,7 +282,7 @@ sudo agentsight debug trace --otel --otel-capture-content`}</code></pre>
 
           <aside className="detail-aside">
             <p className="card-label">Continue exploring</p>
-            <Link href="/compare/opentelemetry/">Choose between AgentSight and OpenTelemetry boundaries</Link>
+            <Link href="/architecture/">See the AgentSight evidence architecture</Link>
             <Link href="/blog/system-boundary-observability/">Map native telemetry to system evidence</Link>
             <Link href="/blog/read-agentsight-audit-provenance/">Interpret AgentSight evidence provenance</Link>
             <hr />
