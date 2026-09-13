@@ -1,0 +1,418 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"default"]
+3:I[37457,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"default"]
+f:I[68027,["/_next/static/chunks/1z6x88ihszho0.js"],"default",1]
+:HL["/_next/static/chunks/3qsftj3dl-hsh.css","style"]
+4:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+0:{"P":null,"c":["","blog","how-agentsight-exports-opentelemetry-genai-spans",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":["how-agentsight-exports-opentelemetry-genai-spans",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3qsftj3dl-hsh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1z6x88ihszho0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","style",null,{"children":"$4"}],"$L5","$L6","$L7"],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],"$L8","$L9"]}]}]]}],{"children":["$La",{"children":["$Lb",{"children":["$Lc",{},null,false,null]},null,false,"$@d"]},null,false,"$@d"]},null,false,null],"$Le",false]],"m":"$undefined","G":["$f",["$L10"]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"agentsight-8f769bb19b6362062021e585"}
+11:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/3rdqn8rx95pw7.js"],""]
+12:I[79520,["/_next/static/chunks/1z6x88ihszho0.js"],""]
+1a:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"ViewportBoundary"]
+1c:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"MetadataBoundary"]
+1d:"$Sreact.suspense"
+5:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+6:["$","main",null,{"children":["$","section",null,{"className":"page-hero compact-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","p",null,{"className":"eyebrow","children":"404"}],["$","h1",null,{"children":"This profile path does not exist."}],["$","p",null,{"className":"hero-lede","children":"Return to the product overview or browse the current guides and use cases."}],["$","div",null,{"className":"hero-actions","children":[["$","$L11",null,{"className":"button button-accent","href":"/","children":"AgentSight home"}],["$","$L11",null,{"className":"button button-outline","href":"/guides/","children":"Browse guides"}]]}]]}]}]}]
+7:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L11",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L11",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L11",null,{"href":"/architecture/","children":"Architecture"}],["$","$L11",null,{"href":"/integrations/","children":"Integrations"}],["$","$L11",null,{"href":"/compare/","children":"Compare"}],["$","$L11",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L11",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L11",null,{"href":"/releases/","children":"Releases"}],["$","$L11",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L11",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.31"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+8:["$","$L12",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-VVRNSCMWBX","strategy":"afterInteractive"}]
+9:["$","$L12",null,{"id":"google-analytics","strategy":"afterInteractive","dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){window.dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-VVRNSCMWBX', {\n                page_location: window.location.origin + window.location.pathname,\n                page_path: window.location.pathname,\n                page_title: document.title,\n                allow_google_signals: false,\n                allow_ad_personalization_signals: false\n              });\n            "}}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+13:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+c:["$","$1","c",{"children":[[["$","style",null,{"children":"$13"}],"$L14","$L15","$L16"],["$L17"],"$L18"]}]
+19:[]
+d:"$W19"
+e:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],null]}]
+10:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3qsftj3dl-hsh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+2f:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+14:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+15:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"How AgentSight exports OpenTelemetry GenAI spans\",\"description\":\"A source-level guide to AgentSight v1.0.31 OpenTelemetry export: eligible model calls, trace grouping, gen_ai attributes, OTLP/HTTP endpoint rules, content privacy, and export limits.\",\"url\":\"https://agentsight.us/blog/how-agentsight-exports-opentelemetry-genai-spans/\",\"datePublished\":\"2026-09-13\",\"dateModified\":\"2026-09-13\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L11",null,{"href":"/","children":"Home"}],["$","$L11",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"OpenTelemetry GenAI export"}]]}],["$","p",null,{"className":"eyebrow","children":"Telemetry export internals · AgentSight v1.0.31 · 13 September 2026"}],["$","h1",null,{"children":"How AgentSight exports OpenTelemetry GenAI spans"}],["$","p",null,{"className":"hero-lede","children":"AgentSight can turn model calls reconstructed by its capture pipeline into OpenTelemetry GenAI spans without adding an SDK to the observed agent. The important boundary is narrower than “export the AgentSight trace”: v1.0.31 exports completed materialized LLM calls as OTLP/HTTP JSON spans. Process trees, file activity, sampled system resources, AgentSight provenance, and tool/workflow rows do not automatically become OTel spans."}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":[["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"The short answer"}],["$","p",null,{"children":["The current OTel path is exposed by ",["$","code",null,{"children":"agentsight debug trace --otel"}],". The trace pipeline first normalizes and materializes captured evidence. When that materialized view emits a completed",["$","code",null,{"children":"llm_call"}],", the OTel sink maps the call onto one CLIENT span named ",["$","code",null,{"children":["chat ","{model}"]}]," and POSTs an OTLP/HTTP JSON ",["$","code",null,{"children":"ExportTraceServiceRequest"}]," to the configured traces endpoint."]}],["$","p",null,{"children":"This is a projection, not a second raw packet parser. Request/response correlation and token extraction happen before the OTel sink receives the row. In v1.0.31, an unfinished call with no end timestamp is skipped rather than emitted as a partial span."}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"What crosses the OTel boundary—and what stays in AgentSight"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"760px","fontSize":"0.92rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Evidence"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"OTel GenAI export in v1.0.31"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Interpretation"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":"Completed materialized LLM call"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Yes"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"One CLIENT span. Parsed response fields appear when available; a completed SSE response whose body cannot be reparsed can still yield request attributes and HTTP status without parsed response/token fields."}]]}],"$L1f","$L20","$L21","$L22"]}]]}]}],"$L23"]}],"$L24","$L25","$L26","$L27","$L28","$L29","$L2a","$L2b","$L2c","$L2d"]}],"$L2e"]}]}]]}]
+16:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L11",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L11",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L11",null,{"href":"/architecture/","children":"Architecture"}],["$","$L11",null,{"href":"/integrations/","children":"Integrations"}],["$","$L11",null,{"href":"/compare/","children":"Compare"}],["$","$L11",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L11",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L11",null,{"href":"/releases/","children":"Releases"}],["$","$L11",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L11",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.31"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/3rdqn8rx95pw7.js","async":true,"nonce":"$undefined"}]
+18:["$","$L2f",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@30"}]}]
+1f:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Prompt/completion content"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Opt-in"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["Added only with ",["$","code",null,{"children":"--otel-capture-content"}],"."]}]]}]
+20:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Process/file/network/resource evidence"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"No automatic span mapping"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Remains AgentSight evidence unless another pipeline exports it separately."}]]}]
+21:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Tool/workflow rows"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Not emitted yet"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Current product docs explicitly list tool/workflow spans as a limitation."}]]}]
+22:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"AgentSight row provenance/confidence"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Not mapped by this sink"}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Keep the AgentSight artifact when evidence lineage matters."}]]}]
+23:["$","p",null,{"children":"That boundary is useful operationally: an existing OTel backend can receive standardized model-call spans, while AgentSight remains the richer local artifact for questions such as “which process wrote this file?” or “which system observation produced this reconstructed row?”."}]
+24:["$","section",null,{"children":[["$","h2",null,{"children":"The exporter starts from the materialized view, not raw TLS events"}],["$","p",null,{"children":[["$","code",null,{"children":"cmd_trace.rs"}]," builds one ",["$","code",null,{"children":"MaterializingAnalyzer"}]," and can attach both the SQLite sink and the OTel sink to it. The OTel exporter therefore sees normalized ",["$","code",null,{"children":"LlmCallRow"}]," values after AgentSight has already done the capture-specific work needed to construct a model call. The exporter source itself says that correlation and token extraction happen before the sink."]}],["$","p",null,{"children":["The pinned ",["$","code",null,{"children":"docs/otel.md"}]," diagram is looser: it labels ",["$","code",null,{"children":"OtelExporter"}]," as the step that pairs request/response traffic by PID/TID. The v1.0.31 implementation is more precise than that diagram. Raw SSL/plaintext events are parsed and materialized upstream; ",["$","code",null,{"children":"OtelExporter::llm_call()"}]," receives the completed call and only maps that stable row to OTLP. For this source-level boundary, the code path is the authoritative description rather than the simplified diagram."]}]]}]
+25:["$","section",null,{"children":[["$","h2",null,{"children":"Trace grouping uses explicit conversation identity, then session identity"}],["$","p",null,{"children":"Every exported call gets a fresh random span ID. Trace identity is reused more selectively. The exporter first looks for an explicit conversation or thread identifier in a bounded set of request/response JSON paths. If it finds one, calls with that identifier share a trace ID. Otherwise it uses the AgentSight session ID. If neither is available, calls share one recording-scoped fallback trace ID."}],["$","p",null,{"children":"A generic provider response ID is deliberately not treated as a conversation ID. That matters because a response identifier usually names one response, not the multi-turn conversation. v1.0.31 also does not infer a parent/child span tree for model calls; the product documentation explicitly notes that root and child spans are not inferred yet."}]]}]
+26:["$","section",null,{"children":[["$","h2",null,{"children":"Which GenAI attributes are actually emitted?"}],["$","p",null,{"children":["The span is a CLIENT span; its operation name is ",["$","code",null,{"children":"chat"}],", provider comes from the normalized call or API host, and ",["$","code",null,{"children":"server.address"}]," records that host. Model/request parameters are copied when available, while response metadata and token usage are derived from the completed response body. The table below covers the emitted v1.0.31 mapping rather than only a representative subset."]}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"800px","fontSize":"0.92rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"OTel field"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"AgentSight source"}],["$","th",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Important limit"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.operation.name"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"chat"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Current exporter is model-call focused."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.provider.name"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Normalized provider or provider inferred from host."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"It is not an AgentSight process identity."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"server.address"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Captured API host."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A network destination, not a model/provider identity by itself."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.conversation.id"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Explicit recognized conversation/thread field."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Not synthesized from a generic response ID."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.request.model"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["Normalized model or request ",["$","code",null,{"children":"model"}],"."]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Absent when the capture cannot establish it."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.request.max_tokens"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["Request ",["$","code",null,{"children":"max_tokens"}]," or ",["$","code",null,{"children":"max_output_tokens"}],"."]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Emitted only when the request exposes an integer value."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":[["$","code",null,{"children":"gen_ai.request.temperature"}]," / ",["$","code",null,{"children":"gen_ai.request.top_p"}]]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Request sampling parameters."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Omitted when absent or non-numeric."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":[["$","code",null,{"children":"gen_ai.response.model"}]," / ",["$","code",null,{"children":"gen_ai.response.id"}]]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Parsed response body."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Requires a parseable response JSON carrying those fields."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.usage.input_tokens"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":[["$","code",null,{"children":"input_tokens"}]," or ",["$","code",null,{"children":"prompt_tokens"}],"."]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Only when response usage exposes a matching integer field."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.usage.output_tokens"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":[["$","code",null,{"children":"output_tokens"}]," or ",["$","code",null,{"children":"completion_tokens"}],"."]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Observed response usage, not a billing calculation."}]]}],["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"gen_ai.response.finish_reasons"}]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["OpenAI-style choice reasons or Anthropic-style ",["$","code",null,{"children":"stop_reason"}],"."]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Omitted when the response shape has no recognized reason."}]]}],["$","tr",null,{"children":["$L31","$L32","$L33"]}],"$L34"]}]]}]}],"$L35"]}]
+27:["$","section",null,{"children":[["$","h2",null,{"children":"Content export is off by default for a reason"}],["$","p",null,{"children":["Without ",["$","code",null,{"children":"--otel-capture-content"}],", the exporter sends model-call metadata but does not add prompt or completion bodies. When content capture is enabled, v1.0.31 can attach request messages/input as",["$","code",null,{"children":"gen_ai.input.messages"}]," and the response JSON as ",["$","code",null,{"children":"gen_ai.output.messages"}],"."]}],["$","p",null,{"children":"OpenTelemetry itself warns that GenAI message attributes are likely to contain sensitive user or PII data. AgentSight recordings can also contain sensitive development context. Treat the flag as a data-export decision, not a display preference: once content enters a collector pipeline, its retention, access controls, and downstream exporters are properties of that telemetry system."}]]}]
+28:["$","section",null,{"children":[["$","h2",null,{"children":"Endpoint precedence follows the OTel split between base and trace-specific URLs"}],["$","p",null,{"children":["AgentSight accepts ",["$","code",null,{"children":"--otel-endpoint"}]," as an OTLP/HTTP base URL. If that flag is absent, it checks",["$","code",null,{"children":"OTEL_EXPORTER_OTLP_ENDPOINT"}],", then falls back to ",["$","code",null,{"children":"http://localhost:4318"}],". Those base forms get ",["$","code",null,{"children":"/v1/traces"}]," appended. If ",["$","code",null,{"children":"OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"}]," is set, it takes precedence and is used as-is."]}],["$","p",null,{"children":"That matches the OpenTelemetry exporter distinction: the general OTLP endpoint is a base from which the signal path is constructed, while the signal-specific trace endpoint is already the final URL. The current AgentSight sink sends OTLP/HTTP JSON, not OTLP/gRPC."}]]}]
+29:["$","section",null,{"children":[["$","h2",null,{"children":"Export failure is not the same as capture failure"}],["$","p",null,{"children":["For each completed call, the sink spawns an asynchronous HTTP POST. A non-success collector response or transport failure is logged as an OTel exporter warning. The ",["$","code",null,{"children":"llm_call()"}]," sink method itself returns successfully after scheduling that work rather than synchronously turning collector delivery into a failure of the AgentSight materialization path."]}],["$","p",null,{"children":["Those spawned POST tasks are not retained and awaited during ",["$","code",null,{"children":"run_trace"}],"shutdown. The trace loop drops its stream and agent and returns; when the CLI's Tokio runtime then exits, an in-flight export may be cancelled before the collector accepts it. “The AgentSight run contains the call” and “the collector accepted the span” are therefore separate facts, especially near shutdown. Verify the collector or downstream backend when export completeness matters; do not infer successful remote delivery only from the local call."]}]]}]
+2a:["$","section",null,{"children":[["$","h2",null,{"children":"The current public CLI surface is debug trace, not record"}],["$","p",null,{"children":["In v1.0.31, ",["$","code",null,{"children":"--otel"}],", ",["$","code",null,{"children":"--otel-endpoint"}],", and ",["$","code",null,{"children":"--otel-capture-content"}]," are flags on ",["$","code",null,{"children":"agentsight debug trace"}],". The normal ",["$","code",null,{"children":"agentsight record"}]," command exposes command/PID, binary path, SQLite DB, and web-server controls, but does not expose those OTel flags. The two commands share trace infrastructure internally, but that does not make an unexposed flag part of the ",["$","code",null,{"children":"record"}]," CLI."]}],["$","pre",null,{"children":["$","code",null,{"children":"# Scope one command family and export metadata-only GenAI spans\nsudo agentsight debug trace -c claude --otel --otel-endpoint http://localhost:4318\n\n# Keep the same scope when opting in to prompt/completion content\nsudo agentsight debug trace -c claude --otel --otel-capture-content"}]}],["$","p",null,{"children":[["$","code",null,{"children":"debug trace"}]," enables broad SSL and process monitoring by default, so use ",["$","code",null,{"children":"-c"}],",",["$","code",null,{"children":"--pid"}],", or an explicit ",["$","code",null,{"children":"--binary-path"}]," to bound a verification run. Installation and collector setup belong in the canonical AgentSight documentation. For a reproducible check, run a collector that exposes its received spans, issue one model request inside the selected scope, and compare the emitted attributes with the local AgentSight call."]}]]}]
+2b:["$","section",null,{"children":[["$","h2",null,{"children":"Use OTel for the model-call projection; keep AgentSight when system evidence matters"}],["$","p",null,{"children":"If your existing telemetry stack already speaks OTLP, AgentSight does not need to replace it. The current exporter is useful for feeding standardized GenAI call spans into that pipeline while preserving AgentSight as the independent local record of system behavior. The two views intentionally have different information."}],["$","p",null,{"children":"For a model-latency or provider-error question, the exported span can be enough. For a question about the child process that ran after the model call, the file a tool opened, the network endpoint a subprocess reached, or the provenance of a reconstructed row, inspect the AgentSight artifact as well. Exporting one boundary does not make the other boundary disappear."}]]}]
+2c:["$","section",null,{"children":[["$","h2",null,{"children":"How to verify the implementation yourself"}],["$","p",null,{"children":["Start with ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_debug.rs","children":["$","code",null,{"children":"cmd_debug.rs"}]}]," for the CLI flags and ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_trace.rs","children":["$","code",null,{"children":"cmd_trace.rs"}]}]," for where the OTel sink is attached to the shared materialized view and how shutdown returns. Then read"," ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/ext/analysis/src/sinks/otel.rs","children":["$","code",null,{"children":"otel.rs"}]}]," for completion gating, trace-ID selection, attribute mapping, endpoint precedence, content opt-in, and asynchronous POST behavior. Finally compare ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/main.rs","children":["$","code",null,{"children":"main.rs"}]}]," to keep the public",["$","code",null,{"children":"record"}]," and ",["$","code",null,{"children":"debug trace"}]," surfaces distinct."]}]]}]
+2d:["$","section",null,{"children":[["$","h2",null,{"children":"Primary sources"}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/ext/analysis/src/sinks/otel.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/ext/analysis/src/sinks/otel.rs","children":"AgentSight v1.0.31 OTLP/HTTP GenAI exporter"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_trace.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_trace.rs","children":"AgentSight v1.0.31 trace pipeline and sink wiring"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_debug.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/cmd_debug.rs","children":"AgentSight v1.0.31 debug trace OTel flags"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/main.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/collector/src/main.rs","children":"AgentSight v1.0.31 record CLI surface"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/docs/otel.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3/docs/otel.md","children":"AgentSight v1.0.31 OpenTelemetry export documentation"}]}],["$","li","https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/",{"children":["$","a",null,{"href":"https://opentelemetry.io/docs/specs/semconv/registry/attributes/gen-ai/","children":"OpenTelemetry GenAI semantic-convention attribute registry"}]}],["$","li","https://opentelemetry.io/docs/specs/otlp/",{"children":["$","a",null,{"href":"https://opentelemetry.io/docs/specs/otlp/","children":"OpenTelemetry OTLP specification"}]}],["$","li","https://opentelemetry.io/docs/specs/otel/protocol/exporter/",{"children":["$","a",null,{"href":"https://opentelemetry.io/docs/specs/otel/protocol/exporter/","children":"OpenTelemetry OTLP exporter endpoint rules"}]}]]}]]}]
+2e:["$","aside",null,{"className":"detail-aside","children":[["$","p",null,{"className":"card-label","children":"Continue exploring"}],["$","$L11",null,{"href":"/architecture/","children":"See the AgentSight evidence architecture"}],["$","$L11",null,{"href":"/blog/system-boundary-observability/","children":"Map native telemetry to system evidence"}],["$","$L11",null,{"href":"/blog/read-agentsight-audit-provenance/","children":"Interpret AgentSight evidence provenance"}],["$","hr",null,{}],["$","a",null,{"className":"button button-accent","href":"https://eunomia.dev/agentsight/","children":"Open canonical documentation"}]]}]
+31:["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"http.response.status_code"}]}]
+32:["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Captured HTTP response status."}]
+33:["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Status 400 or above also marks the span ERROR."}]
+34:["$","tr",null,{"children":[["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":[["$","code",null,{"children":"gen_ai.input.messages"}]," / ",["$","code",null,{"children":"gen_ai.output.messages"}]]}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Request messages/input and response JSON."}],["$","td",null,{"style":"$15:props:children:2:props:children:props:children:0:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["Only with ",["$","code",null,{"children":"--otel-capture-content"}],"."]}]]}]
+35:["$","p",null,{"children":["Span start and end timestamps come from the materialized call's captured request/response times. The OTel resource uses ",["$","code",null,{"children":"service.name"}],", defaulting to ",["$","code",null,{"children":"agentsight"}],", and the instrumentation scope is named ",["$","code",null,{"children":"agentsight"}]," with the current package version."]}]
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]
+36:I[27201,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"IconMark"]
+1e:[["$","title","0",{"children":"How AgentSight exports OpenTelemetry GenAI spans | AgentSight"}],["$","meta","1",{"name":"description","content":"A source-level guide to AgentSight v1.0.31 OpenTelemetry export: eligible model calls, trace grouping, gen_ai attributes, OTLP/HTTP endpoint rules, content privacy, and export limits."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/how-agentsight-exports-opentelemetry-genai-spans/"}],["$","meta","13",{"property":"og:title","content":"How AgentSight exports OpenTelemetry GenAI spans"}],["$","meta","14",{"property":"og:description","content":"Follow a completed AgentSight model call from the materialized view to an OTLP/HTTP GenAI CLIENT span, including trace IDs, attributes, privacy defaults, and evidence that stays local."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/how-agentsight-exports-opentelemetry-genai-spans/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L36","22",{}]]
+30:null
