@@ -81,6 +81,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
+- Metadata-only closeout PR `#126` records the post-merge evidence for the 13 September publication. It changes only the daily record and this status file; no rendered site or scheduling state is changed.
 - Rendered PR `#125` final head `c78624024a78deb9c3649965247cd03ea928f0b1` passed exact-head Website CI `verify` run `34768863518`, GitGuardian, and Cloudflare Pages. Its two inline review threads are resolved; the final source also addresses all four suppressed Copilot observations by removing the stale comparison continuation link, bounding the `debug trace` recipe, completing the emitted-attribute inventory, and documenting the SSE parseability caveat.
 - PR `#125` was squash-merged as `7fb8f4ad307e9777318ed85275cc72dd9fde5b5a`. Exact `Publish static site` run `34769052166` succeeded from that commit; its publish job completed at `2026-09-13T16:36:21Z`. Production `site/.source-sha` matches exactly.
 - Generated production article HTML contains the intended title, v1.0.31 description, index/follow robots metadata, and canonical `https://agentsight.us/blog/how-agentsight-exports-opentelemetry-genai-spans/`. Production `sitemap.xml` contains the new route and records both it and `/blog/` with `2026-09-13T00:00:00.000Z` last-modified timestamps; the Blog source contains the new card/href.
