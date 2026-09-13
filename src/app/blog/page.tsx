@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const otelExportArticle = {
+  title: 'How AgentSight exports OpenTelemetry GenAI spans',
+  description:
+    'Follow a completed v1.0.31 model call from the materialized view to an OTLP/HTTP GenAI CLIENT span, including trace grouping, attributes, privacy defaults, and evidence that stays local.',
+  href: '/blog/how-agentsight-exports-opentelemetry-genai-spans/',
+};
 const tokenReconciliationArticle = {
   title: 'How AgentSight reconciles overlapping token usage',
   description:
@@ -96,6 +102,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: otelExportArticle.title, url: `${site.url}${otelExportArticle.href}` },
       { '@type': 'WebPage', name: tokenReconciliationArticle.title, url: `${site.url}${tokenReconciliationArticle.href}` },
       { '@type': 'WebPage', name: backgroundMonitorArticle.title, url: `${site.url}${backgroundMonitorArticle.href}` },
       { '@type': 'WebPage', name: progressiveFleetArticle.title, url: `${site.url}${progressiveFleetArticle.href}` },
@@ -123,6 +130,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Telemetry export internals · September 2026</p>
+            <h2><Link href={otelExportArticle.href}>{otelExportArticle.title}</Link></h2>
+            <p>{otelExportArticle.description}</p>
+            <Link className="arrow-link" href={otelExportArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Token accounting internals · September 2026</p>
             <h2><Link href={tokenReconciliationArticle.href}>{tokenReconciliationArticle.title}</Link></h2>
