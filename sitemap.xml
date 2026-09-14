@@ -26,7 +26,7 @@
 </url>
 <url>
 <loc>https://agentsight.us/blog/</loc>
-<lastmod>2026-09-13T00:00:00.000Z</lastmod>
+<lastmod>2026-09-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
@@ -153,6 +153,12 @@
 <url>
 <loc>https://agentsight.us/blog/how-agentsight-exports-opentelemetry-genai-spans/</loc>
 <lastmod>2026-09-13T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://agentsight.us/blog/how-agentsight-normalizes-agent-session-data/</loc>
+<lastmod>2026-09-14T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
