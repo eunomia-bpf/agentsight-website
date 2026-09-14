@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const sessionNormalizationArticle = {
+  title: 'How AgentSight normalizes local agent transcripts into one session model',
+  description:
+    'Follow v1.0.31 provider-native transcript data into the shared AgentSession and SessionEvents IR, including prompts, tool effects, paths, responses, usage, plans, and missing-field boundaries.',
+  href: '/blog/how-agentsight-normalizes-agent-session-data/',
+};
 const otelExportArticle = {
   title: 'How AgentSight exports OpenTelemetry GenAI spans',
   description:
@@ -102,6 +108,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: sessionNormalizationArticle.title, url: `${site.url}${sessionNormalizationArticle.href}` },
       { '@type': 'WebPage', name: otelExportArticle.title, url: `${site.url}${otelExportArticle.href}` },
       { '@type': 'WebPage', name: tokenReconciliationArticle.title, url: `${site.url}${tokenReconciliationArticle.href}` },
       { '@type': 'WebPage', name: backgroundMonitorArticle.title, url: `${site.url}${backgroundMonitorArticle.href}` },
@@ -130,6 +137,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Native session internals · September 2026</p>
+            <h2><Link href={sessionNormalizationArticle.href}>{sessionNormalizationArticle.title}</Link></h2>
+            <p>{sessionNormalizationArticle.description}</p>
+            <Link className="arrow-link" href={sessionNormalizationArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Telemetry export internals · September 2026</p>
             <h2><Link href={otelExportArticle.href}>{otelExportArticle.title}</Link></h2>
