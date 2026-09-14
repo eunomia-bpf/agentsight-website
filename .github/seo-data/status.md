@@ -92,6 +92,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
+- Metadata-only closeout PR `#128` is the closeout lane for the 14 September publication. Its diff is limited to the 14 September daily record and this status file and is intended to leave rendered output and production identity unchanged.
 - Rendered PR `#127` final head `26afa398df27a5abed62cbb7b3afd7cb54974fdc` passed exact-head Website CI run `34869253587`, GitGuardian, and Cloudflare Pages. Copilot's three suppressed observations were addressed in the final source and no unresolved review thread remained.
 - PR `#127` was squash-merged as `d7b00655ac5cfe21bc8251d0f2492bde8e935bd1`. Exact `Publish static site` run `34869461043` succeeded from that commit; its publish job completed at `2026-09-14T16:35:21Z`. Production `site/.source-sha` matches exactly.
 - Generated production article HTML contains the intended title, v1.0.31 description, index/follow robots metadata, and canonical `https://agentsight.us/blog/how-agentsight-normalizes-agent-session-data/`. The Blog hub contains the new card and public retrieval of both the hub and article succeeded after publication.
