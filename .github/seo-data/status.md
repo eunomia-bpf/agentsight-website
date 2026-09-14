@@ -7,15 +7,16 @@
 - Authoritative product repository: `eunomia-bpf/agentsight`.
 - Current authoritative release: **AgentSight v1.0.31**, tag/release/product `master` commit `bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3`, published 5 September 2026.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
-- Latest qualifying substantive publication: `/blog/how-agentsight-exports-opentelemetry-genai-spans/`, rendered PR `#125`, squash commit `7fb8f4ad307e9777318ed85275cc72dd9fde5b5a`, exact production completion `2026-09-13T16:36:21Z` (09:36:21 PDT).
-- Exact production `Publish static site` run for that publication: `34769052166`, conclusion `success`.
-- Current production `site/.source-sha` exactly equals `7fb8f4ad307e9777318ed85275cc72dd9fde5b5a`.
-- The prior rolling deadline was `2026-09-14T16:08:44Z` (09:08:44 PDT); exact production completion was **23 hours 32 minutes 23 seconds early**. The new rolling deadline is `2026-09-15T16:36:21Z` (09:36:21 PDT).
+- Latest qualifying substantive publication: `/blog/how-agentsight-normalizes-agent-session-data/`, rendered PR `#127`, squash commit `d7b00655ac5cfe21bc8251d0f2492bde8e935bd1`, exact production completion `2026-09-14T16:35:21Z` (09:35:21 PDT).
+- Exact production `Publish static site` run for that publication: `34869461043`, conclusion `success`.
+- Current production `site/.source-sha` exactly equals `d7b00655ac5cfe21bc8251d0f2492bde8e935bd1`.
+- The prior rolling deadline was `2026-09-15T16:36:21Z` (09:36:21 PDT); exact production completion was **24 hours 1 minute early**. The new rolling deadline is `2026-09-16T16:35:21Z` (09:35:21 PDT).
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
 ## Current public content ownership boundaries
 
+- `/blog/how-agentsight-normalizes-agent-session-data/`: v1.0.31 native-session normalization owner — provider-specific transcript parsing into the shared `AgentSession` / `SessionEvents` IR while preserving provider/source identity, prompt indexes, tool/path access semantics, response identity, token components, plans, and explicit missing-field boundaries. It does not claim native transcripts prove independent process, filesystem, network, billing, or complete-causality evidence.
 - `/blog/how-agentsight-exports-opentelemetry-genai-spans/`: v1.0.31 implementation-level OTel export semantics — completed materialized LLM-call eligibility, trace-ID precedence, emitted GenAI/HTTP attributes, endpoint precedence, content opt-in, asynchronous delivery/shutdown loss, and the evidence that stays local. It explicitly distinguishes the `debug trace` OTel flags from the normal `record` CLI and does not claim process/file/network/resource/provenance or tool/workflow rows are exported by this sink.
 - `/blog/how-agentsight-reconciles-token-usage/`: v1.0.31 token-report evidence semantics — DB versus native-session inputs, keyed source precedence, separate Gemini aggregate reconciliation, Codex cumulative-session versus response fallback paths, grouping, and missing-usage interpretation. It explicitly does not claim a universal network/native join or turn observed tokens into billing cost.
 - `/blog/how-agentsight-background-monitoring-works/`: v1.0.31 background-monitor persistence semantics — two-second aggregate windows, 30-second bounded detail sampling, process/resource deltas, open-descriptor file targets, sampled IP:port network targets, PID/start-time identity, five-plus-five detail bounding, and the start-week filename/restart boundary. It explicitly does not treat monitor DBs as complete event traces or missing sampled rows as proof that an event never occurred.
@@ -32,6 +33,16 @@
 - `/blog/replay-coding-agent-repository-changes/`: native-session repository replay and its intent/system-evidence limits.
 
 These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method. Existing research pages remain pinned to the exact product snapshot they analyzed rather than being bulk-retagged when a new release ships.
+
+## v1.0.31 native-session normalization facts
+
+- `agent-session` is a reusable local intermediate representation for supported native coding-agent session data; its documented responsibilities do not include OTLP export, UI/report rendering, database schema, or eBPF capture.
+- `AgentSession` keeps agent/provider identity, source path, source-derived session/conversation identifiers, timing/model metadata, aggregate usage, working directory, and normalized event collections instead of flattening all providers into display strings.
+- Prompts, tool events, and model responses keep prompt indexes so consumers can group source-recorded interaction events around a user turn without claiming complete causal tracing.
+- `ToolPath` retains access semantics such as read/write/create/delete/rename and can preserve a rename source; a path mention is therefore not silently promoted into a read or write.
+- `LlmResponse.source_id` preserves source-native completion identity for merging split records; response phase and decomposed token fields remain present when the provider supplies them.
+- Missing native fields remain missing evidence. The normalization layer does not manufacture conversation IDs, host-level file/process/network effects, billing cost, or complete provenance that the source transcript did not establish.
+- `agentpprof` reuses the shared prompt/tool/response types, keeping provider parsing semantics in one library boundary rather than reproducing them in each consumer.
 
 ## v1.0.31 OpenTelemetry export facts
 
@@ -60,7 +71,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 ## v1.0.31 fleet/frontend facts
 
 - Product PR `#209` is the primary release change behind the fleet-loading article.
-- `refreshFleet` fans out independent Node probes and writes each completed Node sample into `fleetSamples` before the outer `Promise.all` resolves; the outer barrier remains relevant for end-of-refresh bookkeeping and the all-unreachable fleet error.
+- `refreshFleet` fans out independent per-Node probes and writes each completed Node sample into `fleetSamples` before the outer `Promise.all` resolves; the outer barrier remains relevant for end-of-refresh bookkeeping and the all-unreachable fleet error.
 - Direct and Controller-relay availability are resolved per Node rather than as one fleet-wide transport result.
 - Directory, fleet, and active-Node generation counters prevent late results from stale organization/activation work from overwriting newer frontend state.
 - Session conversation/process/analysis are separate views; process and analysis components are dynamically imported, and analysis event-display work is tab-scoped.
@@ -81,11 +92,15 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
+- Metadata-only closeout PR `#128` is the closeout lane for the 14 September publication. Its diff is limited to the 14 September daily record and this status file and is intended to leave rendered output and production identity unchanged.
+- Rendered PR `#127` final head `26afa398df27a5abed62cbb7b3afd7cb54974fdc` passed exact-head Website CI run `34869253587`, GitGuardian, and Cloudflare Pages. Copilot's three suppressed observations were addressed in the final source and no unresolved review thread remained.
+- PR `#127` was squash-merged as `d7b00655ac5cfe21bc8251d0f2492bde8e935bd1`. Exact `Publish static site` run `34869461043` succeeded from that commit; its publish job completed at `2026-09-14T16:35:21Z`. Production `site/.source-sha` matches exactly.
+- Generated production article HTML contains the intended title, v1.0.31 description, index/follow robots metadata, and canonical `https://agentsight.us/blog/how-agentsight-normalizes-agent-session-data/`. A public re-verification ending at `2026-09-14T16:50:06Z` (09:50:06 PDT) successfully retrieved the article and the Blog hub with the new card present.
+- The same re-verification ending at `2026-09-14T16:50:06Z` retrieved representative unaffected route `/blog/how-agentsight-discovers-local-agent-sessions/`. Exact-title search had not yet surfaced the new route immediately after publication; direct retrieval succeeded, so this is index freshness rather than a deployment incident.
+- The 14 September publication satisfied the previous 48-hour deadline and resets the rolling deadline to `2026-09-16T16:35:21Z` (09:35:21 PDT).
 - Metadata-only closeout PR `#126` records the post-merge evidence for the 13 September publication. It changes only the daily record and this status file; no rendered site or scheduling state is changed.
 - Rendered PR `#125` final head `c78624024a78deb9c3649965247cd03ea928f0b1` passed exact-head Website CI `verify` run `34768863518`, GitGuardian, and Cloudflare Pages. Its two inline review threads are resolved; the final source also addresses all four suppressed Copilot observations by removing the stale comparison continuation link, bounding the `debug trace` recipe, completing the emitted-attribute inventory, and documenting the SSE parseability caveat.
-- PR `#125` was squash-merged as `7fb8f4ad307e9777318ed85275cc72dd9fde5b5a`. Exact `Publish static site` run `34769052166` succeeded from that commit; its publish job completed at `2026-09-13T16:36:21Z`. Production `site/.source-sha` matches exactly.
-- Generated production article HTML contains the intended title, v1.0.31 description, index/follow robots metadata, and canonical `https://agentsight.us/blog/how-agentsight-exports-opentelemetry-genai-spans/`. Production `sitemap.xml` contains the new route and records both it and `/blog/` with `2026-09-13T00:00:00.000Z` last-modified timestamps; the Blog source contains the new card/href.
-- Post-publication acceptance checks were performed within `2026-09-13T16:36:21Z`–`2026-09-13T16:46:51Z`. Independent public search did not yet return the exact title/route, while this operator's direct fetch surface could not retrieve a URL absent from its search results. Exact workflow, production marker, generated HTML, Blog source, and sitemap agree, so this is recorded as retrieval/indexing freshness rather than a deployment incident. Retry direct public retrieval in a later cycle; do not create a cache-forcing change from this evidence alone.
+- PR `#125` was squash-merged as `7fb8f4ad307e9777318ed85275cc72dd9fde5b5a`. Exact `Publish static site` run `34769052166` succeeded from that commit; its publish job completed at `2026-09-13T16:36:21Z`. Production `site/.source-sha` matched that commit before the 14 September publication.
 - Rendered PR `#122` initially received three Copilot findings at head `bdef093da9b6d5dc7d97cbaacce62322e5009fe8`: the source-priority table omitted the final fallback, Codex cumulative-session and latest-response token paths were conflated, and the `state_5.sqlite` implementation source was not linked. The final head `39a98d6f32d99c12a9d79b2d578683186ee8a6f6` corrected those findings and explicitly scoped precedence to rows sharing a selection key.
 - Final head `39a98d6f32d99c12a9d79b2d578683186ee8a6f6` passed exact-head Website CI run `34622703853`, GitGuardian, and Cloudflare preview `https://986e16aa.agentsight.pages.dev`. Independent local build, TypeScript, content, and static SEO snapshot validation also passed; the snapshot contained 49 pages and 49 sitemap URLs.
 - PR `#122` was squash-merged as `1d20018c989680c28f8b931a29fff229fd5108eb`. Exact `Publish static site` run `34704301599` succeeded and completed at `2026-09-12T16:08:44Z`; production `site/.source-sha` matched that squash commit before the 13 September publication.
@@ -95,17 +110,20 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- `2026-08-17_to_2026-08-23` remains completely absent as of 13 September.
+- A new `2026-09-07_to_2026-09-13` family appeared on 14 September around 09:05 PDT. It is a next-morning snapshot still inside the configured three-day finalization lag and is directional only.
+- Its GA4 landing rows list 6 sessions / 4 active users / 0 key events: 5 sessions / 4 active users on `/`, plus one blank landing row.
+- Its GSC date rows currently cover 7–12 September but omit 13 September: 3 clicks / 375 impressions / 0.80% CTR / weighted average position approximately 8.43. The homepage contributes 3 clicks / 169 impressions; among non-home pages, the existing local-session discovery article has 30 impressions at average position approximately 6.87, `/blog/` has 49 impressions, the Cursor integration has 17, and the Agent Flamegraph guide has 15.
+- `2026-08-17_to_2026-08-23` remains completely absent as of 14 September.
 - `2026-08-24_to_2026-08-30` remains the next-morning 31 August family. No post-lag refresh is present even though the completed window is beyond the configured three-day finalization lag; its GSC date export still omits 30 August.
 - The 24–30 GA4 landing export still lists 17 sessions: 11 homepage, 2 `(not set)`, and one each for `/architecture/`, `/blog/`, `/guides/agent-flamegraph/`, and `/guides/getting-started/`; listed key events are zero. Public-safe SHA-256: `2372c487f122aa3aabb72a1008408619d2036d06061542f92df898163afc1f3a`.
 - The 24–30 GSC date export still contains 24–29 August but no 30 August row: 9 clicks / 180 impressions / 5.00% CTR / weighted average position approximately 20.62. Public-safe SHA-256: `70d69b7fd6a372d2ffec14cfb77dace8abfd63113e3027ddaeb499f6a6024f99`.
-- The `2026-08-31_to_2026-09-06` family was generated 7 September around 09:05 PDT, the morning immediately after the covered window. As of 13 September, that window is beyond the configured three-day finalization boundary without a post-lag refresh, so it remains directional rather than finalized KPI evidence.
-- The newest GA4 organic landing file lists 12 sessions / 11 active users, all on `/`, engagement rate `58.33%`, and zero listed key events. Public-safe SHA-256: `45a3ab61f21fdfcce3d8ef6ba7c8ce301a353a2bb2a95fc0ef090069a322ffe9`.
-- The newest GSC date file contains 31 August through 5 September but omits 6 September: 4 clicks / 260 impressions / 1.54% CTR / weighted average position approximately 11.68. Public-safe SHA-256: `dc3a35240a6b2d311d36a873bccf74e26d34e8dfcdac7866c573cab2d46bc67e`.
+- The `2026-08-31_to_2026-09-06` family was generated 7 September around 09:05 PDT, the morning immediately after the covered window. As of 14 September, that window is beyond the configured three-day finalization boundary without a post-lag refresh, so it remains directional rather than finalized KPI evidence.
+- The 31 August–6 September GA4 organic landing file lists 12 sessions / 11 active users, all on `/`, engagement rate `58.33%`, and zero listed key events. Public-safe SHA-256: `45a3ab61f21fdfcce3d8ef6ba7c8ce301a353a2bb2a95fc0ef090069a322ffe9`.
+- The 31 August–6 September GSC date file contains 31 August through 5 September but omits 6 September: 4 clicks / 260 impressions / 1.54% CTR / weighted average position approximately 11.68. Public-safe SHA-256: `dc3a35240a6b2d311d36a873bccf74e26d34e8dfcdac7866c573cab2d46bc67e`.
 - Like-for-like only as six-day next-morning snapshots, impressions rose from 180 to 260 and apparent weighted position improved from approximately 20.62 to 11.68, while clicks fell from 9 to 4 and CTR from 5.00% to 1.54%. This remains directional and must not be reported as finalized week-over-week performance.
-- Direct folder enumeration on 13 September finds no completed-window post-lag replacement beyond the previously recorded 7 September next-morning family. The exporter continues to lack the post-lag refresh/backfill path needed for fresh finalized weekly analysis.
+- Direct folder enumeration on 14 September still finds no 17–23 August family and no post-lag replacement for the two older completed windows. The exporter continues to lack the post-lag refresh/backfill path needed for fresh finalized weekly analysis.
 - The site's GA4 bootstrap records `page_location` as origin + pathname and `page_path` as pathname, so query strings are intentionally excluded from page-view identity.
-- Generic public brand search remains ambiguous because unrelated products use the AgentSight name.
+- Generic public brand search remains ambiguous because unrelated products use the AgentSight name. Public search still returns the canonical AgentSight homepage and existing technical pages; exact-title indexing of the new 14 September article may lag direct public retrieval.
 
 ## Off-site visibility
 
@@ -122,4 +140,4 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Human-only blockers
 
-- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and post-lag refresh 24–30 August and 31 August–6 September after the configured finalization cutoff. The 31 August–6 September next-morning family is now beyond its finalization boundary and still omits the boundary date in GSC. The current operator can inspect Drive but has no connected Apps Script execution/configuration surface.
+- **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and post-lag refresh 24–30 August and 31 August–6 September after the configured finalization cutoff. The 31 August–6 September next-morning family is beyond its finalization boundary and still omits the boundary date in GSC. The new 7–13 September family is still inside its own finalization lag and does not change the blocker. The current operator can inspect Drive but has no connected Apps Script execution/configuration surface.
