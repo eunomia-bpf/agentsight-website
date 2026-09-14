@@ -85,8 +85,8 @@ export default function AgentSessionNormalizationArticle() {
               <p>
                 This is intentionally not an OpenTelemetry data model and not an eBPF event model. The crate documentation
                 calls <code>agent-session</code> a local IR and explicitly excludes OTLP export, UI rendering, database schema,
-                and eBPF capture. AgentSight may project the IR into those systems later, but the parser does not pretend a
-                provider transcript already contains host-level evidence it never recorded.
+                and eBPF capture. Consuming applications can map the IR into SQLite, OpenTelemetry, reports, or other outputs;
+                the parser itself does not pretend a provider transcript already contains host-level evidence it never recorded.
               </p>
             </section>
 
@@ -168,9 +168,9 @@ export default function AgentSessionNormalizationArticle() {
               </p>
               <p>
                 Token fields stay decomposed as input, output, cache, and total counts. The helper used by profiling consumers
-                validates reported components against bounded ranges and falls back to a total estimate only when detailed
-                components are absent. If no usable token evidence exists, the profiling layer can mark the weight as unknown
-                instead of turning missing usage into a fabricated zero-cost response.
+                drops zero or out-of-range components, uses the surviving validated components when any remain, and falls back
+                to a bounded total estimate when none survives. If no usable component or total evidence exists, the profiling
+                layer can mark the weight as unknown instead of turning missing usage into a fabricated zero-cost response.
               </p>
             </section>
 
@@ -186,8 +186,8 @@ export default function AgentSessionNormalizationArticle() {
               <p>
                 That boundary also makes parser fixes more reusable. If a provider changes how it records a tool path or model
                 response, the compatibility work belongs in the provider parser and common IR mapping. A consumer should not
-                need four copies of “how does this Codex/Claude/Gemini/Cursor record mean a file write?” just to render four
-                different views.
+                need four copies of “what does this Codex/Claude/Gemini/Cursor record mean for a file write?” just to render
+                four different views.
               </p>
             </section>
 
