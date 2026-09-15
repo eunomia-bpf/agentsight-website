@@ -434,7 +434,7 @@ const pageUpgrades: Record<string, PageUpgrade> = {
     sources: [
       { label: 'OpenTelemetry instrumentation concepts', href: otelInstrumentation },
       { label: 'OpenTelemetry semantic conventions', href: otelSemanticConventions },
-      { label: 'OpenTelemetry current GenAI semantic conventions', href: 'https://opentelemetry.io/docs/specs/semconv/gen-ai/' },
+      { label: 'OpenTelemetry current GenAI span semantic conventions', href: 'https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md' },
       { label: 'OpenTelemetry Collector overview', href: 'https://opentelemetry.io/docs/collector/' },
       { label: 'AgentSight v1.0.31 OpenTelemetry GenAI export', href: `${tlsProductSource}/docs/otel.md` },
       { label: 'AgentSight v1.0.31 OtelExporter source', href: `${tlsProductSource}/ext/analysis/src/sinks/otel.rs` },
