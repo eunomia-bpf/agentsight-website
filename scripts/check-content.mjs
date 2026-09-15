@@ -70,6 +70,7 @@ const routes = new Set([
   '/compare/',
   '/guides/',
   '/blog/',
+  '/blog/how-agentsight-exports-opentelemetry-genai-spans/',
   '/integrations/',
   '/integrations/cursor/',
   '/security/',
