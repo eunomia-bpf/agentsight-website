@@ -32,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const tokenReconciliationUpdated = new Date('2026-09-11T00:00:00Z');
   const otelExportUpdated = new Date('2026-09-13T00:00:00Z');
   const sessionNormalizationUpdated = new Date('2026-09-14T00:00:00Z');
+  const otelComparisonUpdated = new Date('2026-09-15T00:00:00Z');
   const productUpdated = new Date(`${site.releaseDate}T00:00:00Z`);
   const fixed = [
     ...Object.values(hubConfig).map(({ path }) => path),
@@ -169,11 +170,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.map((page) => ({
       url: `${site.url}${contentPath(page)}`,
       lastModified:
-        page.kind === 'blog' && page.slug === 'system-boundary-observability'
-          ? systemBoundaryUpdated
-          : page.kind === 'blog' && page.slug === 'why-ai-agent-tls-traffic-is-hard-to-trace'
-            ? tlsTracingUpdated
-            : existingUpdated,
+        page.kind === 'comparison' && page.slug === 'opentelemetry'
+          ? otelComparisonUpdated
+          : page.kind === 'blog' && page.slug === 'system-boundary-observability'
+            ? systemBoundaryUpdated
+            : page.kind === 'blog' && page.slug === 'why-ai-agent-tls-traffic-is-hard-to-trace'
+              ? tlsTracingUpdated
+              : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: page.kind === 'landing' ? 0.7 : 0.75,
     })),
