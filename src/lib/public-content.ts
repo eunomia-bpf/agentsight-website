@@ -391,42 +391,58 @@ const pageUpgrades: Record<string, PageUpgrade> = {
   },
 
   'comparison:opentelemetry': {
-    lede: `OpenTelemetry is a standard and instrumentation ecosystem; AgentSight is a concrete local profiler that can produce some OpenTelemetry-compatible output. The useful comparison is not “AgentSight versus OTel” but which measurements AgentSight adds, how those measurements are exported, and which AgentSight-specific data remains outside an OTel trace.`,
+    lede: `OpenTelemetry is the common instrumentation, semantic-convention, protocol, and collector ecosystem; AgentSight is a local agent profiler with its own session model and system capture boundary. In AgentSight v1.0.31 the bridge between them is deliberately narrow: completed materialized LLM calls can become OTLP/HTTP GenAI spans, while the rest of the local process, file, network, resource, tool, and provenance data remains AgentSight-specific.`,
     outcomes: [
-      'Keep OpenTelemetry as the common signal and collector ecosystem.',
-      'Use AgentSight as an additional source for supported agent/system measurements.',
-      'Understand exactly what AgentSight exports today and what remains AgentSight-specific.',
+      'Keep OpenTelemetry as the shared telemetry and collector pipeline when you already operate one.',
+      'Use AgentSight when the investigation needs local agent-session and system-boundary data that application instrumentation does not contain.',
+      'Treat AgentSight GenAI export as a selected projection of the local session, not a lossless conversion of that session into OTel.',
     ],
     sections: [
       {
-        title: 'OpenTelemetry defines how telemetry is produced and named',
-        body: `OpenTelemetry provides APIs, SDKs, instrumentation, collectors, exporters, resources, and semantic conventions across traces, metrics, logs, and profiles. Semantic conventions standardize field names and meaning; they do not create an observation in code that was never instrumented. That distinction is important when an agent launches descendants whose behavior is not represented by the parent application trace.`,
+        title: 'OpenTelemetry standardizes signals and pipelines; it does not create missing observations',
+        body: `OpenTelemetry provides APIs, SDKs, instrumentation libraries, OTLP, collectors, exporters, resources, and semantic conventions across traces, metrics, logs, and profiles. The Collector can receive, process, and export telemetry to one or more backends. Those pieces make independently produced telemetry interoperable, but a semantic convention cannot describe a child process, file operation, or local network effect unless some measurement source actually observes and emits it.`,
       },
       {
-        title: 'AgentSight is a data source with its own capture boundary',
-        body: `AgentSight collects a local run through eBPF, runtime/TLS attachment, and agent-session parsing. Its saved session can contain process, file, network, resource, and reconstructed model-call information that does not originate from an OpenTelemetry SDK inside the agent. This is why AgentSight can work with some closed-source CLIs without asking them to link an OTel library.`,
+        title: 'AgentSight starts from a different measurement boundary',
+        body: `AgentSight v1.0.31 can combine native agent-session parsing with Linux process/file/resource capture and supported TLS/plaintext reconstruction. A saved local session can therefore contain model activity beside process trees, path effects, network targets, resource phases, tool/workflow rows, and provenance/confidence fields. Those records are useful precisely because they do not depend on every agent or descendant being instrumented with an OpenTelemetry SDK.`,
       },
       {
-        title: 'The current OTel export is intentionally narrower than the full AgentSight session',
-        body: `AgentSight v1.0.3 can export captured LLM request/response pairs as GenAI-style spans over OTLP/HTTP. The exporter maps provider, model, conversation identifiers when available, token usage, finish reasons, HTTP status, and server address. Prompt/completion content is opt-in. The same documentation states that tool/workflow spans such as execute_tool or invoke_agent are not emitted yet, and AgentSight-specific provenance remains in AgentSight rows.`,
+        title: 'The v1.0.31 exporter accepts completed materialized LLM calls, not arbitrary session rows',
+        body: `The current OtelExporter is attached to the materialized llm_call view. A call without an end timestamp is skipped; each completed call becomes one CLIENT span named chat <model>. The exporter maps supported gen_ai request/response fields, provider and server address, token usage, finish reasons, and HTTP status. Prompt and completion content remain opt-in through --otel-capture-content. This is a projection after AgentSight has reconstructed and correlated a model exchange, not a direct serialization of raw eBPF events.`,
       },
       {
-        title: 'Correlation should preserve source provenance',
-        body: `If a model request is exported to your OTel backend, keep enough metadata to know that the span came from AgentSight capture rather than native SDK instrumentation. Native agent traces may have richer tool or policy semantics; AgentSight may have richer process/file/network context. A shared backend can display both while still preserving which measurement mechanism produced each field.`,
+        title: 'Most AgentSight system context does not automatically become GenAI spans',
+        body: `Current v1.0.31 documentation explicitly does not emit execute_tool, invoke_agent, invoke_workflow, or plan spans. Process, file, network, and resource rows are not automatically mapped by this GenAI sink, and AgentSight-specific provenance/confidence stays in AgentSight rows. If a central OTel backend needs those dimensions, treat that as a separate instrumentation or export design rather than assuming debug trace --otel already transports the full session.`,
       },
       {
-        title: 'Privacy settings differ by measurement source',
-        body: `AgentSight content export is off by default for its OTel path because model payloads can be sensitive. Native agent OTel exporters have their own content and redaction controls. Treat the collector as a new data boundary: exporting a local run to a remote backend changes the storage and access model even if the same fields were originally captured locally.`,
+        title: 'Trace grouping is useful but intentionally does not invent a call tree',
+        body: `AgentSight groups exported calls by an explicit conversation or thread identifier when one is available, then by AgentSight session ID, then by a recording-scoped fallback trace. Each call receives a unique span ID, but v1.0.31 does not infer root/child relationships between calls. Preserve the AgentSight service/source identity when native agent spans and AgentSight-derived spans land in the same backend so a shared trace view does not erase how each field was measured.`,
       },
       {
-        title: 'Use OTel to connect tools, not to erase their differences',
-        body: `Choose OpenTelemetry when you need interoperable transport, naming, collection, and backend integration. Choose AgentSight when you need the local system and closed-component measurements it can provide. The strongest combination is AgentSight feeding selected standard spans into the same OTel environment while the full local session remains available for deeper process-level analysis.`,
+        title: 'OTLP delivery is another boundary to verify',
+        body: `In v1.0.31 each eligible LLM call builds an OTLP/HTTP JSON payload and the sink starts an asynchronous POST. Non-success responses and transport errors are logged as warnings, while the current command path does not await every detached export task before process shutdown. A call being present in the local materialized session therefore proves local reconstruction, not collector receipt. When delivery matters, verify the Collector or backend rather than inferring success from the local AgentSight view.`,
+      },
+      {
+        title: 'Content export and local capture have different privacy boundaries',
+        body: `AgentSight keeps gen_ai input/output message content off by default for OTel export, even though the local session may already contain sensitive prompts, responses, headers, paths, or network targets depending on capture mode. Sending selected spans to a Collector creates a new storage and access boundary. Apply the Collector and backend's own retention, redaction, and access controls, and do not enable content export merely because local capture exists.`,
+      },
+      {
+        title: 'Choose the smallest architecture that answers the question',
+        body: `Use OpenTelemetry alone when instrumented application and service telemetry already answers the debugging or operations question. Add AgentSight when you need local agent-session context, closed-component visibility, descendant execution, or host effects that are outside that instrumentation boundary. Use AgentSight's OTel export when selected model-call spans should join an existing Collector pipeline, while keeping the full local AgentSight session available for deeper system analysis.`,
       },
     ],
     sources: [
       { label: 'OpenTelemetry instrumentation concepts', href: otelInstrumentation },
       { label: 'OpenTelemetry semantic conventions', href: otelSemanticConventions },
-      { label: 'AgentSight v1.0.3 OpenTelemetry GenAI export', href: otelExport },
+      { label: 'OpenTelemetry current GenAI span semantic conventions', href: 'https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md' },
+      { label: 'OpenTelemetry Collector overview', href: 'https://opentelemetry.io/docs/collector/' },
+      { label: 'AgentSight v1.0.31 OpenTelemetry GenAI export', href: `${tlsProductSource}/docs/otel.md` },
+      { label: 'AgentSight v1.0.31 OtelExporter source', href: `${tlsProductSource}/ext/analysis/src/sinks/otel.rs` },
+    ],
+    related: [
+      { label: 'How AgentSight exports OpenTelemetry GenAI spans', href: '/blog/how-agentsight-exports-opentelemetry-genai-spans/' },
+      { label: 'System-boundary observability', href: '/blog/system-boundary-observability/' },
+      { label: 'Application tracing comparison', href: '/compare/application-tracing/' },
     ],
   },
 
