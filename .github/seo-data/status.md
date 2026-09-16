@@ -10,6 +10,7 @@
 - Latest qualifying substantive publication: major evergreen refresh of `/compare/opentelemetry/`, rendered PR `#129`, squash commit `89669d1e8a53b6f8ed9c8bde44eab7c31eb36817`, exact production completion `2026-09-16T16:26:15Z` (09:26:15 PDT).
 - Exact production `Publish static site` run for that publication: `35121801735`, conclusion `success`.
 - Current production `site/.source-sha` exactly equals `89669d1e8a53b6f8ed9c8bde44eab7c31eb36817`.
+- Metadata-only closeout lane for this publication: PR `#130`, branch `seo/agentsight-2026-09-16-closeout`; it is restricted to SEO operating records and does not alter rendered site source or scheduling state.
 - The prior rolling deadline was `2026-09-16T16:35:21Z` (09:35:21 PDT); exact production completion was **9 minutes 6 seconds early**. The new rolling deadline is `2026-09-18T16:26:15Z` (09:26:15 PDT).
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
@@ -96,7 +97,8 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Rendered PR `#129` final head `28eda43530efb66730ea1d7868e1e42aedef5106` passed exact-head Website CI run `35000467922`, GitGuardian, and Cloudflare Pages. The final source points GenAI semantic-convention readers to the maintained `open-telemetry/semantic-conventions-genai` documentation, and no unresolved review thread remained.
 - PR `#129` was squash-merged as `89669d1e8a53b6f8ed9c8bde44eab7c31eb36817`. Exact `Publish static site` run `35121801735` succeeded from that commit; its publish job completed at `2026-09-16T16:26:15Z`. Production `site/.source-sha` matches exactly.
 - Generated production `/compare/opentelemetry/` HTML contains the refreshed v1.0.31 decision boundary, canonical `https://agentsight.us/compare/opentelemetry/`, index/follow metadata, GA4 bootstrap, maintained OpenTelemetry/AgentSight primary sources, and intended related links.
-- A public crawler read immediately after the 16 September publication still returned the pre-refresh v1.0.3 comparison body while the exact production branch already contained the new HTML. The homepage and representative unaffected routes remained retrievable. Keep this as a CDN/retrieval freshness qualification and recheck the canonical page on the next cycle; there is no evidence of a build/publication failure.
+- Public verification at `2026-09-16T16:36:41Z` (09:36:41 PDT) still returned the pre-refresh v1.0.3 comparison body while the exact production branch already contained the new HTML; the homepage remained retrievable on v1.0.31. Keep this as a CDN/retrieval freshness qualification and recheck the canonical page on the next cycle; there is no evidence of a build/publication failure.
+- Metadata-only closeout PR `#130` records the 16 September production/public-verification evidence and Google-exporter blocker state. Its scope is operating metadata only and is intended to leave rendered output and production identity unchanged.
 - The 16 September publication satisfied the previous 48-hour deadline and resets the rolling deadline to `2026-09-18T16:26:15Z` (09:26:15 PDT).
 - Metadata-only closeout PR `#128` is the closeout lane for the 14 September publication. Its diff is limited to the 14 September daily record and this status file and is intended to leave rendered output and production identity unchanged.
 - Rendered PR `#127` final head `26afa398df27a5abed62cbb7b3afd7cb54974fdc` passed exact-head Website CI run `34869253587`, GitGuardian, and Cloudflare Pages. Copilot's three suppressed observations were addressed in the final source and no unresolved review thread remained.
@@ -128,7 +130,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - Like-for-like only as six-day next-morning snapshots, impressions rose from 180 to 260 and apparent weighted position improved from approximately 20.62 to 11.68, while clicks fell from 9 to 4 and CTR from 5.00% to 1.54%. This remains directional and must not be reported as finalized week-over-week performance.
 - Direct folder enumeration on 16 September still finds no 17–23 August family and no post-lag replacement for the three completed-window families that now require one. The exporter continues to lack the post-lag refresh/backfill path needed for fresh finalized weekly analysis.
 - The site's GA4 bootstrap records `page_location` as origin + pathname and `page_path` as pathname, so query strings are intentionally excluded from page-view identity.
-- Generic public brand search remains ambiguous because unrelated products use the AgentSight name. Public search still returns the canonical AgentSight homepage and existing technical pages; immediate crawler retrieval of the refreshed OpenTelemetry comparison lagged the exact production artifact.
+- Generic public brand search remains ambiguous because unrelated products use the AgentSight name. Public search still returns the canonical AgentSight homepage and existing technical pages; crawler retrieval of the refreshed OpenTelemetry comparison at `2026-09-16T16:36:41Z` still lagged the exact production artifact.
 
 ## Off-site visibility
 
