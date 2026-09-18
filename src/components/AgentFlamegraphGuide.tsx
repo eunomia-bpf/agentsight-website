@@ -191,7 +191,7 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
             <section>
               <h2>Agent Flamegraph and report token answer different token questions</h2>
               <p>
-                The most important v1.0.31 interpretation boundary is that <code>agentpprof --view tokens</code> and <code>agentsight report token</code> are not interchangeable accounting commands. A flamegraph assigns token weight to semantic stacks from the selected native Codex/Claude sessions. <code>report token</code> summarizes an AgentSight materialized view: with <code>--db</code> it reads a saved database, while the no-DB path imports recent native sessions.
+                The most important v1.0.31 interpretation boundary is that <code>agentpprof --view tokens</code> and <code>agentsight report token</code> are not interchangeable accounting commands. A flamegraph assigns token weight to semantic stacks from the selected native Codex/Claude sessions. <code>report token</code> summarizes an AgentSight materialized view: an explicit <code>--db</code> selects a saved database; without one, the report command first uses the latest <code>agentsight-*.db</code> when available and only then falls back to recent native sessions. <code>agentsight report --local token</code> forces the native-session path.
               </p>
               <div style={{ overflowX: 'auto', margin: '1.25rem 0' }}>
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '760px', fontSize: '0.92rem' }}>
@@ -211,7 +211,7 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
                     <tr>
                       <td style={cell}>Input boundary</td>
                       <td style={cell}>Local Codex/Claude Code session files selected by project or explicit file.</td>
-                      <td style={cell}>Saved AgentSight DB when supplied; otherwise recent agent-native sessions.</td>
+                      <td style={cell}>Explicit or latest saved AgentSight DB by default; recent agent-native sessions when no DB exists or <code>--local</code> is requested.</td>
                     </tr>
                     <tr>
                       <td style={cell}>Missing token counts</td>
@@ -232,7 +232,7 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
               <CommandBlock
                 commands={[
                   'agentsight report token --db run.db --group-by model',
-                  'agentsight report token --db run.db --group-by dir --json',
+                  'agentsight report --local token --group-by dir --json',
                   'agentpprof --project-root . --session-file ~/.codex/sessions/.../session.jsonl --view tokens -o tokens.svg',
                 ]}
               />
@@ -309,8 +309,8 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
                 <li><a href={pprofReadme}>agentpprof v1.0.31 README: inputs, views, formats, privacy, and selectors</a></li>
                 <li><a href={pprofGuide}>AgentSight v1.0.31 semantic flamegraph guide and examples</a></li>
                 <li><a href={flamegraphSkill}>AgentSight v1.0.31 iterative tagging workflow and quality gates</a></li>
-                <li><a href={reportCli}>AgentSight v1.0.31 report token CLI contract</a></li>
-                <li><a href={tokenCli}>AgentSight v1.0.31 report data-source loading</a></li>
+                <li><a href={reportCli}>AgentSight v1.0.31 report token CLI contract and fallback selection</a></li>
+                <li><a href={tokenCli}>AgentSight v1.0.31 materialized-view and native-session loading</a></li>
                 <li><a href={tokenView}>AgentSight v1.0.31 effective-token reconciliation and grouping</a></li>
                 <li><a href={exampleGallery}>AgentSight v1.0.31 first-party flamegraph example gallery</a></li>
               </ul>
