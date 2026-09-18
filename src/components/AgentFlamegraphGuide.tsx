@@ -4,11 +4,14 @@ import { SiteShell } from './SiteShell';
 import { contentPath, type ContentPage } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
-const productCommit = '0080545f7c6b110ec2d4a4af5100b58f514c84d5';
+const productCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
 const sourceBase = `https://github.com/eunomia-bpf/agentsight/blob/${productCommit}`;
 const pprofReadme = `${sourceBase}/ext/pprof/README.md`;
 const pprofGuide = `${sourceBase}/docs/agentpprof.md`;
 const flamegraphSkill = `${sourceBase}/skills/agentpprof-flamegraph/SKILL.md`;
+const tokenCli = `${sourceBase}/collector/src/cli_db.rs`;
+const tokenView = `${sourceBase}/ext/analysis/src/view/mod.rs`;
+const reportCli = `${sourceBase}/collector/src/main.rs`;
 const exampleGallery = `${sourceBase}/docs/flamegraph-example`;
 const tokenExample = `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}/docs/flamegraph-example/agentsight-tokens.svg`;
 
@@ -25,7 +28,7 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
       headline: page.title,
       description: page.description,
       url: `${site.url}${path}`,
-      dateModified: '2026-08-18',
+      dateModified: '2026-09-18',
       author: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
       publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
     },
@@ -50,16 +53,16 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
             <Link href={hub.path}>{hub.eyebrow}</Link>
             <span aria-current="page">{page.title}</span>
           </nav>
-          <Eyebrow>Analysis guide · AgentSight v1.0.25 · 18 August 2026</Eyebrow>
+          <Eyebrow>Analysis guide · refreshed 18 September 2026 · AgentSight v1.0.31</Eyebrow>
           <h1>{page.title}</h1>
           <p className="hero-lede">
-            An Agent Flamegraph is an offline semantic profile of coding-agent history, not a CPU profile and not a live eBPF trace. In AgentSight v1.0.25, <code>agentpprof</code> reads local Codex and Claude Code sessions, projects each operation into a stable semantic stack, and uses width to represent tokens, elapsed time, operation count, file effects, or network effects.
+            An Agent Flamegraph is an offline semantic profile of coding-agent history, not a CPU profile, a billing statement, or a live eBPF trace. In AgentSight v1.0.31, <code>agentpprof</code> reads local Codex and Claude Code sessions, projects operations into a configurable semantic stack, and uses width to represent tokens, elapsed time, operation count, file effects, or network effects.
           </p>
           <OutcomeList
             items={[
-              'Build a profile from a repeatable, explicit session set instead of a drifting local-history scan.',
-              'Interpret every width according to its unit and validate semantic tags before making cost or workflow claims.',
-              'Publish useful aggregate artifacts without leaking raw prompts, home-directory paths, or unbounded token estimates.',
+              'Freeze the input sessions and tagging rules before comparing flamegraphs.',
+              'Choose the projection whose width actually matches the engineering question.',
+              'Keep semantic aggregation separate from AgentSight token-source reconciliation and provider billing.',
             ]}
           />
         </div>
@@ -69,19 +72,19 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
         <div className="shell detail-grid">
           <article className="article-body">
             <section>
-              <h2>The short version: use flamegraphs when the question is aggregate</h2>
+              <h2>The short version: use flamegraphs for aggregation, not chronology</h2>
               <p>
-                A timeline is best when you need to know what happened at 14:03. A semantic flamegraph is better when the question is “where did the budget go across this set of sessions?” or “which task families touched the most files?” <code>agentpprof</code> merges operations with the same semantic stack, so repeated behavior becomes wider instead of remaining thousands of isolated events. The chart is a projection over agent activity; it does not claim that natural-language intent is a literal function-call stack.
+                A timeline is best when you need to know what happened at a particular instant. A semantic flamegraph is better when the question is “where did the model budget accumulate across these sessions?” or “which task families touched the most files?” <code>agentpprof</code> merges operations with the same semantic stack, so repeated behavior becomes wider instead of remaining thousands of isolated events.
               </p>
               <p>
-                The current implementation is also independent from AgentSight&apos;s live Linux capture path. It reads agent-native history through the <code>agent-session</code> parser and does not load eBPF probes or require root. That distinction matters on macOS and Windows and when you want to profile an existing Codex or Claude Code history without re-running the workload.
+                The stack is a projection over agent activity rather than a literal call stack. The current tool reads agent-native history through AgentSight&apos;s <code>agent-session</code> layer and does not load eBPF probes or require root. That makes it useful for already-recorded local history, but it also means a flamegraph does not independently prove every process, filesystem, network, or resource effect that happened on the host.
               </p>
             </section>
 
             <section>
-              <h2>Start with a frozen input set if you want a reproducible result</h2>
+              <h2>Start with a frozen input set if the result must be reproducible</h2>
               <p>
-                By default, <code>agentpprof --project-root</code> scans recent local Codex and Claude Code sessions matching the project. That is convenient for exploration, but the input set can change as new sessions appear. A publishable comparison should name the project revision and pass explicit <code>--session-file</code> inputs so a second reviewer can run the same source set later.
+                By default, <code>agentpprof --project-root</code> scans recent local Codex and Claude Code sessions that match the project. That is convenient for exploration, but the source set changes as new sessions appear. A publishable comparison should name the project revision and pass explicit <code>--session-file</code> inputs so another reviewer can profile the same records later.
               </p>
               <CommandBlock
                 commands={[
@@ -90,14 +93,24 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
                 ]}
               />
               <p>
-                Record the AgentSight version, session filenames or stable session identifiers, project revision, selected view, tag rules, stack definition, filters, and output format with the artifact. Without those inputs, two charts with the same title may be profiling different data.
+                Record the AgentSight version, session files or stable identifiers, project revision, selected view, tag rules, operation mappings, filters, stack definition, and output format. If any of those change, two charts with the same title can represent different measurements.
+              </p>
+            </section>
+
+            <section>
+              <h2>Current agentpprof support is narrower than the shared session parser</h2>
+              <p>
+                AgentSight&apos;s reusable session layer can normalize several native agent formats, but <code>agentpprof</code> v1.0.31 specifically documents direct local-history input from Codex and Claude Code JSONL. Do not infer flamegraph support for every provider merely because another AgentSight view can discover that provider&apos;s sessions. Treat the <code>agentpprof</code> README and CLI as the compatibility boundary for this guide.
+              </p>
+              <p>
+                This distinction matters when comparing agents. A missing provider in a flamegraph is not evidence that the provider used zero tokens or produced no effects; it can simply be outside the profiler&apos;s current input path.
               </p>
             </section>
 
             <section>
               <h2>Five views share a stack model but use different units</h2>
               <p>
-                Width has no universal meaning. The current extension exposes five projections, and the same semantic path can be wide in one view and narrow in another. Choose the view before looking for a hotspot.
+                Width has no universal meaning. Pick the view before looking for a hotspot, and never compare bar widths from two different views as if they were the same quantity.
               </p>
               <div style={{ overflowX: 'auto', margin: '1.25rem 0' }}>
                 <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '720px', fontSize: '0.92rem' }}>
@@ -120,25 +133,25 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
                       <td style={cell}><code>tokens</code></td>
                       <td style={cell}>Reported token count, otherwise a bounded text estimate</td>
                       <td style={cell}>Where did model budget accumulate?</td>
-                      <td style={cell}>Source accounting varies; unsafe huge estimates become <code>unknown=1</code>.</td>
+                      <td style={cell}>It is a profile weight, not reconciled billing.</td>
                     </tr>
                     <tr>
                       <td style={cell}><code>time</code></td>
                       <td style={cell}>Seconds between successive timestamped events</td>
                       <td style={cell}>Which activities occupy wall-clock intervals?</td>
-                      <td style={cell}>It is not sampled CPU time and concurrent work can overlap conceptually.</td>
+                      <td style={cell}>It is not sampled CPU time.</td>
                     </tr>
                     <tr>
                       <td style={cell}><code>files</code></td>
                       <td style={cell}>File/path effect count</td>
                       <td style={cell}>Which semantic paths touch the most paths?</td>
-                      <td style={cell}>A count does not tell you whether an effect was necessary or risky.</td>
+                      <td style={cell}>A count is not a security verdict.</td>
                     </tr>
                     <tr>
                       <td style={cell}><code>network</code></td>
                       <td style={cell}>Network/domain effect count</td>
-                      <td style={cell}>Which tasks are associated with external destinations?</td>
-                      <td style={cell}>Destination frequency is not payload volume or security severity.</td>
+                      <td style={cell}>Which tasks are associated with destinations?</td>
+                      <td style={cell}>Frequency is not payload volume.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -151,7 +164,7 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
                 Current <code>agentpprof</code> operations are field bags. The default stack is <code>task → skill → phase → action → object → repeat → result → outcome</code>, with an additional <code>token</code> frame in the tokens view. <code>project</code>, <code>agent</code>, and <code>session</code> remain pprof sample labels rather than default frames, so <code>go tool pprof -tags</code> can group them without making every visual stack deeper.
               </p>
               <p>
-                This model is intentionally configurable. <code>--op-map</code> or <code>--op-map-file</code> derives or rewrites operation fields, <code>--where</code> filters after mapping, and <code>--stack</code> plus <code>--stack-rule</code> selects the hierarchy shown in the output. A useful analysis states these transformations because they change which paths merge.
+                <code>--op-map</code> or <code>--op-map-file</code> derives or rewrites operation fields, <code>--where</code> filters after mapping, and <code>--stack</code> plus <code>--stack-rule</code> selects the hierarchy shown in the output. Those transformations are part of the measurement method because they control which operations merge.
               </p>
               <CommandBlock
                 commands={[
@@ -161,12 +174,12 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
             </section>
 
             <section>
-              <h2>Tagging quality is part of the measurement method</h2>
+              <h2>Tagging quality is part of the measurement, not decoration</h2>
               <p>
-                Raw prompts are poor frame names: they are long, multilingual, non-deterministic, and often sensitive. <code>agentpprof</code> therefore attaches semantic tags. The deterministic path uses ordered regex rules; an LLM tagger and an experimental clustering path can help discover categories, but a published chart should retain the exact rules or tag cache that produced its labels.
+                Raw prompts are poor frame names: they are long, multilingual, non-deterministic, and often sensitive. The deterministic workflow uses ordered regex rules; an LLM tagger and an experimental clustering backend can help discover categories, but a reproducible chart should retain the final rules or tag cache that produced its labels.
               </p>
               <p>
-                The shipped AgentSight flamegraph skill gives operational checks for iterative rule development: drive unmatched prompts, sessions, and LLM calls below 5%; aim for roughly 10–20 categories; keep the largest category below 40% and the top three below 70%; and inspect normalized entropy and unmatched samples. These are workflow heuristics for catching obviously coarse or incomplete taxonomies, not statistical confidence guarantees.
+                The current v1.0.31 flamegraph skill treats all three unmatched categories — prompts, sessions, and LLM calls — as coverage gates below 5%. Its distribution heuristics aim for roughly 10–20 categories, top-1 share below 40%, top-3 share below 70%, and normalized entropy above 0.7. These are diagnostics for coarse or incomplete taxonomies, not statistical confidence intervals. Never satisfy the thresholds with a catch-all <code>misc</code> rule; that only hides missing classification work.
               </p>
               <CommandBlock
                 commands={[
@@ -176,12 +189,65 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
             </section>
 
             <section>
+              <h2>Agent Flamegraph and report token answer different token questions</h2>
+              <p>
+                The most important v1.0.31 interpretation boundary is that <code>agentpprof --view tokens</code> and <code>agentsight report token</code> are not interchangeable accounting commands. A flamegraph assigns token weight to semantic stacks from the selected native Codex/Claude sessions. <code>report token</code> summarizes an AgentSight materialized view: with <code>--db</code> it reads a saved database, while the no-DB path imports recent native sessions.
+              </p>
+              <div style={{ overflowX: 'auto', margin: '1.25rem 0' }}>
+                <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '760px', fontSize: '0.92rem' }}>
+                  <thead>
+                    <tr>
+                      <th style={header}>Question</th>
+                      <th style={header}><code>agentpprof --view tokens</code></th>
+                      <th style={header}><code>agentsight report token</code></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style={cell}>Primary job</td>
+                      <td style={cell}>Aggregate token weight under semantic task/action stacks.</td>
+                      <td style={cell}>Reconcile and summarize effective token rows by model, provider, process, PID, or working directory.</td>
+                    </tr>
+                    <tr>
+                      <td style={cell}>Input boundary</td>
+                      <td style={cell}>Local Codex/Claude Code session files selected by project or explicit file.</td>
+                      <td style={cell}>Saved AgentSight DB when supplied; otherwise recent agent-native sessions.</td>
+                    </tr>
+                    <tr>
+                      <td style={cell}>Missing token counts</td>
+                      <td style={cell}>Can use bounded text estimates; unsafe huge estimates become <code>unknown=1</code>.</td>
+                      <td style={cell}>Uses recorded token rows and source-specific reconciliation; it does not turn absent usage into a text estimate.</td>
+                    </tr>
+                    <tr>
+                      <td style={cell}>Duplicate/source handling</td>
+                      <td style={cell}>Profile semantics follow the selected native session records.</td>
+                      <td style={cell}>Chooses effective rows by call/source priority and has special aggregate reconciliation for Gemini stdout totals.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                In the current materialized view, response-observed usage has higher priority than orphan response usage, Gemini CLI stdout statistics, Claude telemetry, and agent-native rows for the same effective call key. Gemini aggregate stdout rows also have a separate comparison against captured network totals. That reconciliation is useful for source accounting, but it is not what gives a semantic flamegraph its category widths.
+              </p>
+              <CommandBlock
+                commands={[
+                  'agentsight report token --db run.db --group-by model',
+                  'agentsight report token --db run.db --group-by dir --json',
+                  'agentpprof --project-root . --session-file ~/.codex/sessions/.../session.jsonl --view tokens -o tokens.svg',
+                ]}
+              />
+              <p>
+                Therefore, a difference between the two totals is not automatically a bug. First compare the exact session set, whether a saved DB was used, whether network/telemetry/native rows were reconciled, and whether <code>agentpprof</code> had to estimate any missing token counts. Use <code>report token</code> when the question is source accounting; use <code>agentpprof</code> when the question is semantic distribution. Neither command converts token counts into provider invoice cost by itself.
+              </p>
+            </section>
+
+            <section>
               <h2>Token width has a deliberate failure mode</h2>
               <p>
-                Token profiles prefer counts reported by the source agent. When those are unavailable, the current implementation can use bounded text estimates. Very large unsafe estimates are recorded as <code>unknown=1</code> rather than allowed to dominate the profile. That behavior is worth preserving in any downstream analysis: a wide token bar should be traceable to a reported or bounded source, not silently interpreted as an exact provider bill.
+                Flamegraph token profiles prefer counts reported by the source agent. When those are unavailable, the current implementation can use bounded text estimates. Very large unsafe estimates are recorded as <code>unknown=1</code> rather than allowed to dominate the profile. A wide token bar should therefore be traceable to a reported or bounded source, not silently interpreted as an exact provider bill.
               </p>
               <p>
-                For cost comparisons, also separate input, output, and cache-related token kinds when the source exposes them. “Tokens” is an accounting dimension, not a currency conversion; provider pricing, cache discounts, and model-specific billing belong in a separate calculation with their own dated price source.
+                For cost analysis, also separate input, output, and cache-related token kinds when the source exposes them. Provider prices, cache discounts, subscription allowances, and model-specific billing rules belong in a separate dated calculation.
               </p>
             </section>
 
@@ -203,7 +269,7 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
             <section>
               <h2>A first-party example shows the format, not your workload</h2>
               <p>
-                The AgentSight repository ships token, time, file, network, benchmark, and OSWorld-Human examples. The token image below is pinned to the same v1.0.25 product commit used by this guide. It demonstrates prefix merging and width allocation; it is not a benchmark or a claim about the distribution of another team&apos;s sessions.
+                The AgentSight repository ships token, time, file, network, benchmark, and OSWorld-Human examples. The token image below is pinned to the same v1.0.31 product commit used by this guide. It demonstrates prefix merging and width allocation; it is not a benchmark or a claim about another team&apos;s sessions.
               </p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -213,56 +279,49 @@ export function AgentFlamegraphGuide({ page }: { page: ContentPage }) {
                 style={{ display: 'block', width: '100%', height: 'auto', border: '1px solid #d8dee8', borderRadius: '8px', margin: '1.25rem 0' }}
               />
               <p>
-                For a real investigation, regenerate the chart from the bounded session set you care about. If the conclusion changes when you switch from tokens to time, that is useful information: it means model budget and elapsed time are concentrated in different parts of the workflow.
+                For a real investigation, regenerate the chart from the bounded session set you care about. If the conclusion changes when you switch from tokens to time, that is useful information: model budget and elapsed time are concentrated in different parts of the workflow.
               </p>
             </section>
 
             <section>
-              <h2>Use the flamegraph to find a category, then return to the session</h2>
+              <h2>Aggregate first, then return to the original session</h2>
               <p>
-                Aggregation deliberately removes chronology. A wide <code>review</code> or <code>debug</code> category tells you where to look, but it does not tell you which exact command failed or why an agent repeated a step. After identifying a hotspot, filter to the relevant project, agent, session, or semantic field and inspect the original trace, AgentSight report, or timeline for the causal sequence.
+                Aggregation deliberately removes chronology. A wide <code>review</code> or <code>debug</code> category tells you where to look, but it does not tell you which command failed or why an agent repeated a step. After identifying a hotspot, filter to the relevant project, agent, session, or semantic field and inspect the original trace, AgentSight report, or timeline for the causal sequence.
               </p>
               <p>
-                This two-stage workflow is the main advantage over reading thousands of spans one by one: aggregate first to find the dominant category, then drill into the original records only where the chart says the budget or effects are concentrated.
-              </p>
-            </section>
-
-            <section>
-              <h2>Three common interpretation mistakes</h2>
-              <p>
-                First, do not compare widths across different views as if they share a unit. Second, do not treat a semantic tag as ground truth about intent; spot-check samples, especially vague continuation prompts and multilingual fragments. Third, do not treat a file or network count as a security verdict. The projection tells you which observed effects aggregate under a semantic path; authorization and necessity still require context from the task and source session.
-              </p>
-              <p>
-                The same caution applies to time. The current time view derives duration from timestamped event intervals. It is useful for locating wall-clock-heavy semantic regions, but it is not a sampled CPU profiler. Use AgentSight&apos;s runtime resource views when the question is CPU or memory behavior during a live or recorded system-level run.
+                This two-stage workflow is the useful complement to a long span list: aggregate to find dominant categories, then drill into source records only where the profile says budget or effects are concentrated.
               </p>
             </section>
 
             <section>
-              <h2>A reproducible publication should include the method, not only the SVG</h2>
+              <h2>A reproducible publication needs the method, not only the SVG</h2>
               <p>
-                A reviewer should be able to answer: which sessions were included, what AgentSight version parsed them, which view and unit set width, which tag rules were used, whether operation fields were rewritten, which filters and stack frames were selected, whether previews were enabled, and which project revision the sessions refer to. Save that method next to the image or report.
+                A reviewer should be able to answer: which sessions were included, which AgentSight commit parsed them, which view and unit set width, which tag rules were used, whether operation fields were rewritten, which filters and stack frames were selected, whether previews were enabled, and which project revision the sessions refer to. Save that method next to the image or report.
               </p>
               <p>
-                If you are comparing two periods or two agents, keep the taxonomy and stack definition fixed unless the experiment is explicitly about changing them. Otherwise a visual difference can come from the classification method rather than the agent behavior.
+                If you compare two periods or agents, keep the taxonomy and stack definition fixed unless the experiment is explicitly about changing them. Otherwise a visual difference can come from the classification method rather than agent behavior.
               </p>
             </section>
 
             <section className="source-section">
               <h2>Primary and first-party sources</h2>
               <ul>
-                <li><a href={pprofReadme}>agentpprof v1.0.25 extension README: views, formats, privacy and selectors</a></li>
-                <li><a href={pprofGuide}>AgentSight v1.0.25 semantic flamegraph guide and examples</a></li>
-                <li><a href={flamegraphSkill}>AgentSight v1.0.25 iterative tagging workflow and quality checks</a></li>
-                <li><a href={exampleGallery}>AgentSight v1.0.25 first-party flamegraph example gallery</a></li>
+                <li><a href={pprofReadme}>agentpprof v1.0.31 README: inputs, views, formats, privacy, and selectors</a></li>
+                <li><a href={pprofGuide}>AgentSight v1.0.31 semantic flamegraph guide and examples</a></li>
+                <li><a href={flamegraphSkill}>AgentSight v1.0.31 iterative tagging workflow and quality gates</a></li>
+                <li><a href={reportCli}>AgentSight v1.0.31 report token CLI contract</a></li>
+                <li><a href={tokenCli}>AgentSight v1.0.31 report data-source loading</a></li>
+                <li><a href={tokenView}>AgentSight v1.0.31 effective-token reconciliation and grouping</a></li>
+                <li><a href={exampleGallery}>AgentSight v1.0.31 first-party flamegraph example gallery</a></li>
               </ul>
             </section>
           </article>
 
           <aside className="detail-aside">
             <p className="card-label">Continue exploring</p>
+            <ArrowLink href="/blog/how-agentsight-reconciles-token-usage/">Understand token-source reconciliation</ArrowLink>
             <ArrowLink href="/use-cases/profile-slow-expensive-agent-runs/">Profile a slow or expensive run</ArrowLink>
-            <ArrowLink href="/blog/from-agent-trace-to-review-artifact/">Turn a trace into a review artifact</ArrowLink>
-            <ArrowLink href="/ai-agent-file-access-monitoring/">Review agent file access</ArrowLink>
+            <ArrowLink href="/blog/how-agentsight-normalizes-agent-session-data/">See how native sessions are normalized</ArrowLink>
             <hr />
             <a className="button button-accent" href={site.demo}>Open the AgentSight app</a>
             <a className="button button-outline" href={pprofReadme}>Read the current agentpprof reference</a>
