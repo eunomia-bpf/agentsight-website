@@ -7,16 +7,17 @@
 - Authoritative product repository: `eunomia-bpf/agentsight`.
 - Current authoritative release: **AgentSight v1.0.31**, tag/release/product `master` commit `bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3`, published 5 September 2026.
 - Current shared SEO skill pointer: `f42128a3f05c73cf10c786a2711c488bb3a14839`; allowed upstream `main` still equals the same commit.
-- Latest qualifying substantive publication: major evergreen refresh of `/compare/opentelemetry/`, rendered PR `#129`, squash commit `89669d1e8a53b6f8ed9c8bde44eab7c31eb36817`, exact production completion `2026-09-16T16:26:15Z` (09:26:15 PDT).
-- Exact production `Publish static site` run for that publication: `35121801735`, conclusion `success`.
-- Current production `site/.source-sha` exactly equals `89669d1e8a53b6f8ed9c8bde44eab7c31eb36817`.
-- Metadata-only closeout PR `#130` was squash-merged as website `main` commit `b7e712012004429ad28ccf39c9e814b139b50b10`; it did not alter rendered output or production source identity.
-- The current rolling substantive-publication deadline is `2026-09-18T16:26:15Z` (09:26:15 PDT). The 17 September metadata-only cycle does not reset that clock.
+- Latest qualifying substantive publication: major evergreen refresh of `/guides/agent-flamegraph/`, rendered PR `#132`, squash commit `d2db6c4b0da24df0e9e8be30fae551670aa1fbb8`, exact production completion `2026-09-18T16:56:26Z` (09:56:26 PDT).
+- Exact production `Publish static site` run for that publication: `35371344850`, conclusion `success`.
+- Current production `site/.source-sha` exactly equals `d2db6c4b0da24df0e9e8be30fae551670aa1fbb8`.
+- The prior qualifying-publication deadline was `2026-09-18T16:26:15Z` (09:26:15 PDT). The 18 September publication completed **30 minutes 11 seconds late**, so this is a recorded 48-hour publication-SLO miss followed by recovery; the miss is not erased by the new publication.
+- The current rolling substantive-publication deadline is `2026-09-20T16:56:26Z` (09:56:26 PDT).
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
 ## Current public content ownership boundaries
 
+- `/guides/agent-flamegraph/`: v1.0.31 semantic-profiler method owner — explicit Codex/Claude session selection, the five width projections, semantic stack/mapping/filter behavior, tagging coverage/distribution gates, privacy/output boundaries, and reproducible publication method. It explicitly separates `agentpprof --view tokens` semantic profile weight from `agentsight report token` source reconciliation, saved-DB/native-session selection, and provider billing.
 - `/compare/opentelemetry/`: v1.0.31 broad architecture/decision owner for how OpenTelemetry instrumentation, semantic conventions, OTLP/Collector pipelines, and AgentSight's local system/session boundary fit together. It treats AgentSight GenAI export as a selected projection of completed materialized LLM calls, not a lossless conversion of process/file/network/resource/tool/provenance evidence, and explicitly separates local materialization from Collector receipt.
 - `/blog/how-agentsight-normalizes-agent-session-data/`: v1.0.31 native-session normalization owner — provider-specific transcript parsing into the shared `AgentSession` / `SessionEvents` IR while preserving provider/source identity, prompt indexes, tool/path access semantics, response identity, token components, plans, and explicit missing-field boundaries. It does not claim native transcripts prove independent process, filesystem, network, billing, or complete-causality evidence.
 - `/blog/how-agentsight-exports-opentelemetry-genai-spans/`: v1.0.31 implementation-level OTel export semantics — completed materialized LLM-call eligibility, trace-ID precedence, emitted GenAI/HTTP attributes, endpoint precedence, content opt-in, asynchronous delivery/shutdown loss, and the evidence that stays local. It explicitly distinguishes the `debug trace` OTel flags from the normal `record` CLI and does not claim process/file/network/resource/provenance or tool/workflow rows are exported by this sink.
@@ -66,17 +67,17 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
-- Rendered PR `#129` final head `28eda43530efb66730ea1d7868e1e42aedef5106` passed exact-head Website CI run `35000467922`, GitGuardian, and Cloudflare Pages before squash merge.
-- PR `#129` was squash-merged as `89669d1e8a53b6f8ed9c8bde44eab7c31eb36817`. Exact `Publish static site` run `35121801735` succeeded from that commit; its publish job completed at `2026-09-16T16:26:15Z`. Production `site/.source-sha` still matches exactly.
-- Generated production `/compare/opentelemetry/` HTML contains the refreshed v1.0.31 decision boundary, canonical `https://agentsight.us/compare/opentelemetry/`, index/follow metadata, GA4 bootstrap, maintained OpenTelemetry/AgentSight primary sources, and intended related links.
-- The temporary 16 September direct-retrieval freshness qualification is cleared. A 17 September public crawler recheck now returns the refreshed v1.0.31 comparison body, including the narrow completed-materialized-LLM-call OTLP projection and the explicit local process/file/network/resource/tool/provenance boundary. No cache-forcing repair is needed.
-- The homepage is publicly retrievable on v1.0.31 and production source identity remains the rendered `#129` squash commit after metadata-only closeout `#130`.
-- The current substantive-publication deadline remains `2026-09-18T16:26:15Z` (09:26:15 PDT).
+- Rendered PR `#132` final head `4aa8e240095252dbad14691fca9c4f17232be512` passed exact-head Website CI run `35370715419`, GitGuardian, and Cloudflare Pages before squash merge. Two earlier green heads were deliberately superseded after from-scratch reviews found and fixed report fallback wording and sitemap-lastmod issues.
+- PR `#132` was squash-merged as `d2db6c4b0da24df0e9e8be30fae551670aa1fbb8`. Exact `Publish static site` run `35371344850` succeeded from that commit; its publish job completed at `2026-09-18T16:56:26Z`. Production `site/.source-sha` matches exactly.
+- Generated production `/guides/agent-flamegraph/` HTML has canonical `https://agentsight.us/guides/agent-flamegraph/`, index/follow metadata, the v1.0.31 source pins, and the refreshed profiler/report-token interpretation boundary. Generated `sitemap.xml` keeps the single canonical route and reports `2026-09-18T00:00:00.000Z` as its lastmod.
+- Immediate independent public retrieval at approximately `2026-09-18T16:57:09Z` still returned the pre-publication v1.0.25 Agent Flamegraph body even though the exact publish workflow, production source marker, generated HTML, and generated sitemap agree. This is currently classified as CDN/retrieval freshness, not a build/deployment incident; no cache-forcing change is warranted from this first post-publication check.
+- Representative unaffected public behavior is healthy: the homepage returns v1.0.31, and the OpenTelemetry comparison remains publicly retrievable on its refreshed v1.0.31 body.
+- The current substantive-publication deadline is `2026-09-20T16:56:26Z` (09:56:26 PDT).
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- As of 17 September, direct folder search finds no artifact modified after `2026-09-14T17:00:00Z`. No new weekly family or post-lag regeneration has appeared since the prior cycle.
+- As of 18 September, direct folder search finds no artifact modified after `2026-09-14T17:00:00Z`. No new weekly family or post-lag regeneration has appeared since the prior cycle.
 - `2026-09-07_to_2026-09-13` remains the next-morning 14 September snapshot rather than finalized KPI evidence. Its GA4 landing rows list **6 sessions / 4 active users / 0 key events**: 5 sessions / 4 active users on `/`, plus one blank landing row.
 - Its GSC date rows still cover only 7–12 September and omit 13 September: **3 clicks / 375 impressions / 0.80% CTR / weighted average position approximately 8.43**.
 - `2026-08-17_to_2026-08-23` remains completely absent.
