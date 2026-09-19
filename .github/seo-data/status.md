@@ -10,45 +10,46 @@
 - Latest qualifying substantive publication: major evergreen refresh of `/guides/agent-flamegraph/`, rendered PR `#132`, squash commit `d2db6c4b0da24df0e9e8be30fae551670aa1fbb8`, exact production completion `2026-09-18T16:56:26Z` (09:56:26 PDT).
 - Exact production `Publish static site` run for that publication: `35371344850`, conclusion `success`.
 - Current production `site/.source-sha` exactly equals `d2db6c4b0da24df0e9e8be30fae551670aa1fbb8`.
-- The prior qualifying-publication deadline was `2026-09-18T16:26:15Z` (09:26:15 PDT). The 18 September publication completed **30 minutes 11 seconds late**, so this is a recorded 48-hour publication-SLO miss followed by recovery; the miss is not erased by the new publication.
-- The current rolling substantive-publication deadline is `2026-09-20T16:56:26Z` (09:56:26 PDT).
+- The prior qualifying-publication deadline was `2026-09-18T16:26:15Z` (09:26:15 PDT). The 18 September publication completed **30 minutes 11 seconds late**; this remains a recorded 48-hour publication-SLO miss followed by recovery.
+- The current rolling substantive-publication deadline is **`2026-09-20T16:56:26Z` (09:56:26 PDT)**.
 - Repository-hosted model/SEO scheduler: none. The recurring authorized external operations schedule remains enabled.
 - Cloudflare traffic analytics remain disabled by repository policy. Cloudflare Pages may appear as a CI/deployment check and is not analytics evidence.
 
 ## Current public content ownership boundaries
 
-- `/guides/agent-flamegraph/`: v1.0.31 semantic-profiler method owner — explicit Codex/Claude session selection, the five width projections, semantic stack/mapping/filter behavior, tagging coverage/distribution gates, privacy/output boundaries, and reproducible publication method. It explicitly separates `agentpprof --view tokens` semantic profile weight from `agentsight report token` source reconciliation, saved-DB/native-session selection, and provider billing.
-- `/compare/opentelemetry/`: v1.0.31 broad architecture/decision owner for how OpenTelemetry instrumentation, semantic conventions, OTLP/Collector pipelines, and AgentSight's local system/session boundary fit together. It treats AgentSight GenAI export as a selected projection of completed materialized LLM calls, not a lossless conversion of process/file/network/resource/tool/provenance evidence, and explicitly separates local materialization from Collector receipt.
-- `/blog/how-agentsight-normalizes-agent-session-data/`: v1.0.31 native-session normalization owner — provider-specific transcript parsing into the shared `AgentSession` / `SessionEvents` IR while preserving provider/source identity, prompt indexes, tool/path access semantics, response identity, token components, plans, and explicit missing-field boundaries. It does not claim native transcripts prove independent process, filesystem, network, billing, or complete-causality evidence.
-- `/blog/how-agentsight-exports-opentelemetry-genai-spans/`: v1.0.31 implementation-level OTel export semantics — completed materialized LLM-call eligibility, trace-ID precedence, emitted GenAI/HTTP attributes, endpoint precedence, content opt-in, asynchronous delivery/shutdown loss, and the evidence that stays local. It explicitly distinguishes the `debug trace` OTel flags from the normal `record` CLI and does not claim process/file/network/resource/provenance or tool/workflow rows are exported by this sink.
-- `/blog/how-agentsight-reconciles-token-usage/`: v1.0.31 token-report evidence semantics — DB versus native-session inputs, keyed source precedence, separate Gemini aggregate reconciliation, Codex cumulative-session versus response fallback paths, grouping, and missing-usage interpretation. It explicitly does not claim a universal network/native join or turn observed tokens into billing cost.
-- `/blog/how-agentsight-background-monitoring-works/`: v1.0.31 background-monitor persistence semantics — two-second aggregate windows, 30-second bounded detail sampling, process/resource deltas, open-descriptor file targets, sampled IP:port network targets, PID/start-time identity, five-plus-five detail bounding, and the start-week filename/restart boundary. It explicitly does not treat monitor DBs as complete event traces or missing sampled rows as proof that an event never occurred.
-- `/blog/how-agentsight-loads-agent-fleets-progressively/`: v1.0.31 fleet frontend latency/failure isolation — concurrent per-Node probes, incremental sample publication, Direct/relay per-Node behavior, generation guards, global refresh barrier, lazy process/analysis views, request timeouts, and the read/write retry boundary. It does not claim a general device/network latency benchmark or an auth/backend-policy change.
-- `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`: v1.0.31 TLS-diagnostics owner — attachment, plaintext-hook, protocol-parser, and non-TLS evidence-path failures across Node OpenSSL, stripped Bun/BoringSSL, rustls, Electron/Cursor, Docker/Kubernetes, browsers, and local MCP stdio. The page is a single `ContentPage` registry entry rather than a duplicate route override.
+- `/guides/agent-flamegraph/`: v1.0.31 semantic-profiler method owner — explicit Codex/Claude session selection, five width projections, semantic stack/mapping/filter behavior, tagging coverage/distribution gates, privacy/output boundaries, and reproducible publication method. It separates `agentpprof --view tokens` semantic profile weight from `agentsight report token` source reconciliation, saved-DB/native-session selection, and provider billing.
+- `/compare/opentelemetry/`: v1.0.31 architecture/decision owner for OpenTelemetry instrumentation, semantic conventions, OTLP/Collector pipelines, and AgentSight's local system/session boundary. It treats AgentSight GenAI export as a selected projection of completed materialized LLM calls rather than a lossless conversion of all local evidence.
+- `/blog/how-agentsight-normalizes-agent-session-data/`: v1.0.31 native-session normalization owner — provider-specific transcripts into the shared `AgentSession` / `SessionEvents` IR while preserving provider/source identity, prompt indexes, tool/path semantics, response identity, token components, plans, and explicit missing-field boundaries.
+- `/blog/how-agentsight-exports-opentelemetry-genai-spans/`: v1.0.31 implementation-level OTel export semantics — completed-call eligibility, trace-ID precedence, GenAI/HTTP attributes, endpoint precedence, content opt-in, asynchronous delivery/shutdown loss, and evidence that remains local.
+- `/blog/how-agentsight-reconciles-token-usage/`: v1.0.31 token-report semantics — DB versus native-session inputs, keyed source precedence, separate Gemini aggregate reconciliation, Codex cumulative-session versus response fallback paths, grouping, and missing-usage interpretation.
+- `/blog/how-agentsight-background-monitoring-works/`: v1.0.31 background-monitor persistence semantics — two-second aggregate windows, 30-second bounded detail sampling, process/resource deltas, open-descriptor file targets, sampled IP:port network targets, PID/start-time identity, detail bounding, and the start-week filename/restart boundary.
+- `/blog/how-agentsight-loads-agent-fleets-progressively/`: v1.0.31 fleet frontend latency/failure isolation — concurrent per-Node probes, incremental sample publication, Direct/relay per-Node behavior, generation guards, refresh barrier, lazy process/analysis views, request timeouts, and the read/write retry boundary.
+- `/blog/why-ai-agent-tls-traffic-is-hard-to-trace/`: v1.0.31 TLS-diagnostics owner — attachment, plaintext-hook, protocol-parser, and non-TLS evidence-path failures across Node OpenSSL, stripped Bun/BoringSSL, rustls, Electron/Cursor, Docker/Kubernetes, browsers, and local MCP stdio.
 - `/blog/how-agentsight-evolves-agent-skills/`: v1.0.30 repository-local skill-evolution method — source-fidelity gates, workload strata, failure ownership, durable-memory placement, candidate patch boundaries, held-out evaluation, promotion verdicts, and rollback. It does not claim autonomous runtime self-editing.
-- `/blog/system-boundary-observability/`: broad architecture and reader decision across native agent telemetry, tool-protocol evidence, independent system execution, provider traffic, cross-boundary correlation, and the v1.0.30 OpenTelemetry export/provenance boundary.
+- `/blog/system-boundary-observability/`: broad architecture and reader decision across native agent telemetry, tool-protocol evidence, independent system execution, provider traffic, cross-boundary correlation, and the OpenTelemetry export/provenance boundary.
 - `/blog/how-agentsight-shares-versioned-agent-skills/`: v1.0.30 shared-skills repository bridge — pinned shared-skill submodule, generated `.agents/skills` links, overwrite guards, and Windows junction fallback.
 - `/blog/how-agentsight-discovers-local-agent-sessions/`: provider-native discovery roots/formats, provider-specific IDs, Codex `state_5.sqlite`, bounded list/detail behavior, caching/lazy hydration, Cursor subagent freshness/deduplication, and missing-session troubleshooting.
 - `/blog/when-agentsight-works-without-ebpf/`: practical choice between native-session workflows and Linux eBPF/system-boundary capture.
-- `/blog/read-agentsight-audit-provenance/`: audit/LLM `view_source`, source-specific `confidence`, reconstruction, legacy fallback, and evidence-lineage interpretation.
+- `/blog/read-agentsight-audit-provenance/`: audit/LLM `view_source`, source-specific `confidence`, reconstruction, legacy fallback, and lineage interpretation.
 - `/blog/observe-ai-agent-sessions-in-docker/`: named-container native-session bridge, exact routing, bounds, provider state location, and Docker daemon trust boundary.
 - `/blog/how-agentsight-direct-node-credentials-work/`: persistent bootstrap key, URL-fragment pairing, Direct/relay scoped capabilities, and optional encrypted cross-browser Direct configuration.
-- `/blog/replay-coding-agent-repository-changes/`: native-session repository replay and its intent/system-evidence limits.
+- `/blog/replay-coding-agent-repository-changes/`: native-session repository replay and its intent/system-observation limits.
+- `/ebpf-ai-agent-monitoring/`: current canonical top-level eBPF/system-observation page. It remains healthy and indexable, but its public source labels still cite the older v1.0.3 product snapshot. It is a reasonable next evergreen refresh candidate, provided the refresh stays at the mechanism/boundary level and does not duplicate the runtime-specific TLS diagnostics page.
 
-These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method. Existing research pages remain pinned to the exact product snapshot they analyzed rather than being bulk-retagged when a new release ships.
+These owners are intentionally separate. Avoid publishing keyword variants that do not add a new reader decision, mechanism, artifact, benchmark, or reproducible method. Existing research pages remain pinned to the exact product snapshot they analyzed unless a deliberate evergreen refresh re-verifies their claims against a newer authoritative product commit.
 
 ## Current v1.0.31 implementation facts
 
-### Native-session normalization
+### Native-session normalization and no-eBPF paths
 
-- `agent-session` is a reusable local intermediate representation for supported native coding-agent session data. `AgentSession` preserves provider/source identity, source-derived session or conversation IDs when present, timing/model metadata, aggregate usage, working directory, prompts, tool events, responses, token components, and plans instead of flattening providers into display-only strings.
-- Prompt, tool, and response records keep prompt indexes where the source supplies enough evidence for grouping. `ToolPath` preserves read/write/create/delete/rename semantics and can preserve a rename source; missing native fields remain missing rather than being inferred.
-- The normalization layer does not manufacture host-level file/process/network effects, billing cost, complete provenance, or conversation IDs that the provider did not establish.
+- `agent-session` is a reusable local intermediate representation for supported native coding-agent session data. `AgentSession` preserves provider/source identity, source-derived session or conversation IDs when present, timing/model metadata, aggregate usage, working directory, prompts, tool events, responses, token components, and plans rather than flattening providers into display-only strings.
+- Prompt, tool, and response records keep prompt indexes where the source supplies enough information for grouping. `ToolPath` preserves read/write/create/delete/rename semantics and can preserve a rename source; missing native fields remain missing rather than being inferred.
+- `top`, `bind`, `vis`, and `report` can use native agent-session data on Windows, macOS, or Linux without eBPF. `record` and eBPF-backed debug commands remain Linux capture paths. `top` is intentionally hybrid: with suitable privilege it can add eBPF capture; without it, it remains useful through process snapshots and native session sources.
 
 ### OpenTelemetry GenAI export
 
 - `agentsight debug trace --otel` attaches `OtelExporter` to the shared materialized-call pipeline. Only completed materialized LLM calls with an end timestamp are eligible; request/response correlation and token extraction happen upstream of the sink.
-- Trace identity prefers an explicit recognized conversation/thread identifier, then AgentSight session identity, then a recording-scoped fallback. Generic response IDs are not promoted to conversation IDs, and parent/child model-call span trees are not inferred.
+- Trace identity prefers a recognized conversation/thread identifier, then AgentSight session identity, then a recording-scoped fallback. Generic response IDs are not promoted to conversation IDs, and parent/child model-call span trees are not inferred.
 - The sink emits the supported GenAI request/response/provider/usage/finish-reason fields plus server address and HTTP response status when available. Prompt/completion content is opt-in through `--otel-capture-content`.
 - Export POSTs are detached asynchronous tasks. Local materialization does not prove Collector receipt, and process/file/network/resource rows, tool/workflow rows, and AgentSight provenance/confidence are not automatically mapped by this GenAI sink.
 
@@ -56,7 +57,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 - `agentsight monitor` samples on a two-second loop and inspects up to 25 matched live sessions per refresh in v1.0.31. Aggregate `monitor_windows` rows retain process/resource deltas and target counts; detailed process/file/network rows are bounded samples written when a sample crosses a 30-second bucket boundary.
 - File targets come from current `/proc/<pid>/fd` observations with PID start-time checks; network targets are sampled IP:port endpoints from Linux `/proc` TCP tables. Absence from the detail tables is not proof that an event never occurred between samples.
-- Detail tables use a five-plus-five edge bound when candidate sets are large. The default weekly monitor DB filename is chosen when the monitor process starts; a continuously running v1.0.31 monitor can therefore keep writing to its start-week filename across an ISO-week boundary until restart. Window timestamps are the authoritative time boundary.
+- The default weekly monitor DB filename is chosen when the monitor process starts; a continuously running v1.0.31 monitor can therefore keep writing to its start-week filename across an ISO-week boundary until restart. Window timestamps are the authoritative time boundary.
 
 ### Fleet/frontend and TLS boundaries
 
@@ -67,17 +68,17 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 
 ## Production verification
 
-- Rendered PR `#132` final head `4aa8e240095252dbad14691fca9c4f17232be512` passed exact-head Website CI run `35370715419`, GitGuardian, and Cloudflare Pages before squash merge. Two earlier green heads were deliberately superseded after from-scratch reviews found and fixed report fallback wording and sitemap-lastmod issues.
+- Rendered PR `#132` final head `4aa8e240095252dbad14691fca9c4f17232be512` passed exact-head Website CI run `35370715419`, GitGuardian, and Cloudflare Pages before squash merge.
 - PR `#132` was squash-merged as `d2db6c4b0da24df0e9e8be30fae551670aa1fbb8`. Exact `Publish static site` run `35371344850` succeeded from that commit; its publish job completed at `2026-09-18T16:56:26Z`. Production `site/.source-sha` matches exactly.
-- Generated production `/guides/agent-flamegraph/` HTML has canonical `https://agentsight.us/guides/agent-flamegraph/`, index/follow metadata, the v1.0.31 source pins, and the refreshed profiler/report-token interpretation boundary. Generated `sitemap.xml` keeps the single canonical route and reports `2026-09-18T00:00:00.000Z` as its lastmod.
-- Immediate independent public retrieval at approximately `2026-09-18T16:57:09Z` still returned the pre-publication v1.0.25 Agent Flamegraph body even though the exact publish workflow, production source marker, generated HTML, and generated sitemap agree. This is currently classified as CDN/retrieval freshness, not a build/deployment incident; no cache-forcing change is warranted from this first post-publication check.
-- Representative unaffected public behavior is healthy: the homepage returns v1.0.31, and the OpenTelemetry comparison remains publicly retrievable on its refreshed v1.0.31 body.
-- The current substantive-publication deadline is `2026-09-20T16:56:26Z` (09:56:26 PDT).
+- Generated production `/guides/agent-flamegraph/` HTML has canonical `https://agentsight.us/guides/agent-flamegraph/`, index/follow metadata, v1.0.31 source pins, and the refreshed profiler/report-token interpretation boundary. Generated `sitemap.xml` keeps the single canonical route and reports `2026-09-18T00:00:00.000Z` as its lastmod.
+- The first post-publication public crawler check on 18 September still returned the pre-publication v1.0.25 body. **That freshness qualification is resolved as of 19 September:** independent public retrieval now returns `Analysis guide · refreshed 18 September 2026 · AgentSight v1.0.31` and the new semantic-profiler content. No cache-forcing or deployment repair is warranted.
+- Representative public behavior is otherwise healthy: the homepage returns the current v1.0.31 product state and current product search resolves the authoritative GitHub project.
+- The current substantive-publication deadline is `2026-09-20T16:56:26Z` (09:56:26 PDT). The next scheduled operating cycle begins before this boundary, so 19 September is intentionally metadata-only rather than a thin publication day.
 
 ## Analytics and search evidence
 
 - Configured Drive folder: `agentsight.us SEO Weekly CSV`.
-- As of 18 September, direct folder search finds no artifact modified after `2026-09-14T17:00:00Z`. No new weekly family or post-lag regeneration has appeared since the prior cycle.
+- As of **19 September**, direct folder search finds no artifact modified after `2026-09-14T17:00:00Z`. No new weekly family or post-lag regeneration has appeared since the prior cycle.
 - `2026-09-07_to_2026-09-13` remains the next-morning 14 September snapshot rather than finalized KPI evidence. Its GA4 landing rows list **6 sessions / 4 active users / 0 key events**: 5 sessions / 4 active users on `/`, plus one blank landing row.
 - Its GSC date rows still cover only 7–12 September and omit 13 September: **3 clicks / 375 impressions / 0.80% CTR / weighted average position approximately 8.43**.
 - `2026-08-17_to_2026-08-23` remains completely absent.
@@ -85,7 +86,7 @@ These owners are intentionally separate. Avoid publishing keyword variants that 
 - `2026-08-31_to_2026-09-06` remains the next-morning 7 September family without a post-lag refresh; its GSC date export still omits 6 September. The existing directional snapshot records 12 GA4 sessions / 11 active users and 4 GSC clicks / 260 impressions / 1.54% CTR / weighted position approximately 11.68.
 - Because the comparable completed windows were generated before their configured finalization cutoff and still omit boundary dates, their movement remains directional and must not be reported as finalized week-over-week performance.
 - The site's GA4 bootstrap records `page_location` as origin + pathname and `page_path` as pathname, so query strings are intentionally excluded from page-view identity. No analytics implementation defect is currently known.
-- Generic public brand search remains ambiguous because unrelated products use the AgentSight name. Public search continues to find the canonical homepage and existing technical pages; search-result counts/order are treated as directional only.
+- Generic public brand search remains ambiguous because unrelated products use the AgentSight name. Public search continues to find the canonical homepage and technical pages; search-result counts/order are directional only.
 
 ## Off-site visibility
 
