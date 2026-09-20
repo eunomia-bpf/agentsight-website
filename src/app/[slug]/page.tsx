@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ContentDetail } from '@/components/ContentPages';
+import { EbpfAgentMonitoringGuide } from '@/components/EbpfAgentMonitoringGuide';
 import { McpServerAuditGuide } from '@/components/McpServerAuditGuide';
 import { getPage, getPages } from '@/lib/public-content';
 import { contentMetadata } from '@/lib/metadata';
@@ -22,5 +23,7 @@ export default async function LandingPage({ params }: Props) {
   const { slug } = await params;
   const page = getPage('landing', slug);
   if (!page) notFound();
-  return slug === 'mcp-server-audit' ? <McpServerAuditGuide page={page} /> : <ContentDetail page={page} />;
+  if (slug === 'mcp-server-audit') return <McpServerAuditGuide page={page} />;
+  if (slug === 'ebpf-ai-agent-monitoring') return <EbpfAgentMonitoringGuide page={page} />;
+  return <ContentDetail page={page} />;
 }
