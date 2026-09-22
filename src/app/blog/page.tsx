@@ -52,7 +52,7 @@ const sharedSkillsArticle = {
 const localSessionDiscoveryArticle = {
   title: 'How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions',
   description:
-    'Follow the v1.0.30 discovery path from provider-native files and Codex state_5.sqlite through bounded session indexing, provider-specific IDs, Cursor subagents, caching, and lazy detail hydration.',
+    'Follow the v1.0.31 discovery path from provider-native files through bounded indexing, Codex and Cursor read-only SQLite enrichment, delegated Cursor token rollup, caching, and lazy detail hydration.',
   href: '/blog/how-agentsight-discovers-local-agent-sessions/',
 };
 const noEbpfArticle = {
@@ -180,7 +180,7 @@ export default function BlogPage() {
             <Link className="arrow-link" href={sharedSkillsArticle.href}>Read the page</Link>
           </article>
           <article className="content-card">
-            <p className="card-label">Native session internals · August 2026</p>
+            <p className="card-label">Native session internals · September 2026</p>
             <h2><Link href={localSessionDiscoveryArticle.href}>{localSessionDiscoveryArticle.title}</Link></h2>
             <p>{localSessionDiscoveryArticle.description}</p>
             <Link className="arrow-link" href={localSessionDiscoveryArticle.href}>Read the page</Link>
