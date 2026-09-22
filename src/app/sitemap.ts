@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const auditProvenanceUpdated = new Date('2026-08-27T00:00:00Z');
   const directNodeCredentialsUpdated = new Date('2026-08-28T00:00:00Z');
   const noEbpfUpdated = new Date('2026-08-29T00:00:00Z');
-  const localSessionDiscoveryUpdated = new Date('2026-08-31T00:00:00Z');
+  const localSessionDiscoveryUpdated = new Date('2026-09-22T00:00:00Z');
   const sharedSkillsUpdated = new Date('2026-09-02T00:00:00Z');
   const systemBoundaryUpdated = new Date('2026-09-03T00:00:00Z');
   const skillEvolutionUpdated = new Date('2026-09-04T00:00:00Z');
@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? sessionNormalizationUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? localSessionDiscoveryUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
