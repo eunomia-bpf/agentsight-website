@@ -4,17 +4,20 @@ import { CommandBlock, Eyebrow, JsonLd, OutcomeList } from '@/components/PagePar
 import { SiteShell } from '@/components/SiteShell';
 import { site } from '@/lib/site';
 
-const cursorSourceCommit = 'ac1e6cb7a8398c57c1ad0ba04ff032cd271d99c8';
+const cursorSourceCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
 const cursorDocs = `https://github.com/eunomia-bpf/agentsight/blob/${cursorSourceCommit}/docs/agents.md#cursor`;
-const cursorPullRequest = 'https://github.com/eunomia-bpf/agentsight/pull/149';
-const cursorRelease = 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.4';
+const cursorAnalysisSource = `https://github.com/eunomia-bpf/agentsight/blob/${cursorSourceCommit}/ext/analysis/src/sources/agent_native.rs`;
+const cursorParserSource = `https://github.com/eunomia-bpf/agentsight/blob/${cursorSourceCommit}/ext/session/src/parser.rs`;
+const cursorVisSource = `https://github.com/eunomia-bpf/agentsight/blob/${cursorSourceCommit}/ext/vis/src/repository.rs`;
+const cursorInitialPullRequest = 'https://github.com/eunomia-bpf/agentsight/pull/149';
+const cursorRelease = 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.31';
 const cursorAgentTools = 'https://docs.cursor.com/en/agent/tools';
 const cursorSubagents = 'https://cursor.com/changelog/2-4';
 
 export const metadata: Metadata = {
   title: 'AgentSight for Cursor IDE sessions',
   description:
-    'Inspect Cursor agent sessions from local transcripts and state metadata without eBPF, sudo, a proxy, or launching Cursor through AgentSight.',
+    'Inspect Cursor sessions from local transcripts and read-only state metadata, including delegated work, cross-platform enrichment, token rollup, and capture limits.',
   alternates: { canonical: '/integrations/cursor/' },
 };
 
@@ -29,7 +32,7 @@ export default function CursorIntegrationPage() {
       headline: 'AgentSight for Cursor IDE sessions',
       description: metadata.description,
       url: `${site.url}/integrations/cursor/`,
-      dateModified: '2026-08-10',
+      dateModified: '2026-09-24',
       author: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
       publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
     },
@@ -54,18 +57,18 @@ export default function CursorIntegrationPage() {
             <Link href="/integrations/">Integrations</Link>
             <span aria-current="page">Cursor</span>
           </nav>
-          <Eyebrow>Cursor integration · AgentSight v1.0.4</Eyebrow>
+          <Eyebrow>Cursor integration · refreshed 24 September 2026 · AgentSight v1.0.31</Eyebrow>
           <h1>Inspect Cursor agent sessions without attaching eBPF to the IDE.</h1>
           <p className="hero-lede">
-            Cursor is a different observability boundary from a local CLI. AgentSight v1.0.4 reads
-            Cursor&apos;s local agent transcripts and state metadata instead of asking you to launch the
+            Cursor is a different observability boundary from a local CLI. AgentSight v1.0.31 reads
+            Cursor&apos;s local agent transcripts and read-only state metadata instead of asking you to launch the
             IDE through <code>record</code> or attach TLS probes to Electron.
           </p>
           <OutcomeList
             items={[
               'Read prompts, tool calls, file activity, and delegated sub-agent work from local Cursor sessions.',
-              'Enrich sessions with model, timing, and workspace metadata when Cursor state is available.',
-              'Keep the limits explicit: no live API-body capture and recent Cursor sessions may have no local token totals.',
+              'Enrich model, timing, workspace, and available token totals from read-only Cursor state on macOS, Linux, or Windows.',
+              'Keep the limits explicit: no live API-body capture, and missing state enrichment does not make transcript history a capture failure.',
             ]}
           />
         </div>
@@ -79,7 +82,7 @@ export default function CursorIntegrationPage() {
               <p>
                 AgentSight&apos;s normal CLI workflow observes a process family and, on supported Linux
                 binaries, can add TLS plaintext capture. That is the wrong starting point for Cursor.
-                The v1.0.4 implementation documents three independent blockers: most Cursor desktop
+                Current AgentSight documentation describes three independent blockers: most Cursor desktop
                 installs are on macOS or Windows where the eBPF probes do not load; Electron keeps
                 BoringSSL in a large stripped framework/helper rather than the launcher binary; and
                 Cursor&apos;s backend traffic uses HTTP/2 Connect with protobuf bodies while AgentSight&apos;s
@@ -95,7 +98,7 @@ export default function CursorIntegrationPage() {
             </section>
 
             <section>
-              <h2>What AgentSight v1.0.4 reads from Cursor</h2>
+              <h2>What AgentSight v1.0.31 reads from Cursor</h2>
               <p>
                 The implementation combines two read-only local sources. The transcript is the primary
                 source for event-level behavior; Cursor&apos;s state database is optional enrichment. If
@@ -119,12 +122,28 @@ export default function CursorIntegrationPage() {
                     </tr>
                     <tr>
                       <td style={cell}><code>state.vscdb</code></td>
-                      <td style={cell}>Session start/end timing, model, and working-directory enrichment joined by Cursor&apos;s composer identifier.</td>
+                      <td style={cell}>Session start/end timing, model, working-directory enrichment, and available token totals joined by Cursor&apos;s composer identifier.</td>
                       <td style={cell}>Enrichment is optional; missing or locked database access degrades to parsed transcript data.</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+            </section>
+
+            <section>
+              <h2>The state database lookup is cross-platform and read-only</h2>
+              <p>
+                The v1.0.31 native-analysis source checks three Cursor user-data locations beneath the
+                current user&apos;s home directory and opens the first existing database with SQLite
+                read-only flags: <code>~/Library/Application Support/Cursor/User/globalStorage/state.vscdb</code>
+                on macOS, <code>~/.config/Cursor/User/globalStorage/state.vscdb</code> on Linux, and
+                <code>~/AppData/Roaming/Cursor/User/globalStorage/state.vscdb</code> on Windows.
+              </p>
+              <p>
+                This lookup is enrichment, not a prerequisite. If the database cannot be found or
+                opened, AgentSight keeps the transcript-derived Cursor session. Treat these paths as
+                v1.0.31 implementation facts rather than a promise about every future Cursor layout.
+              </p>
             </section>
 
             <section>
@@ -140,8 +159,10 @@ export default function CursorIntegrationPage() {
                 The discovery logic also considers the newest modification time across the parent and
                 its delegated transcripts. A later subagent write therefore invalidates the cached
                 candidate even when the parent transcript itself did not change. This is a concrete
-                compatibility detail from the v1.0.4 implementation, not a generic claim about every
-                IDE agent format.
+                compatibility detail from the current implementation, not a generic claim about every
+                IDE agent format. Repository replay uses the same parser so delegated file actions are
+                preserved. For bounded indexing and duplicate-window handling, see the{' '}
+                <Link href="/blog/how-agentsight-discovers-local-agent-sessions/">local-session discovery guide</Link>.
               </p>
             </section>
 
@@ -201,13 +222,19 @@ export default function CursorIntegrationPage() {
             </section>
 
             <section>
-              <h2>Two limitations should change how you interpret the output</h2>
+              <h2>Token totals depend on state enrichment, not transcript guessing</h2>
               <p>
-                First, recent Cursor sessions may show no token totals. The AgentSight v1.0.4 work
-                reports that current Cursor versions stopped recording per-turn usage locally around
-                March 2026; older sessions that still contain usage events can expose totals, while a
-                zero or absent total on a recent session is expected and should not be reported as an
-                AgentSight capture failure.
+                Cursor transcripts do not populate model or token fields for assistant responses. In
+                v1.0.31 the native-analysis layer can recover session-level usage from matching
+                <code>state.vscdb</code> bubble records: it sums <code>inputTokens</code> and
+                <code>outputTokens</code> for the parent composer and rolls in the same counts for
+                discovered delegated subagent IDs. When the resulting total is non-zero, AgentSight
+                attaches that usage to the session and its known model.
+              </p>
+              <p>
+                If the state database or matching bubble fields are unavailable, the transcript-derived
+                session still works but carries no invented token total. An absent total therefore means
+                local token evidence was unavailable, not that the model used zero tokens.
               </p>
               <p>
                 Second, the two sources have different time semantics. Transcript events carry
@@ -234,16 +261,18 @@ export default function CursorIntegrationPage() {
             <section>
               <h2>Research scope and primary sources</h2>
               <p>
-                This integration note was refreshed for AgentSight <strong>v1.0.4</strong>, released on
-                10 August 2026 from product commit <code>{cursorSourceCommit}</code>. Cursor&apos;s own
-                documentation is useful for understanding the Agent tool surface and subagent model;
-                the AgentSight repository remains authoritative for what AgentSight actually parses,
-                enriches, and cannot capture.
+                This integration note was re-verified against AgentSight <strong>v1.0.31</strong> at
+                product commit <code>{cursorSourceCommit}</code> on 24 September 2026. The original Cursor integration
+                landed in PR #149; current release source is authoritative for the state-database
+                lookup, token enrichment, delegated parsing, repository replay, and capture boundary.
               </p>
               <ul>
-                <li><a href={cursorRelease}>AgentSight v1.0.4 release</a></li>
-                <li><a href={cursorDocs}>AgentSight v1.0.4 Cursor and IDE-agent documentation</a></li>
-                <li><a href={cursorPullRequest}>AgentSight PR #149 implementation notes and validation</a></li>
+                <li><a href={cursorRelease}>AgentSight v1.0.31 release</a></li>
+                <li><a href={cursorDocs}>Current AgentSight Cursor and IDE-agent documentation</a></li>
+                <li><a href={cursorAnalysisSource}>v1.0.31 native-session enrichment source</a></li>
+                <li><a href={cursorParserSource}>v1.0.31 Cursor transcript parser</a></li>
+                <li><a href={cursorVisSource}>v1.0.31 repository replay source</a></li>
+                <li><a href={cursorInitialPullRequest}>Original AgentSight Cursor implementation PR #149</a></li>
                 <li><a href={cursorAgentTools}>Cursor Agent tools documentation</a></li>
                 <li><a href={cursorSubagents}>Cursor 2.4 subagents release notes</a></li>
               </ul>

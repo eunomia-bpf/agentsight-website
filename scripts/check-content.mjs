@@ -169,16 +169,17 @@ assert(
 );
 
 // Cursor is intentionally a standalone integration page rather than another
-// generic CLI template: v1.0.4 observes it through agent-native local session
-// artifacts instead of eBPF/TLS attachment. Keep the source/version boundary
-// and the most important limitations explicit.
+// generic CLI template: v1.0.31 observes it through agent-native local session
+// artifacts plus optional read-only Cursor state enrichment. Keep the source/
+// version boundary and the most important limitations explicit.
 assert(cursorSource.includes("alternates: { canonical: '/integrations/cursor/' }"), 'Cursor page must own its canonical route');
-assert(cursorSource.includes('AgentSight v1.0.4'), 'Cursor page must state the reviewed AgentSight release');
-assert(cursorSource.includes('ac1e6cb7a8398c57c1ad0ba04ff032cd271d99c8'), 'Cursor page must pin the reviewed product source commit');
+assert(cursorSource.includes('AgentSight v1.0.31'), 'Cursor page must state the reviewed AgentSight release');
+assert(cursorSource.includes('bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3'), 'Cursor page must pin the reviewed product source commit');
 assert(cursorSource.includes('agentsight report --local'), 'Cursor page must retain the local-session workflow');
 assert(cursorSource.includes('no live API-body capture'), 'Cursor page must retain the live-payload limitation');
-assert(cursorSource.includes('recent Cursor sessions may show no token totals'), 'Cursor page must retain the current token-availability limitation');
-assert(cursorSource.includes('github.com/eunomia-bpf/agentsight/pull/149'), 'Cursor page must cite the product implementation PR');
+assert(cursorSource.includes('inputTokens') && cursorSource.includes('delegated subagent IDs'), 'Cursor page must explain current state-database token enrichment');
+assert(cursorSource.includes('github.com/eunomia-bpf/agentsight/pull/149'), 'Cursor page must preserve the original implementation provenance');
+assert(cursorSource.includes('ext/analysis/src/sources/agent_native.rs'), 'Cursor page must cite current native-session enrichment source');
 assert(cursorSource.includes('docs.cursor.com/en/agent/tools'), 'Cursor page must cite a Cursor primary source');
 assert([...cursorSource.matchAll(/<h2/g)].length >= 6, 'Cursor integration must remain substantive, not a thin release page');
 
