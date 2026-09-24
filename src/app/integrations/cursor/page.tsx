@@ -67,7 +67,7 @@ export default function CursorIntegrationPage() {
           <OutcomeList
             items={[
               'Read prompts, tool calls, file activity, and delegated sub-agent work from local Cursor sessions.',
-              'Enrich model, timing, workspace, and available token totals from read-only Cursor state on macOS, Linux, or Windows.',
+              'Enrich model, timing, and workspace metadata from read-only Cursor state on macOS, Linux, or Windows.',
               'Keep the limits explicit: no live API-body capture, and missing state enrichment does not make transcript history a capture failure.',
             ]}
           />
@@ -122,7 +122,7 @@ export default function CursorIntegrationPage() {
                     </tr>
                     <tr>
                       <td style={cell}><code>state.vscdb</code></td>
-                      <td style={cell}>Session start/end timing, model, working-directory enrichment, and available token totals joined by Cursor&apos;s composer identifier.</td>
+                      <td style={cell}>Session start/end timing, model, and working-directory enrichment joined by Cursor&apos;s composer identifier.</td>
                       <td style={cell}>Enrichment is optional; missing or locked database access degrades to parsed transcript data.</td>
                     </tr>
                   </tbody>
@@ -222,28 +222,16 @@ export default function CursorIntegrationPage() {
             </section>
 
             <section>
-              <h2>Token totals depend on state enrichment, not transcript guessing</h2>
+              <h2>Usage metadata is best-effort local evidence</h2>
               <p>
-                Cursor transcripts do not populate model or token fields for assistant responses. In
-                v1.0.31 the native-analysis layer can recover session-level usage from matching
-                <code>state.vscdb</code> bubble records: it sums <code>inputTokens</code> and
-                <code>outputTokens</code> for the parent composer and rolls in the same counts for
-                discovered delegated subagent IDs. When the resulting total is non-zero, AgentSight
-                attaches that usage to the session and its known model.
+                Cursor transcript records and Cursor&apos;s auxiliary state do not have identical field
+                coverage across versions. AgentSight keeps enrichment conservative: when matching local
+                usage metadata is available the native-analysis layer can attach it to the session, but
+                transcript-only sessions remain valid when that enrichment is absent.
               </p>
               <p>
-                If the state database or matching bubble fields are unavailable, the transcript-derived
-                session still works but carries no invented token total. An absent total therefore means
-                local token evidence was unavailable, not that the model used zero tokens.
-              </p>
-              <p>
-                Second, the two sources have different time semantics. Transcript events carry
-                minute-resolution timestamps, while session-level timing can be enriched from
-                <code>state.vscdb</code>. Database-derived per-event times are intentionally not injected,
-                so consumers that cannot read Cursor&apos;s database see the same transcript event model.
-                The product change also keeps SQLite enrichment out of the standalone
-                <code>agent-session</code> parser; <code>agentpprof</code> and <code>agentvis</code> therefore
-                operate on transcript-derived data rather than silently depending on the database.
+                Treat a missing usage field as unavailable local evidence rather than a measured zero.
+                The integration does not infer a value from text, timing, or tool activity.
               </p>
             </section>
 
@@ -264,7 +252,7 @@ export default function CursorIntegrationPage() {
                 This integration note was re-verified against AgentSight <strong>v1.0.31</strong> at
                 product commit <code>{cursorSourceCommit}</code> on 24 September 2026. The original Cursor integration
                 landed in PR #149; current release source is authoritative for the state-database
-                lookup, token enrichment, delegated parsing, repository replay, and capture boundary.
+                lookup, conservative usage enrichment, delegated parsing, repository replay, and capture boundary.
               </p>
               <ul>
                 <li><a href={cursorRelease}>AgentSight v1.0.31 release</a></li>

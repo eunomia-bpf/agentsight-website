@@ -177,7 +177,7 @@ assert(cursorSource.includes('AgentSight v1.0.31'), 'Cursor page must state the 
 assert(cursorSource.includes('bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3'), 'Cursor page must pin the reviewed product source commit');
 assert(cursorSource.includes('agentsight report --local'), 'Cursor page must retain the local-session workflow');
 assert(cursorSource.includes('no live API-body capture'), 'Cursor page must retain the live-payload limitation');
-assert(cursorSource.includes('inputTokens') && cursorSource.includes('delegated subagent IDs'), 'Cursor page must explain current state-database token enrichment');
+assert(cursorSource.includes('Usage metadata is best-effort local evidence'), 'Cursor page must explain conservative local usage enrichment');
 assert(cursorSource.includes('github.com/eunomia-bpf/agentsight/pull/149'), 'Cursor page must preserve the original implementation provenance');
 assert(cursorSource.includes('ext/analysis/src/sources/agent_native.rs'), 'Cursor page must cite current native-session enrichment source');
 assert(cursorSource.includes('docs.cursor.com/en/agent/tools'), 'Cursor page must cite a Cursor primary source');
