@@ -16,3 +16,12 @@ only when an external system truly requires a human-only action or a required
 connected-tool permission is absent. Include the blocked action, evidence,
 impact, and minimum human action needed, then remove resolved items in the next
 pull request.
+
+
+## Pull-request creation permission path
+
+- Blocked action: open the required non-draft pull request for `seo/agentsight-2026-09-28-cursor-refresh`.
+- Evidence: two pull-request creation attempts from this session were rejected before GitHub created a PR; a follow-up GitHub search for the exact head branch returned no PR.
+- Impact: pull-request-triggered exact-head checks, final review, squash merge, and exact-commit publication cannot proceed. Repository policy forbids a direct automated push to `main` as a substitute.
+- Minimum external action: open a non-draft pull request from `seo/agentsight-2026-09-28-cursor-refresh` to `main`; do not merge or bypass checks.
+- Resolution evidence: the non-draft PR exists on GitHub and normal required checks can run.
