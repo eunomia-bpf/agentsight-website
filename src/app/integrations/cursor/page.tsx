@@ -32,7 +32,7 @@ export default function CursorIntegrationPage() {
       headline: 'AgentSight for Cursor IDE sessions',
       description: metadata.description,
       url: `${site.url}/integrations/cursor/`,
-      dateModified: '2026-09-28',
+      dateModified: '2026-09-29',
       author: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
       publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
     },
@@ -57,7 +57,7 @@ export default function CursorIntegrationPage() {
             <Link href="/integrations/">Integrations</Link>
             <span aria-current="page">Cursor</span>
           </nav>
-          <Eyebrow>Cursor integration · refreshed 28 September 2026 · AgentSight v1.0.31</Eyebrow>
+          <Eyebrow>Cursor integration · refreshed 29 September 2026 · AgentSight v1.0.31</Eyebrow>
           <h1>Inspect Cursor agent sessions without attaching eBPF to the IDE.</h1>
           <p className="hero-lede">
             Cursor is a different observability boundary from a local CLI. AgentSight v1.0.31 reads
@@ -250,7 +250,7 @@ export default function CursorIntegrationPage() {
               <h2>Research scope and primary sources</h2>
               <p>
                 This integration note was re-verified against AgentSight <strong>v1.0.31</strong> at
-                product commit <code>{cursorSourceCommit}</code> on 28 September 2026. The original Cursor integration
+                product commit <code>{cursorSourceCommit}</code> on 29 September 2026. The original Cursor integration
                 landed in PR #149; current release source is authoritative for the state-database
                 lookup, conservative usage enrichment, delegated parsing, repository replay, and capture boundary.
               </p>
