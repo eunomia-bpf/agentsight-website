@@ -30,3 +30,4 @@
 ## Human-only blockers
 
 - The weekly Google export process needs a backfill for 17–23 August and post-lag regeneration for the completed weekly families from 24 August through 27 September.
+- Delivery gate: branch `seo/agentsight-2026-10-01-cursor-refresh` is prepared, but no review object exists after two normal delivery attempts; required checks, review, merge, and publication cannot begin until that repository object exists.
