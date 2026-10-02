@@ -2,14 +2,8 @@
 
 ## Google SEO export finalization timing
 
-The newest weekly family, `2026-09-21_to_2026-09-27`, is still the next-morning export generated on 28 September. Its Search Console date file stops at 25 September, so 26–27 September are absent even though the window is now beyond the configured three-day finalization lag.
-
-The existing historical gap remains: 17–23 August is absent, and the 24–30 August, 31 August–6 September, 7–13 September, and 14–20 September families have not been regenerated after their finalization cutoffs.
-
-An authorized exporter operator needs to backfill 17–23 August and regenerate the five available completed weekly families after their finalization lag. Resolution is a post-lag GA4/Search Console family covering each intended weekly window.
+The 17–23 August family is absent. Completed weekly families from 24 August through 27 September still lack a usable post-lag regeneration; the newest 21–27 September Search Console dates stop at 25 September. An authorized Google Apps Script operator needs to backfill the missing family and regenerate completed windows after the configured finalization lag.
 
 ## Delivery gate
 
-- Prepared branch: `seo/agentsight-2026-10-01-cursor-refresh`.
-- No review object exists for the branch after two normal delivery attempts.
-- Required repository checks, review, merge, and publication therefore have not started.
+Branch `seo/agentsight-2026-10-02-cursor-refresh` is prepared. A normal non-draft pull-request creation attempt was blocked before GitHub created a review object, and repository search confirms no PR exists. The minimum human action is to open this branch against `main` without bypassing checks; CI, final review, merge, publication, and public verification must still run normally.
