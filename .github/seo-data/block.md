@@ -9,3 +9,10 @@
 
 The recurring AgentSight operations schedule remains external to this repository
 and stays enabled.
+
+## Pull request creation path
+
+- Prepared branch head before this blocker note: `4a5b28c02690c3f856d706bad44dd0686061ee9e`.
+- Two non-draft pull-request creation attempts were rejected by the connected GitHub action before a GitHub PR was created, including a minimal title/head/base request.
+- Repository search confirms there is still no open PR for `seo/agentsight-2026-10-05-codebuddy-v1-0-34`.
+- Minimum external action: open a non-draft PR from that branch to `main`. Do not merge or bypass checks; exact-head Website CI and the normal final-review lifecycle still apply.

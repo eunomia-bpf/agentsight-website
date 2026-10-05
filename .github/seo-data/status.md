@@ -60,3 +60,4 @@ Avoid keyword variants that do not add a new reader decision, mechanism, artifac
 ## Human-only blockers
 
 - **Google SEO export finalization timing:** an authorized external Google Apps Script operator needs to backfill 17–23 August and post-lag refresh every completed weekly family from 24 August through 27 September. The newest 28 September–4 October family is the expected next-morning preliminary snapshot and is not yet overdue for post-lag refresh. The current scheduled operator can inspect Drive artifacts but has no connected Apps Script execution/configuration surface.
+- **Pull request creation:** the prepared 5 October branch exists, but two non-draft PR creation attempts were rejected by the connected GitHub action before GitHub created a PR. Manual PR creation from `seo/agentsight-2026-10-05-codebuddy-v1-0-34` to `main` is currently the minimum external action; checks and review must not be bypassed.
