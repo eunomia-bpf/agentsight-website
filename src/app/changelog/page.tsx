@@ -15,7 +15,7 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.',
+      'v1.0.34 is the current release. Since v1.0.31, AgentSight adds CodeBuddy CLI local-session and record support, improves Codex runtime tracing, hardens process probes on newer kernels, extends resolved file and inbound/listener evidence, and improves HTTP metadata handling. GitHub Releases remain authoritative for the exact patch set.',
     href: site.releaseUrl,
   },
   {

@@ -19,6 +19,14 @@ const mcpFixture = `${productBase}/docs/experiment/mcp-test/README.md`;
 const openclawExperiment = `${productBase}/docs/experiment/openclaw.md`;
 const sslsniffSource = `${productBase}/bpf/sslsniff.c`;
 const codexOffsets = `${productBase}/bpf/codex_offsets.h`;
+const codebuddyProductCommit = '85bdb152653999bb5bf24a5b13c863bf8c949581';
+const codebuddyProductSource = `https://github.com/eunomia-bpf/agentsight/blob/${codebuddyProductCommit}`;
+const codebuddyAgents = `${codebuddyProductSource}/docs/agents.md`;
+const codebuddyRelease = 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.32';
+const codebuddyPullRequest = 'https://github.com/eunomia-bpf/agentsight/pull/212';
+const codebuddyQuickstart = 'https://www.codebuddy.ai/docs/cli/quickstart';
+const codebuddyCliReference = 'https://www.codebuddy.ai/docs/cli/cli-reference';
+const codebuddyInstallation = 'https://www.codebuddy.ai/docs/cli/installation';
 const tlsProductCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
 const tlsProductSource = `https://github.com/eunomia-bpf/agentsight/blob/${tlsProductCommit}`;
 const claudeMonitoring = 'https://code.claude.com/docs/en/monitoring-usage';
@@ -893,6 +901,53 @@ const pageUpgrades: Record<string, PageUpgrade> = {
     ],
   },
 
+  'integration:codebuddy-cli': {
+    lede: `Reviewed against AgentSight v1.0.34 at ${codebuddyProductCommit}, this integration covers the CodeBuddy Code CLI path that AgentSight currently implements. Native-session inspection reads CodeBuddy-owned project transcripts, while Linux record adds an independent process and system view around the running CLI. The reviewed path is the Node.js CLI path; CodeBuddy's IDE plugin and separately distributed native-binary path are outside this compatibility claim.`,
+    outcomes: [
+      'Choose native-session inspection or Linux record based on the evidence you need.',
+      'Know which local CodeBuddy files AgentSight treats as sessions and which it intentionally ignores.',
+      'Understand why the visible codebuddy command and the underlying Node process identity can differ.',
+    ],
+    sections: [
+      {
+        title: 'Use native sessions for provider context and record for host effects',
+        body: `For local session history, \`agentsight top\` reads CodeBuddy project transcripts without requiring eBPF or sudo. For a bounded Linux runtime investigation, \`sudo agentsight record -c codebuddy\` follows the running CLI process family and adds system evidence where supported. Pick the source that answers the question instead of assuming one capture mode is always stronger.`,
+      },
+      {
+        title: 'CodeBuddy sessions live under the project store',
+        body: `AgentSight v1.0.34 discovers CodeBuddy session files under \`~/.codebuddy/projects/<project>/<session-id>.jsonl\` and respects \`CODEBUDDY_CONFIG_DIR\` as the alternate home. The sibling \`~/.codebuddy/history.jsonl\` is treated as a prompt index rather than a session and is intentionally ignored, so an index is not presented as a complete conversation artifact.`,
+      },
+      {
+        title: 'The npm CLI is a Node.js shebang even when the command says codebuddy',
+        body: `AgentSight's reviewed implementation targets \`@tencent-ai/codebuddy-code\` as a Node.js shebang. The process can therefore report a Node identity even though the command line contains \`codebuddy\`. The AgentSight process-selection path accounts for that mismatch rather than assuming the user-facing command and kernel process name are identical.`,
+      },
+      {
+        title: 'Treat runtime observation as bounded evidence',
+        body: `A recorded process family can establish that AgentSight observed a process, path, network destination, or other supported runtime effect during the selected run. An absent row is not proof that an action never occurred outside the process family, interval, operating-system support, parser path, or collection boundary. Use native CodeBuddy session data for provider-specific semantics and the recorded run for independent host context.`,
+      },
+      {
+        title: 'The compatibility claim is narrower than CodeBuddy installation support',
+        body: `CodeBuddy's current documentation offers the npm package and also documents Homebrew and native installation paths, including a native-binary beta. AgentSight's v1.0.34 CodeBuddy notes specifically describe the Node.js CLI and say the IDE plugin is out of scope. Treat other installation/runtime forms as separate compatibility questions until AgentSight source or a reproducible test covers them.`,
+      },
+      {
+        title: 'Record the source version because local session data is sensitive and runtimes move',
+        body: `CodeBuddy session JSONL can contain prompts, assistant output, tool activity, and project context; AgentSight runtime records can add paths, processes, network destinations, and resource evidence. Keep raw artifacts local unless they are intentionally reviewed for sharing. For a reproducible result, record the AgentSight release/commit, CodeBuddy installation path and version, project/session boundary, and whether the observation came from native-session parsing or Linux record.`,
+      },
+    ],
+    command: [
+      'agentsight top',
+      'sudo agentsight record -c codebuddy',
+      'agentsight report serve',
+    ],
+    sources: [
+      { label: 'AgentSight v1.0.34 CodeBuddy CLI implementation notes', href: codebuddyAgents },
+      { label: 'AgentSight v1.0.32 release that introduced CodeBuddy support', href: codebuddyRelease },
+      { label: 'AgentSight PR #212 implementation and validation', href: codebuddyPullRequest },
+      { label: 'CodeBuddy Code quick start', href: codebuddyQuickstart },
+      { label: 'CodeBuddy Code CLI reference', href: codebuddyCliReference },
+      { label: 'CodeBuddy Code installation methods', href: codebuddyInstallation },
+    ],
+  },
   'integration:opencode-openclaw': {
     lede: `OpenCode and OpenClaw are grouped here because the AgentSight attachment boundary differs by deployment, not because the agents are identical. A local CLI is recorded from its command; a containerized Node service requires resolving the container to the descendant executable that actually owns TLS and the work.`,
     outcomes: [

@@ -33,7 +33,7 @@ const expectedByKind = {
   comparison: 5,
   guide: 3,
   blog: 3,
-  integration: 4,
+  integration: 5,
   landing: 5,
 };
 
@@ -41,7 +41,7 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-assert(allEntries.length === 24, `Expected 24 content pages, found ${allEntries.length}`);
+assert(allEntries.length === 25, `Expected 25 content pages, found ${allEntries.length}`);
 assert(new Set(allEntries.map((entry) => entry.title)).size === allEntries.length, 'Content titles must be unique');
 assert(new Set(allEntries.map((entry) => entry.slug)).size === allEntries.length, 'Content slugs must be unique');
 
@@ -121,6 +121,7 @@ const requiredUpgrades = [
   'integration:claude-code',
   'integration:codex',
   'integration:gemini-cli',
+  'integration:codebuddy-cli',
   'integration:opencode-openclaw',
   'landing:claude-code-observability',
   'landing:codex-observability',
@@ -181,6 +182,12 @@ assert(cursorSource.includes('recent Cursor sessions may show no token totals'),
 assert(cursorSource.includes('github.com/eunomia-bpf/agentsight/pull/149'), 'Cursor page must cite the product implementation PR');
 assert(cursorSource.includes('docs.cursor.com/en/agent/tools'), 'Cursor page must cite a Cursor primary source');
 assert([...cursorSource.matchAll(/<h2/g)].length >= 6, 'Cursor integration must remain substantive, not a thin release page');
+
+assert(publicContentSource.includes("'integration:codebuddy-cli': {"), 'CodeBuddy CLI integration must have a deep-content override');
+assert(publicContentSource.includes('85bdb152653999bb5bf24a5b13c863bf8c949581'), 'CodeBuddy CLI integration must pin the reviewed v1.0.34 product commit');
+assert(publicContentSource.includes('CODEBUDDY_CONFIG_DIR'), 'CodeBuddy CLI integration must retain the local-session override path');
+assert(publicContentSource.includes('sudo agentsight record -c codebuddy'), 'CodeBuddy CLI integration must retain the reviewed record workflow');
+assert(publicContentSource.includes('www.codebuddy.ai/docs/cli/cli-reference'), 'CodeBuddy CLI integration must cite the official CLI reference');
 
 console.log(
   `Content check passed: ${allEntries.length} generic pages, ${routes.size} HTML routes, ` +

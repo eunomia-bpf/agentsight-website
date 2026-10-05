@@ -193,8 +193,8 @@ export default function HomePage() {
         <div className="shell">
           <p>Works with the agents and runtimes you already use</p>
           <div>
-            <span>Claude Code</span><span>Codex</span><span>Gemini CLI</span><span>OpenCode</span>
-            <span>OpenClaw</span><span>Python</span><span>Node.js</span><span>Containers</span>
+            <span>Claude Code</span><span>Codex</span><span>Gemini CLI</span><span>CodeBuddy CLI</span>
+            <span>OpenCode</span><span>OpenClaw</span><span>Python</span><span>Node.js</span><span>Containers</span>
           </div>
         </div>
       </section>

@@ -16,6 +16,7 @@ const contentKinds: ContentKind[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
+  const codebuddyUpdated = new Date('2026-10-05T00:00:00Z');
   const overheadUpdated = new Date('2026-08-21T00:00:00Z');
   const repositoryReplayUpdated = new Date('2026-08-23T00:00:00Z');
   const dockerSessionsUpdated = new Date('2026-08-25T00:00:00Z');
@@ -172,7 +173,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pages.map((page) => ({
       url: `${site.url}${contentPath(page)}`,
       lastModified:
-        page.kind === 'comparison' && page.slug === 'opentelemetry'
+        page.kind === 'integration' && page.slug === 'codebuddy-cli'
+          ? codebuddyUpdated
+          : page.kind === 'comparison' && page.slug === 'opentelemetry'
           ? otelComparisonUpdated
           : page.kind === 'guide' && page.slug === 'agent-flamegraph'
             ? agentFlamegraphUpdated
