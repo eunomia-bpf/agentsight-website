@@ -534,6 +534,37 @@ export const contentPages: ContentPage[] = [
   },
   {
     kind: 'integration',
+    slug: 'codebuddy-cli',
+    title: 'AgentSight for CodeBuddy CLI',
+    description:
+      'Inspect CodeBuddy CLI sessions from local project transcripts and, on Linux, record the Node-based CLI process family without adding an SDK or proxy.',
+    eyebrow: 'CodeBuddy CLI integration',
+    lede:
+      'Use AgentSight with the CodeBuddy CLI path you already run: inspect provider-native local sessions without sudo, or record the Linux process family when you need independent runtime evidence.',
+    outcomes: [
+      'Read CodeBuddy project sessions locally.',
+      'Record the running CLI process family on Linux.',
+      'Keep native-session and system evidence boundaries explicit.',
+    ],
+    sections: [
+      {
+        title: 'Choose the evidence source that matches the question',
+        body: 'Use native local sessions for CodeBuddy transcript and session history. Use record when the question is what processes, files, network activity, and resource effects occurred while the CLI was running.',
+      },
+      {
+        title: 'Pin the runtime before treating capture as portable',
+        body: 'The reviewed AgentSight path targets the CodeBuddy Node.js CLI. CodeBuddy also documents other installation forms, so record the installation and runtime used when publishing a compatibility result.',
+      },
+    ],
+    command: ['agentsight top', 'sudo agentsight record -c codebuddy'],
+    sources: [{ label: 'AgentSight CodeBuddy CLI notes', href: agentsightAgents }],
+    related: [
+      { label: 'Trace closed-source agent CLIs', href: '/use-cases/trace-closed-source-agent-clis/' },
+      { label: 'Security and data handling', href: '/security/' },
+    ],
+  },
+  {
+    kind: 'integration',
     slug: 'opencode-openclaw',
     title: 'AgentSight for OpenCode and OpenClaw',
     description:
