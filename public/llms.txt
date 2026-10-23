@@ -3,7 +3,7 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.31
+Current release: v1.0.35
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
@@ -29,6 +29,8 @@ Hosted app: https://app.agentsight.us/
 - https://agentsight.us/blog/
 
 ## Product capabilities
+
+AgentSight v1.0.35 improves capture and HTTP attribution. Sidecar process capture is scoped by PID namespace and stream liveness; docker:// capture follows children forked by any thread, including events from nested PID namespaces. The HTTP analyzer marks truncated or oversized HTTP/1.1 messages and correlates exchanges using TLS connection and stream identity. The release also fixes live Codex token usage consistency. Observability remains dependent on supported runtimes, privileges, and capture paths.
 
 AgentSight v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.
 

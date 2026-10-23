@@ -15,8 +15,15 @@ const updates = [
     label: 'Current release',
     title: `AgentSight ${site.version}`,
     description:
-      'v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.',
+      'v1.0.35 improves system capture and HTTP analysis: sidecar process capture is scoped by PID namespace and stream liveness, Docker target capture follows children forked by any thread, nested PID-namespace events remain in scope, oversized HTTP/1.1 messages retain truncation markers, and HTTP exchanges correlate by TLS connection and stream. Live Codex token totals are also kept consistent. Exact coverage still depends on the runtime and capture path.',
     href: site.releaseUrl,
+  },
+  {
+    label: 'Earlier release',
+    title: 'AgentSight v1.0.31 — fleet UI and messaging',
+    description:
+      'v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.',
+    href: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.31',
   },
   {
     label: 'Repository skills',
