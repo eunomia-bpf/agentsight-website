@@ -1,5 +1,22 @@
 # SEO status
 
+## Current operating state — 2026-10-23
+
+- Website `main`: `6cfb2e90f8575161038a9a39f8890ff87dc56558`; last successful exact-source production publication: 2026-10-07 (Website CI `37586950703`, Publish static site `37586950698`). `site/.source-sha` matches that commit; no deployment mismatch detected.
+- **Release drift:** authoritative product `eunomia-bpf/agentsight` latest stable is **v1.0.35**, published 2026-10-23T10:22:27Z, target/source `c1574366122a90c451bca6a84713e28813ab95e2`. Public site and deployed metadata still advertise **v1.0.31**. Release facts: https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35.
+- Primary corrective candidate: `seo/agentsight-2026-10-23-release-sync`, updating `src/lib/site.ts` release metadata, with intended public acceptance of v1.0.35 on https://agentsight.us/. Until PR CI, squash merge, exact publication and public verification finish, this is **not** a production fix.
+- Latest **partial** Google family is 2026-10-12 to 2026-10-18, generated the morning of 2026-10-19. GA4: **6 organic sessions**, **0 key events**. GSC: **4 clicks**, **302 impressions**, **1.32% CTR**, and only **October 12–17** date rows. Its final boundary date is missing; no post-3-day-lag refresh exists.
+- Previous partial family 2026-10-05 to 2026-10-11: GA4 **5 organic sessions**, **0 key events**; GSC **1 click**, **218 impressions**, **0.46% CTR**, and only October 5–10. Neither period supports a finalized KPI trend; missing data must not be counted as zero.
+- Google exporter needs human-controlled Apps Script backfill/post-lag refresh. Source-native exports remain read-only in Drive. Cloudflare analytics are not configured. Public search continues to surface the canonical domain, but brand SERPs are ambiguous.
+- **48-hour substantive-content SLO missed.** Last qualifying publication: 2026-09-22T16:18:49Z, discovery evergreen refresh, PR #139/squash `673c7e4493acee6d83648b98ba1d2ea3e0fa6ed1`. Neither dependency deployments nor simple release metadata reset the deadline. Prior deadline was 2026-09-24T16:18:49Z.
+- Pinned shared SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` still equals allowed upstream main. No compatible update is pending. External recurring daily operations schedule must remain enabled.
+- Current priority: finish v1.0.35 factual release synchronization through CI/PR/deployment, then deliver one independently supported substantial evergreen refresh under the existing semantic-overlap workflow. No unsupported filler.
+
+---
+
+## Historical operating snapshot — 2026-09-23 (retained for implementation and provenance context)
+
+
 ## Current product and site state
 
 - Canonical product website: `https://agentsight.us/`.
