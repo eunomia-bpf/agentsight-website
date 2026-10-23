@@ -21,6 +21,7 @@ const sslsniffSource = `${productBase}/bpf/sslsniff.c`;
 const codexOffsets = `${productBase}/bpf/codex_offsets.h`;
 const tlsProductCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
 const tlsProductSource = `https://github.com/eunomia-bpf/agentsight/blob/${tlsProductCommit}`;
+const tlsRelease35Source = 'https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2';
 const claudeMonitoring = 'https://code.claude.com/docs/en/monitoring-usage';
 const geminiTelemetry = 'https://geminicli.com/docs/cli/telemetry/';
 const codexOtel = 'https://github.com/openai/codex/blob/646f7c0a91b8e327d263335da68ae8ef212895ce/codex-rs/otel/README.md';
@@ -44,7 +45,7 @@ const tlsTracingDeepDive: ContentPage = {
   title: 'Why AI agent TLS traffic is hard to trace',
   description:
     'A source-level guide to finding plaintext boundaries across OpenSSL, Node, Bun/BoringSSL, rustls, containers, Electron, browsers, and MCP.',
-  eyebrow: 'Systems deep dive · refreshed September 2026 · AgentSight v1.0.31',
+  eyebrow: 'Systems deep dive · refreshed 23 October 2026 · AgentSight v1.0.31 and v1.0.35',
   lede:
     'An empty TLS trace does not immediately mean that eBPF failed. Modern agent software can put plaintext in a shared library, a statically linked runtime, a stripped BoringSSL or rustls function, a helper process, a container descendant, or a protocol path that is not TLS at all. The useful diagnostic is to separate attachment, plaintext capture, and application parsing, then choose the boundary that actually exists in the running program.',
   outcomes: [
@@ -94,6 +95,26 @@ const tlsTracingDeepDive: ContentPage = {
       body: 'Two common agent-adjacent cases should not be forced through sslsniff. AgentSight’s BPF tools use browsertrace for browser-specific plaintext capture in Chrome/Chromium and Firefox, because browser packaging and TLS boundaries differ from ordinary CLI processes. Local MCP over stdio is not TLS traffic at all; the current stdiocap tool captures read/write payloads from the target process and can expand from stdin/stdout/stderr to all file descriptors. If an MCP server communicates locally through pipes, an empty TLS trace is the expected result. The protocol transport determines the capture boundary.',
     },
     {
+      title: 'A TLS connection identity needs more than a process or thread ID',
+      body: 'The v1.0.35 transport-identity work adds a useful layer between a successful uprobe and an HTTP request. Raw sslsniff records can carry the opaque transport_handle, process_start_ns, tls_library, pid, tid, and capture_seq fields. When the handle and process start are nonzero and the library is known, the HTTP analyzer maps the tuple (pid, process_start_ns, tls_library, transport_handle) to a capture-local connection_id. This guards against both PID reuse and a TLS connection moving between worker threads; tid remains evidence of which thread executed the call, not the connection key. The raw handle is an in-process pointer or equivalent opaque value, not a socket address, a stable cross-run identifier, or something a consumer should dereference. A supported CLOSE hook, ten-minute idle expiry, or bounded-state eviction retires the parser identity; close hooks are not available on every runtime. If transport_handle is 0x0, process_start_ns is unavailable, or the TLS library cannot be identified, the analyzer must fall back to weaker legacy matching. A connection_id should never be read as proof that a specific TCP connection stayed open or that no unobserved event occurred.',
+    },
+    {
+      title: 'HTTP/1.1 and HTTP/2 require different exchange keys',
+      body: 'The v1.0.35 HTTP correlation stage builds a second identity above TLS. For HTTP/1.1, it buffers requests and responses by identified connection and direction, reads the actual HTTP start line rather than guessing from SSL read or write, and pairs each final response with the oldest pending request on that connection. Informational responses do not consume the queue, and bodyless HEAD, 204, and 304 responses have distinct completion rules. For HTTP/2, multiple requests can share one TLS transport: the connection-specific stream_id, HTTP/2 frame boundaries, and directional HPACK state matter, and RST_STREAM or GOAWAY can terminate a pending exchange without a successful response. Derived events carry http_exchange_id, correlation_method (h1_connection_fifo or h2_stream), and correlation_status. A known transport and protocol match can be exact; an older trace or an incomplete transport identity still uses the (pid, tid) fallback and is labelled inferred, never silently promoted to an exact match. The exchange ID is independent of any provider-specific request or response ID, and matching two rows by timestamp alone is not equivalent.',
+    },
+    {
+      title: 'Distinguish an incomplete payload from a lost event',
+      body: 'A raw SSL operation and a reconstructed HTTP message can be incomplete for different reasons. In v1.0.35 sslsniff, one captured SSL record is bounded to 256 KiB: the raw truncated flag and bytes_lost describe the missing tail of that one operation. The HTTP/1.1 parser retains at most a 1 MiB message prefix and emits a partial HTTP event instead of silently dropping that message. Its body_truncated flag, body_truncation_reason (capture_truncated or body_limit), body_captured_bytes, and optional peer-declared content_length reveal exactly what was retained; for chunked or close-delimited responses, declared length may not exist. A truncated body is a prefix, not a valid complete JSON or compressed response, and the decompressor deliberately leaves it untouched. Some known-length HTTP/1.1 bodies can be skipped and the next message re-synchronized; ambiguous framing or damaged HTTP/2/HPACK state may instead force the connection out of correlation. A separate ringbuf_reserve_failures counter records failed ring-buffer reservations: those records were never captured at all. CAPTURE_LOSS may report the final cumulative count on graceful SIGINT/SIGTERM, but cannot be guaranteed after abrupt termination. None of these partial outcomes should be turned into a zero-token or successful completed-call claim.',
+    },
+    {
+      title: 'Audit unlinked model calls using terminal evidence, not absence',
+      body: 'When a request is reconstructed but its response is missing, the v1.0.35 materialized view can retain a pending call with correlation_status unlinked and a reason such as capture_end, timeout, eviction, truncation, or capture loss. A source=http_correlation record describes a terminal or partial parser outcome, not a model response. Explicit http_exchange_id keys do not fall back to an unrelated request on the same worker thread merely to produce a complete pair. This is a correctness tradeoff: a lower pairing rate is preferable to confidently assigning another stream response to the wrong model call. The implementation bounds active connections, HTTP stream state, and at most 16,384 pending exchanges (with a five-minute expiry), so even a functioning tracer may terminate old or oversized state. Confidence is a ranking of evidence, not a calibrated probability and not proof of loss-free capture. Large streaming SSE responses can remain unlinked because this stage materializes complete HTTP bodies rather than promising incremental SSE chunks. For investigation, report a missing completion as missing evidence and compare it with any independently available native-session timeline.',
+    },
+    {
+      title: 'A two-request diagnostic that survives concurrency',
+      body: 'Suppose a Node worker or agent sends two model requests over one TLS session. First verify that the real executable and plaintext symbol were found; verbose sslsniff can emit SSLSNIFF_READY only after its probes and ring buffer are ready. Next inspect raw transport_handle, process_start_ns, tls_library, len, buf_size, truncated, and the cumulative ringbuf_reserve_failures before interpreting any HTTP payload. Treat capture_seq as the order the tracer emitted JSONL lines, not a kernel execution order. Then look at the HTTP start lines and framing: for HTTP/1.1 check same-connection FIFO and the response completion boundary; for HTTP/2 require the correct stream_id, not just the same pid or tid. Finally compare both sides of http_exchange_id, correlation_method, correlation_status, and completion_reason in the derived evidence or LLM call row. If identity is absent, fragments are cut, a loss counter changes, or a stream terminates, mark the resulting association inferred, partial, or unlinked as appropriate. This is a diagnostic method, not a claim of a measured success rate. Captured plaintext may include authorization headers and prompts, so share only a sanitized field-level report.',
+    },
+    {
       title: 'Use a binary-first diagnostic sequence',
       body: 'For a reproducible diagnosis, first resolve the user-facing command to its real executable, including symlinks and shebangs. Inspect the binary type and dynamic dependencies. If a shared libssl with exported SSL_read/SSL_write exists, shared-library uprobes are the simplest case. If Node embeds OpenSSL, target the node executable. If a stripped Bun binary is involved, run verbose binary-path detection and require the BoringSSL fingerprint to validate. If rustls markers are present, inspect the rustls-specific path rather than OpenSSL symbols. In a container or Pod, resolve the descendant executable on the host. If the stream is captured but AgentSight still emits no model events, inspect the application protocol and parser expectations. If the communication is browser-specific or stdio, switch capture tools instead of adding more TLS probes.',
     },
@@ -132,6 +153,22 @@ const tlsTracingDeepDive: ContentPage = {
     {
       label: 'AgentSight v1.0.31 stripped rustls plaintext offset detection',
       href: `${tlsProductSource}/bpf/codex_offsets.h`,
+    },
+    {
+      label: 'AgentSight v1.0.35 TLS event identity, capture sequencing, and ring-buffer loss reporting',
+      href: `${tlsRelease35Source}/bpf/README.md`,
+    },
+    {
+      label: 'AgentSight v1.0.35 HTTP connection, stream and exchange correlation contract',
+      href: `${tlsRelease35Source}/ext/analysis/docs/http-correlation.md`,
+    },
+    {
+      label: 'AgentSight v1.0.35 SSL byte fidelity and HTTP/1.1 truncation semantics',
+      href: `${tlsRelease35Source}/docs/ssl-capture.md`,
+    },
+    {
+      label: 'AgentSight v1.0.35 HTTP parser and partial-message implementation',
+      href: `${tlsRelease35Source}/ext/analysis/src/analyzers/http_parser.rs`,
     },
     { label: 'Linux kernel uprobe tracer: path and offset attachment model', href: kernelUprobes },
     {
