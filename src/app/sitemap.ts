@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const skillEvolutionUpdated = new Date('2026-09-04T00:00:00Z');
   const progressiveFleetUpdated = new Date('2026-09-06T00:00:00Z');
   const backgroundMonitorUpdated = new Date('2026-09-08T00:00:00Z');
-  const tlsTracingUpdated = new Date('2026-09-09T00:00:00Z');
+  const tlsTracingUpdated = new Date('2026-10-23T00:00:00Z');
   const tokenReconciliationUpdated = new Date('2026-09-11T00:00:00Z');
   const otelExportUpdated = new Date('2026-09-13T00:00:00Z');
   const sessionNormalizationUpdated = new Date('2026-09-14T00:00:00Z');
