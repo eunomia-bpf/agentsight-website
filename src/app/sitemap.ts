@@ -32,6 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const tokenReconciliationUpdated = new Date('2026-09-11T00:00:00Z');
   const otelExportUpdated = new Date('2026-09-13T00:00:00Z');
   const sessionNormalizationUpdated = new Date('2026-09-14T00:00:00Z');
+  const httpCorrelationUpdated = new Date('2026-10-23T00:00:00Z');
   const otelComparisonUpdated = new Date('2026-09-15T00:00:00Z');
   const agentFlamegraphUpdated = new Date('2026-09-18T00:00:00Z');
   const ebpfAgentMonitoringUpdated = new Date('2026-09-20T00:00:00Z');
@@ -51,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? localSessionDiscoveryUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? httpCorrelationUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -160,6 +161,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-exports-opentelemetry-genai-spans/`,
       lastModified: otelExportUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/how-agentsight-correlates-http-exchanges/`,
+      lastModified: httpCorrelationUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
