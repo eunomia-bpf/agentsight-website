@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const httpCorrelationArticle = {
+  title: 'How AgentSight matches HTTP requests to responses in TLS captures',
+  description:
+    'Inspect v1.0.35 connection-scoped HTTP/1.1 and HTTP/2 exchange matching, inferred legacy evidence, truncated bodies, capture loss, and evidence limits.',
+  href: '/blog/how-agentsight-correlates-http-exchanges/',
+};
 const sessionNormalizationArticle = {
   title: 'How AgentSight normalizes local agent transcripts into one session model',
   description:
@@ -108,6 +114,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: httpCorrelationArticle.title, url: `${site.url}${httpCorrelationArticle.href}` },
       { '@type': 'WebPage', name: sessionNormalizationArticle.title, url: `${site.url}${sessionNormalizationArticle.href}` },
       { '@type': 'WebPage', name: otelExportArticle.title, url: `${site.url}${otelExportArticle.href}` },
       { '@type': 'WebPage', name: tokenReconciliationArticle.title, url: `${site.url}${tokenReconciliationArticle.href}` },
@@ -137,6 +144,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">TLS / HTTP capture internals · October 2026</p>
+            <h2><Link href={httpCorrelationArticle.href}>{httpCorrelationArticle.title}</Link></h2>
+            <p>{httpCorrelationArticle.description}</p>
+            <Link className="arrow-link" href={httpCorrelationArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Native session internals · September 2026</p>
             <h2><Link href={sessionNormalizationArticle.href}>{sessionNormalizationArticle.title}</Link></h2>
