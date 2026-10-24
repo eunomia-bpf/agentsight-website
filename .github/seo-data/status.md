@@ -1,5 +1,15 @@
 # SEO status
 
+## Cycle update — 2026-10-24 (delivery pending)
+
+- **Source and production baseline:** website `main` `f69ec71a7cb3c6fca3ccfed8a5365baad7bff304` is the metadata-only October 23 closeout. Published `site/.source-sha` remains `e2ce23144431db59a80c7bd1415fe2e2268fad15`, the last substantive article's exact published source. No production mismatch inferred. The 2026-10-24 live homepage now independently displays **v1.0.35** and product commit `c1574366122a90c451bca6a84713e28813ab95e2`, resolving the earlier homepage-version live-acceptance qualification. Direct crawler retrieval of the October 23 HTTP correlation article remains unavailable; published artifact validation is not an independent live GET.
+- **Product:** latest release v1.0.35 (2026-10-23T10:22:27Z), product `master` `c1574366...`; no new drift. Pinned SEO skill gitlink `f42128a3...` matches upstream main.
+- **Analytics:** Drive exports remain unchanged at 88 files; newest October 12–18 window was generated October 19. GA4 **6 organic sessions**, **0 key events**; GSC **4 clicks/302 impressions** over **October 12–17**, missing October 18. Previous October 5–11 snapshot is also preliminary (GA4 5 sessions; GSC 1 click/218 impressions, missing October 11). No finalized comparative trend. Google Apps Script backfill/post-finalization reruns remain the human-only blocker in `block.md`. Cloudflare analytics not configured.
+- **48-hour clock:** October 23 HTTP correlation article publication succeeded by **2026-10-23T17:32:59Z**, next deadline **2026-10-25T17:32:59Z**. An additional **source-grounded PID namespace sidecar scope** article is in preparation on `seo/agentsight-2026-10-24-pid-namespace-sidecar`; it is not yet merged or counted. New route has a distinct BPF selection/evidence decision from the Docker native-session bridge and TLS/HTTP owner pages.
+- **Pre-delivery scope:** one technical article, one Blog index card, one sitemap route plus today's report and status. `npm run verify` unavailable locally owing runner DNS; exact PR-head CI, artifact inspection, full review, squash merge, exact deployment and live acceptance are mandatory before marking delivery complete. Scheduler unchanged and recurring.
+
+---
+
 ## Current operating state — 2026-10-23
 
 - **Current website `main` rendered source:** `e2ce23144431db59a80c7bd1415fe2e2268fad15` (PR #157 squash). Exact-source Website CI `39995863156` and Publish static site `39995863085` completed **success** on 2026-10-23 (publish run completed by 17:32:59Z). Production `site/.source-sha` matches this exact squash commit. The published `site` branch HTML, Blog index, sitemap, and representative Product/Security pages were inspected against the successful PR artifact. **Direct live canonical HTTP/browser acceptance remains unresolved**: the web reader returned stale index snapshots and could not retrieve the new URL; execution-container public DNS is unavailable.
