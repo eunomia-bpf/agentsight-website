@@ -11,13 +11,13 @@ const articlePath = '/blog/how-agentsight-reconciles-token-usage/';
 export const metadata: Metadata = {
   title: 'How AgentSight reconciles overlapping token usage',
   description:
-    'A source-level guide to AgentSight v1.0.31 token accounting: DB versus native-session inputs, keyed source priority, Gemini reconciliation, grouping semantics, missing usage, and billing limits.',
+    'A source-level guide to AgentSight token accounting, adding a v1.0.35 Codex mixed-rollout study of cumulative versus per-response usage, live totals, cache attribution, and limitations.',
   alternates: { canonical: articlePath },
   openGraph: {
     type: 'article',
     title: 'How AgentSight reconciles overlapping token usage',
     description:
-      'Trace agentsight report token from raw observations to effective token rows, including keyed source precedence, Gemini network/stdout reconciliation, native-session fallback, and interpretation limits.',
+      'Trace token reconciliation and the v1.0.35 Codex mixed-rollout fix with a reproducible case matrix: stale cumulative totals, response usage, cache accounting, and evidence limits.',
     url: articlePath,
   },
 };
@@ -31,6 +31,8 @@ const sources = [
   ['AgentSight v1.0.31 agent-session normalization contract', `${productSource}/docs/agent-session.md`],
   ['AgentSight v1.0.31 agent-specific notes, including Cursor token availability', `${productSource}/docs/agents.md`],
   ['AgentSight v1.0.31 user-facing report examples', `${productSource}/README.md`],
+  ['AgentSight v1.0.35 Codex parser, reverse-tail usage selection and regression tests', 'https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/session/src/parser.rs'],
+  ['Codex cumulative-usage regression and first-party validation, PR #224', 'https://github.com/eunomia-bpf/agentsight/pull/224'],
 ] as const;
 
 const cell = { border: '1px solid #d8dee8', padding: '0.75rem', verticalAlign: 'top' as const };
@@ -44,7 +46,7 @@ export default function TokenReconciliationArticle() {
     description: metadata.description,
     url: `${site.url}${articlePath}`,
     datePublished: '2026-09-11',
-    dateModified: '2026-09-11',
+    dateModified: '2026-10-25',
     author: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
     publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
   };
@@ -59,7 +61,7 @@ export default function TokenReconciliationArticle() {
             <Link href="/blog/">Blog</Link>
             <span aria-current="page">Token reconciliation</span>
           </nav>
-          <Eyebrow>Token accounting internals · AgentSight v1.0.31 · 11 September 2026</Eyebrow>
+          <Eyebrow>Token accounting internals · v1.0.31 baseline, v1.0.35 Codex update · 25 October 2026</Eyebrow>
           <h1>How AgentSight reconciles overlapping token usage</h1>
           <p className="hero-lede">
             <code>agentsight report token</code> does not blindly sum every token-looking row that AgentSight has seen.
@@ -170,7 +172,7 @@ export default function TokenReconciliationArticle() {
             </section>
 
             <section>
-              <h2>Codex has separate cumulative-session and response-level paths</h2>
+              <h2>Codex v1.0.31 baseline: cumulative-session and response-level paths</h2>
               <p>
                 Codex session JSONL contains <code>token_count</code> events. For the native session&apos;s cumulative token
                 summary, v1.0.31 <code>codex_total_token_usage()</code> walks the transcript from the end and returns the latest
@@ -188,6 +190,124 @@ export default function TokenReconciliationArticle() {
                 <code>threads</code> rows, takes the source-reported <code>tokens_used</code>, and prefers a rollout-derived
                 cumulative usage when the rollout summary is available. That state database is a bounded discovery/index path,
                 not another token total that should be added independently to the hydrated session.
+              </p>
+            </section>
+
+
+            <section>
+              <h2>v1.0.35 update: why a live Codex token total once lagged the rollout</h2>
+              <p>
+                This field study updates the earlier v1.0.31 accounting analysis using
+                <a href="https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/session/src/parser.rs"> the v1.0.35 session parser</a>
+                and the source, regressions and first-party run evidence in
+                <a href="https://github.com/eunomia-bpf/agentsight/pull/224"> AgentSight PR #224</a>.
+                When Codex writes both legacy <code>event_msg/token_count</code> and newer
+                <code>token_usage_record</code> entries, which number should a live session show?
+                It should show the latest usable <em>cumulative thread total</em>: not the sum of all usage records,
+                and not an older legacy total merely because it was encountered first.
+              </p>
+              <p>
+                Codex 0.153+ can emit <code>token_usage_record</code> entries containing
+                <code>thread_token_usage</code> (cumulative) and <code>usage</code> (per-response or per-turn).
+                Legacy <code>event_msg/token_count</code> events may coexist in one rollout. AgentSight has a
+                forward full-session parser and a reverse-tail summary for a changing rollout. Before the correction,
+                a mixed-format regression could give the tail a stale 100-token value when the full parser reported 130.
+                This was a precedence bug, not evidence of a second 30-token purchase.
+              </p>
+              <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
+                <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '800px', fontSize: '0.92rem' }}>
+                  <thead><tr>
+                    <th style={header}>Rollout observation, in order</th>
+                    <th style={header}>Meaning</th>
+                    <th style={header}>v1.0.35 selection</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr><td style={cell}>Legacy <code>total_token_usage = 100</code></td>
+                      <td style={cell}>Older cumulative snapshot.</td>
+                      <td style={cell}>May be superseded by a newer cumulative record.</td></tr>
+                    <tr><td style={cell}>Newer <code>thread_token_usage = 130</code></td>
+                      <td style={cell}>Current thread total; its adjacent <code>usage</code> is separate.</td>
+                      <td style={cell}>Choose 130 for the cumulative native-session total.</td></tr>
+                    <tr><td style={cell}>Trailing legacy empty cumulative object and <code>last_token_usage = 30</code></td>
+                      <td style={cell}>No new usable total, only a turn-level fallback.</td>
+                      <td style={cell}>Do not overwrite 130 with 30 or zero.</td></tr>
+                    <tr><td style={cell}>Null/empty thread counter with nonempty <code>usage</code> or <code>turn_token_usage</code></td>
+                      <td style={cell}>Response/turn usage, not proven cumulative.</td>
+                      <td style={cell}>Fallback only if no stronger cumulative total exists.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                The reverse-tail helper <code>codex_total_token_usage()</code> scans JSONL backwards. It returns
+                the first valid <code>thread_token_usage</code> or legacy <code>total_token_usage</code> it finds,
+                and saves per-response/turn values as weaker fallbacks. A valid token object must have
+                <code>total_tokens &gt; 0</code>. The forward parser updates cumulative state when it sees a
+                newer valid record, but does not let response-only usage overwrite an established thread total.
+                This is a format-aware selection rule, not simply taking the maximum integer from the file.
+              </p>
+            </section>
+
+            <section>
+              <h2>A public, testable mixed-format example</h2>
+              <p>
+                The checked-in regression test builds a synthetic rollout with a legacy 100-token counter, a later
+                cumulative 130-token <code>thread_token_usage</code>, and a trailing empty total plus 30-token last-turn
+                field. Both full parsing and reverse-tail parsing must return <strong>130</strong>. The same fixture
+                proves cache accounting: a source input count of 100 includes 4 cached tokens, so AgentSight
+                normalizes the aggregate as 96 noncached input + 4 cache read + 30 output = 130 total.
+              </p>
+              <p>
+                A second test places cumulative thread records at 15 and then 30. The correct session total is 30,
+                not 45: later cumulative observations replace earlier snapshots. A third fixture keeps two
+                per-response values of 15 while the cumulative thread becomes 30. Response attribution remains
+                attached to its own response; the session total is not redefined by summing or substituting one
+                response record. Null and empty thread counters have separate fallback tests.
+              </p>
+              <pre><code>
+                cargo test --manifest-path ext/session/Cargo.toml codex_newer_record_updates_totals_after_token_count
+                {'\n'}
+                cargo test --manifest-path ext/session/Cargo.toml codex_record_response_usage_does_not_replace_thread_total
+                {'\n'}
+                cargo test --manifest-path ext/session/Cargo.toml codex_record_without_thread_total_uses_nonempty_fallback
+              </code></pre>
+              <p>
+                These are public parser tests pinned to the v1.0.35 product commit, not anonymized private user
+                transcripts. The source fixture also checks that <code>codex_total_token_usage(content)</code> agrees
+                with the full <code>parse_session_content()</code> projection. Re-run against the pinned commit and
+                inspect the exact assertions before adapting the method to a new Codex rollout format.
+              </p>
+            </section>
+
+            <section>
+              <h2>Compare live, saved and browser totals without treating them as separate meters</h2>
+              <p>
+                PR #224 documents an isolated real Codex 0.160.0 run, distinct from the synthetic fixtures.
+                Its final native rollout reported <strong>87,106 tokens</strong>: 86,904 input (including 79,616
+                cached) and 202 output. The PR author reports identical source totals in the served snapshot,
+                <code>report summary</code> and <code>report token --json</code>; the browser rounded that to 87.1k.
+                This is first-party product validation recorded by that PR, not a benchmark repeated in this article.
+              </p>
+              <p>
+                For a session you are authorized to inspect, pin the process or session identity and compare
+                <code>agentsight top --plain --once -p &lt;codex-pid&gt; --limit 20</code> with
+                <code>agentsight report summary</code> and
+                <code>agentsight report --local token --json</code> over the same native-session source.
+                Verify the cached-input breakdown as well as the total. A process summary, a recent-local-session
+                report and a SQLite-recording report can select different runs; matching model names alone do not
+                make them comparable.
+              </p>
+              <p>
+                The views agree because they can share one provider-native transcript; their agreement is useful
+                for detecting parsing/projection errors, but is not an independent provider invoice or proof of
+                transcript completeness. A rotated or partial rollout, missing usage fields, runtime incompatibility,
+                or an incomplete capture boundary can still leave a gap. No dollar amount, quota-window usage or
+                complete BPF coverage is implied by these token totals.
+              </p>
+              <p>
+                Keep three objects distinct: <strong>the running session cumulative total</strong>,
+                <strong>per-response usage</strong>, and the <strong>effective report rows</strong> after wider
+                key/Gemini reconciliation. The Codex v1.0.35 change repairs the first two across mixed formats; it
+                does not turn all network and native observations into one perfectly joined billing ledger.
               </p>
             </section>
 
