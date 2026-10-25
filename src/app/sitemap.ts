@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const progressiveFleetUpdated = new Date('2026-09-06T00:00:00Z');
   const backgroundMonitorUpdated = new Date('2026-09-08T00:00:00Z');
   const tlsTracingUpdated = new Date('2026-09-09T00:00:00Z');
-  const tokenReconciliationUpdated = new Date('2026-09-11T00:00:00Z');
+  const tokenReconciliationUpdated = new Date('2026-10-25T00:00:00Z');
   const otelExportUpdated = new Date('2026-09-13T00:00:00Z');
   const sessionNormalizationUpdated = new Date('2026-09-14T00:00:00Z');
   const httpCorrelationUpdated = new Date('2026-10-23T00:00:00Z');
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? sidecarPidnsUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? tokenReconciliationUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
