@@ -34,7 +34,7 @@ const otelExportArticle = {
 const tokenReconciliationArticle = {
   title: 'How AgentSight reconciles overlapping token usage',
   description:
-    'Trace the v1.0.31 report path from raw token observations through keyed source precedence, Gemini network/stdout reconciliation, native-session fallback, and grouping semantics.',
+    'Reconcile raw token observations, then inspect v1.0.35 Codex mixed-rollout precedence, per-response versus cumulative totals, cached input, and regression tests.',
   href: '/blog/how-agentsight-reconciles-token-usage/',
 };
 const backgroundMonitorArticle = {
@@ -176,7 +176,7 @@ export default function BlogPage() {
             <Link className="arrow-link" href={otelExportArticle.href}>Read the page</Link>
           </article>
           <article className="content-card">
-            <p className="card-label">Token accounting internals · September 2026</p>
+            <p className="card-label">Token accounting internals · refreshed October 2026</p>
             <h2><Link href={tokenReconciliationArticle.href}>{tokenReconciliationArticle.title}</Link></h2>
             <p>{tokenReconciliationArticle.description}</p>
             <Link className="arrow-link" href={tokenReconciliationArticle.href}>Read the page</Link>
