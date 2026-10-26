@@ -33,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const otelExportUpdated = new Date('2026-09-13T00:00:00Z');
   const sessionNormalizationUpdated = new Date('2026-09-14T00:00:00Z');
   const httpCorrelationUpdated = new Date('2026-10-23T00:00:00Z');
+  const fileOpenEvidenceUpdated = new Date('2026-10-26T00:00:00Z');
   const sidecarPidnsUpdated = new Date('2026-10-24T00:00:00Z');
   const otelComparisonUpdated = new Date('2026-09-15T00:00:00Z');
   const agentFlamegraphUpdated = new Date('2026-09-18T00:00:00Z');
@@ -53,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? tokenReconciliationUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? fileOpenEvidenceUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -162,6 +163,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-exports-opentelemetry-genai-spans/`,
       lastModified: otelExportUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/what-agentsight-file-open-events-prove/`,
+      lastModified: fileOpenEvidenceUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
