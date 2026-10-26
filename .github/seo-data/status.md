@@ -1,5 +1,15 @@
 # SEO status
 
+## Current operating state — 2026-10-26 (new preliminary GA4/GSC; v1.0.35 file-open methods article proposed)
+
+- **Authoritative state:** website baseline main `64b924ab4fca5aa456c51e78ff49ae1e5e8c5b5e`; deployed `site/.source-sha` is last rendered squash `52eb7ab89978420c38735653efa2976c2a021d80` from successful October 25 publication. The main/source difference is a metadata-only closeout; no incident proved. Product master and release remain v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`. Public homepage v1.0.35 verified by web reader; full independent live article acceptance remains qualified by older/cached reader results.
+- **New analytics source:** the configured Drive folder contains **96 files** and new Oct19–25 family generated Oct26 16:04Z. Preliminary GA4 **12 organic sessions, 0 key events**. GSC date rows **Oct19–24 only** (missing Oct25): **2 clicks/246 impressions, 0.813% CTR**. GSC pages: **28 URLs, 2 clicks/263 impressions**; source-native date/page impression totals do not match, keep dimensions separate. Earlier Oct12–18 family (GA4 6 sessions, GSC 4/302 over only Oct12–17) and Oct5–11 remain unfinalized, without a post-three-day-lag rerun. **No finalized traffic trend**. Same human-only external Apps Script regeneration/backfill blocker in `block.md`; Cloudflare analytics not configured.
+- **Content SLO:** last qualifying rendered publication October 25 16:33:22Z, deadline October 27 16:33:22Z (09:33:22 PDT). A normal next-morning cycle would leave less than an hour to publish; a source-grounded distinct v1.0.35 `FILE_OPEN` semantics article was selected today. Scope: `/blog/what-agentsight-file-open-events-prove/`, Blog index and sitemap. Original eight-case semantics matrix and reproducibility procedure; product primary sources at pinned v1.0.35 commit. Branch `seo/agentsight-2026-10-26-file-open-evidence` is **pre-delivery**; do not count publication before exact-head CI, clean final review, squash merge and successful exact-source deployment.
+- **Safety/validation:** local checkout and `npm run verify` unavailable due GitHub DNS, so CI must provide the authoritative verify gate. Same strict PR/site publication/metadata closeout sequence. Pinned shared SEO submodule unchanged at upstream main. External daily operations schedule, existing protected control plane and runtime analytics untouched.
+
+---
+
+
 ## Current operating state — 2026-10-25 (Codex token-accounting evergreen refresh published)
 
 - **Product and production baseline:** AgentSight latest stable **v1.0.35** at product `master` `c1574366122a90c451bca6a84713e28813ab95e2` (2026-10-23). Website `main` and deployed `site/.source-sha` now match October 25 rendered squash `52eb7ab89978420c38735653efa2976c2a021d80`, successful in exact Publish static site run `40212178081`. No product/release drift. Public homepage reads v1.0.35; direct live article acceptance remains qualified because the web reader returns a cached older snapshot. No production incident is inferred.
