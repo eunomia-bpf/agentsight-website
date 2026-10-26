@@ -1,5 +1,16 @@
 # SEO status
 
+## Completed publication — 2026-10-26 (v1.0.35 FILE_OPEN evidence reference)
+
+- **Substantive rendered delivery completed:** `/blog/what-agentsight-file-open-events-prove/`, new eight-case source-pinned Linux file-open evidence and limitation analysis, via non-draft [PR #163](https://github.com/eunomia-bpf/agentsight-website/pull/163). Original PR head `783d32f84ff80ffa6254ffc17ccd3e7854aef3c4`; successful exact-head Website CI `40358129042` (including `npm run verify`), GitGuardian and Cloudflare preview; mandatory after-CI complete self-review clean, zero unresolved review threads. Static artifact `12667646597` SHA-256 `dd77483380d05e631384f6b60c146e1700df4f42f0c783c95c377ec847e1e777` inspected: article one H1/canonical, version pin and evidence matrix, Blog index and sitemap exposure, representative unaffected Product/Security/HTTP pages intact.
+- **Exact production:** PR #163 squash `d3d80f8a2e9b272c042e7ab3c5213ececdee18aa`. Push-triggered main CI `40358573905` and exact-source Publish static site `40358571461` succeeded by **2026-10-26T16:23:38Z (09:23:38 PDT)**; deployed `site/.source-sha` matches. Published article HTML, Blog hub/schema, and sitemap present on `site`. Direct live canonical fetch **unverified** because reader cannot retrieve new article and shows stale older Blog snapshot; not sufficient to infer production incident or CDN success. Local checkout unavailable due operator DNS.
+- **48-hour SLO clock reset:** successful qualifying article publication October 26 16:23:38Z; next deadline **2026-10-28T16:23:38Z (09:23:38 PDT)**. The closeout PR updating operating records is metadata-only and does not reset the clock.
+- **Fresh partial Google evidence:** Oct19–25 GA4 **12 organic sessions/0 key events**; GSC Oct19–24 actual date rows **2 clicks/246 impressions**, missing Oct25; GSC page aggregation **2 clicks/263 impressions**, differing dimension totals. New exports generated next-morning Oct26, therefore not finalized. Previous Oct12–18/Oct5–11 still lack post-three-day-lag regenerations. Human-only external Apps Script backfill/finalization blocker remains in `block.md`; no finalized weekly growth claim. Cloudflare traffic analytics not configured.
+- **Safe closeout:** `seo/agentsight-2026-10-26-file-open-closeout` changes only today's public-safe daily report and this `status.md`; requires its own real non-draft PR, exact-head CI, complete after-CI review, squash merge. Shared SEO submodule, protected control plane, analytics runtime, and recurring external schedule remain unchanged.
+
+---
+
+
 ## Current operating state — 2026-10-26 (new preliminary GA4/GSC; v1.0.35 file-open methods article proposed)
 
 - **Authoritative state:** website baseline main `64b924ab4fca5aa456c51e78ff49ae1e5e8c5b5e`; deployed `site/.source-sha` is last rendered squash `52eb7ab89978420c38735653efa2976c2a021d80` from successful October 25 publication. The main/source difference is a metadata-only closeout; no incident proved. Product master and release remain v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`. Public homepage v1.0.35 verified by web reader; full independent live article acceptance remains qualified by older/cached reader results.
