@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const dockerTlsDiscoveryArticle = {
+  title: 'How AgentSight finds TLS attach targets in threaded Docker process trees',
+  description:
+    'Analyze v1.0.35 worker-thread fork discovery, Docker init-to-SSL executable selection, first-match limitations, and regression tests.',
+  href: '/blog/docker-agent-tls-process-discovery/',
+};
 const fileOpenEvidenceArticle = {
   title: 'What AgentSight FILE_OPEN events prove—and what they miss',
   description:
@@ -126,6 +132,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: dockerTlsDiscoveryArticle.title, url: site.url + dockerTlsDiscoveryArticle.href },
       { '@type': 'WebPage', name: fileOpenEvidenceArticle.title, url: `${site.url}${fileOpenEvidenceArticle.href}` },
       { '@type': 'WebPage', name: pidNamespaceSidecarArticle.title, url: `${site.url}${pidNamespaceSidecarArticle.href}` },
       { '@type': 'WebPage', name: httpCorrelationArticle.title, url: `${site.url}${httpCorrelationArticle.href}` },
@@ -158,6 +165,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Container TLS discovery · October 2026</p>
+            <h2><Link href={dockerTlsDiscoveryArticle.href}>{dockerTlsDiscoveryArticle.title}</Link></h2>
+            <p>{dockerTlsDiscoveryArticle.description}</p>
+            <Link className="arrow-link" href={dockerTlsDiscoveryArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Linux file-open evidence · October 2026</p>
             <h2><Link href={fileOpenEvidenceArticle.href}>{fileOpenEvidenceArticle.title}</Link></h2>
