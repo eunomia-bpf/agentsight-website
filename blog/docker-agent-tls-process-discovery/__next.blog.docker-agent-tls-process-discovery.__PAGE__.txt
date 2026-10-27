@@ -1,0 +1,221 @@
+1:"$Sreact.fragment"
+2:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+9:X
+e:X
+e:C
+0:{"buildId":"agentsight-cae341281d1f1aa89c2662d6","data":[{"rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3","$L4","$L5"],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":"$e"}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/0axdrs6tow-4n.js"],""]
+1d:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+1e:"$Sreact.suspense"
+20:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+21:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+22:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+23:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+24:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L13",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L13","/product/",{"href":"/product/","children":"Product"}],["$","$L13","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L13","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L13","/product/",{"href":"/product/","children":"Product"}],["$","$L13","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L13","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+4:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"How AgentSight finds TLS attach targets in threaded Docker process trees\",\"description\":\"Inspect v1.0.35 Docker TLS target discovery: worker-thread forks, /proc children traversal, SSL binary selection, regression tests, and failure boundaries.\",\"url\":\"https://agentsight.us/blog/docker-agent-tls-process-discovery/\",\"datePublished\":\"2026-10-27\",\"dateModified\":\"2026-10-27\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L13",null,{"href":"/","children":"Home"}],["$","$L13",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"Container TLS target discovery"}]]}],["$","p",null,{"className":"eyebrow","children":"Container process tracing · AgentSight v1.0.35 · 27 October 2026"}],["$","h1",null,{"children":"How AgentSight finds TLS attach targets in threaded Docker process trees"}],["$","p",null,{"className":"hero-lede","children":["A Docker container's init PID is not necessarily the executable carrying its agent's TLS stack. AgentSight resolves a host process from the container, traverses descendants and chooses an SSL attach path. Since v1.0.35, that traversal includes children forked by ",["$","em",null,{"children":"any"}]," thread, not just the process leader. The fix matters when multithreaded runtimes launch an agent from worker threads."]}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"Direct answer: container identity is not TLS executable identity"}],["$","p",null,{"children":["For ",["$","code",null,{"children":"--binary-path docker://name"}],", AgentSight first runs ",["$","code",null,{"children":"docker inspect"}]," to resolve the container's host init PID. It searches that process and its descendants for an executable embedding SSL or a loaded ",["$","code",null,{"children":"libssl.so"}],", then returns an attach path for the TLS uprobe. This is necessary for a layout such as ",["$","code",null,{"children":"tini"}]," launching ",["$","code",null,{"children":"node"}],": the wrapper itself does not contain the relevant SSL code."]}],["$","p",null,{"children":["The v1.0.35 fix in"," ",["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/pull/246","children":"product PR #246"}]," ","addresses a less obvious case. On Linux,",["$","code",null,{"children":" /proc/<pid>/task/<tid>/children"}]," describes children forked by one particular thread. Reading only",["$","code",null,{"children":" /proc/<pid>/task/<pid>/children"}]," can miss a worker's child even when it belongs to the same process. AgentSight now checks every thread's children file for each visited process."]}],["$","p",null,{"children":["This is a source-level study of released AgentSight v1.0.35 at product commit ",["$","code",null,{"children":"c1574366122a90c451bca6a84713e28813ab95e2"}],", reviewed on 27 October 2026. It does not claim a new container experiment, live TLS capture, or measured coverage from this article's author."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"From Docker reference to an SSL attach target"}],["$","p",null,{"children":["The resolver accepts ",["$","code",null,{"children":"docker://name"}],",",["$","code",null,{"children":"docker:name"}],", and container IDs. Invalid empty and slash-separated Docker references fail validation. The Docker lookup uses ","$L14"," to read","$L15",", rejecting PID zero as a stopped container. A running tree without any candidate produces a different no-SSL-target error."]}],"$L16","$L17"]}],"$L18","$L19","$L1a","$L1b","$L1c"]}]}]}]]}]
+5:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L13",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L13",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L13",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L13",null,{"href":"/architecture/","children":"Architecture"}],["$","$L13",null,{"href":"/integrations/","children":"Integrations"}],["$","$L13",null,{"href":"/compare/","children":"Compare"}],["$","$L13",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L13",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L13",null,{"href":"/releases/","children":"Releases"}],["$","$L13",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L13",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.35"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/0axdrs6tow-4n.js","async":true}]
+7:["$","$L1d",null,{"children":["$","$1e",null,{"name":"Next.MetadataOutlet","children":"$@1f"}]}]
+a:["$","$1","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$L21",null,{"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"How AgentSight finds TLS attach targets in threaded Docker process trees | AgentSight"}],["$","meta","1",{"name":"description","content":"Inspect v1.0.35 Docker TLS target discovery: worker-thread forks, /proc children traversal, SSL binary selection, regression tests, and failure boundaries."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/docker-agent-tls-process-discovery/"}],["$","meta","13",{"property":"og:title","content":"How AgentSight finds TLS attach targets in threaded Docker process trees"}],["$","meta","14",{"property":"og:description","content":"Why the container init PID is not always the TLS uprobe target, and how AgentSight finds children launched by worker threads."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/docker-agent-tls-process-discovery/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L22","22",{}]]}]}]}],null]}]
+c:["$","$1","c",{"children":[null,["$","$L23",null,{"parallelRouterKey":"children","template":["$","$L24",null,{}]}]]}]
+f:["$","$1","c",{"children":[null,["$","$L23",null,{"parallelRouterKey":"children","template":["$","$L24",null,{}]}]]}]
+12:true
+14:["$","code",null,{"children":"docker inspect --format"}]
+15:["$","code",null,{"children":" .State.Pid"}]
+16:["$","p",null,{"children":["For each queued PID, ",["$","code",null,{"children":"find_ssl_target_in_tree"}],"first checks ",["$","code",null,{"children":"/proc/<pid>/exe"}]," for embedded SSL markers. If none match, it checks",["$","code",null,{"children":" /proc/<pid>/maps"}]," for a mapped",["$","code",null,{"children":" libssl.so"}]," and resolves the library path under",["$","code",null,{"children":" /proc/<pid>/root"}],". If neither matches, it appends the child PIDs. A ",["$","code",null,{"children":"VecDeque"}]," maintains the breadth-first walk and a ",["$","code",null,{"children":"HashSet"}]," prevents revisiting a PID."]}]
+17:["$","p",null,{"children":["The new helper ",["$","code",null,{"children":"child_pids"}]," enumerates numeric thread IDs under ",["$","code",null,{"children":"/proc/<pid>/task"}],", sorts the main thread first, then reads each thread's children file. Unreadable entries are skipped. Main-thread-first ordering preserves the former single-threaded preference, but searching all threads prevents the leader-only omission. The output is the ",["$","em",null,{"children":"first"}]," SSL candidate found, not a comprehensive list of every TLS-using child."]}]
+18:["$","section",null,{"children":[["$","h2",null,{"children":"Eight cases that change an empty-capture diagnosis"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"810px","fontSize":"0.9rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Process or container layout"}],["$","th",null,{"style":"$18:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"v1.0.35 resolver behavior"}],["$","th",null,{"style":"$18:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Safe inference"}]]}]}],["$","tbody",null,{"children":[["$","tr","Container init embeds a detectable SSL implementation",{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":"Container init embeds a detectable SSL implementation"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The breadth-first walk checks the init PID before descendants."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A matching init binary is selected; this does not prove model traffic was captured."}]]}],["$","tr","Single-threaded tini-style init launches Node",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Single-threaded tini-style init launches Node"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The main-thread children list leads the resolver to Node."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Docker init identity and TLS executable identity differ."}]]}],["$","tr","Worker thread launches the agent, not the leader",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Worker thread launches the agent, not the leader"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"v1.0.35 reads every /proc/<pid>/task/<tid>/children file."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Leader-only traversal can falsely report no agent: the PR #246 regression."}]]}],["$","tr","An SSL-bearing process is a grandchild",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"An SSL-bearing process is a grandchild"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The queue visits successive descendant levels, breadth-first."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"This is recursive process discovery, not one-hop lookup."}]]}],["$","tr","Process maps dynamically linked libssl.so",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Process maps dynamically linked libssl.so"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"After the embedded-SSL check, /proc/<pid>/maps supplies a library target."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Dynamic-library and executable probes have distinct attach paths."}]]}],["$","tr","Several descendants contain candidate TLS targets",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Several descendants contain candidate TLS targets"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The resolver returns the first qualifying candidate in search order."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"It does not attach to every possible SSL-using descendant."}]]}],["$","tr","Child exits, task cannot be read, or child starts later",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Child exits, task cannot be read, or child starts later"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Unreadable children files are skipped and new children are not awaited."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"No target found is not proof the container never ran a TLS agent."}]]}],["$","tr","Container stopped or no supported SSL target exists",{"children":[["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Container stopped or no supported SSL target exists"}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"PID zero and running-tree-without-target produce different errors."}],["$","td",null,{"style":"$18:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Diagnose lifecycle, discovery, probe setup, and decoding separately."}]]}]]}]]}]}],["$","p",null,{"children":"These are implementation-derived cases, not measured success rates. A resolved target alone does not prove that sslsniff attached to correct symbols or offsets, that the runtime used that particular TLS library, or that HTTP/LLM parsing succeeded."}]]}]
+19:["$","section",null,{"children":[["$","h2",null,{"children":"What the worker-thread regression tests actually establish"}],["$","p",null,{"children":["Before product PR #246, the walker only read the leader's children list. The patch adds three tests: a synthetic process whose main thread forked nothing while worker threads forked children; an ordering and missing-file fixture; and a live local Linux test that spawns ",["$","code",null,{"children":"sleep"}]," from a worker thread. The last test verifies that leader-only enumeration misses the child while the all-thread helper finds it. It skips if the kernel lacks the required proc children interface."]}],["$","p",null,{"children":["These are first-party tests for ",["$","em",null,{"children":"process discovery"}],". They do not assert an end-to-end Docker/OpenClaw TLS transaction, HTTP/2 decoding, or a completed model request. The change does not install a continuous process watcher, alter Docker's container API, or modify the subsequent TLS parser. A probe failure after selecting the correct PID is a separate issue."]}]]}]
+1a:["$","section",null,{"children":[["$","h2",null,{"children":"A bounded, read-only check on your own Linux host"}],["$","p",null,{"children":"With authorization to inspect a disposable container, compare the container init leader's children against the children listed by all of its threads. This diagnostic illustrates one traversal level, not AgentSight's full recursive search."}],["$","pre",null,{"children":["$","code",null,{"children":"# Run on an authorized Linux Docker host\ninit_pid=$(docker inspect --format '{{.State.Pid}}' openclaw)\nprintf 'init host PID: %s\\n' \"$init_pid\"\nprintf 'leader children: '\ncat \"/proc/$init_pid/task/$init_pid/children\" 2>/dev/null || true\nfor task in \"/proc/$init_pid\"/task/*; do\n  [ -d \"$task\" ] || continue\n  printf 'TID %s children: ' \"$(basename \"$task\")\"\n  cat \"$task/children\" 2>/dev/null || true\n  printf '\\n'\ndone"}]}],["$","p",null,{"children":["Replace ",["$","code",null,{"children":"openclaw"}]," with a container you control. A child found under a worker thread but absent from the leader list reproduces the old discovery blind spot. Repeat while the agent is active: tasks may start or exit between ",["$","code",null,{"children":"/proc"}],"reads, and access permissions can hide entries. No sample output is invented or presented as a run performed here."]}],["$","p",null,{"children":["For end-to-end recording, the pinned product README documents",["$","code",null,{"children":" sudo agentsight record -c node --binary-path docker://openclaw"}],". Check the resolved host PID and attach path before investigating decrypted traffic. Installation and detailed flags belong to the ",["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"canonical AgentSight documentation"}],"."]}]]}]
+1b:["$","section",null,{"children":[["$","h2",null,{"children":"Limits and boundaries that matter in a real audit"}],["$","p",null,{"children":"This discovery is a snapshot of the process tree. A child that starts later, exits, or has an unreadable task file can be missed. A multithreaded container may also have several possible SSL executables, while the resolver selects only its first match. Docker CLI availability, kernel permissions and supported TLS implementations determine whether attachment is possible."}],["$","p",null,{"children":["Process ",["$","em",null,{"children":"selection"}]," is different from process-event",["$","em",null,{"children":" scope"}],". The"," ",["$","$L13",null,{"href":"/blog/pid-namespace-scoping-for-agent-sidecars/","children":"PID namespace article"}]," ","explains scope filtering, while the"," ",["$","$L13",null,{"href":"/blog/observe-ai-agent-sessions-in-docker/","children":"Docker native-session article"}]," ","describes a separate container JSONL bridge without relying on the same TLS probe discovery. If an attach succeeded but paired HTTP requests are missing, consult the"," ",["$","$L13",null,{"href":"/blog/how-agentsight-correlates-http-exchanges/","children":"HTTP correlation reference"}],"."]}],["$","p",null,{"children":["Root-level process inspection and eBPF permissions remain sensitive; a ",["$","code",null,{"children":"docker://"}]," reference is not a security isolation mechanism. Recorded runs may contain prompts, responses, file paths, headers and network targets. Keep raw captures out of public issues and search-facing pages."]}]]}]
+1c:["$","section",null,{"children":[["$","h2",null,{"children":"Primary references and validation scope"}],["$","p",null,{"children":"All implementation claims are pinned to v1.0.35 and the merged all-thread traversal patch. This article introduces an eight-case interpretation matrix and a read-only diagnostic but does not claim to have executed that diagnostic or obtained new performance, security or compatibility measurements."}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/agentsight-capture/src/binary_resolver.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/agentsight-capture/src/binary_resolver.rs","children":"AgentSight v1.0.35 binary resolver and regression tests"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/pull/246",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/pull/246","children":"PR #246: all-thread children traversal and test evidence"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/experiment/openclaw.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/experiment/openclaw.md","children":"AgentSight OpenClaw Docker target-discovery example"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/agents.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/agents.md","children":"AgentSight supported-agent command forms"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/docker.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/docker.md","children":"AgentSight Docker privileges and host process requirements"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35","children":"AgentSight v1.0.35 release"}]}]]}]]}]
+1f:null
+9:300
+9:C
+11:0
+b:"$undefined"
+d:"$undefined"
+10:"$undefined"
+8:"$undefined"
