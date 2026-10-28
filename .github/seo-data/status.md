@@ -1,5 +1,17 @@
 # SEO status
 
+## Current cycle — 2026-10-28 (data-only checks; no rendered change justified)
+
+- **Source and deployment:** website `main` baseline `fea7e5a7e2d4edb7134bd27340cf64368d993f66`; product `master` `c1574366122a90c451bca6a84713e28813ab95e2` and release **v1.0.35** unchanged. October 27 qualifying Docker TLS article PR #165 deployed from `863aa9a81d4699ce855f33aa11850cc6ebfcfe3a`, Publish static site `40547349049` success at **2026-10-27T17:06:46Z**. October 27 closeout `main` passed CI and publication; `site/.source-sha` identifies the last rendered commit, and generated article/Blog/sitemap exist. Public homepage reports v1.0.35; independent web reader still cannot fetch newest direct article and gives cached Blog, so live acceptance is qualified and **no production incident is proven**.
+- **Content clock:** last substantive exact publication 2026-10-27 **10:06:46 PDT**; next deadline **2026-10-29 10:06:46 PDT**. Waiting for the next approximately 09:00 PDT run leaves only ~67 minutes to publish. Next cycle should prioritize an independently supported distinct technical publication without filler. A metadata-only daily update does not reset the clock.
+- **Google evidence unchanged:** configured unique Drive folder still has **96 files**, newest October 19–25 family last modified October 26 at 16:04Z (before 3-day lag). GA4 **12 organic sessions/0 key events**; GSC dates Oct19–24 **2 clicks/246 impressions**, missing Oct25; GSC pages **2 clicks/263 impressions**, 28 pages. The previously recorded public-safe hashes and file timestamps are unchanged; source data re-read. No finalized comparable weekly traffic trend. Existing external Apps Script refresh/backfill **human-only blocker** remains; `block.md` unchanged. Cloudflare traffic data not configured.
+- **Crawlability and analytics:** baseline public index/brand queries show existing site and product documentation; no independently verified new backlink. `src/app/layout.tsx` and deployed homepage still include path-only GA4, but browser network transmission and fresh live article fetch remain unverified. No actionable production/factual/analytics defect identified.
+- **Shared skills:** website gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches allowed `AutoArchive/seo-skill/main`, no update. `site.md` historical pin field still says `e7338af...` (protected metadata; actual gitlink is the effective pinned version). No control-plane edits.
+- **Decision/delivery:** no rendered change on October 28; data/status-only PR from `seo/agentsight-2026-10-28-daily-evidence` preserves current website. Full detail in `.github/seo-data/daily/2026-10-28.md`. Local checkout/`npm run verify` unavailable due DNS; require ordinary exact-head Website CI, review, and squash merge. No external schedule changes.
+
+---
+
+
 ## Current cycle — 2026-10-27 (substantive Docker TLS discovery publication completed)
 
 - **Authoritative versions:** website main article squash `863aa9a81d4699ce855f33aa11850cc6ebfcfe3a`, product master latest stable v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`. Public homepage still v1.0.35; no product-release drift. Shared SEO submodule pinned commit matches upstream main.
