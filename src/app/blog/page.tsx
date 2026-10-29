@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const compressedResponseArticle = {
+  title: 'Why a captured HTTP response can still look compressed in AgentSight',
+  description:
+    'Inspect v1.0.35 gzip, deflate, Brotli and Zstandard decoding, incomplete-body safeguards, exact byte semantics and SSE analyzer ordering.',
+  href: '/blog/why-agentsight-compressed-http-responses-stay-encoded/',
+};
 const dockerTlsDiscoveryArticle = {
   title: 'How AgentSight finds TLS attach targets in threaded Docker process trees',
   description:
@@ -132,6 +138,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: compressedResponseArticle.title, url: site.url + compressedResponseArticle.href },
       { '@type': 'WebPage', name: dockerTlsDiscoveryArticle.title, url: site.url + dockerTlsDiscoveryArticle.href },
       { '@type': 'WebPage', name: fileOpenEvidenceArticle.title, url: `${site.url}${fileOpenEvidenceArticle.href}` },
       { '@type': 'WebPage', name: pidNamespaceSidecarArticle.title, url: `${site.url}${pidNamespaceSidecarArticle.href}` },
@@ -165,6 +172,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Compressed HTTP evidence · October 2026</p>
+            <h2><Link href={compressedResponseArticle.href}>{compressedResponseArticle.title}</Link></h2>
+            <p>{compressedResponseArticle.description}</p>
+            <Link className="arrow-link" href={compressedResponseArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Container TLS discovery · October 2026</p>
             <h2><Link href={dockerTlsDiscoveryArticle.href}>{dockerTlsDiscoveryArticle.title}</Link></h2>
