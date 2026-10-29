@@ -79,7 +79,7 @@ const cell = { border: '1px solid #d8dee8', padding: '0.75rem', verticalAlign: '
 const header = { ...cell, background: '#f4f7fa', fontWeight: 700 };
 
 const references = [
-  ['HTTPDecompressor implementation and eight focused unit tests', sourceRoot + '/ext/analysis/src/analyzers/http_decompressor.rs'],
+  ['HTTPDecompressor implementation and focused unit tests', sourceRoot + '/ext/analysis/src/analyzers/http_decompressor.rs'],
   ['Production analyzer ordering', sourceRoot + '/collector/src/cmd_trace.rs'],
   ['HTTP parser limits and truncation state', sourceRoot + '/ext/analysis/src/analyzers/http_parser.rs'],
   ['TLS plaintext byte fidelity and loss contract', sourceRoot + '/docs/ssl-capture.md'],
