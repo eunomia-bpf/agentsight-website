@@ -1,0 +1,405 @@
+1:"$Sreact.fragment"
+2:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+f:I[68027,["/_next/static/chunks/1z6x88ihszho0.js"],"default",1]
+:HL["/_next/static/chunks/3qsftj3dl-hsh.css","style"]
+4:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+d:X
+0:{"P":null,"c":["","blog","why-agentsight-compressed-http-responses-stay-encoded",""],"q":"","i":false,"f":[[["",{"children":["blog",{"children":["why-agentsight-compressed-http-responses-stay-encoded",{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3qsftj3dl-hsh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1z6x88ihszho0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","style",null,{"children":"$4"}],"$L5","$L6","$L7"],[]],"forbidden":"$undefined","unauthorized":"$undefined"}],"$L8","$L9"]}]}]]}],{"children":["$La",{"children":["$Lb",{"children":["$Lc",{},null,false,null]},null,false,"$d"]},null,false,"$d"]},null,false,null],"$Le",false]],"m":"$undefined","G":["$f",["$L10"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"agentsight-fcce228e7aa84d4b0945edcb"}
+11:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/0axdrs6tow-4n.js"],""]
+12:I[79520,["/_next/static/chunks/1z6x88ihszho0.js"],""]
+19:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+1b:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+1c:"$Sreact.suspense"
+5:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+6:["$","main",null,{"children":["$","section",null,{"className":"page-hero compact-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","p",null,{"className":"eyebrow","children":"404"}],["$","h1",null,{"children":"This profile path does not exist."}],["$","p",null,{"className":"hero-lede","children":"Return to the product overview or browse the current guides and use cases."}],["$","div",null,{"className":"hero-actions","children":[["$","$L11",null,{"className":"button button-accent","href":"/","children":"AgentSight home"}],["$","$L11",null,{"className":"button button-outline","href":"/guides/","children":"Browse guides"}]]}]]}]}]}]
+7:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L11",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L11",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L11",null,{"href":"/architecture/","children":"Architecture"}],["$","$L11",null,{"href":"/integrations/","children":"Integrations"}],["$","$L11",null,{"href":"/compare/","children":"Compare"}],["$","$L11",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L11",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L11",null,{"href":"/releases/","children":"Releases"}],["$","$L11",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L11",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.35"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+8:["$","$L12",null,{"src":"https://www.googletagmanager.com/gtag/js?id=G-VVRNSCMWBX","strategy":"afterInteractive"}]
+9:["$","$L12",null,{"id":"google-analytics","strategy":"afterInteractive","dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){window.dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-VVRNSCMWBX', {\n                page_location: window.location.origin + window.location.pathname,\n                page_path: window.location.pathname,\n                page_title: document.title,\n                allow_google_signals: false,\n                allow_ad_personalization_signals: false\n              });\n            "}}]
+a:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+b:["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+13:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+c:["$","$1","c",{"children":[[["$","style",null,{"children":"$13"}],"$L14","$L15","$L16"],["$L17"],"$L18"]}]
+e:["$","$1","h",{"children":[null,["$","$L19",null,{"children":"$L1a"}],["$","div",null,{"hidden":true,"children":["$","$L1b",null,{"children":["$","$1c",null,{"name":"Next.Metadata","children":"$L1d"}]}]}],null]}]
+10:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3qsftj3dl-hsh.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+26:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+d:C
+14:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L11","/product/",{"href":"/product/","children":"Product"}],["$","$L11","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L11","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+15:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"Why a captured HTTP response can still look compressed in AgentSight\",\"description\":\"Inspect v1.0.35 gzip, deflate, Brotli and Zstandard decoding, truncated-response safeguards, byte fidelity, SSE ordering, and a source-test diagnostic.\",\"url\":\"https://agentsight.us/blog/why-agentsight-compressed-http-responses-stay-encoded/\",\"datePublished\":\"2026-10-29\",\"dateModified\":\"2026-10-29\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L11",null,{"href":"/","children":"Home"}],["$","$L11",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"Compressed HTTP evidence"}]]}],["$","p",null,{"className":"eyebrow","children":"HTTP decoding limits · AgentSight v1.0.35 · 29 October 2026"}],["$","h1",null,{"children":"Why a captured HTTP response can still look compressed in AgentSight"}],["$","p",null,{"className":"hero-lede","children":"TLS plaintext is not necessarily readable model text. An HTTP response may still carry gzip, deflate, Brotli or Zstandard compression, and the captured bytes may be incomplete. AgentSight has a dedicated response decompressor, but it deliberately preserves truncated or undecodable events. An encoded body is therefore a debugging signal—not proof that the agent made no model call."}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"Direct answer: separate capture, HTTP parsing, decompression and SSE interpretation"}],["$","p",null,{"children":["In the released ",["$","code",null,{"children":"v1.0.35"}]," collector, ",["$","code",null,{"children":"add_http_analyzers"}],"installs an identity-aware SSE pass, then ",["$","code",null,{"children":"HTTPParser"}],",",["$","code",null,{"children":"HTTPDecompressor"}],", a second SSE pass, optional HTTP filters and authorization-header removal. The decompressor only modifies",["$","code",null,{"children":" source=\"http_parser\""}]," events whose",["$","code",null,{"children":" message_type=\"response\""}],". It neither decrypts TLS nor reconstructs missing transport bytes."]}],["$","p",null,{"children":["This is a source-level analysis pinned to product commit"," ",["$","code",null,{"children":"c1574366122a90c451bca6a84713e28813ab95e2"}],", reviewed 29 October 2026. It synthesizes first-party parser and decompressor tests; it does not claim that a new network experiment was performed for this article."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"The codec matrix: exactly what is recognized"}],["$","p",null,{"children":["The ",["$","code",null,{"children":"Content-Encoding"}]," header is compared case-insensitively. The decoder normalizes its first comma-delimited value to lowercase, accepting",["$","code",null,{"children":" gzip"}],", ",["$","code",null,{"children":"x-gzip"}],", ",["$","code",null,{"children":"deflate"}],",",["$","code",null,{"children":" br"}],", ",["$","code",null,{"children":"brotli"}],", ",["$","code",null,{"children":"zstd"}]," and",["$","code",null,{"children":" zstandard"}],". The source tests exercise gzip, both deflate wrappers, Brotli and Zstandard with constructed compressed bodies. An unrecognized or absent encoding leaves the event untouched."]}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":"$L1e"}],"$L1f"]}],"$L20","$L21","$L22","$L23","$L24","$L25"]}]}]}]]}]
+16:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L11",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L11",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L11",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L11",null,{"href":"/architecture/","children":"Architecture"}],["$","$L11",null,{"href":"/integrations/","children":"Integrations"}],["$","$L11",null,{"href":"/compare/","children":"Compare"}],["$","$L11",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L11",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L11",null,{"href":"/releases/","children":"Releases"}],["$","$L11",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L11",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.35"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+17:["$","script","script-0",{"src":"/_next/static/chunks/0axdrs6tow-4n.js","async":true,"nonce":"$undefined"}]
+18:["$","$L26",null,{"children":["$","$1c",null,{"name":"Next.MetadataOutlet","children":"$@27"}]}]
+1e:["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"820px","fontSize":"0.9rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Observed input"}],["$","th",null,{"style":"$1e:props:children:0:props:children:props:children:0:props:style","children":"Released implementation"}],["$","th",null,{"style":"$1e:props:children:0:props:children:props:children:0:props:style","children":"Interpretation boundary"}]]}]}],["$","tbody",null,{"children":[["$","tr","Complete gzip or x-gzip HTTP response",{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":"Complete gzip or x-gzip HTTP response"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Decodes with the gzip reader and sets decompressed metadata on success."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Readable body is a derived representation, not a replacement for TLS capture provenance."}]]}],["$","tr","Complete deflate response",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Complete deflate response"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Tries zlib-wrapped deflate first, then raw deflate."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"The same HTTP encoding label can cover two byte layouts in this decoder."}]]}],["$","tr","Complete br or brotli response",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Complete br or brotli response"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Uses the Brotli decompressor."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Successful decoding depends on complete and valid input bytes."}]]}],["$","tr","Complete zstd or zstandard response",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Complete zstd or zstandard response"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Decodes a Zstandard stream."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"The implementation recognizes both listed spellings."}]]}],["$","tr","body_truncated is true",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"body_truncated is true"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Returns the HTTP event unchanged before attempting decoding."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"An encoded prefix is evidence of incomplete capture, not of a healthy full response."}]]}],["$","tr","Corrupt compressed input or unsupported encoding",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Corrupt compressed input or unsupported encoding"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Preserves the original event when decoding fails or the label is unrecognized."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"No decompressed flag is not, by itself, a missing-response verdict."}]]}],["$","tr","Chunked encoded body",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Chunked encoded body"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Attempts chunked transfer decoding before decompression; falls back to original bytes if transfer decoding fails."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Transfer framing and content compression are separate transformations."}]]}],["$","tr","Compressed bytes with non-UTF-8 octets",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Compressed bytes with non-UTF-8 octets"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Prefers body_hex as the byte source; on success, writes new body_hex and a lossy text body."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Inspect bytes rather than relying on rendered Unicode for binary fidelity."}]]}],["$","tr","Raw SSL event, request event, or non-HTTP-parser event",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Raw SSL event, request event, or non-HTTP-parser event"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Does not run response-body decompression on the event."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Probe success alone does not imply an HTTP response reached this analyzer."}]]}],["$","tr","Multiple Content-Encoding values",{"children":[["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Multiple Content-Encoding values"}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Reads only the first comma-separated token."}],["$","td",null,{"style":"$1e:props:children:1:props:children:0:props:children:0:props:style","children":"Do not assume a layered encoding sequence was fully decoded."}]]}]]}]]}]
+1f:["$","p",null,{"children":["This is a ten-case implementation reference, not a compatibility benchmark. In particular, taking only the first encoding token is not equivalent to recursively decoding every layer of a stacked",["$","code",null,{"children":" Content-Encoding"}]," header."]}]
+20:["$","section",null,{"children":[["$","h2",null,{"children":"What changes on a successful decode—and what does not"}],["$","p",null,{"children":["The analyzer obtains compressed bytes from ",["$","code",null,{"children":"body_hex"}]," when it can decode that field; otherwise it falls back to ",["$","code",null,{"children":"body"}],". If HTTP transfer framing is chunked, it first attempts to remove chunk framing. Successful content decoding writes a new ",["$","code",null,{"children":"body_hex"}],", a UTF-8-lossy ",["$","code",null,{"children":"body"}],", ",["$","code",null,{"children":"has_body"}],",",["$","code",null,{"children":"decompressed=true"}],", ",["$","code",null,{"children":"original_content_encoding"}],"and ",["$","code",null,{"children":"decompressed_body_size"}],". It also sets the event",["$","code",null,{"children":" content_length"}]," to the decompressed byte length and removes the old content-encoding and content-length HTTP headers."]}],["$","p",null,{"children":["That transformed ",["$","code",null,{"children":"content_length"}]," is an output-body size, not evidence that the server advertised that number on the wire. The test checks that transport metadata such as",["$","code",null,{"children":" transport_handle"}],", ",["$","code",null,{"children":"capture_fragment_count"}],",",["$","code",null,{"children":"capture_original_len"}]," and",["$","code",null,{"children":" capture_metadata_complete"}]," survive decoding. The raw TLS data and the parsed/decoded HTTP response remain different evidence layers."]}]]}]
+21:["$","section",null,{"children":[["$","h2",null,{"children":"Why truncated compression is intentionally left untouched"}],["$","p",null,{"children":["AgentSight's HTTP/1.1 parser has a one-megabyte message-prefix limit, and its documented TLS record capture has a separate limit. When",["$","code",null,{"children":" body_truncated=true"}]," is set, the response decoder returns immediately; decoding partial compressed bytes could misrepresent both data and length. Other failed decode attempts also preserve the event, without adding ",["$","code",null,{"children":"decompressed=true"}],"."]}],["$","p",null,{"children":["A useful diagnostic order is: verify a TLS event with correct byte provenance; verify that the HTTP parser emitted a response; inspect",["$","code",null,{"children":" body_truncated"}]," and",["$","code",null,{"children":" body_truncation_reason"}],"; read the",["$","code",null,{"children":" content-encoding"}]," value; then look for",["$","code",null,{"children":" decompressed"}]," and ",["$","code",null,{"children":"original_content_encoding"}],". If one of those steps fails, it is too early to conclude the model returned an empty answer. A body prefix may be preserved even when the remainder was not captured."]}]]}]
+22:["$","section",null,{"children":[["$","h2",null,{"children":"Why ordering matters for streaming model output"}],["$","p",null,{"children":["The later SSE processor receives the result of HTTP parsing and decompression. Thus a complete compressed ",["$","code",null,{"children":"text/event-stream"}],"response can become parseable SSE text before response-level extraction. For captures with exact transport identity, the earlier SSE pass defers interpretation to the HTTP parser so concurrent connections are not collapsed onto a legacy process/thread key. The presence of an SSE fragment alone does not prove a complete model exchange, reliable accounting, or absence of capture loss."]}],["$","p",null,{"children":["Pairing and stream identity are separate questions handled by the"," ",["$","$L11",null,{"href":"/blog/how-agentsight-correlates-http-exchanges/","children":"HTTP exchange correlation reference"}],". The present page answers the narrower question of ",["$","em",null,{"children":"body decoding fidelity"}],", not which HTTP request a response belongs to."]}]]}]
+23:["$","section",null,{"children":[["$","h2",null,{"children":"A reproducible, data-free source check"}],["$","p",null,{"children":"To audit the released behavior without collecting anyone's model traffic, check out the pinned product source and run its existing decompressor unit tests. The tests construct gzip, zlib/raw-deflate, Brotli, Zstandard and truncated synthetic HTTP events; they also exercise request pass-through and byte-source priority."}],["$","pre",null,{"children":["$","code",null,{"children":"git clone https://github.com/eunomia-bpf/agentsight.git\ncd agentsight\ngit checkout c1574366122a90c451bca6a84713e28813ab95e2\ncargo test --manifest-path ext/analysis/Cargo.toml http_decompressor::tests"}]}],["$","p",null,{"children":["This is a suggested reproducibility procedure, not a command execution performed for this publication. A passing unit test confirms these analyzer cases under its build environment; it does not establish end-to-end probe support for every runtime, kernel, agent or API server. The ",["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"canonical documentation"}],"owns installation and command reference details."]}]]}]
+24:["$","section",null,{"children":[["$","h2",null,{"children":"Evidence limits and safe handling"}],["$","p",null,{"children":"The decoder does not repair missing TLS data, guarantee arbitrary compression nesting, make binary response bodies lossless in text form, or infer agent intent from transport bytes. A missing decoded message may result from attachment, capture, HTTP parsing, compression, SSE parsing, or subsequent materialization; isolate the layer before deciding where failure occurred."}],["$","p",null,{"children":["Captures may include model prompts, responses, headers, file paths and remote endpoints. Reproduce with synthetic payloads or scrubbed local evidence; do not upload plaintext captures or secrets to a public issue. For TLS target selection in Docker, see the"," ",["$","$L11",null,{"href":"/blog/docker-agent-tls-process-discovery/","children":"container discovery study"}],"."]}]]}]
+25:["$","section",null,{"children":[["$","h2",null,{"children":"Primary references"}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/src/analyzers/http_decompressor.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/src/analyzers/http_decompressor.rs","children":"HTTPDecompressor implementation and focused unit tests"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cmd_trace.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cmd_trace.rs","children":"Production analyzer ordering"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/src/analyzers/http_parser.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/src/analyzers/http_parser.rs","children":"HTTP parser limits and truncation state"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/ssl-capture.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/ssl-capture.md","children":"TLS plaintext byte fidelity and loss contract"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/docs/http-correlation.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/docs/http-correlation.md","children":"HTTP connection and stream correlation design"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/src/analyzers/sse_processor.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/analysis/src/analyzers/sse_processor.rs","children":"SSE response parsing and identity deferral"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35","children":"AgentSight v1.0.35 release"}]}]]}]]}]
+1a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]
+28:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+1d:[["$","title","0",{"children":"Why a captured HTTP response can still look compressed in AgentSight | AgentSight"}],["$","meta","1",{"name":"description","content":"Inspect v1.0.35 gzip, deflate, Brotli and Zstandard decoding, truncated-response safeguards, byte fidelity, SSE ordering, and a source-test diagnostic."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest","crossOrigin":"$undefined"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/why-agentsight-compressed-http-responses-stay-encoded/"}],["$","meta","13",{"property":"og:title","content":"Why a captured HTTP response can still look compressed in AgentSight"}],["$","meta","14",{"property":"og:description","content":"A source-pinned guide to what AgentSight decodes, what it intentionally leaves untouched, and why missing readable model output is not proof of missing network activity."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/why-agentsight-compressed-http-responses-stay-encoded/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L28","22",{}]]
+27:null
