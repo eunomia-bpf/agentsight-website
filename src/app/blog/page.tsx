@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const captureLossArticle = {
+  title: 'When AgentSight traces go missing: truncation, event loss, and evidence limits',
+  description:
+    'Distinguish v1.0.35 clipped TLS payloads, tracer-wide ring-buffer loss, nullable provenance, HTTP parser quarantine, and FILE_OPEN_LOST.',
+  href: '/blog/how-agentsight-reports-capture-loss/',
+};
 const compressedResponseArticle = {
   title: 'Why a captured HTTP response can still look compressed in AgentSight',
   description:
@@ -138,6 +144,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: captureLossArticle.title, url: site.url + captureLossArticle.href },
       { '@type': 'WebPage', name: compressedResponseArticle.title, url: site.url + compressedResponseArticle.href },
       { '@type': 'WebPage', name: dockerTlsDiscoveryArticle.title, url: site.url + dockerTlsDiscoveryArticle.href },
       { '@type': 'WebPage', name: fileOpenEvidenceArticle.title, url: `${site.url}${fileOpenEvidenceArticle.href}` },
@@ -172,6 +179,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">TLS capture reliability · October 2026</p>
+            <h2><Link href={captureLossArticle.href}>{captureLossArticle.title}</Link></h2>
+            <p>{captureLossArticle.description}</p>
+            <Link className="arrow-link" href={captureLossArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Compressed HTTP evidence · October 2026</p>
             <h2><Link href={compressedResponseArticle.href}>{compressedResponseArticle.title}</Link></h2>
