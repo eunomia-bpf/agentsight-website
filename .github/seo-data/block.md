@@ -1,9 +1,9 @@
 # Human-only blockers
 
-## Google SEO export finalization timing — updated 2026-10-23
+## Google SEO export finalization timing — updated 2026-10-31
 
 - **Blocked action:** make the external Google Apps Script weekly exporter backfill missing exports and regenerate finalized GA4 and Search Console snapshots at least three days after each weekly window ends.
-- **Current evidence:** the newest configured Drive-folder family, `2026-10-12_to_2026-10-18`, was generated on **2026-10-19**. Its GSC date file contains **October 12–17 only**, omitting October 18. The previous `2026-10-05_to_2026-10-11` family was generated on **October 12** and omits October 11. Neither family has an available post-finalization rerun as of October 23.
+- **Current evidence (2026-10-31):** the newest configured Drive-folder family, `2026-10-19_to_2026-10-25`, was generated **2026-10-26** and not regenerated after the **October 29** three-day finalization boundary. GSC dates contain **October 19–24 only** (2 clicks, 246 impressions), omitting October 25; GSC page aggregation has 2 clicks and 263 impressions on a different basis. GA4 organic landing source has 12 sessions, zero key events. The previous `2026-10-12_to_2026-10-18` family generated October 19 contains date rows only October 12–17, omitting October 18; the `2026-10-05_to_2026-10-11` family omits October 11. None has a post-finalization rerun. The folder still contains 96 files; last modification is 2026-10-26T16:04:40Z.
 - **Historical missing/incomplete windows:** `2026-08-17_to_2026-08-23` absent; 24–30 August, 31 August–6 September, 7–13 September, and 14–20 September lacked a post-lag refresh in prior checks. The intervening September 21–27 and September 28–October 4 families also have only next-morning generation unless a distinct post-lag copy becomes available. Revalidate each expected week by its actual date coverage, not just its filename.
 - **Impact:** Source-native partial figures can be used directionally with precise date labels, but completed-week trend analysis and content-ROI decisions are unverified. A missing boundary-date row is not zero traffic.
 - **Operator limit:** the connected tools can read the configured Drive folder but cannot execute or edit the external Apps Script schedule. Repository file editing cannot repair a separate Google automation.
