@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-10-31 (process EXIT status evidence in publication delivery)
+
+- **Authority and deployment baseline:** website main 4a771124f368a2babe5f52229a542a8c0a9fffc1, product master c1574366122a90c451bca6a84713e28813ab95e2 latest stable **v1.0.35**, upstream SEO skill pointer f42128a3f05c73cf10c786a2711c488bb3a14839 unchanged. No earlier open SEO PR or product/release drift.
+- **Content SLO:** last qualifying publication Oct 30 09:26:55 PDT (exact source ec12b6c3a3c7b6764f10a5e4cece43b1a526f7ec, production workflow 41089860592 succeeded); next exact 48-hour deadline **Nov 1 08:26:55 PST** after DST ends. The next nominal daily cycle begins later than this deadline, so a qualifying content publication is required today.
+- **Article research:** one distinct process EXIT observation/outcome reference at /blog/what-agentsight-process-exit-codes-mean/. Pinned first-party v1.0.35 BPF hooks and userspace serializer plus Linux wait(2); nine-case source-grounded matrix of status byte, signal-termination ambiguity, duration, missing events and process-vs-agent outcome limits. No live capture is invented. Publish one TechArticle and Blog/sitemap entry after all CI/deployment gates. See daily/2026-10-31.md.
+- **Google sources unchanged and newly post-lag overdue:** configured Drive folder still 96 files, newest modification Oct26 16:04Z. Latest Oct19–25 preliminary GA4 12 organic sessions/0 key events; GSC dates Oct19–24 only, 2 clicks/246 impressions (Oct25 absent), versus GSC page aggregation 2 clicks/263 impressions. No finalized KPI trend. Authorized external Apps Script operator must restore backfill/finalization; existing block.md remains genuine human-only blocker. Cloudflare not configured.
+- **Analytics and production qualifications:** GA4 path-only source still configured; browser transmission not independently verified. Homepage release v1.0.35, no proven production incident; Oct30 live direct article retrieval remains unverified by reader despite successful exact-source production. All protected files and recurring operations schedules unchanged.
+- **Delivery truth:** branch seo/agentsight-2026-10-31-process-exit-status and ordinary non-draft PR/CI/self-review/squash/deployment/metadata-closeout workflow required. Until completed, do not claim new publication reset the 48-hour clock. See current daily record.
+
+---
+
 ## Current cycle — 2026-10-30 (capture-loss evidence published; public reader qualified)
 
 - **Cycle-start authority and prepublication production snapshot:** website `main` baseline `d5b55cd43a01f005a312fc2005140f860b096240`; product `master` unchanged `c1574366122a90c451bca6a84713e28813ab95e2`, latest stable release **v1.0.35**. October 29 main CI `40910741387` and publication `40910741380` succeeded; deployed `site/.source-sha` still identifies October 29 rendered article `04d2526fd37262bbf0e8975bf6c9fe9afcab0b5f`. Public homepage v1.0.35; Blog index shows October 29 card, but direct public fetch of that article is not independently verified. No demonstrated production defect.
