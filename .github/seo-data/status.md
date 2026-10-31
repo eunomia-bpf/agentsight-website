@@ -9,6 +9,7 @@
 - **Analytics and human blocker:** connected Google Drive exact folder 96 files, newest modification Oct26 16:04Z; Oct19–25 GA4 12 organic sessions/zero key events, GSC date aggregation 2 clicks/246 impressions with Oct25 absent, GSC page aggregation 2 clicks/263 impressions on distinct basis. No post-lag finalization refresh or comparable growth trend. Authorized external Apps Script operator required to restore and backfill exports; block.md refreshed. Cloudflare traffic analytics not configured. Source GA4 path-only policy unchanged; actual browser network delivery not independently proved.
 - **Operations:** complete record in daily/2026-10-31.md. Closeout PR metadata-only and subject to ordinary CI/review/squash; no edits to external daily ops or any related recurring schedule.
 
+---
 
 ## Current cycle — 2026-10-30 (capture-loss evidence published; public reader qualified)
 
