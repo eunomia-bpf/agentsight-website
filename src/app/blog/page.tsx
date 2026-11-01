@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const snapshotContractArticle = {
+  title: 'What AgentSight JSON snapshots contain—and what they omit',
+  description:
+    'A v1.0.35 source-pinned contract for schema 1, bounded audit history, absent per-call LLM rows, sensitive fields and downstream parsing.',
+  href: '/blog/what-agentsight-json-snapshot-exports-contain/',
+};
 const processExitArticle = {
   title: 'What AgentSight process exit codes actually prove',
   description:
@@ -150,6 +156,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: snapshotContractArticle.title, url: site.url + snapshotContractArticle.href },
       { '@type': 'WebPage', name: processExitArticle.title, url: site.url + processExitArticle.href },
       { '@type': 'WebPage', name: captureLossArticle.title, url: site.url + captureLossArticle.href },
       { '@type': 'WebPage', name: compressedResponseArticle.title, url: site.url + compressedResponseArticle.href },
@@ -186,6 +193,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Snapshot export contracts · November 2026</p>
+            <h2><Link href={snapshotContractArticle.href}>{snapshotContractArticle.title}</Link></h2>
+            <p>{snapshotContractArticle.description}</p>
+            <Link className="arrow-link" href={snapshotContractArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Process outcome evidence · October 2026</p>
             <h2><Link href={processExitArticle.href}>{processExitArticle.title}</Link></h2>

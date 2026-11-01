@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const httpCorrelationUpdated = new Date('2026-10-23T00:00:00Z');
   const fileOpenEvidenceUpdated = new Date('2026-10-26T00:00:00Z');
   const dockerTlsDiscoveryUpdated = new Date('2026-10-27T00:00:00Z');
+  const snapshotContractUpdated = new Date('2026-11-01T00:00:00Z');
   const processExitUpdated = new Date('2026-10-31T00:00:00Z');
   const captureLossUpdated = new Date('2026-10-30T00:00:00Z');
   const compressedResponsesUpdated = new Date('2026-10-29T00:00:00Z');
@@ -58,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? processExitUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? snapshotContractUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -167,6 +168,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-agentsight-exports-opentelemetry-genai-spans/`,
       lastModified: otelExportUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/what-agentsight-json-snapshot-exports-contain/`,
+      lastModified: snapshotContractUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
