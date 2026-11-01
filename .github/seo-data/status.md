@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-11-01 (snapshot export consumer contract in delivery)
+
+- **Authority and baseline:** website main bf76e013c230157b47e3f5775e1ef048987cfd54; product master c1574366122a90c451bca6a84713e28813ab95e2, latest stable v1.0.35; SEO skills gitlink f42128a3f05c73cf10c786a2711c488bb3a14839 still equals upstream main. No earlier open SEO PR, no product drift or confirmed production incident.
+- **Content-clock decision:** last qualifying exact production publication October 31 09:55:19 PDT, next deadline **Monday November 2 08:55:19 PST**; next normal daily run is later than deadline. Publish a distinct, source-verified snapshot export contract analysis today. The clock remains unchanged until exact new publication succeeds.
+- **Proposed article:** /blog/what-agentsight-json-snapshot-exports-contain/ is about downstream JSON schema compatibility, bounded audit history, missing full LLM rows, nullable fields and sensitive data. It does not duplicate the existing row-provenance, HTTP capture-loss, process EXIT, or OTel export articles. Nine-case table and local jq contract check pin claims to v1.0.35 source. Blog card/JSON-LD and sitemap single URL; no other rendered change.
+- **Analytics:** 96 exact-folder Drive files, newest modified Oct26 16:04Z. Last Oct19–25 files remain incomplete after Oct29 finalization: GA4 organic 12 sessions/0 key events, GSC dates Oct19–24 only 2 clicks/246 impressions, GSC pages 2 clicks/263 impressions (distinct aggregations). No finalized comparable traffic trend; Apps Script exporter human-only backfill blocker remains. Cloudflare not configured. GA4 path-only policy unchanged; browser network delivery not independently confirmed.
+- **Production:** homepage v1.0.35 and latest Blog card visible to public reader, but independent direct article URL remains intermittently inaccessible via that reader; not a confirmed outage. Full exact-head PR CI, from-scratch review, exact-source static production publication, live verification and metadata closeout are still required before claiming completion.
+- **Operations:** no external recurring tasks or protected automation/control-plane paths modified. Details in daily/2026-11-01.md.
+
+---
+
 ## Current cycle — 2026-10-31 (source-grounded process EXIT article delivered; live reader qualified)
 
 - **Authority:** site website main baseline 4a771124f368a2babe5f52229a542a8c0a9fffc1; product master c1574366122a90c451bca6a84713e28813ab95e2 and stable **v1.0.35** unchanged, shared SEO skill gitlink f42128a3f05c73cf10c786a2711c488bb3a14839 matches upstream. No unrelated PR touched or protected file edited.
