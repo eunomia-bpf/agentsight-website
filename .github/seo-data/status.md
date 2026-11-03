@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-03 (network-target semantics publication under delivery)
+
+- **Authority and SLO:** website main baseline **8ff98acc6ed13d8ddb33d5839b36e24869aacc12**; product master **c1574366122a90c451bca6a84713e28813ab95e2**, v1.0.35. No prior active SEO PR; SEO shared-skill gitlink **f42128a3f05c73cf10c786a2711c488bb3a14839** matches allowed upstream. Last qualifying publication **November 1 09:51:56 PST**; deadline **November 3 09:51:56 PST**. Today's proposed page is *not yet counted* until CI, squash and exact production publication succeed.
+- **Rendered decision:** distinct v1.0.35 source-pinned analysis at `/blog/what-agentsight-network-target-counts-mean/`: normalized event contributions grouped by PID/host/path, null identity, error classification, timestamps, privacy and missing-event boundaries. Ten-case evidence matrix; Blog CollectionPage and sitemap updated; no duplicate request-correlation or snapshot-schema intent. Production acceptance requires exact-source workflow and public URL check; preserve representative unaffected pages.
+- **Google/public evidence:** Drive exact folder **104 files**, newest timestamp **Nov 2 17:07:02Z**, no new batch today. Preliminary Oct26–Nov1 GA4 **11 organic sessions / 9 users / zero key events**, GSC dates **6 clicks / 213 impressions** for only Oct26–31, GSC pages **6 clicks / 270 impressions** on different basis. Missing Nov1 and older finalized dates; no proven trend. Existing external Apps Script refresh/backfill **human-only blocker** remains. Public homepage v1.0.35; Blog direct-reader cache/availability means independent latest-article acceptance remains unresolved, not a confirmed incident. Cloudflare analytics not configured; GA4 path-only source remains enabled.
+- **Delivery:** branch `seo/agentsight-2026-11-03-network-target-evidence`; exact-head CI, final self-review, squash merge, deployment, and metadata closeout pending. Full daily record `daily/2026-11-03.md`. No operating schedule changes or protected control-plane edits.
+
+---
+
+
 ## Current cycle — 2026-11-02 (new preliminary Google export; no rendered change)
 
 - **Authority:** website `main` baseline **fcacb1724ba7461aab51af15949fe752d5e314b9**; product `master` **c1574366122a90c451bca6a84713e28813ab95e2**, latest stable **v1.0.35**; shared SEO skill gitlink **f42128a3f05c73cf10c786a2711c488bb3a14839** matches its allowed upstream. No open previous `seo/agentsight-` PR and no unrelated work changed.

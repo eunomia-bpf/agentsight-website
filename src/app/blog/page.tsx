@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const networkTargetArticle = {
+  title: 'What AgentSight network target counts actually measure',
+  description:
+    'Inspect v1.0.35 PID/host/path grouping, event counters, HTTP error semantics, null identity, timestamps and limits of network evidence.',
+  href: '/blog/what-agentsight-network-target-counts-mean/',
+};
 const snapshotContractArticle = {
   title: 'What AgentSight JSON snapshots contain—and what they omit',
   description:
@@ -156,6 +162,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: networkTargetArticle.title, url: site.url + networkTargetArticle.href },
       { '@type': 'WebPage', name: snapshotContractArticle.title, url: site.url + snapshotContractArticle.href },
       { '@type': 'WebPage', name: processExitArticle.title, url: site.url + processExitArticle.href },
       { '@type': 'WebPage', name: captureLossArticle.title, url: site.url + captureLossArticle.href },
@@ -193,6 +200,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Network evidence semantics · November 2026</p>
+            <h2><Link href={networkTargetArticle.href}>{networkTargetArticle.title}</Link></h2>
+            <p>{networkTargetArticle.description}</p>
+            <Link className="arrow-link" href={networkTargetArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Snapshot export contracts · November 2026</p>
             <h2><Link href={snapshotContractArticle.href}>{snapshotContractArticle.title}</Link></h2>
