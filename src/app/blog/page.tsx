@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const tlsCommArticle = {
+  title: 'Why AgentSight sometimes skips the TLS command filter',
+  description:
+    'A source-pinned v1.0.35 argument matrix for threaded TLS callbacks, pinned executable uprobes, PID and session scopes, and privacy limits.',
+  href: '/blog/why-agentsight-tls-comm-filter-is-skipped/',
+};
 const networkTargetArticle = {
   title: 'What AgentSight network target counts actually measure',
   description:
@@ -162,6 +168,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: tlsCommArticle.title, url: site.url + tlsCommArticle.href },
       { '@type': 'WebPage', name: networkTargetArticle.title, url: site.url + networkTargetArticle.href },
       { '@type': 'WebPage', name: snapshotContractArticle.title, url: site.url + snapshotContractArticle.href },
       { '@type': 'WebPage', name: processExitArticle.title, url: site.url + processExitArticle.href },
@@ -200,6 +207,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">TLS attachment and filtering · November 2026</p>
+            <h2><Link href={tlsCommArticle.href}>{tlsCommArticle.title}</Link></h2>
+            <p>{tlsCommArticle.description}</p>
+            <Link className="arrow-link" href={tlsCommArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Network evidence semantics · November 2026</p>
             <h2><Link href={networkTargetArticle.href}>{networkTargetArticle.title}</Link></h2>
