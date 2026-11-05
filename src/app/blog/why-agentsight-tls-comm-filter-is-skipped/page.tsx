@@ -234,8 +234,8 @@ if (binary_path.is_some()) { /* --binary-path <ELF> */ }`}</code></pre>
               <pre><code>{`git clone https://github.com/eunomia-bpf/agentsight.git
 cd agentsight
 git checkout v1.0.35
-grep -n 'fn build_ssl_args\|fn ssl_comm_is_misleading\|fn build_process_args' collector/src/cmd_trace.rs
-grep -n 'ssl_args_skip_codebuddy_comm_filter\|ssl_args_skip_session_filter' collector/src/cmd_trace.rs
+grep -nE 'fn build_ssl_args|fn ssl_comm_is_misleading|fn build_process_args' collector/src/cmd_trace.rs
+grep -nE 'ssl_args_skip_codebuddy_comm_filter|ssl_args_skip_session_filter' collector/src/cmd_trace.rs
 sed -n '262,330p' collector/src/cmd_trace.rs
 sed -n '705,740p' collector/src/cmd_trace.rs`}</code></pre>
               <p>
