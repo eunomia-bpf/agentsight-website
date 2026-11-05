@@ -90,7 +90,7 @@ const references = [
   ['v1.0.35 Rust SSL and process argument builders plus regression tests', sourceRoot + '/collector/src/cmd_trace.rs'],
   ['v1.0.35 SSL tracer CLI and static-library attachment limitations', sourceRoot + '/bpf/README.md'],
   ['v1.0.35 product agent runtime and tracer architecture notes', sourceRoot + '/AGENTS.md'],
-  ['v1.0.35 binary-path resolution and embedded SSL discovery', sourceRoot + '/collector/src/binary_resolver.rs'],
+  ['v1.0.35 binary-path resolution and embedded SSL discovery', sourceRoot + '/agentsight-capture/src/binary_resolver.rs'],
   ['AgentSight v1.0.35 stable release', 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35'],
 ] as const;
 
