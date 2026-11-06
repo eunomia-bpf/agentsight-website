@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-06 (Nov 5 article publicly navigable; exporter remains nonfinal)
+
+- **Authority:** website main baseline `c983970b5b904e2fc8b3fc0f3f2045fb0e0869ea`, product master `c1574366122a90c451bca6a84713e28813ab95e2`, stable v1.0.35 unchanged. No open previous SEO PR. Shared skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` still equals allowed upstream main; unrelated Dependabot PRs untouched.
+- **Public acceptance finding:** independent November 6 public Blog index now displays the November 5 TLS command-filter article, and the article link in that index retrieves the correct v1.0.35 page with ten-case table, limitations, and references. Public navigational acceptance is **verified** for that article; an isolated direct-URL reader path is still inconsistent and is not proof of an incident. Live homepage correctly reports v1.0.35. GitHub `site/.source-sha` equals published rendered squash `7de618a6e916cfb4ad3c2b48b9f6dd597485fa0f`. Metadata-only November 5 closeout CI and publication both succeeded.
+- **Data:** configured Drive folder still **104 files**, newest **2026-11-02T17:07:02.211Z**, no new post-lag export. Preliminary Oct26–Nov1 GA4 **11 organic sessions / 9 active users / 0 key events**; GSC dates Oct26–31 **6 clicks / 213 impressions** and *Nov1 missing*, separate page aggregation **6 clicks / 270 impressions**. As of November 6, this newest week has also passed the three-day finalization lag without any regenerated complete snapshot. External Apps Script post-lag rerun/backfill remains the existing genuine human-only blocker, now affecting this week too. Cloudflare traffic analytics not configured; browser GA4 transmission not independently verified.
+- **48-hour SLO:** last qualifying exact-source publication **November 5 10:03:20 PST**, next deadline **Saturday November 7 10:03:20 PST**. No rendered change today; metadata does not reset the clock. Next approximately 09:00 PST cycle has ~63 minutes to research, CI, review, merge and publish a distinct qualifying article before deadline; prioritize publication immediately rather than fabricate thin content.
+- **Decision:** one metadata-only daily/status/blocker evidence PR, no new rendered content or product drift, no controlled file/submodule modification, no off-site promotion, no new production incident. Complete delivery evidence lives in today's [daily record](daily/2026-11-06.md) and repository PR/CI history. No related recurring schedule changed.
+
+---
+
 ## Current cycle — 2026-11-05 (TLS filter article published; live retrieval qualified)
 
 - **Authority:** website published squash `7de618a6e916cfb4ad3c2b48b9f6dd597485fa0f` ([PR #180](https://github.com/eunomia-bpf/agentsight-website/pull/180)); product master `c1574366122a90c451bca6a84713e28813ab95e2`, stable v1.0.35. SEO shared-skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` equals upstream main; no change. No prior `seo/agentsight-` PR remains open.
