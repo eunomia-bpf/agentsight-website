@@ -36,7 +36,7 @@ const formatMatrix = [
   },
   {
     format: 'Pprof protobuf (.pb or .pb.gz)',
-    visible: 'The stack functions plus sample labels: project, agent, session, source/evidence IDs, call/prompt/response hashes, timestamp, skill and status when present. Pprof stores these strings in its own string table.',
+    visible: 'The stack functions plus sample labels: project, agent, session, source/evidence IDs, a normalized but unhashed call ID, prompt/response hashes, timestamp, skill and status when present. Pprof stores these strings in its own string table.',
     limit: 'Keeping project, agent and session outside the default stack does not remove them: inspect sample labels separately.',
   },
   {
@@ -226,7 +226,7 @@ export default function AgentpprofSharingBoundaryArticle() {
                 evidence labels. The source-defined list includes <code>project</code>,
                 <code> agent</code>, <code>session</code>, <code>source_kind</code>,
                 <code> evidence_id</code>, <code>status</code>, <code>source_session</code>,
-                <code> call_id</code>, prompt/response hashes, timestamp, and skill, where available.
+                <code> call_id</code> (normalized, not hashed), prompt/response hashes, timestamp, and skill, where available.
                 Thus a screenshot showing only broad task rectangles is not a complete inventory of
                 what the corresponding <code>.pb.gz</code> file contains.
               </p>
@@ -249,7 +249,7 @@ export default function AgentpprofSharingBoundaryArticle() {
                 project has readable supported sessions. Do not paste unredacted outputs into
                 an issue or public chat.
               </p>
-              <pre><code>{'agentpprof --project-root . --view operations -o review.json\n# Examine which keys remain in default no-preview JSON:\njq \'{root_keys: keys, session_keys: ((.sessions[0] // {}) | keys)}\' review.json\n\nagentpprof --project-root . --view operations -o review.pb.gz\n# pprof labels can disclose fields outside the displayed stack:\ngo tool pprof -tags review.pb.gz\n\nagentpprof --project-root . --view operations -o review.folded\n# Examine the human-readable semantic stack labels:\nhead -n 10 review.folded'}</code></pre>
+              <pre style={{ overflowX: 'auto' }}><code>{'agentpprof --project-root . --view operations -o review.json\n# Examine which keys remain in default no-preview JSON:\njq \'{root_keys: keys, session_keys: ((.sessions[0] // {}) | keys)}\' review.json\n\nagentpprof --project-root . --view operations -o review.pb.gz\n# pprof labels can disclose fields outside the displayed stack:\ngo tool pprof -tags review.pb.gz\n\nagentpprof --project-root . --view operations -o review.folded\n# Examine the human-readable semantic stack labels:\nhead -n 10 review.folded'}</code></pre>
               <p>
                 Before considering <code>--include-previews</code>, first check the default output
                 for unique identifiers, recognizable paths, external destinations, semantic tags,
