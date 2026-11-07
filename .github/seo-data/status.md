@@ -1,12 +1,12 @@
 # SEO status
 
-## Current cycle — 2026-11-07 (agentpprof sharing-boundary article in delivery)
+## Current cycle — 2026-11-07 (agentpprof disclosure article published)
 
 - **Authority:** baseline website main `589f534de9dcbc73be6d713d28e6fdf9d38d0bf8`; product master `c1574366122a90c451bca6a84713e28813ab95e2`, latest stable **v1.0.35**. No open earlier SEO PR; shared skill gitlink equals upstream `f42128a3f05c73cf10c786a2711c488bb3a14839`; no submodule update.
-- **Publication decision:** rolling 48-hour deadline is **Nov 7 10:03:20 PST**, anchored to Nov 5 at 10:03:20. A format-specific, source-pinned agentpprof export-sharing audit is being delivered at `/blog/what-agentpprof-exports-reveal/` on a fresh SEO branch, with Blog + sitemap entries and two concrete evidence matrices. Do not count it toward the SLO until exact-head CI, squash and matching static publication succeed.
-- **Production/public:** baseline homepage shows v1.0.35; public Blog index shows November 5 article; no independently established incident or release drift. The site is static and Cloudflare analytics is not configured. Public index/brand results remain directional.
+- **Qualifying publication delivered:** [PR #183](https://github.com/eunomia-bpf/agentsight-website/pull/183) passed exact-head Website CI, GitGuardian and Cloudflare after correcting raw pprof call ID labeling and narrow-screen code overflow, then squash-merged as `4ad1c09b7ae378d4938a12ad6dce44050f666f8e`. [Exact-commit production workflow #42396506759](https://github.com/eunomia-bpf/agentsight-website/actions/runs/42396506759) succeeded **Nov 7 09:29:33 PST**, 33m47s before the previous content deadline. **Next deadline: November 9 09:29:33 PST**. The metadata closeout cannot reset the content clock.
+- **Production/public:** `site/.source-sha` matches the new rendered squash. Generated canonical article, H1, TechArticle, Blog listing and sitemap passed inspection, with existing homepage (v1.0.35), security, TLS article and flamegraph guide intact. **Independent public retrieval remains inconclusive** because its reader returns an older Blog snapshot/cannot retrieve the new article. Do not classify this alone as a CDN incident. Cloudflare analytics remains not configured; public index/brand observations are directional.
 - **Configured Google data:** exact Drive folder unchanged at **104 files**, latest **Nov 2 17:07:02Z**. Preliminary Oct26–Nov1 GA4 **11 organic sessions, 9 active users, zero key events**; GSC dates **Oct26–31: 6 clicks/213 impressions**, Nov1 missing; GSC pages **6 clicks/270 impressions** on a distinct aggregation basis. All data are incomplete, with no post-finalization rerun. The existing external Apps Script rerun/backfill issue is a genuine human-only blocker. No additional blocker established.
-- **Delivery/verification:** see [November 7 daily record](daily/2026-11-07.md) for planned and eventual PR, CI, exact-source publication, public acceptance and closeout. All external recurring schedules remain unchanged.
+- **Delivery/verification:** see [November 7 daily record](daily/2026-11-07.md) for final PR, CI, squash, exact deployment and qualified public acceptance. All external recurring schedules remain unchanged.
 
 ---
 
