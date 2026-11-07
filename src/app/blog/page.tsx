@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const pprofSharingArticle = {
+  title: 'What AgentSight agentpprof exports reveal after previews are hidden',
+  description:
+    'A source-pinned v1.0.35 audit of pprof sample labels, folded/SVG frames, JSON session metadata, optional previews, and safe sharing.',
+  href: '/blog/what-agentpprof-exports-reveal/',
+};
 const tlsCommArticle = {
   title: 'Why AgentSight sometimes skips the TLS command filter',
   description:
@@ -168,6 +174,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: pprofSharingArticle.title, url: site.url + pprofSharingArticle.href },
       { '@type': 'WebPage', name: tlsCommArticle.title, url: site.url + tlsCommArticle.href },
       { '@type': 'WebPage', name: networkTargetArticle.title, url: site.url + networkTargetArticle.href },
       { '@type': 'WebPage', name: snapshotContractArticle.title, url: site.url + snapshotContractArticle.href },
@@ -207,6 +214,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Agentpprof sharing boundary · November 2026</p>
+            <h2><Link href={pprofSharingArticle.href}>{pprofSharingArticle.title}</Link></h2>
+            <p>{pprofSharingArticle.description}</p>
+            <Link className="arrow-link" href={pprofSharingArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">TLS attachment and filtering · November 2026</p>
             <h2><Link href={tlsCommArticle.href}>{tlsCommArticle.title}</Link></h2>
