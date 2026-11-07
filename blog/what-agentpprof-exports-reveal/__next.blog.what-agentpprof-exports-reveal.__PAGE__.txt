@@ -1,0 +1,228 @@
+1:"$Sreact.fragment"
+2:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+9:X
+e:X
+e:C
+0:{"buildId":"agentsight-97f2a38f2ac8a58f226ac574","data":[{"rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3","$L4","$L5"],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":"$e"}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/0axdrs6tow-4n.js"],""]
+23:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+24:"$Sreact.suspense"
+26:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+27:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+28:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+29:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+2a:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L13",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L13","/product/",{"href":"/product/","children":"Product"}],["$","$L13","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L13","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L13","/product/",{"href":"/product/","children":"Product"}],["$","$L13","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L13","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+4:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"What AgentSight agentpprof exports reveal after previews are hidden\",\"description\":\"A v1.0.35 source audit of pprof sample labels, folded stacks, SVG frames, JSON metadata, preview redaction, and what to review before sharing profiles.\",\"url\":\"https://agentsight.us/blog/what-agentpprof-exports-reveal/\",\"datePublished\":\"2026-11-07\",\"dateModified\":\"2026-11-07\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L13",null,{"href":"/","children":"Home"}],["$","$L13",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"agentpprof export privacy"}]]}],["$","p",null,{"className":"eyebrow","children":"Source-level privacy audit · AgentSight v1.0.35 · 7 November 2026"}],["$","h1",null,{"children":"What AgentSight agentpprof exports reveal after previews are hidden"}],["$","p",null,{"className":"hero-lede","children":["A redacted prompt preview is not an anonymous agent profile. In AgentSight v1.0.35,",["$","strong",null,{"children":" JSON, pprof, folded stacks and SVG flamegraphs preserve different evidence"}],". Before sharing a performance profile, inspect the actual format—not merely whether raw prompt text is visible."]}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"Direct answer: hiding content previews does not hide the run"}],["$","p",null,{"children":["The default JSON exporter replaces prompt, command and LLM-output previews with the string ",["$","code",null,{"children":"redacted"}],". But its session summaries still include identifiers, hashes, models, timestamps, categorized file and network effects, and other structured evidence. The pprof exporter does not use that JSON preview switch at all: its samples carry semantic stacks plus a separate list of evidence labels. A folded stack or SVG presents fewer fields than the JSON session records, but its frames remain readable."]}],["$","p",null,{"children":["This is an inspection of the released ",["$","strong",null,{"children":"v1.0.35 source"}]," at",["$","code",null,{"children":[" ","c1574366122a90c451bca6a84713e28813ab95e2"]}],", not a demonstration that a specific private token escaped or a claim that every session contains all these fields. For the general capture/export boundary, see ",["$","$L13",null,{"href":"/security/","children":"AgentSight security and local data handling"}],"; for deciding what the flamegraph widths mean, see",["$","$L13",null,{"href":"/guides/agent-flamegraph/","children":" the Agent Flamegraph guide"}],"."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"What each output format actually retains"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"760px","fontSize":"0.91rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Export format or option"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Evidence retained in v1.0.35"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Sharing decision"}]]}]}],["$","tbody",null,{"children":[["$","tr","JSON, default (no --include-previews)",{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":"$L14"}],"$L15","$L16"]}],"$L17","$L18","$L19","$L1a","$L1b"]}]]}]}],"$L1c"]}],"$L1d","$L1e","$L1f","$L20","$L21","$L22"]}]}]}]]}]
+5:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L13",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L13",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L13",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L13",null,{"href":"/architecture/","children":"Architecture"}],["$","$L13",null,{"href":"/integrations/","children":"Integrations"}],["$","$L13",null,{"href":"/compare/","children":"Compare"}],["$","$L13",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L13",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L13",null,{"href":"/releases/","children":"Releases"}],["$","$L13",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L13",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.35"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/0axdrs6tow-4n.js","async":true}]
+7:["$","$L23",null,{"children":["$","$24",null,{"name":"Next.MetadataOutlet","children":"$@25"}]}]
+a:["$","$1","h",{"children":[null,["$","$L26",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$L27",null,{"children":["$","$24",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"What AgentSight agentpprof exports reveal after previews are hidden | AgentSight"}],["$","meta","1",{"name":"description","content":"A v1.0.35 source audit of pprof sample labels, folded stacks, SVG frames, JSON metadata, preview redaction, and what to review before sharing profiles."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/what-agentpprof-exports-reveal/"}],["$","meta","13",{"property":"og:title","content":"What AgentSight agentpprof exports reveal after previews are hidden"}],["$","meta","14",{"property":"og:description","content":"Hidden prompts are not anonymous profiles. Compare the real fields retained by each agentpprof output format before sending a trace to others."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/what-agentpprof-exports-reveal/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L28","22",{}]]}]}]}],null]}]
+c:["$","$1","c",{"children":[null,["$","$L29",null,{"parallelRouterKey":"children","template":["$","$L2a",null,{}]}]]}]
+f:["$","$1","c",{"children":[null,["$","$L29",null,{"parallelRouterKey":"children","template":["$","$L2a",null,{}]}]]}]
+12:true
+14:["$","strong",null,{"children":"JSON, default (no --include-previews)"}]
+15:["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Prompt, command, and LLM-output preview fields become the literal text \"redacted\". The export still carries session IDs, file basename, timestamps, models, tags, hashes, process-chain information, path groups and domains when available."}]
+16:["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Preview suppression is not anonymization. Correlation keys and metadata may identify a run or organization."}]
+17:["$","tr","JSON with --include-previews",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","strong",null,{"children":"JSON with --include-previews"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The prompt and LLM preview values and the tool command text are serialized instead of the redacted placeholders."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Do not use this flag for public artifacts unless the inputs have already been sanitized and the output reviewed."}]]}]
+18:["$","tr","Pprof protobuf (.pb or .pb.gz)",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","strong",null,{"children":"Pprof protobuf (.pb or .pb.gz)"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The stack functions plus sample labels: project, agent, session, source/evidence IDs, a normalized but unhashed call ID, prompt/response hashes, timestamp, skill and status when present. Pprof stores these strings in its own string table."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Keeping project, agent and session outside the default stack does not remove them: inspect sample labels separately."}]]}]
+19:["$","tr","Folded stacks (.folded)",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","strong",null,{"children":"Folded stacks (.folded)"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"One line per aggregated semantic frame sequence with a numeric width. Frame text survives as readable stack content."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"No pprof-specific per-sample label set here, but semantic labels and object names can still reveal task or repository structure."}]]}]
+1a:["$","tr","SVG flamegraph (.svg)",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","strong",null,{"children":"SVG flamegraph (.svg)"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A visual projection of the same folded stack labels and their weights; labels and tooltip text are part of the generated SVG."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"An image-looking artifact can still disclose readable text. Preview before embedding it on a public page."}]]}]
+1b:["$","tr","Any format with customized --stack / --stack-rule / --op-map",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","strong",null,{"children":"Any format with customized --stack / --stack-rule / --op-map"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Operator-selected fields and mapped labels become stack frames when their source values are present."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Custom mapping changes the disclosure surface. Do not assume the default stack and its sanitization properties still describe the output."}]]}]
+1c:["$","p",null,{"children":["These are ",["$","strong",null,{"children":"source-derived format contracts"}],", not measured occurrence frequencies. Actual field presence depends on the input agent transcript, parsed events, view, filters and tagging options. A profile containing zero samples will not disclose all of the fields listed above; a custom stack can disclose others."]}]
+1d:["$","section",null,{"children":[["$","h2",null,{"children":"The default JSON redaction is deliberately narrow"}],["$","p",null,{"children":["The implementation serializes ",["$","code",null,{"children":"session_to_json(session, include_previews)"}],"alongside each JSON profile. Without the flag, it substitutes the literal",["$","code",null,{"children":" redacted"}]," for prompt previews, command previews, and LLM response previews. It does ",["$","em",null,{"children":"not"}]," replace the surrounding records with aggregate totals. For example,",["$","code",null,{"children":" tool_events"}]," can retain ",["$","code",null,{"children":"process_chain"}],",",["$","code",null,{"children":" path_groups"}],", ",["$","code",null,{"children":"domains"}],", tool classifications and a command hash; ",["$","code",null,{"children":"llm_events"}]," retain model names and token counts."]}],["$","p",null,{"children":["A digest such as ",["$","code",null,{"children":"cwd_hash"}]," or ",["$","code",null,{"children":"command_hash"}]," is not encryption. It can support matching the same value across artifacts and, for a small candidate dictionary, sometimes guesses about the original value. Conversely, the presence of a hash does not establish that the original plaintext is exported. Judge each field by the concrete sharing threat model."]}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"760px","fontSize":"0.91rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Surviving field family"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"What the source guarantees"}],["$","th",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Question before publication"}]]}]}],["$","tbody",null,{"children":[["$","tr","session_id / agent_sight_session_id",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"session_id / agent_sight_session_id"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Default JSON contains source-native and constructed session identity, not just a hashed anonymous label."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Remove or replace stable run identifiers before external sharing when they could be linked to other logs."}]]}],["$","tr","session_file / cwd_hash / source",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"session_file / cwd_hash / source"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A source-file basename, working-directory hash, and agent family can survive preview redaction."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A basename may encode an identifier; a hash is a pseudonym and still allows equality matching."}]]}],["$","tr","tool_events, path_groups, domains, process_chain",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"tool_events, path_groups, domains, process_chain"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"These structured metadata fields are exported independently of command_preview."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A host, tool, or path category may disclose environment details without showing the underlying prompt."}]]}],["$","tr","model, usage counts, timestamps, tags",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"model, usage counts, timestamps, tags"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"LLM model and token usage, operation times, and semantic task labels remain useful for profiling."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Their combination can reveal workflows and activity patterns even if content previews are absent."}]]}],["$","tr","pprof evidence labels",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"pprof evidence labels"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The profile builder passes its evidence-label field set through safe_frame and serializes key/value strings into pprof samples."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Run pprof tag inspection; ordinary flamegraph screenshots do not show every label retained by the binary."}]]}],"$L2b"]}]]}]}]]}]
+1e:["$","section",null,{"children":[["$","h2",null,{"children":"Pprof sample labels are not the same as flamegraph frames"}],["$","p",null,{"children":["The default operation stack is",["$","code",null,{"children":" task,skill,phase,action,object,repeat,result,outcome"}],", with a further ",["$","code",null,{"children":"token"}]," frame in the token view. Project, agent and session are not default stack frames, but the pprof builder separately serializes a set of evidence labels. The source-defined list includes ",["$","code",null,{"children":"project"}],",",["$","code",null,{"children":" agent"}],", ",["$","code",null,{"children":"session"}],", ",["$","code",null,{"children":"source_kind"}],",",["$","code",null,{"children":" evidence_id"}],", ",["$","code",null,{"children":"status"}],", ",["$","code",null,{"children":"source_session"}],",",["$","code",null,{"children":" call_id"}]," (normalized, not hashed), prompt/response hashes, timestamp, and skill, where available. Thus a screenshot showing only broad task rectangles is not a complete inventory of what the corresponding ",["$","code",null,{"children":".pb.gz"}]," file contains."]}],["$","p",null,{"children":["The builder passes label values through ",["$","code",null,{"children":"safe_frame"}]," and puts them into the pprof string table. That function lowercases and normalizes punctuation, and performs some path or private-marker substitutions. The source does not promise to detect arbitrary API keys, repository names or confidential task labels. The ",["$","$L13",null,{"href":"/blog/what-agentsight-json-snapshot-exports-contain/","children":"separate AgentSight JSON snapshot contract"}]," is a different exporter and must not be used as evidence for agentpprof field behavior."]}]]}]
+1f:["$","section",null,{"children":[["$","h2",null,{"children":"How to audit your own profile before sending it"}],["$","p",null,{"children":["Use a synthetic or otherwise authorized session first. These commands are",["$","strong",null,{"children":" inspection steps, not a measured sample run"}],"; they assume the released ",["$","code",null,{"children":"agentpprof"}]," executable is available and the selected local project has readable supported sessions. Do not paste unredacted outputs into an issue or public chat."]}],["$","pre",null,{"style":{"overflowX":"auto"},"children":["$","code",null,{"children":"agentpprof --project-root . --view operations -o review.json\n# Examine which keys remain in default no-preview JSON:\njq '{root_keys: keys, session_keys: ((.sessions[0] // {}) | keys)}' review.json\n\nagentpprof --project-root . --view operations -o review.pb.gz\n# pprof labels can disclose fields outside the displayed stack:\ngo tool pprof -tags review.pb.gz\n\nagentpprof --project-root . --view operations -o review.folded\n# Examine the human-readable semantic stack labels:\nhead -n 10 review.folded"}]}],["$","p",null,{"children":["Before considering ",["$","code",null,{"children":"--include-previews"}],", first check the default output for unique identifiers, recognizable paths, external destinations, semantic tags, model identifiers, timestamps and retained hash values. If you need to publish an example, use a deliberately synthetic transcript or a separately reviewed, minimal aggregate. Merely renaming the file or converting a binary pprof into SVG does not define a disclosure policy."]}]]}]
+20:["$","section",null,{"children":[["$","h2",null,{"children":"A six-question disclosure review"}],["$","ol",null,{"children":[["$","li",null,{"children":"Does the recipient need raw per-session evidence, or would a category-level total answer the question?"}],["$","li",null,{"children":"Is the output JSON, pprof, folded, or SVG, and have you inspected that exact artifact?"}],["$","li",null,{"children":["Did ",["$","code",null,{"children":"--include-previews"}],", ",["$","code",null,{"children":"--stack"}],", ",["$","code",null,{"children":"--stack-rule"}],", or ",["$","code",null,{"children":"--op-map"}]," alter default disclosure?"]}],["$","li",null,{"children":"Can a model name, domain, project path, source file basename, timestamp or session ID identify the task?"}],["$","li",null,{"children":"Do label normalization and hashes only pseudonymize values that can be linked elsewhere?"}],["$","li",null,{"children":"Does the recipient have explicit authorization to receive the selected telemetry, including its retention and access conditions?"}]]}],["$","p",null,{"children":"A negative answer to the first question often means producing a smaller artifact, not increasing the number of redaction rules. A useful shared finding can retain category labels and relative weights while removing session-level identity and sensitive effects. That transformed artifact should itself be reviewed."}]]}]
+21:["$","section",null,{"children":[["$","h2",null,{"children":"Limits of this source audit"}],["$","p",null,{"children":["This analysis checks the release implementation and documented formats, not every optional tagger, future output format, plugin, local transcript parser, or deployment. It does not prove a particular secret appears in a generated trace. Output may vary when custom rules, source-agent versions, or content are changed. The",["$","code",null,{"children":" time"}]," view's widths represent event-derived elapsed intervals, not CPU samples, while ",["$","code",null,{"children":"tokens"}]," can use estimates when logs lack native token counts; neither should be silently relabeled as billed cost or CPU utilization. Local profiling is also distinct from exporting model-call telemetry via",["$","$L13",null,{"href":"/blog/how-agentsight-exports-opentelemetry-genai-spans/","children":" OpenTelemetry"}],"."]}],["$","p",null,{"children":["To reproduce the source audit against this release, inspect the",["$","code",null,{"children":" PPROF_EVIDENCE_LABEL_FIELDS"}],", ",["$","code",null,{"children":"session_to_json"}],",",["$","code",null,{"children":" safe_frame"}],", ",["$","code",null,{"children":"write_pprof_samples"}],", and",["$","code",null,{"children":" write_projection"}]," definitions in the pinned file. Compare them with the CLI flag in ",["$","code",null,{"children":"main.rs"}]," and the privacy warning in the agentpprof README."]}]]}]
+22:["$","section",null,{"children":[["$","h2",null,{"children":"Primary sources"}],["$","p",null,{"children":"All format claims are anchored to the AgentSight v1.0.35 product source released 23 October 2026. This article was researched on 7 November 2026; it contains no invented user trace, real-world breach example, benchmark, or profile measurement."}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/src/profile.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/src/profile.rs","children":"v1.0.35 profile serialization, output formats, labels, and safe_frame"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/src/main.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/src/main.rs","children":"v1.0.35 agentpprof CLI options, including --include-previews"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/README.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/README.md","children":"v1.0.35 documented output and privacy caveats"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/src/session.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/ext/pprof/src/session.rs","children":"v1.0.35 session record model and discovery"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/agentpprof.md",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/docs/agentpprof.md","children":"AgentSight agentpprof semantic profiling reference"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35","children":"AgentSight v1.0.35 release"}]}]]}],["$","p",null,{"children":["Next: ",["$","$L13",null,{"href":"/security/","children":"set the telemetry sharing boundary"}]," before circulating a flamegraph, and use the",["$","$L13",null,{"href":"/guides/agent-flamegraph/","children":" Agent Flamegraph guide"}]," to interpret its axes."]}]]}]
+25:null
+9:300
+2b:["$","tr","safe_frame and private-marker handling",{"children":[["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"safe_frame and private-marker handling"}]}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Source normalizes characters and some path/username/private-marker cases. It does not implement a universal sensitive-string redactor."}],["$","td",null,{"style":"$4:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Test your actual labels and custom rules; never substitute normalization for data classification."}]]}]
+9:C
+11:0
+b:"$undefined"
+d:"$undefined"
+10:"$undefined"
+8:"$undefined"
