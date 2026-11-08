@@ -1,5 +1,14 @@
 # SEO status
 
+## Current cycle — 2026-11-08 (November 7 public article acceptance verified)
+
+- **Authority:** website main baseline `143c916e12e006fcba8e34da9b4540e45176ff47`; product master `c1574366122a90c451bca6a84713e28813ab95e2`, latest release **v1.0.35**. No open earlier `seo/agentsight-` PR. Shared skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` equals upstream main; no update.
+- **Production acceptance recovered:** independently navigated from the public Blog index to the actual November 7 [agentpprof disclosure article](https://agentsight.us/blog/what-agentpprof-exports-reveal/) on November 8 PST and inspected its v1.0.35 content, disclosure matrices, inspection commands, limits and source links. Direct URL ingestion remained unavailable in an alternate reader path, but public navigational verification now passes; no confirmed incident. Production `site/.source-sha` still matches published content squash `4ad1c09b7ae378d4938a12ad6dce44050f666f8e`; November 7 metadata-closeout main CI and publication both succeeded. Homepage displays v1.0.35.
+- **Data:** configured Drive folder unchanged at **104 files**, latest modification **2026-11-02T17:07:02Z**. Preliminary Oct26–Nov1 GA4 **11 organic sessions / 9 active users / 0 key events**. GSC dates **Oct26–31: 6 clicks / 213 impressions**, Nov1 missing; separate GSC page aggregation **6 clicks / 270 impressions**. The external Apps Script post-finalization regeneration/backfill human-only blocker persists across multiple windows, with no new complete export or finalized growth evidence. Cloudflare analytics not configured.
+- **SLO and decision:** last qualifying exact-source publication **Nov 7 09:29:33 PST**; next absolute deadline **Nov 9 09:29:33 PST**. No rendered change today, so the clock does not reset. Tomorrow's planned 09:00 cycle has only about 29 minutes to deliver qualifying research, exact-head CI, squash merge and production publication: prioritize immediately, report any miss accurately rather than publish duplicate filler. One metadata-only report/status PR; no protected file, skill gitlink or scheduling changes. [November 8 daily record](daily/2026-11-08.md).
+
+---
+
 ## Current cycle — 2026-11-07 (agentpprof disclosure article published)
 
 - **Authority:** baseline website main `589f534de9dcbc73be6d713d28e6fdf9d38d0bf8`; product master `c1574366122a90c451bca6a84713e28813ab95e2`, latest stable **v1.0.35**. No open earlier SEO PR; shared skill gitlink equals upstream `f42128a3f05c73cf10c786a2711c488bb3a14839`; no submodule update.
