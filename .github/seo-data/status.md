@@ -1,5 +1,17 @@
 # SEO status
 
+## Current cycle — 2026-11-09 (trace timing research, fresh preliminary exports, 48-hour SLO miss)
+
+- **Authority:** baseline website main fea10c1011445d4e859fbab092cbdfde02d89a34; product master c1574366122a90c451bca6a84713e28813ab95e2 and latest stable v1.0.35 (unchanged). No active older SEO PR. Shared skill gitlink f42128a3f05c73cf10c786a2711c488bb3a14839 equals upstream main; no update.
+- **Content clock:** last exact-source qualifying publication November 7 09:29:33 PST; deadline **November 9 09:29:33 PST** passed before this cycle started. **SLO miss recorded; do not relabel late publication as on time.** One source-pinned technical analysis on Linux trace timestamp units, SSE fragment timing, and the v1.0.35 duration_ns unit discrepancy is being delivered by new article, Blog listing and sitemap. Only successful exact-source production publication resets the next 48-hour clock.
+- **New Google data, preliminary:** configured Drive folder grew **104 to 112 files**; new 2026-11-02_to_2026-11-08 eight-file family generated Nov 9 17:05 UTC, before three-day finalization. GA4 organic **19 sessions, zero key events**, 11 sessions on homepage; GSC date rows **Nov 2–7: 11 clicks, 224 impressions**, Nov 8 missing; GSC page aggregation **11 clicks, 265 impressions, 35 pages** on a different basis. Previous Oct 26–Nov 1 preliminary export GA4 11 sessions/zero key events and GSC Oct 26–31 6 clicks/213 impressions. No finalized period comparison or proven improvement.
+- **External blocker unchanged:** Apps Script does not regenerate post-finalization weekly snapshots or backfill older missing dates. New next-day exports do not resolve this. Only authorized exporter operator can repair it; see block.md. Cloudflare traffic analytics not configured.
+- **Production/public baseline:** public homepage correctly names v1.0.35; public Blog index contains November 7 agentpprof disclosure article. No material product release drift or confirmed production incident. Brand results remain ambiguous because of unrelated similarly named projects; public index results are directional. Analytics path-only source retained, browser transmission unverified.
+- **Delivery:** fresh SEO branch and non-draft PR with exact-head Website CI, GitGuardian and Cloudflare, clean post-CI self-review and squash merge required. Rendered publication requires exact-commit static deployment, generated output checks and public acceptance, then a metadata-only closeout PR. All existing recurring operations schedules remain enabled and unchanged. See [November 9 daily report](daily/2026-11-09.md).
+
+---
+
+
 ## Current cycle — 2026-11-08 (November 7 public article acceptance verified)
 
 - **Authority:** website main baseline `143c916e12e006fcba8e34da9b4540e45176ff47`; product master `c1574366122a90c451bca6a84713e28813ab95e2`, latest release **v1.0.35**. No open earlier `seo/agentsight-` PR. Shared skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` equals upstream main; no update.

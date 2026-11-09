@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const traceTimestampArticle = {
+  title: 'What AgentSight trace timestamps and SSE durations really mean',
+  description:
+    'Audit v1.0.35 boot-time nanoseconds, epoch-millisecond normalization, SSE merge windows, and a duration_ns unit discrepancy.',
+  href: '/blog/what-agentsight-trace-timestamps-mean/',
+};
 const pprofSharingArticle = {
   title: 'What AgentSight agentpprof exports reveal after previews are hidden',
   description:
@@ -174,6 +180,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: traceTimestampArticle.title, url: site.url + traceTimestampArticle.href },
       { '@type': 'WebPage', name: pprofSharingArticle.title, url: site.url + pprofSharingArticle.href },
       { '@type': 'WebPage', name: tlsCommArticle.title, url: site.url + tlsCommArticle.href },
       { '@type': 'WebPage', name: networkTargetArticle.title, url: site.url + networkTargetArticle.href },
@@ -215,6 +222,12 @@ export default function BlogPage() {
       <section className="section">
         <div className="shell card-grid">
           <article className="content-card">
+            <p className="card-label">Trace timestamp units · November 2026</p>
+            <h2><Link href={traceTimestampArticle.href}>{traceTimestampArticle.title}</Link></h2>
+            <p>{traceTimestampArticle.description}</p>
+            <Link className="arrow-link" href={traceTimestampArticle.href}>Read the page</Link>
+          </article>
+                    <article className="content-card">
             <p className="card-label">Agentpprof sharing boundary · November 2026</p>
             <h2><Link href={pprofSharingArticle.href}>{pprofSharingArticle.title}</Link></h2>
             <p>{pprofSharingArticle.description}</p>
