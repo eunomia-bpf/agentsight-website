@@ -7,6 +7,12 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const monitorCpuArticle = {
+  title: 'Why AgentSight monitor CPU% and CPU milliseconds can disagree',
+  description:
+    'Audit v1.0.35 snapshot CPU rates and deltas, first samples, PID reuse, RSS summation, I/O baselines, and bounded process detail.',
+  href: '/blog/why-agentsight-monitor-cpu-percent-differs/',
+};
 const traceTimestampArticle = {
   title: 'What AgentSight trace timestamps and SSE durations really mean',
   description:
@@ -180,6 +186,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: monitorCpuArticle.title, url: site.url + monitorCpuArticle.href },
       { '@type': 'WebPage', name: traceTimestampArticle.title, url: site.url + traceTimestampArticle.href },
       { '@type': 'WebPage', name: pprofSharingArticle.title, url: site.url + pprofSharingArticle.href },
       { '@type': 'WebPage', name: tlsCommArticle.title, url: site.url + tlsCommArticle.href },
@@ -221,6 +228,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Monitor CPU accounting · November 2026</p>
+            <h2><Link href={monitorCpuArticle.href}>{monitorCpuArticle.title}</Link></h2>
+            <p>{monitorCpuArticle.description}</p>
+            <Link className="arrow-link" href={monitorCpuArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Trace timestamp units · November 2026</p>
             <h2><Link href={traceTimestampArticle.href}>{traceTimestampArticle.title}</Link></h2>
