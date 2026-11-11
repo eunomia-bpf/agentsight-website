@@ -1,0 +1,227 @@
+1:"$Sreact.fragment"
+2:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+9:X
+e:X
+e:C
+0:{"buildId":"agentsight-593cd1441aab9bae41cc6011","data":[{"rsc":["$","$1","c",{"children":[[["$","style",null,{"children":"$2"}],"$L3","$L4","$L5"],["$L6"],"$L7"]}],"isPartial":"$@8","staleTime":"$9","varyParams":null},{"rsc":"$La","isPartial":"$@b","staleTime":"$9","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$9","varyParams":"$e"},{"rsc":"$Lf","isPartial":"$@10","staleTime":"$9","varyParams":"$e"}],"isUpgradeableISRFallback":false,"a":"$@11","rootVaryParams":null,"needsRuntimeRequest":"$@12"}
+13:I[22016,["/_next/static/chunks/1z6x88ihszho0.js","/_next/static/chunks/0axdrs6tow-4n.js"],""]
+20:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+21:"$Sreact.suspense"
+23:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+24:I[97367,["/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+25:I[27201,["/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+26:I[39756,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+27:I[37457,["/_next/static/chunks/3fntmmi971322.js"],"default"]
+3:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L13",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L13","/product/",{"href":"/product/","children":"Product"}],["$","$L13","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L13","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L13","/product/",{"href":"/product/","children":"Product"}],["$","$L13","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L13","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+4:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"Why AgentSight monitor CPU% and CPU milliseconds can disagree\",\"description\":\"A source-pinned AgentSight v1.0.35 audit of process CPU percentages, two-second CPU deltas, PID reuse, first samples, memory sums, and bounded monitor detail.\",\"url\":\"https://agentsight.us/blog/why-agentsight-monitor-cpu-percent-differs/\",\"datePublished\":\"2026-11-11\",\"dateModified\":\"2026-11-11\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L13",null,{"href":"/","children":"Home"}],["$","$L13",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"Monitor CPU interpretation"}]]}],["$","p",null,{"className":"eyebrow","children":"Process resource semantics · AgentSight v1.0.35 · 11 November 2026"}],["$","h1",null,{"children":"Why AgentSight monitor CPU% and CPU milliseconds can disagree"}],["$","p",null,{"className":"hero-lede","children":["In the v1.0.35 background monitor, ",["$","code",null,{"children":"cpu_ms"}]," represents sampled CPU-time increments, while ",["$","code",null,{"children":"cpu_percent"}]," estimates a rate against wall time.",["$","strong",null,{"children":" They are not two units for the same number."}]," Their first-sample behavior differs, and the percentage calculation does not apply the same process-start identity guard used by the CPU-millisecond delta."]}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":[["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"Direct answer: compare CPU time and CPU rate only on a common interval"}],["$","p",null,{"children":["The monitor records a ",["$","code",null,{"children":"monitor_windows.cpu_ms"}]," aggregate by summing per-process ",["$","code",null,{"children":"process_cpu_ms_delta"}]," over the matched process family. The detailed ",["$","code",null,{"children":"process_samples.cpu_percent"}]," field instead calls",["$","code",null,{"children":" process_cpu_percent"}],", converting accumulated CPU ticks into a rate relative to elapsed monotonic wall time. Both depend on snapshots; neither is a kernel event ledger for every instruction executed by an agent."]}],["$","p",null,{"children":["This is a source audit of ",["$","strong",null,{"children":"AgentSight v1.0.35"}]," at commit",["$","code",null,{"children":[" ","c1574366122a90c451bca6a84713e28813ab95e2"]}],", not a new runtime benchmark. The calculation is especially important when a new process enters a sampled family, a short-lived subprocess falls between samples, or process IDs are reused."]}],["$","p",null,{"children":["The existing ",["$","$L13",null,{"href":"/blog/how-agentsight-background-monitoring-works/","children":"background monitoring guide"}]," owns the cadence and database architecture. This page covers the distinct engineering question of ",["$","em",null,{"children":"how to interpret the numeric resource fields and detect incomparable baselines"}],"."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"Follow the two different CPU formulas"}],["$","p",null,{"children":["The process snapshot is built with ",["$","code",null,{"children":"sysinfo"}]," process data. Accumulated CPU milliseconds are converted to ticks using the platform clock-tick rate. For a process seen in both snapshots with matching ","$L14",",","$L15"," subtracts ticks, converts back to milliseconds, and rounds. When either the previous snapshot or matching process identity is missing, it returns ","$L16","."]}],"$L17","$L18","$L19"]}],"$L1a","$L1b","$L1c","$L1d","$L1e"]}],"$L1f"]}]}]]}]
+5:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L13",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L13",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L13",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L13",null,{"href":"/architecture/","children":"Architecture"}],["$","$L13",null,{"href":"/integrations/","children":"Integrations"}],["$","$L13",null,{"href":"/compare/","children":"Compare"}],["$","$L13",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L13",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L13",null,{"href":"/releases/","children":"Releases"}],["$","$L13",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L13",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.35"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+6:["$","script","script-0",{"src":"/_next/static/chunks/0axdrs6tow-4n.js","async":true}]
+7:["$","$L20",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@22"}]}]
+a:["$","$1","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$L24",null,{"children":["$","$21",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Why AgentSight monitor CPU% and CPU milliseconds can disagree | AgentSight"}],["$","meta","1",{"name":"description","content":"A source-pinned AgentSight v1.0.35 audit of process CPU percentages, two-second CPU deltas, PID reuse, first samples, memory sums, and bounded monitor detail."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/why-agentsight-monitor-cpu-percent-differs/"}],["$","meta","13",{"property":"og:title","content":"Why AgentSight monitor CPU% and CPU milliseconds can disagree"}],["$","meta","14",{"property":"og:description","content":"Understand process CPU rate versus sampled CPU time, the first-sample fallback, and a PID-identity inconsistency in v1.0.35."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/why-agentsight-monitor-cpu-percent-differs/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","22",{}]]}]}]}],null]}]
+c:["$","$1","c",{"children":[null,["$","$L26",null,{"parallelRouterKey":"children","template":["$","$L27",null,{}]}]]}]
+f:["$","$1","c",{"children":[null,["$","$L26",null,{"parallelRouterKey":"children","template":["$","$L27",null,{}]}]]}]
+12:true
+14:["$","code",null,{"children":"starttime_ticks"}]
+15:["$","code",null,{"children":" process_cpu_ms_delta"}]
+16:["$","strong",null,{"children":"zero"}]
+17:["$","p",null,{"children":["For CPU percentage, ",["$","code",null,{"children":"process_cpu_percent"}]," looks up the old process by PID and divides the nonnegative difference in CPU ticks by measured elapsed wall time, then multiplies by 100. It does ",["$","strong",null,{"children":"not"}]," normalize by host CPU count. A multithreaded process can therefore exceed 100%."]}]
+18:["$","pre",null,{"children":["$","code",null,{"children":"cpu_ms ~= round(delta_cpu_ticks / clock_ticks_per_second * 1000)\ncpu_percent ~= (delta_cpu_ticks / clock_ticks_per_second) / delta_wall_seconds * 100"}]}]
+19:["$","p",null,{"children":["The code paths diverge when no previous PID row exists. CPU milliseconds return zero, while CPU percentage falls back to ",["$","em",null,{"children":"lifetime average CPU use"}],": accumulated ticks divided by elapsed process age (with a minimum age of 0.001 seconds). That rate is not directly comparable with an adjacent two-second CPU-time delta. The precise measurement window also depends on the real snapshot timestamps, not just the configured loop interval."]}]
+1a:["$","section",null,{"children":[["$","h2",null,{"children":"A subtle identity mismatch: PID reuse"}],["$","p",null,{"children":["The v1.0.35 CPU-millisecond delta explicitly rejects a previous PID whose",["$","code",null,{"children":" starttime_ticks"}]," differs from the current process. The read/write byte-delta path is even more explicit: its prior-state map uses a",["$","code",null,{"children":" ProcessKey"}]," composed of PID and start time."]}],["$","p",null,{"children":["The percentage function only checks that the previous snapshot contains the same numeric PID. If that PID was recycled for another process, its accumulated CPU ticks can be subtracted from the new occupant. A lower current counter is clamped to zero by ",["$","code",null,{"children":"saturating_sub"}],"; a higher current counter may produce a nonrepresentative rate. This is a ",["$","strong",null,{"children":"code-level corner case"}],"demonstrated by the guard mismatch, not evidence that a particular production run was affected. A safe downstream comparison keys process observations by PID ",["$","em",null,{"children":"and"}]," start time."]}]]}]
+1b:["$","section",null,{"children":[["$","h2",null,{"children":"Nine source-derived interpretation cases"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","minWidth":"850px","width":"100%","fontSize":"0.91rem"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Observation or synthetic input"}],["$","th",null,{"style":"$1b:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Released source rule"}],["$","th",null,{"style":"$1b:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Safe inference"}]]}]}],["$","tbody",null,{"children":[["$","tr","Stable PID accumulates 400 ms of CPU time across a 2-second snapshot interval.",{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.75rem","verticalAlign":"top"},"children":"Stable PID accumulates 400 ms of CPU time across a 2-second snapshot interval."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"CPU delta uses the change in accumulated ticks; CPU% divides the CPU-seconds delta by measured wall seconds."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"About 400 cpu_ms and 20% for that process, subject to tick rounding and actual sample interval."}]]}],["$","tr","Stable multithreaded process consumes 4 CPU-seconds during 2 wall seconds.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Stable multithreaded process consumes 4 CPU-seconds during 2 wall seconds."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The CPU% expression multiplies CPU-seconds / wall-seconds by 100 without dividing by logical CPU count."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A result around 200% is possible; it is not automatically a corrupt reading."}]]}],["$","tr","A process appears in the current snapshot but not the previous snapshot.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A process appears in the current snapshot but not the previous snapshot."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"process_cpu_ms_delta returns zero; process_cpu_percent falls back to lifetime ticks divided by process age."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The same first observation may have zero sampled CPU milliseconds and nonzero CPU%. They have different baselines."}]]}],["$","tr","A PID is reused between two snapshots with a different process start time.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A PID is reused between two snapshots with a different process start time."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"CPU-ms delta checks starttime_ticks; CPU% matches the previous process only by PID."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The rate path can compare unrelated accumulated counters. This is a source-level identity risk, not proof of a witnessed failure."}]]}],["$","tr","A reused PID has fewer accumulated ticks than its old occupant.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A reused PID has fewer accumulated ticks than its old occupant."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"CPU% subtracts the older counter with saturating_sub, potentially producing zero."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A zero rate in this edge case need not mean the new process did no work."}]]}],["$","tr","A process begins with no previous disk I/O baseline.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A process begins with no previous disk I/O baseline."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"process_io_delta uses (pid, starttime_ticks) and returns zero when no prior key exists."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Zero read/write delta on the first observation is not evidence of no earlier lifetime I/O."}]]}],["$","tr","Two related processes map some of the same physical pages.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Two related processes map some of the same physical pages."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Monitor session rss_bytes is the saturating sum of sampled per-process resident bytes."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The family sum is not unique physical memory consumed by the session; shared pages may be counted more than once."}]]}],"$L28","$L29"]}]]}]}],"$L2a"]}]
+1c:["$","section",null,{"children":[["$","h2",null,{"children":"Memory and I/O tell different stories again"}],["$","p",null,{"children":["The monitor converts each process RSS into bytes and adds those values across the matched process family. This is useful for locating a large family, but shared resident pages can be represented in multiple per-process RSS numbers. The summed ",["$","code",null,{"children":"rss_bytes"}]," is therefore not a precise unique-physical- memory measurement or a cgroup memory-usage counter."]}],["$","p",null,{"children":["Monitor ",["$","code",null,{"children":"read_bytes"}]," and ",["$","code",null,{"children":"write_bytes"}]," come from sampled process disk-usage counters. The monitor stores saturating differences between consecutive observations keyed by PID and start time. A process first seen on the current tick gets zero delta; that does not establish no I/O since process launch. These fields also do not represent every file operation, read syscall, or network byte transferred."]}],["$","p",null,{"children":["Per-session aggregate windows are written on the two-second monitor loop. Persisted process detail is selected only at 30-second crossings. If there are more than ten processes, the retained detail selects up to five highest and five lowest by a score ordered by CPU milliseconds, RSS, then I/O. It is not a complete inventory and is ",["$","strong",null,{"children":"not sorted primarily by CPU%"}],"."]}]]}]
+1d:["$","section",null,{"children":[["$","h2",null,{"children":"Reproduce the source inspection"}],["$","p",null,{"children":"These commands inspect the exact released implementation; they do not launch a monitor, read private session artifacts, or assume synthetic values were measured. Run them in a local checkout of the AgentSight product repository."}],["$","pre",null,{"children":["$","code",null,{"children":"git checkout c1574366122a90c451bca6a84713e28813ab95e2\ngrep -n -E \"fn process_cpu_percent|fn process_cpu_ms_delta|starttime_ticks|delta_wall\" agentsight-capture/src/sources/proc.rs\ngrep -n -E \"MONITOR_INTERVAL_SECS|DETAIL_SAMPLE_INTERVAL_SECS|fn aggregate_process_samples|fn process_io_delta|fn bounded_process_samples\" collector/src/cmd_monitor.rs\ngrep -n -E \"monitor_windows|process_samples|cpu_percent|rss_bytes\" collector/src/cmd_monitor.rs"}]}],["$","p",null,{"children":["To evaluate an actual resource hotspot, compare consecutive complete snapshots for the same ",["$","code",null,{"children":"(pid, starttime_ticks)"}],", inspect elapsed wall time, and distinguish short-lived descendants from the currently sampled family. Preserve a provider-native agent timeline if you need to attribute the workload to a prompt or tool decision. A high CPU% does not identify which agent instruction caused the load."]}]]}]
+1e:["$","section",null,{"children":[["$","h2",null,{"children":"Sources, scope, and limits"}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/agentsight-capture/src/sources/proc.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/agentsight-capture/src/sources/proc.rs","children":"Process snapshot CPU formula, first-sample fallback, PID and start-time behavior"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cmd_monitor.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cmd_monitor.rs","children":"Monitor sampling, aggregation, I/O keys, ranking, and persisted SQLite fields"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35","children":"AgentSight v1.0.35 release"}]}]]}],["$","p",null,{"children":"Reviewed 11 November 2026 against the tagged v1.0.35 source. The finding applies to the snapshot-backed monitor code paths described above, not every CPU metric in the AgentSight UI, a complete system-wide CPU usage accounting, or a guarantee of process lifetime coverage. Future versions may change identity guards or metric semantics; pin the observed version when exporting or comparing historical monitor databases."}]]}]
+1f:["$","aside",null,{"className":"detail-aside","children":[["$","p",null,{"className":"card-label","children":"Related evidence"}],["$","$L13",null,{"href":"/blog/how-agentsight-background-monitoring-works/","children":"Monitor sampling and persistence"}],["$","$L13",null,{"href":"/blog/what-agentsight-process-exit-codes-mean/","children":"Process EXIT evidence limits"}],["$","$L13",null,{"href":"/use-cases/profile-slow-expensive-agent-runs/","children":"Profile a slow agent run"}],["$","hr",null,{}],["$","a",null,{"className":"button button-accent","href":"https://github.com/eunomia-bpf/agentsight","children":"Inspect AgentSight source"}]]}]
+22:null
+9:300
+28:["$","tr","A 2-second monitor window has metrics but no process_samples rows.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A 2-second monitor window has metrics but no process_samples rows."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Aggregate windows are inserted each tick; detailed process samples only cross 30-second boundaries."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Missing detail is expected sampling policy, not necessarily a zero-process or lost-collection result."}]]}]
+29:["$","tr","A session contains more than ten processes at a detail boundary.",{"children":[["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A session contains more than ten processes at a detail boundary."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"bounded_process_samples chooses up to five highest and five lowest by CPU-ms, then RSS and I/O."}],["$","td",null,{"style":"$1b:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Detailed rows are a ranking sample, not an exhaustive process census or top ten by CPU%."}]]}]
+2a:["$","p",null,{"children":"The arithmetic inputs and PID-reuse cases are synthetic examples, not observed customer traces, field incidence estimates, or benchmark results. Tick conversion and scheduling can introduce rounding, while incomplete process observation can hide short-lived work."}]
+9:C
+11:0
+b:"$undefined"
+d:"$undefined"
+10:"$undefined"
+8:"$undefined"
