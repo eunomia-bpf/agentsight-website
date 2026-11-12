@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-12 (no rendered change; preliminary exports unchanged)
+
+- **Authority:** website main baseline `fb077b2efab05c4e2d93719c287b7d49019c6c0a`; product master `c1574366122a90c451bca6a84713e28813ab95e2`, stable **v1.0.35** (October 23), unchanged. Shared SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` remains at allowed upstream main. No open earlier SEO PR; unrelated Dependabot PRs untouched.
+- **48-hour publication SLO:** last qualifying exact-source publication **November 11 09:51:02 PST**, rendered squash `2a0d6d115e4409dbd1bb2d5dcbe2abe19bd7acb5`, successful [Publish static site #43072001100](https://github.com/eunomia-bpf/agentsight-website/actions/runs/43072001100). Next absolute deadline **November 13 09:51:02 PST**. Today's metadata-only cycle does not reset the clock. The next 09:00 cycle must publish a distinct technical article or substantive refresh **before** the deadline; the November 9 historical SLO miss remains recorded.
+- **Google data:** configured Drive folder still **112 files**, newest **November 9 17:05:37 UTC**; no new finalized exports. November 2–8 preliminary GA4 **19 organic sessions / zero key events**; GSC date rows only November 2–7 **11 clicks / 224 impressions**, missing November 8; separate GSC page aggregation **11 clicks / 265 impressions** on a different basis. After November 11 finalization lag, there is still no rerun or historical backfill; existing external Google Apps Script **human-only blocker** persists. No finalized CTR/growth/ROI conclusion. Cloudflare analytics not configured.
+- **Production/public:** deployed `site/.source-sha` still matches November 11 rendered publication. Published `site/index.html` includes path-only GA4 instrumentation, canonical metadata and v1.0.35. Public homepage works, but the public Blog reader still shows a snapshot ending November 9 and cannot directly retrieve the November 11 article. Live article acceptance is **unresolved**, not a confirmed outage. Public brand/domain/site search shows canonical site but no new independently verified backlinks; browser GA4 transmission not independently verified.
+- **Decision:** no substantive product drift, confirmed fixable site defect, finalized data trigger, or deadline requiring a rendered change today. Only [November 12 daily evidence](daily/2026-11-12.md) and this status update on fresh `seo/agentsight-2026-11-12-daily-evidence` PR; ordinary exact-head CI, full post-CI review and squash merge required. No protected control-plane, rendered content, submodule, raw data, or recurring schedule edits. All related scheduled operations remain enabled and unchanged.
+
+---
+
 ## Current cycle — 2026-11-11 (monitor CPU source audit published before deadline)
 
 - **Authority:** website baseline main `67c94e8d8034eee7ee3bad2c28733b8e309dbdbe`; product master **c1574366122a90c451bca6a84713e28813ab95e2**, latest stable **v1.0.35** and no source drift. Shared SEO skills gitlink **f42128a3f05c73cf10c786a2711c488bb3a14839** equals upstream; no update. No prior open SEO PR.
