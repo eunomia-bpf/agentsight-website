@@ -19,6 +19,8 @@ const mcpFixture = `${productBase}/docs/experiment/mcp-test/README.md`;
 const openclawExperiment = `${productBase}/docs/experiment/openclaw.md`;
 const sslsniffSource = `${productBase}/bpf/sslsniff.c`;
 const codexOffsets = `${productBase}/bpf/codex_offsets.h`;
+const tlsProductCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
+const tlsProductSource = `https://github.com/eunomia-bpf/agentsight/blob/${tlsProductCommit}`;
 const claudeMonitoring = 'https://code.claude.com/docs/en/monitoring-usage';
 const geminiTelemetry = 'https://geminicli.com/docs/cli/telemetry/';
 const codexOtel = 'https://github.com/openai/codex/blob/646f7c0a91b8e327d263335da68ae8ef212895ce/codex-rs/otel/README.md';
@@ -41,59 +43,67 @@ const tlsTracingDeepDive: ContentPage = {
   slug: 'why-ai-agent-tls-traffic-is-hard-to-trace',
   title: 'Why AI agent TLS traffic is hard to trace',
   description:
-    'A source-level guide to OpenSSL, BoringSSL, rustls, stripped binaries, uprobes, and the plaintext hook points behind modern AI agent CLI traffic.',
-  eyebrow: 'Systems deep dive · August 2026',
+    'A source-level guide to finding plaintext boundaries across OpenSSL, Node, Bun/BoringSSL, rustls, containers, Electron, browsers, and MCP.',
+  eyebrow: 'Systems deep dive · refreshed September 2026 · AgentSight v1.0.31',
   lede:
-    'Tracing HTTPS in a coding agent is no longer as simple as attaching SSL_read and SSL_write to libssl.so. Node.js can carry OpenSSL inside the executable, Bun uses BoringSSL, Rust clients can use rustls, release binaries may be stripped, and containers may start through an init process that never handles TLS. The result is a binary-discovery problem as much as a network-observability problem.',
+    'An empty TLS trace does not immediately mean that eBPF failed. Modern agent software can put plaintext in a shared library, a statically linked runtime, a stripped BoringSSL or rustls function, a helper process, a container descendant, or a protocol path that is not TLS at all. The useful diagnostic is to separate attachment, plaintext capture, and application parsing, then choose the boundary that actually exists in the running program.',
   outcomes: [
-    'Diagnose why a normal libssl uprobe sees no plaintext.',
-    'Choose the real executable and plaintext boundary for OpenSSL, BoringSSL, or rustls.',
-    'Understand which AgentSight fallbacks are version-sensitive and how to verify them.',
+    'Separate a wrong probe target from a missing plaintext hook and a parser mismatch.',
+    'Choose the right capture path for Node, Bun/BoringSSL, rustls, containers, browsers, and local MCP.',
+    'Know when AgentSight native session evidence is more reliable than forcing a TLS path.',
   ],
   sections: [
     {
-      title: 'The first trap: HTTPS traffic is not necessarily in libssl.so',
-      body: 'Classic SSL tracing tutorials assume the process dynamically loads a shared OpenSSL library and calls exported functions such as SSL_read and SSL_write. That is a convenient case because a uprobe can target a shared-library path and a named function. Modern coding-agent CLIs break this assumption in several ways. Node.js documentation describes OpenSSL among the libraries linked into Node itself, so the plaintext call site can live in the node executable rather than a separately mapped libssl.so. Bun uses BoringSSL, not OpenSSL. Rust applications can use rustls and never call the OpenSSL ABI at all. The first debugging question therefore should not be “is the socket using TLS?” but “which executable or library owns the plaintext-to-TLS transition in this exact process?”',
+      title: 'Start with three different failure classes',
+      body: '“No model calls appeared” compresses several different failures into one symptom. Attachment can be wrong because the visible command is a wrapper, the TLS implementation lives in another executable, or the network work happens in a helper process. Plaintext capture can be wrong because the runtime uses stripped BoringSSL or rustls instead of an exported OpenSSL ABI. Parsing can be wrong even after bytes were captured because the application protocol is not the JSON request shape AgentSight reconstructs as an LLM event. AgentSight v1.0.31 makes these distinctions visible in its supported-agent documentation; diagnosing them separately avoids treating every empty timeline as an eBPF problem.',
     },
     {
-      title: 'Why uprobes make binary identity part of the tracing contract',
-      body: 'Linux uprobes attach to a user-space object by path and a function or file offset. The kernel uprobe tracer documentation explicitly describes the interface as PATH:OFFSET, and libbpf exposes the same binary-path plus offset model. That is important because a socket address, PID, or process name does not tell a tracer where the plaintext function lives. If a command is a shell wrapper, a symlink, a JavaScript entry point with a node shebang, or a container init process, attaching to the visible command can target the wrong object. AgentSight record therefore resolves PATH entries, follows symlinks, and chases shebang interpreters so a wrapper such as a Node-based CLI ends at the actual ELF executable that contains the TLS implementation.',
+      title: 'Resolve the command to the executable that actually owns TLS',
+      body: 'Linux uprobes attach to a user-space object by path and function or file offset, so executable identity is part of the measurement. AgentSight record resolves the command through PATH, follows symlinks, and chases shebang interpreters. That matters for JavaScript CLIs because the file a user invokes may only be a launcher while the OpenSSL implementation lives in the Node executable. Under sudo, record also looks up the invoking user and preserves user-local locations such as ~/.local/bin, ~/bin, and ~/.nvm. The first evidence to collect is therefore the resolved executable and its linkage, not just the process name or remote socket.',
     },
     {
-      title: 'Node.js: the OpenSSL ABI can live inside the node executable',
-      body: 'For Node-based agents such as Gemini CLI, looking only for a system libssl mapping can produce a perfectly clean trace with no model traffic. AgentSight v1.0.3 treats Node as an embedded-OpenSSL case: record can discover the Node binary automatically, and an explicit binary path can pin a particular NVM or system installation when several versions are present. This also explains why an HTTPS proxy does not automatically make the problem easier. With a normal CONNECT tunnel, TLS encryption and decryption still happen inside the Node process; the proxy transports the encrypted stream. The useful plaintext point remains inside the runtime before encryption or after decryption. Distribution builds can differ, so the operational rule is to inspect the binary actually running rather than infer linkage from the command name.',
+      title: 'Node.js is an embedded-OpenSSL case, not a normal libssl.so case',
+      body: 'AgentSight v1.0.31 documents Node.js, including common NVM and system installs, as statically linking OpenSSL into the node binary. A tracer that only searches for a mapped system libssl.so can therefore be attached correctly to the process and still miss the plaintext API. record -- <command> discovers the interpreter from wrappers automatically, and record -c node now has a Node-specific auto-discovery path; --binary-path remains the escape hatch when several Node installations exist and the automatic choice is not the one executing the agent. An HTTP CONNECT proxy does not change this boundary: TLS still encrypts and decrypts inside Node before the tunnel carries the ciphertext.',
     },
     {
-      title: 'Bun and stripped BoringSSL remove the easy symbol lookup',
-      body: 'The next failure mode is harder. Bun documents BoringSSL as its TLS implementation, and AgentSight found that the Bun-based Claude Code binary it targets statically links BoringSSL with the relevant symbols stripped. In that case, pointing a uprobe at the correct executable is necessary but still insufficient: there may be no usable dynamic symbol named SSL_read or SSL_write. AgentSight v1.0.3 falls back to byte-pattern discovery. Its sslsniff source searches the binary for machine-code prologues derived from Bun 1.3.x builds: a 19-byte SSL_read pattern, a 24-byte handshake pattern, and a 26-byte SSL_write pattern. It also checks expected relative placement where available rather than trusting a single short byte sequence.',
+      title: 'Stripped Bun/BoringSSL needs a validated binary fingerprint',
+      body: 'Claude Code is harder because its Bun-based executable statically links BoringSSL and strips the useful SSL symbols. The current sslsniff implementation first tries symbol resolution and then falls back to byte-pattern detection when a binary path is supplied. Its Bun compatibility path still validates known relative placement from the supported Bun 1.3.x build family, including the 0x6f0 read-to-handshake and 0xca0 write-to-read deltas, rather than trusting a short byte match alone. Those offsets are compiler-output fingerprints, not an ABI. A new Bun, BoringSSL, compiler, architecture, or optimization profile can invalidate them, so verbose detection failure should be treated as a compatibility signal instead of silently reusing an old offset.',
     },
     {
-      title: 'The offsets are an implementation fingerprint, not a stable ABI',
-      body: 'The BoringSSL fallback is deliberately defensive because compiler output is not an API. In the v1.0.3 source, AgentSight first locates the SSL_read pattern, checks whether SSL_do_handshake is 0x6f0 bytes earlier, and checks whether SSL_write is 0xca0 bytes later. If the write function is not at that expected location, it searches within roughly 64 KiB on either side of SSL_read for the longer write pattern. These numbers are useful because they expose what a real tracer has to do after symbols disappear, but they are not promises about future Bun releases. A compiler update, BoringSSL change, link-order change, architecture change, or different optimization profile can move or rewrite these functions. A production tracer must validate patterns against the exact binary and fail visibly when the fingerprint no longer matches.',
+      title: 'rustls requires a different plaintext function entirely',
+      body: 'A rustls client has no reason to call SSL_write. AgentSight v1.0.31 keeps a separate stripped-binary detector for rustls plaintext paths: the current codex_offsets.h scans for rustls 0.23 PlaintextSink write and write_vectored instruction sequences and validates stable surrounding instruction blocks where compiler branch displacements can vary. It also contains a separate validated CommonState::buffer_plaintext pattern for supported Grok binaries. This is the broader rule for TLS tracing: identify the runtime-specific plaintext API first. Searching harder for OpenSSL symbols does not fix a client whose TLS stack is not OpenSSL.',
     },
     {
-      title: 'rustls is a different boundary, not another OpenSSL variant',
-      body: 'A Rust TLS stack requires a different mental model. rustls exposes plaintext through its own Writer and connection APIs; its documentation says Writer accepts plaintext, encrypts and authenticates it, and later emits TLS records through write_tls. There is no reason for a rustls client to call SSL_write. AgentSight therefore has separate stripped-binary detection for rustls-based agent clients. The v1.0.3 codex_offsets source scans for machine-code prefixes associated with rustls 0.23 PlaintextSink write paths, including write_vectored, and validates additional instruction blocks because branch displacements can vary across compiler releases. The same source contains a separate pattern for a Grok rustls plaintext-buffer path and validates multiple surrounding field-access sequences before accepting the offset. This is a useful general lesson: “trace TLS” means finding the library-specific plaintext API, not searching every process for OpenSSL names.',
+      title: 'The process or thread name can still hide a correct hook',
+      body: 'Binary identity is not the same thing as execution identity. AgentSight documents that Claude Code TLS calls run on an internal “HTTP Client” thread rather than the main claude thread. sslsniff command filtering uses bpf_get_current_comm(), which is the current thread name, so a -c claude filter can remove the traffic even when the uprobe offset is correct. When record is given an explicit binary path for this case, it avoids applying the command filter to SSL monitoring while retaining process filtering where useful. A clean attach plus zero events should therefore trigger a thread/filter check before the hook point is discarded.',
     },
     {
-      title: 'Process names can be wrong even after the binary is right',
-      body: 'Filtering only by comm or the main thread can create another silent blind spot. AgentSight documents that Claude Code TLS traffic flows through an internal HTTP Client thread rather than the main claude thread. When an explicit binary path is used, AgentSight skips the comm filter for SSL monitoring while keeping it for process monitoring, so the TLS uprobe can observe the runtime thread that actually performs the call. This is a subtle but important distinction: process-family attribution and TLS-function filtering solve different problems. A tracer should attribute captured plaintext back to the agent session, but it should not assume that every relevant library call executes on a thread whose short kernel comm name equals the CLI command the user typed.',
+      title: 'Electron agents show why capture success and LLM-event success are different',
+      body: 'Cursor, Antigravity, and Windsurf expose a different three-part boundary in the v1.0.31 agent guide. First, most desktop installs run on macOS or Windows, where AgentSight’s Linux eBPF capture path cannot attach. Second, Electron can place BoringSSL in a large stripped framework binary and perform networking in a helper process rather than the small application launcher. Third, even a correctly captured stream may use a protocol that the LLM parser does not understand. The current Cursor example uses Connect over HTTP/2 with protobuf bodies: AgentSight can handle HTTP/2 framing, but its LLM reconstruction recognizes JSON-shaped model calls, so the timeline can remain empty after transport capture succeeds. That is a parser-boundary failure, not proof that no network traffic was captured.',
     },
     {
-      title: 'Containers add one more layer of executable discovery',
-      body: 'Container metadata can point at the wrong executable too. Docker inspect commonly returns the container init process, which may be tini or another launcher with no TLS implementation. AgentSight handles its docker:// path by walking the descendant process tree and selecting a process whose binary actually embeds the TLS stack. The same idea applies to Kubernetes after resolving the pod and container to a host PID. This is why “attach to the container PID” is not a complete tracing recipe: the useful probe target is the descendant binary that owns plaintext, and the target can change as an agent spawns runtimes, MCP servers, browsers, package managers, or helper processes.',
+      title: 'For Cursor, native session files are the supported evidence path',
+      body: 'Because forcing TLS capture through Electron does not solve the platform, attach, and protobuf boundaries together, AgentSight supports Cursor through its local session path instead. top, report --local, and vis read Cursor transcripts and state metadata without eBPF or sudo. Those records can provide prompts, assistant output, tool calls, file activity, timestamps, and session context, but they do not become raw live request/response bodies. Current Cursor versions also often lack local per-turn token usage. The important operational decision is to use the source that can answer the question rather than treating TLS interception as the only legitimate form of observability.',
     },
     {
-      title: 'A practical diagnostic sequence before blaming eBPF',
-      body: 'When a TLS trace is empty, first resolve the command to the executable that will really run, including symlinks and shebang interpreters. Inspect the file type and dynamic dependencies. If a shared libssl is mapped and the expected symbols are exported, shared-library uprobes are the simplest path. If the runtime embeds OpenSSL, attach to the executable and verify that the needed symbols or offsets are available. If the binary is Bun-based and stripped, a validated BoringSSL signature may be required. If markers or dependencies indicate rustls, stop looking for SSL_read and identify the rustls plaintext writer instead. In a container, repeat the test for the descendant that owns the connection. This sequence separates attachment mistakes from parser bugs, privilege failures, and genuinely unsupported runtime versions.',
+      title: 'Containers and Kubernetes add runtime-to-host executable resolution',
+      body: 'Container metadata frequently points at an init process such as tini instead of the runtime that owns TLS. With docker://, AgentSight walks descendants from the container process tree and chooses a process whose executable contains the relevant SSL implementation. The k8s:// path extends that resolution: it reads the selected Pod container ID, resolves the container through Docker or CRI tooling to a host PID, then scans the container process tree. Supported forms include k8s://pod, k8s://namespace/pod, and k8s://namespace/pod/container. The measurement still ends at a concrete host executable and uprobe offset; the container reference is a resolver for reaching it, not a new tracing primitive.',
     },
     {
-      title: 'Plaintext capture has security and correctness costs',
-      body: 'Hooking before encryption is powerful precisely because it can expose data that packet capture cannot: prompts, completions, authorization headers, tool payloads, model identifiers, and other application content. That data should be treated as sensitive development telemetry. Capture also has mechanical limits. AgentSight sslsniff bounds the per-event buffer and documents that oversized reads can be truncated, while streamed protocols require higher-level request and response reconstruction after bytes are collected. A successful uprobe therefore proves that a plaintext boundary was observed; it does not by itself guarantee complete HTTP semantics, complete session coverage, or absence of traffic on another runtime path.',
+      title: 'Browsers and local MCP are separate capture paths',
+      body: 'Two common agent-adjacent cases should not be forced through sslsniff. AgentSight’s BPF tools use browsertrace for browser-specific plaintext capture in Chrome/Chromium and Firefox, because browser packaging and TLS boundaries differ from ordinary CLI processes. Local MCP over stdio is not TLS traffic at all; the current stdiocap tool captures read/write payloads from the target process and can expand from stdin/stdout/stderr to all file descriptors. If an MCP server communicates locally through pipes, an empty TLS trace is the expected result. The protocol transport determines the capture boundary.',
     },
     {
-      title: 'What this means for portable agent observability',
-      body: 'The durable design lesson is that TLS observability for agents needs a resolver, not just a probe. The resolver has to map a user-facing command to the real runtime, determine whether TLS is in a shared library or the executable, identify the TLS implementation, survive wrappers and containers, select a plaintext hook point, and record enough version information to know when an offset fingerprint is stale. eBPF provides a useful outside-the-process attachment mechanism, but the hard compatibility work sits above it. AgentSight automates several cases today—shared OpenSSL, embedded Node OpenSSL, stripped Bun/BoringSSL, selected rustls binaries, container descendants—but its byte patterns are intentionally version-scoped. Treat automatic discovery as a tested compatibility layer, not as proof that every future agent binary will have the same hook points.',
+      title: 'Use a binary-first diagnostic sequence',
+      body: 'For a reproducible diagnosis, first resolve the user-facing command to its real executable, including symlinks and shebangs. Inspect the binary type and dynamic dependencies. If a shared libssl with exported SSL_read/SSL_write exists, shared-library uprobes are the simplest case. If Node embeds OpenSSL, target the node executable. If a stripped Bun binary is involved, run verbose binary-path detection and require the BoringSSL fingerprint to validate. If rustls markers are present, inspect the rustls-specific path rather than OpenSSL symbols. In a container or Pod, resolve the descendant executable on the host. If the stream is captured but AgentSight still emits no model events, inspect the application protocol and parser expectations. If the communication is browser-specific or stdio, switch capture tools instead of adding more TLS probes.',
+    },
+    {
+      title: 'Plaintext capture is both sensitive and bounded',
+      body: 'A pre-encryption hook can expose prompts, completions, authorization headers, tool payloads, model identifiers, and other application content that packet capture cannot read. Treat that output as sensitive development telemetry. The sslsniff event buffer is bounded, oversized reads can be marked truncated, and higher-level HTTP or streaming reconstruction happens after byte capture. A uprobe event proves that some plaintext crossed the selected function; it does not prove complete request semantics, complete session coverage, or absence of traffic through another runtime path. Negative claims should stay scoped to the exact binary, filters, hook, and parser that were verified.',
+    },
+    {
+      title: 'The portable abstraction is a resolver plus evidence boundaries',
+      body: 'The durable design is not “attach SSL_read everywhere.” A useful agent tracer needs a resolver that maps the command to the runtime, identifies shared versus embedded TLS, recognizes the TLS implementation, survives wrappers and containers, selects a plaintext function, validates version-sensitive fingerprints, and then hands captured bytes to a protocol parser. It also needs to know when a different evidence source is better: native session files for Cursor, browsertrace for browsers, stdiocap for local MCP, or system/process evidence when payload reconstruction is unnecessary. eBPF is the attachment mechanism for several of these paths; compatibility and evidence selection are the layer above it.',
     },
   ],
   command: [
@@ -103,11 +113,26 @@ const tlsTracingDeepDive: ContentPage = {
     "nm -D <resolved-binary> 2>/dev/null | grep -E 'SSL_(read|write)' || true",
     'sudo agentsight record -- <agent-command>',
     'sudo agentsight debug ssl --binary-path <resolved-binary> --verbose',
+    'sudo agentsight record --binary-path docker://<container> -c node',
+    'sudo agentsight record --binary-path k8s://<namespace>/<pod>/<container> -c node',
   ],
   sources: [
-    { label: 'AgentSight v1.0.3 supported-agent and binary-discovery notes', href: agentsightAgents },
-    { label: 'AgentSight v1.0.3 sslsniff BoringSSL and uprobe implementation', href: sslsniffSource },
-    { label: 'AgentSight v1.0.3 rustls stripped-binary offset detection', href: codexOffsets },
+    {
+      label: 'AgentSight v1.0.31 supported-agent, runtime, container, browser, and MCP capture notes',
+      href: `${tlsProductSource}/docs/agents.md`,
+    },
+    {
+      label: 'AgentSight v1.0.31 sslsniff implementation and BoringSSL fallback',
+      href: `${tlsProductSource}/bpf/sslsniff.c`,
+    },
+    {
+      label: 'AgentSight v1.0.31 eBPF tool reference for sslsniff and stdiocap',
+      href: `${tlsProductSource}/bpf/README.md`,
+    },
+    {
+      label: 'AgentSight v1.0.31 stripped rustls plaintext offset detection',
+      href: `${tlsProductSource}/bpf/codex_offsets.h`,
+    },
     { label: 'Linux kernel uprobe tracer: path and offset attachment model', href: kernelUprobes },
     {
       label: 'Node.js documentation: libraries included with Node.js',
@@ -366,42 +391,58 @@ const pageUpgrades: Record<string, PageUpgrade> = {
   },
 
   'comparison:opentelemetry': {
-    lede: `OpenTelemetry is a standard and instrumentation ecosystem; AgentSight is a concrete local profiler that can produce some OpenTelemetry-compatible output. The useful comparison is not “AgentSight versus OTel” but which measurements AgentSight adds, how those measurements are exported, and which AgentSight-specific data remains outside an OTel trace.`,
+    lede: `OpenTelemetry is the common instrumentation, semantic-convention, protocol, and collector ecosystem; AgentSight is a local agent profiler with its own session model and system capture boundary. In AgentSight v1.0.31 the bridge between them is deliberately narrow: completed materialized LLM calls can become OTLP/HTTP GenAI spans, while the rest of the local process, file, network, resource, tool, and provenance data remains AgentSight-specific.`,
     outcomes: [
-      'Keep OpenTelemetry as the common signal and collector ecosystem.',
-      'Use AgentSight as an additional source for supported agent/system measurements.',
-      'Understand exactly what AgentSight exports today and what remains AgentSight-specific.',
+      'Keep OpenTelemetry as the shared telemetry and collector pipeline when you already operate one.',
+      'Use AgentSight when the investigation needs local agent-session and system-boundary data that application instrumentation does not contain.',
+      'Treat AgentSight GenAI export as a selected projection of the local session, not a lossless conversion of that session into OTel.',
     ],
     sections: [
       {
-        title: 'OpenTelemetry defines how telemetry is produced and named',
-        body: `OpenTelemetry provides APIs, SDKs, instrumentation, collectors, exporters, resources, and semantic conventions across traces, metrics, logs, and profiles. Semantic conventions standardize field names and meaning; they do not create an observation in code that was never instrumented. That distinction is important when an agent launches descendants whose behavior is not represented by the parent application trace.`,
+        title: 'OpenTelemetry standardizes signals and pipelines; it does not create missing observations',
+        body: `OpenTelemetry provides APIs, SDKs, instrumentation libraries, OTLP, collectors, exporters, resources, and semantic conventions across traces, metrics, logs, and profiles. The Collector can receive, process, and export telemetry to one or more backends. Those pieces make independently produced telemetry interoperable, but a semantic convention cannot describe a child process, file operation, or local network effect unless some measurement source actually observes and emits it.`,
       },
       {
-        title: 'AgentSight is a data source with its own capture boundary',
-        body: `AgentSight collects a local run through eBPF, runtime/TLS attachment, and agent-session parsing. Its saved session can contain process, file, network, resource, and reconstructed model-call information that does not originate from an OpenTelemetry SDK inside the agent. This is why AgentSight can work with some closed-source CLIs without asking them to link an OTel library.`,
+        title: 'AgentSight starts from a different measurement boundary',
+        body: `AgentSight v1.0.31 can combine native agent-session parsing with Linux process/file/resource capture and supported TLS/plaintext reconstruction. A saved local session can therefore contain model activity beside process trees, path effects, network targets, resource phases, tool/workflow rows, and provenance/confidence fields. Those records are useful precisely because they do not depend on every agent or descendant being instrumented with an OpenTelemetry SDK.`,
       },
       {
-        title: 'The current OTel export is intentionally narrower than the full AgentSight session',
-        body: `AgentSight v1.0.3 can export captured LLM request/response pairs as GenAI-style spans over OTLP/HTTP. The exporter maps provider, model, conversation identifiers when available, token usage, finish reasons, HTTP status, and server address. Prompt/completion content is opt-in. The same documentation states that tool/workflow spans such as execute_tool or invoke_agent are not emitted yet, and AgentSight-specific provenance remains in AgentSight rows.`,
+        title: 'The v1.0.31 exporter accepts completed materialized LLM calls, not arbitrary session rows',
+        body: `The current OtelExporter is attached to the materialized llm_call view. A call without an end timestamp is skipped; each completed call becomes one CLIENT span named chat <model>. The exporter maps supported gen_ai request/response fields, provider and server address, token usage, finish reasons, and HTTP status. Prompt and completion content remain opt-in through --otel-capture-content. This is a projection after AgentSight has reconstructed and correlated a model exchange, not a direct serialization of raw eBPF events.`,
       },
       {
-        title: 'Correlation should preserve source provenance',
-        body: `If a model request is exported to your OTel backend, keep enough metadata to know that the span came from AgentSight capture rather than native SDK instrumentation. Native agent traces may have richer tool or policy semantics; AgentSight may have richer process/file/network context. A shared backend can display both while still preserving which measurement mechanism produced each field.`,
+        title: 'Most AgentSight system context does not automatically become GenAI spans',
+        body: `Current v1.0.31 documentation explicitly does not emit execute_tool, invoke_agent, invoke_workflow, or plan spans. Process, file, network, and resource rows are not automatically mapped by this GenAI sink, and AgentSight-specific provenance/confidence stays in AgentSight rows. If a central OTel backend needs those dimensions, treat that as a separate instrumentation or export design rather than assuming debug trace --otel already transports the full session.`,
       },
       {
-        title: 'Privacy settings differ by measurement source',
-        body: `AgentSight content export is off by default for its OTel path because model payloads can be sensitive. Native agent OTel exporters have their own content and redaction controls. Treat the collector as a new data boundary: exporting a local run to a remote backend changes the storage and access model even if the same fields were originally captured locally.`,
+        title: 'Trace grouping is useful but intentionally does not invent a call tree',
+        body: `AgentSight groups exported calls by an explicit conversation or thread identifier when one is available, then by AgentSight session ID, then by a recording-scoped fallback trace. Each call receives a unique span ID, but v1.0.31 does not infer root/child relationships between calls. Preserve the AgentSight service/source identity when native agent spans and AgentSight-derived spans land in the same backend so a shared trace view does not erase how each field was measured.`,
       },
       {
-        title: 'Use OTel to connect tools, not to erase their differences',
-        body: `Choose OpenTelemetry when you need interoperable transport, naming, collection, and backend integration. Choose AgentSight when you need the local system and closed-component measurements it can provide. The strongest combination is AgentSight feeding selected standard spans into the same OTel environment while the full local session remains available for deeper process-level analysis.`,
+        title: 'OTLP delivery is another boundary to verify',
+        body: `In v1.0.31 each eligible LLM call builds an OTLP/HTTP JSON payload and the sink starts an asynchronous POST. Non-success responses and transport errors are logged as warnings, while the current command path does not await every detached export task before process shutdown. A call being present in the local materialized session therefore proves local reconstruction, not collector receipt. When delivery matters, verify the Collector or backend rather than inferring success from the local AgentSight view.`,
+      },
+      {
+        title: 'Content export and local capture have different privacy boundaries',
+        body: `AgentSight keeps gen_ai input/output message content off by default for OTel export, even though the local session may already contain sensitive prompts, responses, headers, paths, or network targets depending on capture mode. Sending selected spans to a Collector creates a new storage and access boundary. Apply the Collector and backend's own retention, redaction, and access controls, and do not enable content export merely because local capture exists.`,
+      },
+      {
+        title: 'Choose the smallest architecture that answers the question',
+        body: `Use OpenTelemetry alone when instrumented application and service telemetry already answers the debugging or operations question. Add AgentSight when you need local agent-session context, closed-component visibility, descendant execution, or host effects that are outside that instrumentation boundary. Use AgentSight's OTel export when selected model-call spans should join an existing Collector pipeline, while keeping the full local AgentSight session available for deeper system analysis.`,
       },
     ],
     sources: [
       { label: 'OpenTelemetry instrumentation concepts', href: otelInstrumentation },
       { label: 'OpenTelemetry semantic conventions', href: otelSemanticConventions },
-      { label: 'AgentSight v1.0.3 OpenTelemetry GenAI export', href: otelExport },
+      { label: 'OpenTelemetry current GenAI span semantic conventions', href: 'https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md' },
+      { label: 'OpenTelemetry Collector overview', href: 'https://opentelemetry.io/docs/collector/' },
+      { label: 'AgentSight v1.0.31 OpenTelemetry GenAI export', href: `${tlsProductSource}/docs/otel.md` },
+      { label: 'AgentSight v1.0.31 OtelExporter source', href: `${tlsProductSource}/ext/analysis/src/sinks/otel.rs` },
+    ],
+    related: [
+      { label: 'How AgentSight exports OpenTelemetry GenAI spans', href: '/blog/how-agentsight-exports-opentelemetry-genai-spans/' },
+      { label: 'System-boundary observability', href: '/blog/system-boundary-observability/' },
+      { label: 'Application tracing comparison', href: '/compare/application-tracing/' },
     ],
   },
 

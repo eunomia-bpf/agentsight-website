@@ -1,28 +1,25 @@
-export const productCommit = '07a83a32257b8c8dcba911bd9db23f77e71dc085';
+export const productCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
 
 export const site = {
   name: 'AgentSight',
   url: 'https://agentsight.us',
   description:
-    'Open-source, local-first observability for AI agents. Connect model calls to commands, files, processes, network activity, and resource use.',
+    'Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements.',
   repository: 'https://github.com/eunomia-bpf/agentsight',
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
   docs: 'https://eunomia.dev/agentsight/',
   demo: 'https://app.agentsight.us/',
-  version: '1.0.3',
-  releaseDate: '2026-08-06',
-  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.3',
+  version: '1.0.31',
+  releaseDate: '2026-09-05',
+  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.31',
   productCommit,
   assetBase: `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}`,
 } as const;
 
 export const navigation = [
-  { href: '/use-cases/', label: 'Use cases' },
-  { href: '/compare/', label: 'Compare' },
+  { href: '/product/', label: 'Product' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/guides/', label: 'Guides' },
-  { href: '/integrations/', label: 'Integrations' },
-  { href: '/security/', label: 'Security' },
+  { href: '/pricing/', label: 'Pricing' },
 ] as const;
 
 export const hubConfig = {
@@ -59,6 +56,6 @@ export const hubConfig = {
     eyebrow: 'Integrations',
     title: 'Use AgentSight with the agent you already run',
     description:
-      'Profile supported local CLIs and process families without changing their source code or routing model traffic through a proxy.',
+      'Profile supported local CLIs, IDE agents, and process families with the capture path that matches the runtime.',
   },
 } as const;

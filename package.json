@@ -11,14 +11,14 @@
     "verify": "npm run check && npm run typecheck && npm run build && npm run verify:seo"
   },
   "dependencies": {
-    "next": "16.2.12",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.0",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "typescript": "^7.0.2"
   },
   "engines": {

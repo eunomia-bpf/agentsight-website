@@ -3,18 +3,22 @@
 > AgentSight is an open-source, local-first observability tool for AI agents. It connects prompts and model calls to commands, processes, files, network activity, and resource use without requiring an SDK or proxy.
 
 Canonical site: https://agentsight.us/
-Current release: v1.0.3
+Current release: v1.0.31
 Product repository: https://github.com/eunomia-bpf/agentsight
 Website repository: https://github.com/eunomia-bpf/agentsight-website
 Documentation: https://eunomia.dev/agentsight/
-Recorded demo: https://app.agentsight.us/
+Hosted app: https://app.agentsight.us/
 
 ## Product routes
 
 - https://agentsight.us/
+- https://agentsight.us/product/
+- https://agentsight.us/architecture/
+- https://agentsight.us/pricing/
 - https://agentsight.us/use-cases/
 - https://agentsight.us/compare/
 - https://agentsight.us/integrations/
+- https://agentsight.us/integrations/cursor/
 - https://agentsight.us/security/
 - https://agentsight.us/changelog/
 - https://agentsight.us/releases/
@@ -26,8 +30,48 @@ Recorded demo: https://app.agentsight.us/
 
 ## Product capabilities
 
-AgentSight provides a live session view, an Overview dashboard, model and tool-call capture, process trees, file and network activity, CPU and memory metrics, repository replay, saved-session reports, Agent Flamegraphs, and OpenTelemetry GenAI export.
+AgentSight v1.0.31 improves the web frontend for fleet loading, narrow screens, and live session messaging. Machine overviews appear as individual Nodes finish loading, process and analysis views load on demand, mobile layouts keep tabs and dialogs reachable, long chat messages wrap, IME composition is preserved, and ambiguous HTTPS message writes are no longer replayed automatically. Authentication, capability, organization, and backend policy are unchanged.
+
+AgentSight v1.0.30 adds repository-maintenance plumbing for shared agent skills. The AgentSight repository pins `eunomia-bpf/agent-skills` under `.agents/sources`, provides small Bash and PowerShell sync entrypoints, and keeps generated `.agents/skills` links out of Git. The release does not change AgentSight runtime code or existing repository-specific skills.
+
+AgentSight v1.0.29 documents the official Homebrew installation path for Linux x86-64: `brew tap eunomia-bpf/tap`, `brew install eunomia-bpf/tap/agentsight`, and `agentsight --version`. Cargo installation and Linux x86_64/aarch64 GitHub release binaries remain available.
+
+AgentSight v1.0.28 preserves row-level provenance for audit and LLM records across live capture, SQLite persistence and reconstruction, agent-native session parsing, and legacy data. Audit rows expose `view_source` and optional `confidence`: `view` identifies rows emitted directly from captured events, `sqlite` identifies reconstructed normalized rows, `agent_native_session` identifies native transcript data, and `unknown` covers legacy or unclassified lineage. Confidence is source-specific correlation or reconstruction metadata, not a calibrated probability that should be compared globally across sources.
+
+AgentSight v1.0.27 added repeatable `agentsight bind --docker-container NAME` sources. A host Node runs the existing AgentSight native-session discovery and provider messaging inside each named Docker container through a bounded JSONL bridge, then merges those sessions into the normal Node snapshot, detail, and message APIs. Provider credentials and native session state stay in the container. Claude Code, Codex, Gemini CLI, and Cursor sessions can be discovered through the bridge; resumable messaging currently covers Claude Code, Codex, and Gemini CLI, while Cursor remains observation-only. Local/container or cross-container session-ID collisions return conflict rather than choosing a source, and unavailable peers make exact routing fail closed. Docker socket access remains daemon-wide authority: naming a container constrains AgentSight behavior, not Docker authorization. Saved `--db` captures cannot be combined with Docker session sources because saved captures are read-only.
+
+The v1.0.26 recorded-demo fix remains current. The demo loads a recorded `LiveOverview` beside its session snapshot and presents coherent Codex and Claude sample data across Overview, Conversation, Process Tree & AI Prompts, and Analysis, including processes, resources, tool calls, network targets, failures, plans, and source-reported subscriptions.
+
+The v1.0.25 messaging hardening remains current. Provider initialization, resume, transport-close, timeout, and immediate process-exit failures are surfaced instead of being reported as successful acceptance. Codex session resume prefers the recorded standalone CLI version when usable and preserves the existing PATH fallback. Live messaging is serialized per session: one session runtime owns one in-flight submission, concurrent same-session requests are rejected rather than interleaved, and AgentSight does not automatically resend an ambiguously delivered message. Direct and relay preserve the same public decoded-message-size contract. Relay handling is independently bounded for concurrent Node work, response size, and request deadlines so unrelated reads and slow provider work do not require unbounded buffering.
+
+The extension boundary does not move platform capture into arbitrary plugins. Native capture remains in `agentsight-capture`, including eBPF, `/proc`, SSL, stdio, and system runners, while the host retains identity/capability enforcement, transport, and Component execution. `ext/session` is currently the only extension that exports and executes as a `wasm32-wasip2` WebAssembly Component. It parses one transcript supplied by native discovery; filesystem discovery and Cursor subagent aggregation stay native. Analysis, pprof, vis, and web are native or build-time extension boundaries in v1.0.30.
+
+The current Wasmtime host is intentionally bounded. The default Component context inherits no arguments, environment, stdio, directories, or network access, and TCP/UDP are disabled. The runtime uses bounded fuel and memory/input limits and is for trusted Components shipped with AgentSight, not an arbitrary user-uploaded Wasm execution surface. Dynamic extension discovery, extension-defined CLI commands, and opaque Controller-to-Node `/ext/*` routing are not shipped capabilities.
+
+The current signed-in product gives users an All machines organization view. The browser queries each reachable Node through Direct or Relay and combines bounded Node overviews in memory, including machine state, active and stopped sessions, reported Tokens, CPU/RSS, Agent Plans, and source-reported subscription windows. Controller stores the machine directory and access policy; it does not persist the fetched Node snapshots or the browser-produced aggregate.
+
+A single Node keeps a bounded machine overview. Selecting one session opens three session-scoped views: Conversation, Process Tree & AI Prompts, and Analysis. Analysis summarizes duration, LLM turns, tool activity, failures, token and model usage, files, network targets, processes, and resources above an interactive timeline. Lower-level event detail remains available by selecting an event in that timeline rather than through a separate raw-event tab.
+
+Observed token usage and source-reported subscription capacity are separate signals. When a local agent source exposes provider capacity metadata, AgentSight allowlists supported fields and can show them beside observed session usage. It does not infer provider quota from captured token totals, and Controller does not persist these Node-provided usage details.
+
+Agent-native session files support portable `top`, `bind`, `vis`, and `report` workflows on Windows, macOS, and Linux without eBPF. Linux additionally supports `record` and eBPF-backed debug/tracing commands when privileges and runtime compatibility allow. Native Windows support does not provide ETW/eBPF system-capture parity, and current GitHub Releases do not publish a Windows binary asset.
+
+AgentSight Direct Node access lets a browser reach a Node through a local, LAN, VPN, or HTTPS endpoint without requiring Controller relay. Direct binding exchanges bootstrap authority for a Node-local scoped capability used by the browser. Direct configuration stays in the current browser by default; signed-in users may explicitly opt in to store an encrypted account copy for use from another browser.
+
+The open-source AgentSight Controller coordinates OAuth identity, organizations and memberships, built-in viewer/operator/admin/owner roles, organization configuration, plan and entitlement metadata, Node discovery, relay presence, optional encrypted Direct configuration, and authorization decisions. Detailed runtime data remains authoritative on Nodes; Controller does not persist snapshots, session transcripts, prompts, process data, source-reported subscription details, or relay response bodies.
+
+On relay reconnect, a v1.0.24-or-newer Node sends its running release version only after the existing relay authentication path. Controller validates the metadata and refreshes the stored Node version together with last-seen state; older Nodes that omit the header retain their existing version value.
+
+Normal protected Node Protocol operations use scoped capabilities such as `node.info`, `evidence.read`, `session.read`, and `session.message`, optionally restricted to one session. Nodes do not need to understand user membership, billing, or organization RBAC.
+
+The Controller plan catalog is Free ($0), Pro ($5/month or $49/year), Team ($10/user/month), and Enterprise (custom). During the current hosted preview, billing gates are not enforced: registered users receive an `unlimited` effective plan for implemented hosted features. Contributor Lifetime Pro remains a durable personal entitlement for meaningful contributors.
+
+The hosted frontend at app.agentsight.us and Controller API/relay at control.agentsight.us deploy from one production Cloudflare Worker revision. This deployment topology does not make Controller the runtime-data store; Direct remains an independent browser-to-Node transport.
+
+When hosted sign-in is available, the current UI keeps supported GitHub and Google entries visible. An unconfigured provider is disabled with an explanation, and Controller provider-status failures are surfaced instead of being converted into an empty provider list. This describes UI behavior, not a claim that both providers are configured in every deployment.
+
+Current GitHub Releases publish Linux binaries for x86_64 and aarch64. The unsuffixed compatibility binaries remain x86_64.
 
 ## Data handling
 
-Recorded sessions can contain prompts, responses, paths, headers, commands, and network targets. Keep raw databases local and review exported data before sharing it.
+Recorded sessions and local agent histories can contain prompts, responses, paths, headers, commands, and network targets. Keep raw databases and source session files local and review exported data before sharing them. Controller is a coordination plane rather than the authoritative telemetry store; a relay payload passes through Controller runtime memory while the request is active but is not persisted as a relay response body.

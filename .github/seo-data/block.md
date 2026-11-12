@@ -1,21 +1,13 @@
 # Human-only blockers
 
-## Google SEO export pipeline
+## Google SEO export finalization timing
 
-- Blocked action: restore valid weekly GA4 and Search Console CSV exports in the configured Drive folder.
-- Evidence: on `2026-08-08` the folder contained a GA4 source manifest for the completed `2026-07-27` through `2026-08-02` window without its required paired `*_ga4_organic_landing_pages.csv`, and no matching `*_gsc_*.csv` files. The newest compatible shared SEO skill explicitly treats a manifest without its CSV as an exporter error rather than valid analytics evidence.
-- Impact: finalized GA4 and Search Console metrics cannot be compared; this is unavailable evidence, not zero traffic. Runtime GA4 instrumentation remains present on the site.
-- Operator limitation: the current scheduled operator can inspect the Drive artifacts but has no connected Google Apps Script execution/configuration surface, so it cannot audit or rerun the external exporter itself.
-- Minimum external action: an authorized Google Apps Script operator should inspect the configured exporter, require its health audit to pass, quarantine any orphaned source manifest if needed, rerun the completed window, and confirm the expected GA4 CSV plus source manifest and Search Console CSV set are created in the configured folder.
-- Resolution evidence: the paired GA4 CSV/source manifest agree on the completed window and domain, matching Search Console CSV exports are present, and a subsequent scheduled cycle can read the finalized artifacts without exposing private routing identifiers.
-
-## npm scoped package first publication
-
-- Blocked action: publish `@eunomia-bpf/agentsight@1.0.0` to the npm registry.
-- Evidence: AgentSight npm workflow run `31065880814` built, tested, and packed version `1.0.0`, then npm returned `E404 Not Found` / insufficient permission for the scoped package.
-- Impact: the website and documentation must not claim that the npm package is currently installable. The `v1.0.0` GitHub Release, Rust crates, Docker publication, and repository release remain valid.
-- Minimum human action: an npm administrator must ensure the `@eunomia-bpf` scope and package can be published by the authorized account, perform or authorize the first package publication, and configure the repository's `npm-publish.yml` trusted publisher if required.
-- Resolution evidence: a successful registry lookup for `@eunomia-bpf/agentsight@1.0.0` and a successful matching publish workflow or verified first publication.
+- Blocked action: make the external weekly Google exporter produce or refresh GA4 and Search Console snapshots after the site's configured three-day finalization lag.
+- Latest evidence: direct enumeration of the exact configured Drive folder on `2026-09-21` found a new `2026-09-14_to_2026-09-20` family generated at approximately `2026-09-21T16:04Z`, so the next-morning exporter is still running. That new family is preliminary rather than blocked: its Search Console date export currently covers only 14–19 September and omits 20 September, and the window has not yet reached its configured finalization cutoff. The older gap remains unchanged: `2026-08-17_to_2026-08-23` is completely absent, while `2026-08-24_to_2026-08-30`, `2026-08-31_to_2026-09-06`, and `2026-09-07_to_2026-09-13` still have only next-morning snapshots captured before each family's finalization boundary, with no later post-lag regeneration. Their Search Console date files still omit the boundary dates 30 August, 6 September, and 13 September respectively.
+- Impact: the new 14–20 September rows are useful directional evidence but are not finalized KPI evidence yet. The missing 17–23 August family and stale/incomplete later completed families still prevent a new finalized weekly GA4/GSC comparison under the site's operating contract.
+- Operator limitation: the current scheduled operator can inspect Drive artifacts but has no connected Google Apps Script execution/configuration surface, so it cannot change the external exporter schedule or force a post-lag refresh itself.
+- Minimum external action: an authorized Google Apps Script operator should backfill 17–23 August and run post-lag refreshes for 24–30 August, 31 August–6 September, and 7–13 September. If the script intentionally emits a next-morning preliminary snapshot, retain that artifact but refresh the same completed window after the three-day cutoff and include the full boundary date. Apply the same post-lag behavior to future completed windows, including 14–20 September after its cutoff.
+- Resolution evidence: a paired GA4 CSV/source manifest and Search Console CSV family for a completed weekly window are generated after the configured finalization cutoff, cover the intended dates without the observed boundary-date omission, and a subsequent scheduled cycle can read them as finalized evidence without exposing private routing identifiers.
 
 The SEO scheduler intentionally lives outside this repository in an authorized
 session-level task. The absence of a repository-hosted agent workflow and
