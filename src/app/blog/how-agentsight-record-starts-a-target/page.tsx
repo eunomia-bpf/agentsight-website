@@ -198,9 +198,9 @@ export default function RecordStartupArticle() {
                 generate sensitive session artifacts:
               </p>
               <pre><code>{'git checkout c1574366122a90c451bca6a84713e28813ab95e2\n' +
-                'grep -n -E "kill -STOP|setsid\(|prepare_process_seeds|build_trace_agent_with_view|start_web_server_if_enabled|agent.run|continue_child|stop_child|drain_stream_for" collector/src/cmd_exec.rs\n' +
+                'grep -n -E "kill -STOP|setsid|prepare_process_seeds|build_trace_agent_with_view|start_web_server_if_enabled|agent.run|continue_child|stop_child|drain_stream_for" collector/src/cmd_exec.rs\n' +
                 'grep -n -E "fn for_record|build_stdio_args|fn build_trace_agent_with_view" collector/src/cmd_trace.rs\n' +
-                'grep -n -E "kill_on_drop" collector/src/cmd_exec.rs'}
+                'grep -n -E "kill_on_drop" collector/src/cmd_exec.rs || true'}
               </code></pre>
               <p>
                 The last grep is expected to find no <code>kill_on_drop</code> call in this
