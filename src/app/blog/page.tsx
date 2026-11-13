@@ -8,7 +8,7 @@ import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
 const recordStartupArticle = {
-  title: 'How AgentSight record starts a target without missing its first actions',
+  title: 'How AgentSight record starts tracing before the target runs',
   description: 'Source-pinned v1.0.35 SIGSTOP/SIGCONT launch barrier, tracer setup order, shutdown cleanup, and a stopped-child failure risk.',
   href: '/blog/how-agentsight-record-starts-a-target/',
 };
