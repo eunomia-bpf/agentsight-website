@@ -9,12 +9,12 @@ const productCommit = 'c1574366122a90c451bca6a84713e28813ab95e2';
 const sourceRoot = 'https://github.com/eunomia-bpf/agentsight/blob/' + productCommit;
 
 export const metadata: Metadata = {
-  title: 'How AgentSight record starts a target without missing its first actions',
+  title: 'How AgentSight record starts tracing before the target runs',
   description: 'A v1.0.35 source audit of the SIGSTOP/SIGCONT launch barrier, process session identity, tracer startup, shutdown cleanup, and a pre-resume failure edge case.',
   alternates: { canonical: articlePath },
   openGraph: {
     type: 'article',
-    title: 'How AgentSight record starts a target without missing its first actions',
+    title: 'How AgentSight record starts tracing before the target runs',
     description: 'Inspect the released launch synchronization and its early-failure limitations.',
     url: articlePath,
   },
@@ -55,7 +55,7 @@ export default function RecordStartupArticle() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
-    headline: 'How AgentSight record starts a target without missing its first actions',
+    headline: 'How AgentSight record starts tracing before the target runs',
     description: metadata.description,
     url: site.url + articlePath,
     datePublished: '2026-11-13',
@@ -75,7 +75,7 @@ export default function RecordStartupArticle() {
             <span aria-current="page">Record startup barrier</span>
           </nav>
           <Eyebrow>Tracing startup &amp; cleanup · AgentSight v1.0.35 · 13 November 2026</Eyebrow>
-          <h1>How AgentSight record starts a target without missing its first actions</h1>
+          <h1>How AgentSight record starts tracing before the target runs</h1>
           <p className="hero-lede">
             The released Linux <code>agentsight record -- command</code> path creates a child
             shell that <strong>stops itself with SIGSTOP</strong>. AgentSight starts its
