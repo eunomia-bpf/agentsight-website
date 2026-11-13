@@ -7,7 +7,7 @@
 - **Technical finding:** three post-spawn, pre-`SIGCONT` fallible setup calls can return without explicit cleanup of a SIGSTOP-suspended shell; Tokio Child is not kill-on-drop by default. The published finding is based on tagged source control flow, **not** a reproduced incident.
 - **48-hour SLO:** prior deadline Nov 13 **09:51:02 PST**; production completed **10:01:34 PST**, a real **10m32s miss**. Next deadline **Sunday Nov 15 10:01:34 PST**. Metadata closeout never resets this deadline.
 - **Data:** latest configured Drive family remains preliminary Nov 2–8 (112 files, latest modification Nov 9 17:05 UTC). GA4 19 organic sessions/zero key events; GSC Nov 2–7 11 clicks/224 impressions, Nov 8 missing, separate page basis 11 clicks/265 impressions. No finalized growth conclusion. Existing external Google Apps Script finalization/backfill human-only blocker persists. Cloudflare traffic analytics not configured.
-- **Closeout:** fresh metadata-only PR for today's report and `status.md`, ordinary exact-head CI, clean review, squash merge required. No workflows, protected control, rendered content, raw exports, or recurring schedule changed. All daily and related operations schedules remain enabled and unchanged.
+- **Closeout:** metadata-only [PR #193](https://github.com/eunomia-bpf/agentsight-website/pull/193) for today's report and `status.md`, ordinary exact-head CI, clean review, squash merge required. No workflows, protected control, rendered content, raw exports, or recurring schedule changed. All daily and related operations schedules remain enabled and unchanged.
 
 
 ---
