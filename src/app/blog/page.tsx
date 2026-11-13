@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const recordStartupArticle = {
+  title: 'How AgentSight record starts a target without missing its first actions',
+  description: 'Source-pinned v1.0.35 SIGSTOP/SIGCONT launch barrier, tracer setup order, shutdown cleanup, and a stopped-child failure risk.',
+  href: '/blog/how-agentsight-record-starts-a-target/',
+};
 const monitorCpuArticle = {
   title: 'Why AgentSight monitor CPU% and CPU milliseconds can disagree',
   description:
@@ -186,6 +191,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: recordStartupArticle.title, url: site.url + recordStartupArticle.href },
       { '@type': 'WebPage', name: monitorCpuArticle.title, url: site.url + monitorCpuArticle.href },
       { '@type': 'WebPage', name: traceTimestampArticle.title, url: site.url + traceTimestampArticle.href },
       { '@type': 'WebPage', name: pprofSharingArticle.title, url: site.url + pprofSharingArticle.href },
