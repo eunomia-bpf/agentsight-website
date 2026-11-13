@@ -235,6 +235,12 @@ export default function BlogPage() {
       <section className="section">
         <div className="shell card-grid">
           <article className="content-card">
+            <p className="card-label">Record startup lifecycle · November 2026</p>
+            <h2><Link href={recordStartupArticle.href}>{recordStartupArticle.title}</Link></h2>
+            <p>{recordStartupArticle.description}</p>
+            <Link className="arrow-link" href={recordStartupArticle.href}>Read the page</Link>
+          </article>
+          <article className="content-card">
             <p className="card-label">Monitor CPU accounting · November 2026</p>
             <h2><Link href={monitorCpuArticle.href}>{monitorCpuArticle.title}</Link></h2>
             <p>{monitorCpuArticle.description}</p>
