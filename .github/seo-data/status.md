@@ -1,5 +1,17 @@
 # SEO status
 
+## Current cycle — 2026-11-13 (record launch-barrier source audit; publication pending exact-head CI)
+
+- **Authority:** baseline website main `72384093a88f55ffb3bdc29530926f1f57fcb96d`, product master `c1574366122a90c451bca6a84713e28813ab95e2` and latest stable v1.0.35, shared skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` unchanged.
+- **Publication SLO:** last successful qualifying source deployment November 11 09:51:02 PST; absolute deadline November 13 09:51:02 PST. Planned source-pinned `record` startup barrier article must pass exact-head CI, squash merge, and successful exact-commit publication to qualify; do not reset on draft/PR or metadata changes. Historical November 9 miss remains.
+- **Technical finding:** after spawning a SIGSTOP self-suspending shell, three fallible tracer setup calls return with `?` before SIGCONT without explicit `stop_child()`; Tokio Child is not kill-on-drop by default. Potential stopped-target leak is source-supported but not runtime-reproduced. Existing process exit/TLS/capture loss guides do not answer startup/cleanup semantics.
+- **Data:** configured Drive folder last changed 2026-11-09 17:05:37 UTC, latest November 2–8 export preliminary; GA4 19 organic sessions / 0 key events. GSC date November 2–7: 11 clicks / 224 impressions, missing November 8; separate pages 11 clicks / 265 impressions. Export finalization/backfill remains external human-only blocker. No finalized growth inference or Cloudflare analytics configured.
+- **Production:** public Blog reader now lists November 11 monitor-CPU article; direct permalink retrieval reader still inconclusive. Homepage v1.0.35; exact deployment source still November 11 at baseline. New article acceptance must be verified after deployment, not assumed from PR. All recurring tasks remain enabled and unchanged.
+- **Delivery:** proposed content/Blog/sitemap plus daily/status via fresh `seo/agentsight-2026-11-13-record-startup-barrier` branch and ordinary PR. Pending exact-head CI, complete final diff review, squash merge, publication, and metadata closeout. No protected control or scheduling edits.
+
+---
+
+
 ## Current cycle — 2026-11-12 (no rendered change; preliminary exports unchanged)
 
 - **Authority:** website main baseline `fb077b2efab05c4e2d93719c287b7d49019c6c0a`; product master `c1574366122a90c451bca6a84713e28813ab95e2`, stable **v1.0.35** (October 23), unchanged. Shared SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` remains at allowed upstream main. No open earlier SEO PR; unrelated Dependabot PRs untouched.
