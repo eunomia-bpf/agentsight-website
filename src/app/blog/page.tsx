@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const reportSelectionArticle = {
+  title: 'How AgentSight report chooses a database or native history',
+  description: 'Audit v1.0.35 explicit SQLite paths, filesystem mtime selection, native-session fallback, and the AGENTSIGHT_DB_PATH asymmetry.',
+  href: '/blog/how-agentsight-report-selects-a-session/',
+};
 const recordStartupArticle = {
   title: 'How AgentSight record starts tracing before the target runs',
   description: 'Source-pinned v1.0.35 SIGSTOP/SIGCONT launch barrier, tracer setup order, shutdown cleanup, and a stopped-child failure risk.',
@@ -191,6 +196,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: reportSelectionArticle.title, url: site.url + reportSelectionArticle.href },
       { '@type': 'WebPage', name: recordStartupArticle.title, url: site.url + recordStartupArticle.href },
       { '@type': 'WebPage', name: monitorCpuArticle.title, url: site.url + monitorCpuArticle.href },
       { '@type': 'WebPage', name: traceTimestampArticle.title, url: site.url + traceTimestampArticle.href },
@@ -234,6 +240,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Report evidence provenance · November 2026</p>
+            <h2><Link href={reportSelectionArticle.href}>{reportSelectionArticle.title}</Link></h2>
+            <p>{reportSelectionArticle.description}</p>
+            <Link className="arrow-link" href={reportSelectionArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Record startup lifecycle · November 2026</p>
             <h2><Link href={recordStartupArticle.href}>{recordStartupArticle.title}</Link></h2>
