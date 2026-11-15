@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-15 (report input-source provenance publication in progress)
+
+- **Authority and SLO:** website baseline `67aa102c4afbd4c8bf61f0c3f1528715b3a984d7`; product v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`; SEO skills pinned equal allowed upstream. Last qualifying published November 13 **10:01:34 PST**; deadline November 15 **10:01:34 PST**. Proposed article is not counted until exact-source published; assess SLO from production completion, not the PR.
+- **Material source finding:** v1.0.35 report defaults to the filesystem-mtime-newest matching SQLite DB in CWD and otherwise warns and uses recent native history; environment variable `AGENTSIGHT_DB_PATH` is honored by record/bind but not implicit report selection. Distinct evidence-provenance article proposed in fresh branch `seo/agentsight-2026-11-15-report-database-selection`; source-level analysis, not runtime incident.
+- **Analytics:** latest Drive family November 2–8 unchanged since November 9 **17:05:37 UTC**. GA4 preliminary **19 organic sessions / 0 key events**; GSC date rows November 2–7 **11 clicks / 224 impressions**; November 8 missing. Page aggregate 11 clicks / 265 impressions on separate basis. No finalized rerun; Apps Script human-only blocker persists. Cloudflare analytics not configured.
+- **Production:** public home and Blog index available; published site source marker now reflects a later nonqualifying React-dependency update. No confirmed incident. Require exact-commit publication and public acceptance of new route before a completion claim.
+- **Delivery:** [November 15 report](daily/2026-11-15.md); branch requires ordinary exact-head CI, full review, squash merge and metadata closeout. Protected files, schedules and operations unchanged.
+
+---
+
 ## Current cycle — 2026-11-14 (metadata-only; same product release and preliminary analytics)
 
 - **Authority and SLO:** website baseline `89ba5472a32ae00c898f3bf5c209cb3ae33ffdd8`, product `master` `c1574366122a90c451bca6a84713e28813ab95e2` / v1.0.35, pinned skills `f42128a3f05c73cf10c786a2711c488bb3a14839` equal allowed upstream, no product drift or prior open SEO PR. Last qualifying production **Nov 13 10:01:34 PST** (published source `24538f550f28b708e753dc7054ba334d18438fcd`). Next absolute deadline **Nov 15 10:01:34 PST**; the next 09:00 scheduled cycle can begin before it. November 13 prior 10m32s SLO miss remains recorded; metadata does not reset the clock.
