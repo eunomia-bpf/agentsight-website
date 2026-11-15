@@ -160,7 +160,7 @@ export default function ReportDatabaseSelectionArticle() {
                 'agentsight report list',
                 '',
                 '# Use the actual recording path instead of the implicit selection',
-                'agentsight report --db ./agentsight-20261115-090000.db summary',
+                'agentsight report summary --db ./agentsight-20261115-090000.db',
                 'agentsight report token --db ./agentsight-20261115-090000.db --json',
                 '',
                 '# Intentionally choose native agent transcripts',
