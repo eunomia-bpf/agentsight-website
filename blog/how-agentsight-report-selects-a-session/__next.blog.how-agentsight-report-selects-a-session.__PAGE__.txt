@@ -1,0 +1,233 @@
+2:"$Sreact.fragment"
+3:"/_next/static/chunks/3qfy96eoyh-ek.js"
+4:I[39756,["$3"],"default"]
+5:I[37457,["$3"],"default"]
+13:"ViewportBoundary"
+14:I[97367,["$3"],"$13"]
+15:"MetadataBoundary"
+16:I[97367,["$3"],"$15"]
+17:"$Sreact.suspense"
+18:I[27201,["$3"],"IconMark"]
+7:X
+7:C
+8:X
+c:T1163,
+:root {
+  --ink: #091627;
+  --muted: #526174;
+  --subtle: #7b8798;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --panel: #0b1220;
+  --orange: #ff9f1c;
+  --pink: #2f66ff;
+  --purple: #00b894;
+  --green: #00b894;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --shadow: 0 18px 60px rgb(9 22 39 / 10%);
+}
+body {
+  background: #f8fafc;
+  color: #091627;
+}
+a:focus-visible,
+button:focus-visible {
+  outline-color: #0891b2;
+}
+::selection {
+  background: #cffafe;
+  color: #091627;
+}
+.site-header {
+  border-color: rgb(226 232 240 / 92%);
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 1px 0 rgb(15 23 42 / 2%);
+}
+.logo strong { color: #091627; }
+.logo small { color: #64748b; }
+.primary-nav { color: #475569; }
+.primary-nav a:hover,
+.header-github:hover { color: #0e7490; }
+.header-github { color: #64748b; }
+.button { border-radius: 6px; }
+.button-accent {
+  background: #091627;
+  color: #fff;
+  box-shadow: 0 8px 22px rgb(9 22 39 / 14%);
+}
+.button-accent:hover {
+  background: #17263a;
+  box-shadow: 0 10px 28px rgb(9 22 39 / 18%);
+}
+.button-dark { background: #091627; }
+.button-dark:hover { background: #17263a; }
+.button-outline {
+  border-color: #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+.button-outline:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+.page-hero {
+  border-color: #e2e8f0;
+  background:
+    linear-gradient(to bottom, rgb(207 250 254 / 62%), rgb(236 254 255 / 34%) 38%, #fff 82%),
+    #fff;
+}
+.page-hero::after {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 5%) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000, transparent 92%);
+}
+.page-hero h1,
+.compact-hero h1,
+.detail-hero h1 {
+  color: #091627;
+  font-family: Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.eyebrow,
+.card-label {
+  color: #0e7490;
+  letter-spacing: 0.14em;
+}
+.section-white { background: #fff; }
+.content-card,
+.feature-card,
+.metric-card {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: none;
+}
+.content-card { background: #fff; }
+.content-card:hover {
+  border-color: rgb(14 116 144 / 42%);
+  background: #fbfdff;
+  box-shadow: 0 16px 44px rgb(9 22 39 / 8%);
+}
+.content-card::before {
+  height: 2px;
+  background: linear-gradient(90deg, #0891b2, #2f66ff, #ff9f1c);
+}
+.content-card h2 a:hover,
+.arrow-link,
+.source-section a { color: #0e7490; }
+.breadcrumbs { color: #64748b; }
+.breadcrumbs a::after { color: #cbd5e1; }
+.outcome-list li {
+  border-color: #e2e8f0;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 90%);
+  color: #475569;
+}
+.outcome-list span { color: #0e7490; }
+.detail-section { background: #f8fafc; }
+.article-body {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 14px 46px rgb(9 22 39 / 6%);
+}
+.article-body > section + section { border-color: #edf2f7; }
+.article-body h2 { color: #091627; }
+.article-body p { color: #526174; }
+.detail-aside {
+  border-color: #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 12px 36px rgb(9 22 39 / 6%);
+}
+.detail-aside .arrow-link {
+  border-color: #edf2f7;
+  color: #475569;
+}
+.detail-aside .arrow-link:hover { color: #0e7490; }
+.detail-aside hr { border-color: #edf2f7; }
+.command-block {
+  border-color: #1e293b;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e2e8f0;
+  box-shadow: 0 18px 48px rgb(9 22 39 / 14%);
+}
+.command-title { border-color: #1e293b; color: #94a3b8; }
+.command-title span { color: #34d399; }
+.dark-section { background: #091627; }
+.dark-section .eyebrow { color: #67e8f9; }
+.dark-grid > div > p { color: #cbd5e1; }
+.workflow-list li {
+  border-color: #26364a;
+  border-radius: 8px;
+  background: #101d2d;
+}
+.workflow-list li > span {
+  border-radius: 6px;
+  background: #0e7490;
+}
+.workflow-list p { color: #aebed0; }
+.timeline article { border-color: #cbd5e1; }
+.timeline article::before {
+  background: #0891b2;
+  box-shadow: 0 0 0 1px #67e8f9;
+}
+.site-footer {
+  border-top-color: #dbe3ec;
+  background: #091627;
+  color: #e2e8f0;
+}
+.site-footer .logo strong { color: #f8fafc; }
+.site-footer .logo small { color: #94a3b8; }
+.site-footer h2 { color: #f8fafc; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: #67e8f9; }
+.footer-copy { color: #aebed0; }
+.footer-bottom {
+  border-top-color: #223247;
+  color: #94a3b8;
+}
+@media (max-width: 820px) {
+  .site-header { backdrop-filter: blur(14px); }
+}
+b:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[[["$","style",null,{"children":"$c"}],"$Ld","$Le","$Lf"],["$L10"],"$L11"]}],"p":"$@12","v":null,"s":"$8"}}]]
+9:[["children",{"s":"how-agentsight-report-selects-a-session","h":96,"d":{"r":["$","$2","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@a","v":"$7","s":"$8"},"c":"$Qb"}]]
+1:[["children",{"s":"blog","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@6","v":"$7","s":"$8"},"c":"$Q9"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#ffffff","media":"(prefers-color-scheme: light)"}],["$","meta","3",{"name":"theme-color","content":"#0b0b10","media":"(prefers-color-scheme: dark)"}],["$","meta","4",{"name":"color-scheme","content":"light"}]]}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"How AgentSight report chooses a database or native history | AgentSight"}],["$","meta","1",{"name":"description","content":"A v1.0.35 source audit of report input selection: explicit SQLite paths, modification-time ordering, agent-native fallback, and AGENTSIGHT_DB_PATH asymmetry."}],["$","meta","2",{"name":"application-name","content":"AgentSight"}],["$","link","3",{"rel":"author","href":"https://eunomia.dev/"}],["$","meta","4",{"name":"author","content":"Eunomia"}],["$","link","5",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","meta","6",{"name":"keywords","content":"AI agent observability,AI agent evolution,self-improving AI agents,agent skill evolution,AI agent profiling,coding agent monitoring,eBPF observability,Claude Code observability,Codex observability,Agent Flamegraph"}],["$","meta","7",{"name":"creator","content":"Eunomia"}],["$","meta","8",{"name":"publisher","content":"Eunomia"}],["$","meta","9",{"name":"robots","content":"index, follow"}],["$","meta","10",{"name":"googlebot","content":"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","11",{"name":"category","content":"DeveloperApplication"}],["$","link","12",{"rel":"canonical","href":"https://agentsight.us/blog/how-agentsight-report-selects-a-session/"}],["$","meta","13",{"property":"og:title","content":"How AgentSight report chooses a database or native history"}],["$","meta","14",{"property":"og:description","content":"A source-pinned decision matrix for AgentSight report input provenance."}],["$","meta","15",{"property":"og:url","content":"https://agentsight.us/blog/how-agentsight-report-selects-a-session/"}],["$","meta","16",{"property":"og:type","content":"article"}],["$","meta","17",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","18",{"name":"twitter:title","content":"AgentSight: Observe and evolve your AI agents — with AI agents"}],["$","meta","19",{"name":"twitter:description","content":"Agent-native observability and evolution for AI agents. Connect runtime evidence to repeated failures, evolve skills, evaluate candidates, and promote or roll back improvements."}],["$","meta","20",{"name":"twitter:image","content":"https://agentsight.us/opengraph-image"}],["$","link","21",{"rel":"icon","href":"/icon.svg?icon.2vqiq-xj4_zi1.svg","sizes":"any","type":"image/svg+xml"}],["$","$L18","22",{}]]}]}],null]}],null]}],"p":"$@19","v":null,"s":"$8"}},"a":"$@1a","u":"$@1b","b":"agentsight-74beba4690f682965c675ccd"}
+1c:"/_next/static/chunks/2zdmxv_p9kk0q.js"
+1d:"/_next/static/chunks/3zt_16xndew4w.js"
+1e:I[22016,["$1c","$1d"],""]
+2f:I[97367,["$3"],"OutletBoundary"]
+d:["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell header-inner","children":[["$","$L1e",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","nav",null,{"className":"primary-nav","aria-label":"Primary navigation","children":[["$","$L1e","/product/",{"href":"/product/","children":"Product"}],["$","$L1e","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L1e","/pricing/",{"href":"/pricing/","children":"Pricing"}]]}],["$","details",null,{"className":"mobile-menu","children":[["$","summary",null,{"aria-label":"Open site navigation","children":[["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}],["$","span",null,{"aria-hidden":"true"}]]}],["$","nav",null,{"aria-label":"Mobile navigation","children":[[["$","$L1e","/product/",{"href":"/product/","children":"Product"}],["$","$L1e","/blog/",{"href":"/blog/","children":"Blog"}],["$","$L1e","/pricing/",{"href":"/pricing/","children":"Pricing"}]],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation ↗"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}]]}]]}],["$","div",null,{"className":"header-actions","children":[["$","a",null,{"className":"header-github","href":"https://github.com/eunomia-bpf/agentsight","children":"GitHub ↗"}],["$","a",null,{"className":"button button-accent header-cta","href":"https://app.agentsight.us/","children":"Open app"}]]}]]}]}]
+e:["$","main",null,{"children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"TechArticle\",\"headline\":\"How AgentSight report chooses a database or native history\",\"description\":\"A v1.0.35 source audit of report input selection: explicit SQLite paths, modification-time ordering, agent-native fallback, and AGENTSIGHT_DB_PATH asymmetry.\",\"url\":\"https://agentsight.us/blog/how-agentsight-report-selects-a-session/\",\"datePublished\":\"2026-11-15\",\"dateModified\":\"2026-11-15\",\"author\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Eunomia\",\"url\":\"https://eunomia.dev/\"}}"}}],["$","section",null,{"className":"page-hero detail-hero","children":["$","div",null,{"className":"shell narrow","children":[["$","nav",null,{"className":"breadcrumbs","aria-label":"Breadcrumb","children":[["$","$L1e",null,{"href":"/","children":"Home"}],["$","$L1e",null,{"href":"/blog/","children":"Blog"}],["$","span",null,{"aria-current":"page","children":"Report input provenance"}]]}],["$","p",null,{"className":"eyebrow","children":"Evidence provenance · AgentSight v1.0.35 · 15 November 2026"}],["$","h1",null,{"children":"How AgentSight report chooses a database or native history"}],["$","p",null,{"className":"hero-lede","children":["Without ",["$","code",null,{"children":"--db"}],", ",["$","code",null,{"children":"agentsight report"}]," reads the most recently",["$","strong",null,{"children":" filesystem-modified"}]," ",["$","code",null,{"children":"agentsight-*.db"}]," file in the current directory. When none matches, it warns and imports recent native agent history instead. An unexpectedly different report is not necessarily evidence that the recorder failed."]}]]}]}],["$","section",null,{"className":"section detail-section","children":["$","div",null,{"className":"shell detail-grid","children":["$","article",null,{"className":"article-body","children":[["$","section",null,{"children":[["$","h2",null,{"children":"Why does report show a different run after changing directories?"}],["$","p",null,{"children":["The input selector is separate from the event and token aggregation. Released ",["$","code",null,{"children":"report_db_or_local"}]," checks the ",["$","code",null,{"children":"--local"}],"choice, then the explicit database path, then ",["$","code",null,{"children":"latest_session_db()"}],". That last function scans ",["$","em",null,{"children":"only"}]," the current working directory. A change of directory, a copied database with a newer modification time, or a missing matching filename can change the underlying source without changing the report command."]}],["$","p",null,{"children":["This analysis is pinned to AgentSight v1.0.35 at product commit",["$","code",null,{"children":" c1574366122a90c451bca6a84713e28813ab95e2"}],". It reconstructs the Rust dispatch and its regression tests; it is not a new runtime benchmark or a production incident. The",["$","$L1e",null,{"href":"/blog/how-agentsight-discovers-local-agent-sessions/","children":[" ","native session discovery article"]}]," explains provider history import. This article instead answers the narrower decision: ",["$","strong",null,{"children":"which input a report invocation reads"}],"."]}]]}],["$","section",null,{"children":[["$","h2",null,{"children":"Report input decision matrix"}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"760px"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":{"border":"1px solid #d8dee8","padding":"0.7rem","verticalAlign":"top","background":"#f4f7fa","fontWeight":700},"children":"Condition"}],["$","th",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Selected evidence"}],["$","th",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Consequence"}]]}]}],["$","tbody",null,{"children":[["$","tr","report --db run.db",{"children":[["$","td",null,{"style":{"border":"1px solid #d8dee8","padding":"0.7rem","verticalAlign":"top"},"children":"$L1f"}],"$L20","$L21"]}],"$L22","$L23","$L24","$L25","$L26","$L27","$L28"]}]]}]}],"$L29"]}],"$L2a","$L2b","$L2c","$L2d","$L2e"]}]}]}]]}]
+f:["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L1e",null,{"href":"/","className":"logo","aria-label":"AgentSight home","children":[["$","svg",null,{"viewBox":"0 0 36 36","role":"img","aria-hidden":"true","children":[["$","defs",null,{"children":["$","linearGradient",null,{"id":"agentsight-mark","x1":"4","y1":"4","x2":"32","y2":"32","gradientUnits":"userSpaceOnUse","children":[["$","stop",null,{"stopColor":"#ff9f1c"}],["$","stop",null,{"offset":"0.5","stopColor":"#2f66ff"}],["$","stop",null,{"offset":"1","stopColor":"#00b894"}]]}]}],["$","rect",null,{"width":"36","height":"36","rx":"9","fill":"#091627"}],["$","path",null,{"d":"M7 18c2.9-5.1 6.6-7.6 11-7.6S26.1 12.9 29 18c-2.9 5.1-6.6 7.6-11 7.6S9.9 23.1 7 18Z","fill":"none","stroke":"url(#agentsight-mark)","strokeWidth":"2.7"}],["$","circle",null,{"cx":"18","cy":"18","r":"4.2","fill":"url(#agentsight-mark)"}],["$","circle",null,{"cx":"18","cy":"18","r":"1.5","fill":"#091627"}]]}],["$","span",null,{"children":[["$","strong",null,{"children":"AgentSight"}],["$","small",null,{"children":"by Eunomia"}]]}]]}],["$","p",null,{"className":"footer-copy","children":"Open-source, local-first observability for AI agents. Connect model activity to commands, files, processes, network activity, and resource use."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Product"}],["$","$L1e",null,{"href":"/product/","children":"Product overview"}],["$","a",null,{"href":"https://app.agentsight.us/","children":"Hosted app"}],["$","$L1e",null,{"href":"/use-cases/","children":"Use cases"}],["$","$L1e",null,{"href":"/architecture/","children":"Architecture"}],["$","$L1e",null,{"href":"/integrations/","children":"Integrations"}],["$","$L1e",null,{"href":"/compare/","children":"Compare"}],["$","$L1e",null,{"href":"/pricing/","children":"Pricing"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Resources"}],["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":"Documentation"}],["$","$L1e",null,{"href":"/guides/","children":"Guides"}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight","children":"Source code"}],["$","$L1e",null,{"href":"/releases/","children":"Releases"}],["$","$L1e",null,{"href":"/security/","children":"Security"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Site"}],["$","$L1e",null,{"href":"/blog/","children":"Engineering notes"}],["$","a",null,{"href":"/sitemap.xml","children":"Sitemap"}],["$","a",null,{"href":"/llms.txt","children":"llms.txt"}],["$","a",null,{"href":"/manifest.webmanifest","children":"Web manifest"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":["AgentSight v","1.0.35"," · MIT licensed · Built by the Eunomia community"]}],["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight-website","children":"Website source ↗"}]]}]]}]
+10:["$","script","script-0",{"src":"/_next/static/chunks/3zt_16xndew4w.js","async":true}]
+11:["$","$L2f",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@30"}]}]
+1b:true
+8:300
+1f:["$","code",null,{"children":"report --db run.db"}]
+20:["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"run.db"}]
+21:["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Explicit path; unreadable or missing DB raises an error rather than falling back"}]
+22:["$","tr","report token --db run.db",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"report token --db run.db"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"run.db"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The token subcommand accepts its own DB path"}]]}]
+23:["$","tr","report --db A.db token --db B.db",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"report --db A.db token --db B.db"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"B.db"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"For token/audit/prompts/export/serve, subcommand --db wins"}]]}]
+24:["$","tr","report --local token --db run.db",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"report --local token --db run.db"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Agent-native history"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The parent --local flag wins over the explicit path"}]]}]
+25:["$","tr","report, with agentsight-*.db in CWD",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"report, with agentsight-*.db in CWD"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Newest filesystem-modified matching DB"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Modification time, not filename timestamp or SQLite session start"}]]}]
+26:["$","tr","report, no agentsight-*.db in CWD",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"report, no agentsight-*.db in CWD"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Recent agent-native history"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Emits a warning; imports up to 25 native sessions"}]]}]
+27:["$","tr","report list",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"report list"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Matching DB filenames in CWD"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Lists files, not native sessions or all saved captures on disk"}]]}]
+28:["$","tr","AGENTSIGHT_DB_PATH=run.db agentsight report",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":["$","code",null,{"children":"AGENTSIGHT_DB_PATH=run.db agentsight report"}]}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Normal report search"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"The environment variable is wired into record/bind, not report"}]]}]
+29:["$","p",null,{"children":["The nested-path precedence comes from",["$","code",null,{"children":" own.as_ref().or(db.as_ref())"}]," in the token, audit, prompts, export, and serve branches. The summary subcommand has its own DB and local values, so avoid mixing contradictory parent/subcommand flags. For a repeatable report, specify one database path on the command you use."]}]
+2a:["$","section",null,{"children":[["$","h2",null,{"children":"Latest means filesystem mtime, not session time"}],["$","p",null,{"children":[["$","code",null,{"children":"sorted_session_dbs"}]," includes names beginning",["$","code",null,{"children":" agentsight-"}]," with extension ",["$","code",null,{"children":".db"}],", then sorts descending by ",["$","code",null,{"children":"metadata().modified()"}],". It does not parse a timestamp from the name, inspect the SQLite session start timestamp, or recurse through other directories. A restored capture can therefore outrank a chronologically newer run after its file modification time changes. Equal or unreadable timestamps should not be treated as a guaranteed chronological tie-break."]}],["$","div",null,{"style":{"overflowX":"auto","margin":"1.5rem 0"},"children":["$","table",null,{"style":{"borderCollapse":"collapse","width":"100%","minWidth":"740px"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Test condition"}],["$","th",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:0:props:children:props:children:0:props:style","children":"Expected outcome from the code"}]]}]}],["$","tbody",null,{"children":[["$","tr","One named candidate in CWD",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"One named candidate in CWD"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Selected even if a newer recording exists in another directory"}]]}],["$","tr","A copied old DB gets a new modification time",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"A copied old DB gets a new modification time"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"That copy can become the latest selected DB"}]]}],["$","tr","Only run.db exists, not agentsight-*.db",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Only run.db exists, not agentsight-*.db"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"No default match: native fallback instead"}]]}],["$","tr","--db missing.db",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"--db missing.db"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"SQLite load fails; regression test confirms no blank DB is created"}]]}],["$","tr","--local with a valid --db for token",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"--local with a valid --db for token"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Native history chosen; explicit DB bypassed"}]]}],["$","tr","Recorder wrote outside CWD via environment variable",{"children":[["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Recorder wrote outside CWD via environment variable"}],["$","td",null,{"style":"$e:props:children:2:props:children:props:children:props:children:1:props:children:1:props:children:props:children:1:props:children:0:props:children:0:props:style","children":"Report needs an explicit --db to select that file"}]]}]]}]]}]}]]}]
+2b:["$","section",null,{"children":[["$","h2",null,{"children":"The AGENTSIGHT_DB_PATH configuration asymmetry"}],["$","p",null,{"children":["The helper ",["$","code",null,{"children":"configured_db_path()"}]," takes an explicit CLI value first, then ",["$","code",null,{"children":"AGENTSIGHT_DB_PATH"}],". The recorder and ",["$","code",null,{"children":"bind"}]," call this helper. In contrast, report dispatch invokes ",["$","code",null,{"children":"report_db_or_local"}]," directly. In this release, setting the environment variable for recording does not mean an unqualified report will read that same file. This is a real code-level configuration asymmetry, but not proof of data loss."]}],["$","pre",null,{"children":["$","code",null,{"children":"# Inspect matching databases in the current directory\nagentsight report list\n\n# Use the actual recording path instead of the implicit selection\nagentsight report summary --db ./agentsight-20261115-090000.db\nagentsight report token --db ./agentsight-20261115-090000.db --json\n\n# Intentionally choose native agent transcripts\nagentsight report --local token --json"}]}],["$","p",null,{"children":"The path above is illustrative rather than a generated artifact or a measured run. Use the actual filename produced by your recorder, and do not upload raw session databases publicly: they may contain prompts, responses, paths, headers or network targets."}]]}]
+2c:["$","section",null,{"children":[["$","h2",null,{"children":"What happens when no matching DB exists?"}],["$","p",null,{"children":["The CLI prints a warning that no ",["$","code",null,{"children":"agentsight-*.db"}],"was found in the current directory. The view loader then sets its source to agent-native and calls ",["$","code",null,{"children":"import_recent"}],"with a limit of 25. Agent-native transcripts can contain model and tool information, but are not equivalent to independent system-level process, file, and TLS capture from a saved record."]}],["$","p",null,{"children":["An ",["$","em",null,{"children":"explicit"}]," nonexistent SQLite filename follows a different path: the loader returns an error. Its regression test verifies that it does not silently create a blank DB. An empty process list or different token total should therefore trigger a provenance check before an assertion about sensor loss or capture quality."]}]]}]
+2d:["$","section",null,{"children":[["$","h2",null,{"children":"Reproducible diagnostic checklist"}],["$","ol",null,{"children":[["$","li",null,{"children":["Record the working directory, complete invocation, and any parent or nested ",["$","code",null,{"children":"--db"}],"/",["$","code",null,{"children":"--local"}]," flags."]}],["$","li",null,{"children":["Run ",["$","code",null,{"children":"agentsight report list"}]," and inspect matching filenames; use filesystem tools to compare modification times when there is more than one."]}],["$","li",null,{"children":"Run a comparison using an explicit known SQLite path. Do not infer the selected run from the amount of activity alone."}],["$","li",null,{"children":["Check whether recording used ",["$","code",null,{"children":"AGENTSIGHT_DB_PATH"}]," to store the DB elsewhere."]}],["$","li",null,{"children":"Only after selecting the intended source investigate incomplete event capture, SQLite persistence, or native transcript limitations."}]]}],["$","p",null,{"children":"This decision matrix is an implementation-derived test plan, not evidence that each scenario was run in a test environment. It does not guarantee full telemetry in either evidence mode. Keep selected-source provenance with any report used for performance, compliance or debugging comparisons."}]]}]
+2e:["$","section",null,{"children":[["$","h2",null,{"children":"Primary sources"}],["$","ul",null,{"children":[["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/main.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/main.rs","rel":"noopener noreferrer","children":"Report CLI parsing and precedence"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/sources/session_db.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/sources/session_db.rs","rel":"noopener noreferrer","children":"Current-directory DB discovery and mtime sort"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cli_db.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cli_db.rs","rel":"noopener noreferrer","children":"Native import and missing-DB regression test"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cmd_exec.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/cmd_exec.rs","rel":"noopener noreferrer","children":"Default recorder database location"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/output/format.rs",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/blob/c1574366122a90c451bca6a84713e28813ab95e2/collector/src/output/format.rs","rel":"noopener noreferrer","children":"Report fallback warning"}]}],["$","li","https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35",{"children":["$","a",null,{"href":"https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35","rel":"noopener noreferrer","children":"AgentSight v1.0.35 release"}]}]]}],["$","p",null,{"children":["For supported CLI setup and options, follow the",["$","a",null,{"href":"https://eunomia.dev/agentsight/","children":" canonical AgentSight documentation"}],". For data exported after selection, read the",["$","$L1e",null,{"href":"/blog/what-agentsight-json-snapshot-exports-contain/","children":[" ","JSON snapshot field audit"]}],"."]}]]}]
+30:null
+8:C
+1a:0
+a:"$undefined"
+6:"$undefined"
+19:"$undefined"
+12:"$undefined"
