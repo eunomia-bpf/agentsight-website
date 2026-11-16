@@ -1,5 +1,11 @@
 # Human-only blockers
 
+## Latest evidence — 2026-11-16
+
+The exact configured Google Drive folder now contains **120 files**; newest modification **2026-11-16T17:06:45.104Z**. The new `2026-11-09_to_2026-11-15` eight-file family was exported the morning after the window ended, **before** the November 18 three-day finalization boundary. Its GSC dates cover **November 9–14 only**, **7 clicks / 218 impressions**, and omit November 15; GSC page aggregation separately contains **7 clicks / 294 impressions**, a different basis. GA4 organic landing pages contain **14 sessions / 0 key events**, preliminary. The prior November 2–8 family remains unrefreshed after its November 11 finalization date, with November 8 missing from GSC date rows. Earlier incomplete/missing weekly windows remain as documented below.
+
+**External human-only action remains:** the authorized Apps Script operator must enable post-finalization regeneration and backfill all missing or incomplete windows, checking full intended GSC date coverage and GA4 identity. The routine agent cannot edit or trigger that external exporter through the connected read-only Drive tools. Do not present incomplete week-to-week comparisons as finalized traffic trends.
+
 ## Google SEO export finalization timing — updated 2026-11-06
 
 - **Blocked action:** make the external Google Apps Script weekly exporter backfill missing exports and regenerate finalized GA4 and Search Console snapshots at least three days after each weekly window ends.
