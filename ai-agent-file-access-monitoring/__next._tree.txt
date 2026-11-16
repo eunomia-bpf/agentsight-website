@@ -1,2 +1,4 @@
 :HL["/_next/static/chunks/3qsftj3dl-hsh.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4112,"slots":{"children":{"name":"slug","param":{"type":"d","key":"ai-agent-file-access-monitoring","siblings":["architecture","blog","changelog","compare","guides","integrations","pricing","product","releases","security","use-cases"]},"prefetchHints":4160,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"agentsight-839512b50beeeb27295f0ec8"}
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":{"n":"slug","t":"d","k":"ai-agent-file-access-monitoring","s":["architecture","blog","changelog","compare","guides","integrations","pricing","product","releases","security","use-cases"]},"h":65600,"c":"$Q2"}]]
+0:{"b":"agentsight-d387cdee890473702e8d1857","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
