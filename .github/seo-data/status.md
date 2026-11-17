@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-11-17 (local web UI exposure boundary; publication pending)
+
+- **Authority:** website `main` baseline `e568b0a076db57e775b983f47428c9fae0c4154e`; AgentSight product `master` `c1574366122a90c451bca6a84713e28813ab95e2` / stable v1.0.35 unchanged. Shared SEO skills pinned `f42128a3f05c73cf10c786a2711c488bb3a14839` match upstream. No existing open SEO PR; unrelated dependency PR untouched.
+- **Content SLO:** exact prior production Nov 16 **04:21:48 PST**; next 48-hour deadline **Nov 18 04:21:48 PST**. Today must qualify with a substantive publication; the proposed article is not counted until successful exact-squash publication. Prior Nov 15 SLO miss remains in history.
+- **Research:** v1.0.35 ordinary report/record web server listens on loopback by default, and its local snapshot API does not require bearer credentials when the request lacks Origin. Explicit all-interface `--listen` can expose session evidence; `bind` uses a separate authenticated Direct Node model. New source-grounded article `/blog/when-agentsight-local-web-ui-is-exposed/` is distinct from prior credential and input-selection pages. Code-level analysis, not an observed compromise.
+- **Data:** latest configured Drive exports unchanged, preliminary Nov 9–15 (GA4 14 organic sessions, zero key events; GSC Nov 9–14 7 clicks/218 date impressions, Nov 15 missing; GSC pages 7/294 separately). Existing exporter finalization/backfill human-only blocker remains. Cloudflare analytics not configured. Public search is directional only; no verified independent new backlink.
+- **Production:** homepage available v1.0.35; prior article appears through public Blog navigation. Path-only GA4 source/deployment present; browser transmission not independently confirmed. Do not infer incident from alternate direct reader failure.
+- **Delivery:** new site-content PR requires exact-head Website CI/Cloudflare/GitGuardian, final complete review, squash merge, exact-commit production workflow and public acceptance, followed by metadata-only closeout. Local npm verify cannot execute in network-isolated container; no CI bypass. Protected control plane, source product, submodule and all schedules remain untouched. [Today's daily evidence](daily/2026-11-17.md).
+
+---
+
 ## Current cycle — 2026-11-16 (November 15 publication closed out; fresh preliminary export)
 
 - **Authority:** website `main` at start `cf07bb12cb406888dca68f09d985a84c4d6a3b1e`, product `master` `c1574366122a90c451bca6a84713e28813ab95e2` / stable **v1.0.35**. Shared SEO skills pinned `f42128a3f05c73cf10c786a2711c488bb3a14839` equal upstream. No prior open SEO PR; unrelated Dependabot #6 untouched.
