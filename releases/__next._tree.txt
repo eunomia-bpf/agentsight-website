@@ -1,4 +1,4 @@
 :HL["/_next/static/chunks/3qsftj3dl-hsh.css","style"]
 2:[["children",{"s":"__PAGE__","h":160}]]
 1:[["children",{"s":"releases","h":64,"c":"$Q2"}]]
-0:{"b":"agentsight-74beba4690f682965c675ccd","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"agentsight-89efd523a6fb726120317d19","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
