@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const localWebAccessArticle = {
+  title: 'When can an AgentSight local web UI expose recorded evidence?',
+  description: 'Audit v1.0.35 loopback defaults, unauthenticated local snapshots, browser Origin filtering, and the separate Direct Node capability model.',
+  href: '/blog/when-agentsight-local-web-ui-is-exposed/',
+};
 const reportSelectionArticle = {
   title: 'How AgentSight report chooses a database or native history',
   description: 'Audit v1.0.35 explicit SQLite paths, filesystem mtime selection, native-session fallback, and the AGENTSIGHT_DB_PATH asymmetry.',
@@ -196,6 +201,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: localWebAccessArticle.title, url: site.url + localWebAccessArticle.href },
       { '@type': 'WebPage', name: reportSelectionArticle.title, url: site.url + reportSelectionArticle.href },
       { '@type': 'WebPage', name: recordStartupArticle.title, url: site.url + recordStartupArticle.href },
       { '@type': 'WebPage', name: monitorCpuArticle.title, url: site.url + monitorCpuArticle.href },
@@ -240,6 +246,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Local web UI network boundary · November 2026</p>
+            <h2><Link href={localWebAccessArticle.href}>{localWebAccessArticle.title}</Link></h2>
+            <p>{localWebAccessArticle.description}</p>
+            <Link className="arrow-link" href={localWebAccessArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Report evidence provenance · November 2026</p>
             <h2><Link href={reportSelectionArticle.href}>{reportSelectionArticle.title}</Link></h2>
