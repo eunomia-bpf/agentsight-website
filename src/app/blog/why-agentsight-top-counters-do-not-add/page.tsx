@@ -29,7 +29,7 @@ const cases = [
 const sourceLinks = [
   ['AgentSight v1.0.35 LiveView merge and summary selection', sourceRoot + '/collector/src/view/live_top.rs'],
   ['AgentSight v1.0.35 top CLI and live capture options', sourceRoot + '/collector/src/main.rs'],
-  ['AgentSight v1.0.35 native-session source model', sourceRoot + '/collector/src/sources/agent_native.rs'],
+  ['AgentSight v1.0.35 native-session source model', sourceRoot + '/ext/analysis/src/sources/agent_native.rs'],
   ['AgentSight v1.0.35 README: top, record, and report boundaries', sourceRoot + '/README.md'],
   ['AgentSight v1.0.35 release', 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35'],
 ] as const;
