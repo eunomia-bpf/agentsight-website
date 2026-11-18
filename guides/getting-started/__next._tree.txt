@@ -2,4 +2,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"slug","t":"d","k":"getting-started","s":[]},"h":65632,"c":"$Q3"}]]
 1:[["children",{"s":"guides","h":131136,"c":"$Q2"}]]
-0:{"b":"agentsight-89efd523a6fb726120317d19","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
+0:{"b":"agentsight-c16ab85ea6e5cd96619266eb","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
