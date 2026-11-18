@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-11-18 (live top summary precedence article; publication pending)
+
+- **Authority:** website main baseline `7f9c99d21a2faf360522486dfc8f3f4dcd4e2008`; product master `c1574366122a90c451bca6a84713e28813ab95e2` / v1.0.35 unchanged; shared SEO skills pinned/upstream both `f42128a3f05c73cf10c786a2711c488bb3a14839`. Only unrelated Dependabot PR open.
+- **48h deadline:** last qualifying exact-source static publication November 17 **09:43:09 PST** ([#44139909596](https://github.com/eunomia-bpf/agentsight-website/actions/runs/44139909596)); next absolute deadline **November 19 09:43:09 PST**. As next ordinary cycle could start after the deadline, today prioritizes distinctive qualifying content. Do not count proposed work until exact successful production publication.
+- **Technical research:** v1.0.35 `LiveView::build_top` prefers the **entire** agent-native overview summary as soon as any native events/calls/tokens counter is nonzero. Only an all-zero native triple falls back to captured summary; no per-field mixing. Regression fixtures demonstrate 12/4/100 + 5/2/40 -> 12/4/100; 0/0/0 + 5/2/40 -> 5/2/40; 12/4/0 + 5/2/40 -> 12/4/0. Process and eBPF row enrichment and Network section selection remain separate. Article `/blog/why-agentsight-top-counters-do-not-add/` is source-pinned and distinct from prior discovery/token-reconciliation/monitor content. Source analysis, not runtime benchmark.
+- **Data:** configured Drive folder unchanged at **120 files**, newest 2026-11-16 17:06:45Z, latest Nov9–15 exports unchanged after Nov18 three-day lag. GA4 preliminary 14 organic sessions/zero key events; GSC Nov9–14 7 clicks/218 date impressions, Sunday missing; GSC page aggregate 7/294 separately. Existing external Apps Script finalization and historic backfill is a genuine human-only blocker, not a zero or traffic trend.
+- **Production:** main CI/site publication for Nov17 closeout green, homepage v1.0.35, GA4 path-only configured. **Independent public Blog-navigation verification of Nov17 Web UI article now passed**: full source matrix and article text loaded from Blog index. Alternate direct reader path remains inconsistent; no confirmed incident. Direct GA4 browser network request unverified.
+- **Delivery:** narrow new TechArticle + Blog card/CollectionPage + sitemap + daily/status/blocker evidence. Fresh branch requires standard exact-head Website CI, GitGuardian, Cloudflare, post-CI complete review, squash merge, exact-source production verification and metadata closeout. Local checkout/npm unavailable (github.com DNS failure); do not assert local test success. No protected configurations, GitHub workflows, raw analytics, product source or recurring schedules changed. [Daily record](daily/2026-11-18.md).
+
+---
+
 ## Current cycle — 2026-11-17 (local web UI exposure analysis published; closeout)
 
 - **Authority:** website `main` baseline `e568b0a076db57e775b983f47428c9fae0c4154e`; AgentSight product `master` `c1574366122a90c451bca6a84713e28813ab95e2` / stable v1.0.35 unchanged. Shared SEO skills pinned `f42128a3f05c73cf10c786a2711c488bb3a14839` match upstream. No existing open SEO PR; unrelated dependency PR untouched.

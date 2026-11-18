@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const topCounterArticle = {
+  title: 'Why AgentSight top does not add native and eBPF counters',
+  description: 'Audit v1.0.35 whole-summary native/capture selection, model-token fallback, process enrichment and regression fixtures.',
+  href: '/blog/why-agentsight-top-counters-do-not-add/',
+};
 const localWebAccessArticle = {
   title: 'When can an AgentSight local web UI expose recorded evidence?',
   description: 'Audit v1.0.35 loopback defaults, unauthenticated local snapshots, browser Origin filtering, and the separate Direct Node capability model.',
@@ -201,6 +206,7 @@ export default function BlogPage() {
     url: `${site.url}${config.path}`,
     hasPart: [
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
+      { '@type': 'WebPage', name: topCounterArticle.title, url: site.url + topCounterArticle.href },
       { '@type': 'WebPage', name: localWebAccessArticle.title, url: site.url + localWebAccessArticle.href },
       { '@type': 'WebPage', name: reportSelectionArticle.title, url: site.url + reportSelectionArticle.href },
       { '@type': 'WebPage', name: recordStartupArticle.title, url: site.url + recordStartupArticle.href },
@@ -246,6 +252,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Live top counter provenance · November 2026</p>
+            <h2><Link href={topCounterArticle.href}>{topCounterArticle.title}</Link></h2>
+            <p>{topCounterArticle.description}</p>
+            <Link className="arrow-link" href={topCounterArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Local web UI network boundary · November 2026</p>
             <h2><Link href={localWebAccessArticle.href}>{localWebAccessArticle.title}</Link></h2>
