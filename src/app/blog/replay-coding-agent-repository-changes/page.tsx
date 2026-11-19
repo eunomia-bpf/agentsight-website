@@ -83,7 +83,7 @@ export default function RepositoryReplayArticle() {
           <p className="hero-lede">
             A final diff tells you where a repository ended. A transcript tells you everything the agent said and
             called. Repository replay answers a narrower process question: <strong>in what order did the agent move
-            through the codebase, and which files changed along the way?</strong> The original walkthrough covered AgentSight v1.0.26. This November 2026 update checks
+            through the codebase, and which file paths did its Tools report reading or changing?</strong> The original walkthrough covered AgentSight v1.0.26. This November 2026 update checks
             v1.0.35 source and regression fixtures, including native Cursor replay. No prior eBPF recording is required,
             but a replayed file action is not proof of a filesystem syscall.
           </p>
