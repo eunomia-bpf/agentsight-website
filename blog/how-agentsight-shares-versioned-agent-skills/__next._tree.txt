@@ -2,4 +2,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":"how-agentsight-shares-versioned-agent-skills","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"blog","h":64,"c":"$Q2"}]]
-0:{"b":"agentsight-2e1337c8d74044c477ef0ace","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"agentsight-aea86d51b2ae422ee562174c","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
