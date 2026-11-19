@@ -2,4 +2,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"slug","t":"d","k":"gemini-cli","s":["cursor"]},"h":65632,"c":"$Q3"}]]
 1:[["children",{"s":"integrations","h":131136,"c":"$Q2"}]]
-0:{"b":"agentsight-aea86d51b2ae422ee562174c","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
+0:{"b":"agentsight-dab021a4d5999ed608189ebb","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
