@@ -180,7 +180,7 @@ const dockerSessionsArticle = {
 const repositoryReplayArticle = {
   title: 'What repository replay can tell you about a coding agent',
   description:
-    'See how Agent Nebula reconstructs ordered repository evolution from local agent sessions, and where replay stops short of explaining intent or low-level system effects.',
+    'Updated for v1.0.35 with regression fixtures for failed and pathless Tools, replay path provenance, rename identity, Cursor support, and limits of media compaction.',
   href: '/blog/replay-coding-agent-repository-changes/',
 };
 const overheadArticle = {
@@ -252,6 +252,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Updated repository replay research · November 2026</p>
+            <h2><Link href={repositoryReplayArticle.href}>{repositoryReplayArticle.title}</Link></h2>
+            <p>{repositoryReplayArticle.description}</p>
+            <Link className="arrow-link" href={repositoryReplayArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Live top counter provenance · November 2026</p>
             <h2><Link href={topCounterArticle.href}>{topCounterArticle.title}</Link></h2>
@@ -425,12 +431,6 @@ export default function BlogPage() {
             <h2><Link href={dockerSessionsArticle.href}>{dockerSessionsArticle.title}</Link></h2>
             <p>{dockerSessionsArticle.description}</p>
             <Link className="arrow-link" href={dockerSessionsArticle.href}>Read the page</Link>
-          </article>
-          <article className="content-card">
-            <p className="card-label">Agent replay methods · August 2026</p>
-            <h2><Link href={repositoryReplayArticle.href}>{repositoryReplayArticle.title}</Link></h2>
-            <p>{repositoryReplayArticle.description}</p>
-            <Link className="arrow-link" href={repositoryReplayArticle.href}>Read the page</Link>
           </article>
           <article className="content-card">
             <p className="card-label">Performance methods · August 2026</p>

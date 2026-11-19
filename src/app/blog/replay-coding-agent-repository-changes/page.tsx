@@ -6,19 +6,21 @@ import { site } from '@/lib/site';
 
 const productCommit = '92d634ec02d116a52acae62eb3b9b00c771e0b9d';
 const productSource = `https://github.com/eunomia-bpf/agentsight/blob/${productCommit}`;
+const currentProductCommit = 'c1574366122a90c451bca6a84713e28813ab95e2';
+const currentProductSource = `https://github.com/eunomia-bpf/agentsight/blob/${currentProductCommit}`;
 const articlePath = '/blog/replay-coding-agent-repository-changes/';
 const nebulaImage = `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}/ext/vis/examples/actplane-agent-nebula.png`;
 
 export const metadata: Metadata = {
   title: 'What repository replay can tell you about a coding agent',
   description:
-    'Learn how Agent Nebula reconstructs repository evolution from local Claude, Codex, and Gemini sessions, what the replay proves, what it cannot infer, and when to use a diff, transcript, or system trace instead.',
+    'Updated for AgentSight v1.0.35: source-tested repository replay path evidence, failed tools, rename identity, Cursor sessions, media compaction, and limits of inferred file actions.',
   alternates: { canonical: articlePath },
   openGraph: {
     type: 'article',
     title: 'What repository replay can tell you about a coding agent',
     description:
-      'A methods-first guide to replaying ordered coding-agent file actions with Agent Nebula, including worktree scoping, media compaction, and the boundary between observed action and inferred intent.',
+      'A source-verified Agent Nebula guide to file-action confidence, failed tool frames, repository scoping, renames, compact media, and the separation between native logs and system effects.',
     url: articlePath,
   },
 };
@@ -40,6 +42,11 @@ const sources = [
     'Agent Nebula design contract: action/effect/intent boundaries and repository projection model',
     `${productSource}/docs/repository-nebula.zh-CN.md`,
   ],
+  ['AgentSight v1.0.35 native repository replay projection and regression tests', `${currentProductSource}/ext/vis/src/repository.rs`],
+  ['AgentSight v1.0.35 replay event normalization and path-evidence weighting', `${currentProductSource}/ext/vis/web/repository-nebula.js`],
+  ['AgentSight v1.0.35 media frame selection and deterministic compaction test', `${currentProductSource}/ext/vis/src/export.rs`],
+  ['AgentSight v1.0.35 native Cursor replay source and limitations', `${currentProductSource}/docs/agents.md`],
+  ['AgentSight v1.0.35 stable release', 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35'],
   [
     'Pinned ACTplane Agent Nebula example used in this article',
     nebulaImage,
@@ -56,7 +63,7 @@ export default function RepositoryReplayArticle() {
     description: metadata.description,
     url: `${site.url}${articlePath}`,
     datePublished: '2026-08-23',
-    dateModified: '2026-08-23',
+    dateModified: '2026-11-19',
     author: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
     publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
   };
@@ -71,14 +78,14 @@ export default function RepositoryReplayArticle() {
             <Link href="/blog/">Blog</Link>
             <span aria-current="page">Repository replay</span>
           </nav>
-          <Eyebrow>Agent replay methods · 23 August 2026</Eyebrow>
+          <Eyebrow>Agent replay methods · 23 August 2026 · Updated 19 November 2026 for v1.0.35</Eyebrow>
           <h1>What repository replay can tell you about a coding agent</h1>
           <p className="hero-lede">
             A final diff tells you where a repository ended. A transcript tells you everything the agent said and
             called. Repository replay answers a narrower process question: <strong>in what order did the agent move
-            through the codebase, and which files changed along the way?</strong> AgentSight v1.0.26 exposes that view
-            through Agent Nebula, using local Claude, Codex, and Gemini sessions without requiring sudo or a prior eBPF
-            recording.
+            through the codebase, and which file paths did its Tools report reading or changing?</strong> The original walkthrough covered AgentSight v1.0.26. This November 2026 update checks
+            v1.0.35 source and regression fixtures, including native Cursor replay. No prior eBPF recording is required,
+            but a replayed file action is not proof of a filesystem syscall.
           </p>
         </div>
       </section>
@@ -106,9 +113,9 @@ export default function RepositoryReplayArticle() {
             <section>
               <h2>You do not need to have recorded the run with eBPF</h2>
               <p>
-                The current <code>agentsight vis</code> path is agent-native. Run it inside a Git worktree and it scans
-                matching local Claude, Codex, and Gemini sessions, then builds the repository replay from the Tool
-                actions those agents already saved. The product README explicitly lists <code>vis</code> among the
+                The <code>agentsight vis</code> path is agent-native. Run it inside a Git worktree: it scans
+                matching local Claude, Codex, and Gemini sessions, and v1.0.35 also has a repository matcher for Cursor
+                transcripts and delegated subagent actions. The replay is built from the Tool actions those agents saved. The product README explicitly lists <code>vis</code> among the
                 Windows, macOS, and Linux commands that can operate from native session files without eBPF. That makes
                 repository replay useful for a common retrospective case: the agent already worked for hours or days,
                 no system recorder was running, and you now want a compact process view.
@@ -162,6 +169,93 @@ agentsight vis -o output/agent-nebula.html`}</code></pre>
               </p>
             </section>
 
+
+            <section>
+              <h2>Source audit: what creates a star, and what does not?</h2>
+              <p>
+                The v1.0.35 <code>build_repository_trace</code> pipeline starts from parsed native Tool events,
+                not kernel file-open events. Each action has a normalized repository-relative path, access
+                operation, and optional previous path. A star therefore represents a <strong>file path inferred
+                or reported by a recognized Tool action</strong>. It does not prove that a child process changed
+                the bytes on disk, that a write reached storage, or that all related files were observed.
+                Candidate sessions must first match the Git worktree, project identity, or recognized remote.
+              </p>
+              <p>
+                <code>resolve_path</code> lexically normalizes paths against the session cwd or an absolute
+                path and accepts them only within a matching Git worktree. The source rejects empty paths
+                and strings with wildcards, dollar-sign variables, or newlines; files under
+                <code> .git</code>, <code>node_modules</code>, <code>target</code>, or
+                <code> .cache</code> are ignored. Missing stars can reflect an input-evidence or
+                filtering boundary, not proof that no filesystem activity occurred.
+              </p>
+              <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
+                <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: '820px', fontSize: '0.92rem' }}>
+                  <thead><tr><th style={header}>v1.0.35 source case</th><th style={header}>Timeline event</th><th style={header}>File action</th><th style={header}>What it establishes</th></tr></thead>
+                  <tbody>
+                    <tr><td style={cell}>Failed Tool names <code>src/failed.rs</code></td><td style={cell}>Retained for an in-repository session</td><td style={cell}>None</td><td style={cell}>A timed Tool was recorded; the failed call alone does not prove a file effect.</td></tr>
+                    <tr><td style={cell}>Timed Tool with no path</td><td style={cell}>Retained for an in-repository session</td><td style={cell}>None</td><td style={cell}>Time advances without inventing a star.</td></tr>
+                    <tr><td style={cell}>Successful native read of <code>src/read.rs</code></td><td style={cell}>Retained</td><td style={cell}>One read path</td><td style={cell}>A native Tool reported a repository-scoped read target.</td></tr>
+                    <tr><td style={cell}>Outside-worktree or ignored dependency path</td><td style={cell}>Can remain as a Tool event</td><td style={cell}>Filtered out</td><td style={cell}>Not evidence of an absent external side effect.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                The first three rows come from the in-source
+                <code> repository_sessions_keep_every_timed_tool_action</code> test: three timed Tool
+                events produce only one qualifying file action. The corresponding
+                <code> external_sessions_keep_only_proven_repository_actions</code> test shows the
+                stricter <code>--global</code> rule: an unrelated external session's pathless
+                Tool event is not kept. These are <strong>deterministic fixtures</strong>, not
+                recorded production workloads or measurements.
+              </p>
+            </section>
+            <section>
+              <h2>Why can a rename keep one star's identity?</h2>
+              <p>
+                The Rust projection attaches <code>previous_path</code> to the destination
+                of a rename. The JavaScript renderer ignores the separate
+                <code>rename_from</code> item, then uses the old and new paths together.
+                If an earlier star exists at the old path, <code>applyAction</code>
+                moves that same visual node to the new path. If the old node was never
+                seen, the renderer creates a new node at the destination rather than
+                asserting an unseen prior identity. For directory-scoped renames,
+                known descendants are moved as a group; directory membership is
+                inferred from tracked Git paths plus observed action paths.
+              </p>
+              <p>
+                This is <em>visual continuity under available path evidence</em>, not
+                inode identity or an independent proof of a successful filesystem rename.
+                Similarly, a delete action changes a star's displayed lifecycle; it
+                does not certify that all later reads were impossible. The Git commit
+                timestamps are separate visual milestones, not substitutes for
+                native Tool event timestamps.
+              </p>
+            </section>
+            <section>
+              <h2>Visual intensity is evidence weighting, not probability</h2>
+              <p>
+                The v1.0.35 renderer applies a relative visual weight of
+                <strong> 1.00</strong> to a direct file Tool, <strong>0.68</strong>
+                to recognized search Tools, <strong>0.42</strong> to shell-inferred
+                paths, and <strong>0.10</strong> to a directory-scope hint.
+                These constants help the replay distinguish concrete file targets
+                from broad command or directory attention. They are
+                <strong> not calibrated confidence scores</strong>, syscall success
+                probabilities, or a measurement of time spent editing.
+              </p>
+              <p>
+                For a reproducible inspection, pin the released source and check the
+                projection tests and renderer, then generate a self-contained
+                <code> .html</code> replay from a non-sensitive worktree.
+              </p>
+              <pre><code>{[
+                'git checkout c1574366122a90c451bca6a84713e28813ab95e2',
+                'rg -n "repository_sessions_keep_every_timed_tool_action|external_sessions_keep_only_proven_repository_actions" ext/vis/src/repository.rs',
+                'rg -n "resolve_path|ignored_path|previous_path" ext/vis/src/repository.rs',
+                'rg -n "SHELL_EVIDENCE|SEARCH_EVIDENCE|DIRECTORY_SCOPE_EVIDENCE|rename_from" ext/vis/web/repository-nebula.js',
+                '# In your separate project worktree, inspect: agentsight vis -o output/agent-nebula.html',
+              ].join('\n')}</code></pre>
+            </section>
             <section>
               <h2>Diff, transcript, repository replay, and system trace answer different questions</h2>
               <div style={{ overflowX: 'auto', margin: '1.5rem 0' }}>
@@ -239,6 +333,11 @@ agentsight vis -o output/agent-nebula.html`}</code></pre>
                 self-contained HTML artifact the better review surface when exact step coverage matters, while a compact
                 GIF or MP4 is better for quick communication. A reviewer should not mistake a visually compressed media
                 export for a lossy source dataset; the choice of output format is part of how the replay is consumed.
+                The v1.0.35 <code>compact_media_frames_are_uniform_by_action</code> test selects
+                <strong> 900 media frames from 68,222 actions</strong> for a 30-second
+                output, including the first and last action. These are fixture numbers,
+                not a measured run. Uniform-by-action sampling is not uniform real-time spacing;
+                a dense burst can occupy as much visual timeline as a much longer idle interval.
               </p>
               <pre><code>{`agentsight vis . --global \\
   --compact-rate 30s \\
@@ -303,11 +402,14 @@ agentsight vis -o output/agent-nebula.html`}</code></pre>
             <section>
               <h2>The current compatibility boundary is intentionally narrower than “all coding agents”</h2>
               <p>
-                At AgentSight v1.0.26, the documented repository replay scans local Claude, Codex, and Gemini sessions.
-                Other AgentSight surfaces support additional agents and system-capture paths, but that does not imply the
-                same native-session replay compatibility. Treat the current README and agentvis source at commit
-                <code> {productCommit.slice(0, 12)}</code> as the compatibility reference, especially because local
-                transcript formats and vendor storage layouts can change independently of the visualization itself.
+                The August 2026 v1.0.26 walkthrough listed Claude, Codex, and Gemini. That is no longer a
+                complete account of the <strong>v1.0.35 source</strong>. The repository candidate matcher now has
+                explicit Cursor and CodeBuddy project-directory branches; for Cursor, <code>parse_session_file</code>
+                also includes delegated <code>subagents</code> activity, and the product
+                <Link href={currentProductSource + '/docs/agents.md'}> agent guide</Link> documents
+                <code> agentsight vis</code> for Cursor. Support is conditional on local transcripts actually being
+                present and resolvable to this repository. Do not generalize that support to all IDE agents or claim
+                that native file replay can recover their encrypted or unlogged process activity.
               </p>
             </section>
 

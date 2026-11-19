@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-11-19 (Agent Nebula evergreen source audit selected; publication gated)
+
+- **Authority:** website main baseline `d254c424a07e9b6e51b393c25951a4274a99fc05`; product master `c1574366122a90c451bca6a84713e28813ab95e2` / stable v1.0.35 unchanged. Pinned skill gitlink matches allowed upstream `f42128a3f05c73cf10c786a2711c488bb3a14839`. No prior SEO PR open.
+- **Clock:** last qualifying exact-source production Nov 18 **10:11:29 PST**, next rolling 48h deadline **Nov 20 10:11:29 PST**. Existing canonical replay article chosen for major, distinct v1.0.35 source-backed research refresh before next-cycle time risk. Metadata does not reset the clock.
+- **Technical repair and research:** original Aug 23 replay guide pinned v1.0.26 and omitted newer Cursor replay support. Current `repository.rs` matcher includes Cursor/CodeBuddy branches and delegated Cursor parsing; source/tests establish three timed Tool events with only one qualifying native file path. New evidence matrix covers failed actions, path filtering, rename identity, renderer evidence weights and 900/68,222 compact media fixture. This is not proof of actual filesystem syscalls.
+- **Data:** exact Drive folder remains **120 files**, newest **Nov 16 17:06:45Z**; Nov 9–15 still preliminary after Nov 18 finalization boundary. GA4 14 sessions, 0 key events; GSC Nov 9–14 7 clicks/218 date impressions, Sunday missing, and pages 7/294 separate basis. Existing human-only exporter regeneration/backfill blocker remains; no finalized traffic comparison. Cloudflare not configured.
+- **Production:** site-branch `.source-sha` matches Nov 18 successful rendered article `1132c2703824133aa270b7b616ef6a42895d64cc`; generated page/index/sitemap and GA4 bootstrap present, public-reader acceptance of latest article remains unresolved. No confirmed incident or new verified backlink.
+- **Delivery:** narrowly refresh canonical `/blog/replay-coding-agent-repository-changes/` plus Blog placement and sitemap freshness; daily/status; no new duplicate URL, protected changes, raw data, workflows or schedule modifications. Exact-head CI, full after-green review, squash merge, exact production publication, public acceptance and metadata-only closeout required. [Daily record](daily/2026-11-19.md).
+
+---
+
 ## Current cycle — 2026-11-18 (v1.0.35 live top counter publication deployed; public reader pending)
 
 - **Authority:** website main baseline `7f9c99d21a2faf360522486dfc8f3f4dcd4e2008`; current published product master `c1574366122a90c451bca6a84713e28813ab95e2` / stable v1.0.35 unchanged; shared SEO skill pinned/upstream `f42128a3f05c73cf10c786a2711c488bb3a14839`. Only unrelated Dependabot PR left open.
