@@ -8,7 +8,7 @@
 - **SLO:** this release meets previous Nov 21 09:35:08 PST deadline by 24h14m05s; next substantive content deadline **Nov 22 09:21:03 PST**. Metadata-only closeout does not reset clock.
 - **Analytics:** configured Drive latest Nov 9–15 family remains preliminary, GA4 14 organic sessions/0 key events, GSC Nov 9–14 7 clicks/218 date impressions with missing Sunday, separate page aggregation 7/294. Apps Script finalized export and backfill still human-only; no supported comparable traffic conclusion. Cloudflare analytics not configured; GA4 browser delivery not verified.
 - **New search-disambiguation signal:** [Tanium launched its distinct commercial Tanium AgentSight on Nov 17](https://www.tanium.com/press-releases/tanium-launches-agentsight-to-observe-and-govern-ai-across-endpoints). Same name and related endpoint/agent/MCP topics can complicate brand discovery, but no proven ranking loss, confusion, or trademark decision. Monitor public SERP and finalized GSC rather than automatically rename/reposition.
-- **Scope:** new TechArticle `/blog/what-agentsight-event-timeline-bars-mean/`, Blog and sitemap, daily/status and metadata closeout only. No workflows, protected controls, raw analytics or related recurring schedules touched. [Daily evidence](daily/2026-11-20.md).
+- **Scope:** new TechArticle `/blog/what-agentsight-event-timeline-bars-mean/`, Blog and sitemap, daily/status and [metadata closeout PR #205](https://github.com/eunomia-bpf/agentsight-website/pull/205) only. No workflows, protected controls, raw analytics or related recurring schedules touched. [Daily evidence](daily/2026-11-20.md).
 
 ---
 
