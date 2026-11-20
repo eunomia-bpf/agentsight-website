@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
   const overheadUpdated = new Date('2026-08-21T00:00:00Z');
+  const eventsTimelineUpdated = new Date('2026-11-20T00:00:00Z');
   const repositoryReplayUpdated = new Date('2026-11-19T00:00:00Z');
   const dockerSessionsUpdated = new Date('2026-08-25T00:00:00Z');
   const auditProvenanceUpdated = new Date('2026-08-27T00:00:00Z');
@@ -68,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? repositoryReplayUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? eventsTimelineUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -105,6 +106,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-much-overhead-does-agentsight-add/`,
       lastModified: overheadUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/what-agentsight-event-timeline-bars-mean/`,
+      lastModified: eventsTimelineUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
