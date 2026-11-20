@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const eventsTimelineArticle = {
+  title: 'What AgentSight Events timeline bars do—and do not—measure',
+  description: 'Source-pinned master-branch analysis of process, model, network and Tool spans, unfinished observations, aggregate windows and visual-width limits; not yet in stable v1.0.35.',
+  href: '/blog/what-agentsight-event-timeline-bars-mean/',
+};
 const topCounterArticle = {
   title: 'Why AgentSight top does not add native and eBPF counters',
   description: 'Audit v1.0.35 whole-summary native/capture selection, model-token fallback, process enrichment and regression fixtures.',
@@ -205,6 +210,7 @@ export default function BlogPage() {
     description: config.description,
     url: `${site.url}${config.path}`,
     hasPart: [
+      { '@type': 'WebPage', name: eventsTimelineArticle.title, url: site.url + eventsTimelineArticle.href },
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
       { '@type': 'WebPage', name: topCounterArticle.title, url: site.url + topCounterArticle.href },
       { '@type': 'WebPage', name: localWebAccessArticle.title, url: site.url + localWebAccessArticle.href },
@@ -252,6 +258,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Event timeline implementation research · November 2026</p>
+            <h2><Link href={eventsTimelineArticle.href}>{eventsTimelineArticle.title}</Link></h2>
+            <p>{eventsTimelineArticle.description}</p>
+            <Link className="arrow-link" href={eventsTimelineArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Updated repository replay research · November 2026</p>
             <h2><Link href={repositoryReplayArticle.href}>{repositoryReplayArticle.title}</Link></h2>

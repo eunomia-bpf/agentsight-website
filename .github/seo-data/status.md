@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-20 (unreleased master Events timeline implementation, publication in progress)
+
+- **Authority:** website baseline 419a27220f4da8498c414d4758b769fd5e9603bf; successful post-dependency main CI and static publish. Product master 9d33c5b6e9d8586960b6246d40a8cfa87502340c contains PR #274 Events timeline changes, **not present in stable v1.0.35**. Pinned SEO skills unchanged and equal upstream main; no conflicting open SEO PR.
+- **Analytics:** latest configured Drive family remains preliminary November 9–15 (generated Nov 16); GA4 14 organic sessions, 0 key events; GSC Nov 9–14 7 clicks / 218 date impressions with Nov 15 absent, pages 7/294 separately. No new finalized data, verified backlink, or complete weekly trend. Apps Script backfill/finalization remains a genuine existing human-only blocker.
+- **Production:** canonical homepage/Blog reachable. Site branch source marker matches 419a27220f4da8498c414d4758b769fd5e9603bf; public reader still lags Nov 19 Blog/replay refresh; no proven incident. GA4 path-only code present, end-to-end traffic unverified; Cloudflare analytics not configured.
+- **SLO:** last qualifying deployed 2026-11-19 09:35:08 PST; deadline Nov 21 09:35:08 PST. Planned source-pinned, distinct Events timeline semantics article must pass exact-head CI, squash and exact-commit production before it counts. Changed rendered scope is one article, Blog index, sitemap. [Daily evidence](daily/2026-11-20.md).
+- **Safety:** no private rows, product code, workflows, protected files or recurring schedules changed.
+
+---
+
 ## Current cycle — 2026-11-19 (Agent Nebula substantive evergreen refresh published; public-reader acceptance pending)
 
 - **Authority:** website main baseline `d254c424a07e9b6e51b393c25951a4274a99fc05`; product master `c1574366122a90c451bca6a84713e28813ab95e2` / stable v1.0.35 unchanged. Pinned skill gitlink matches allowed upstream `f42128a3f05c73cf10c786a2711c488bb3a14839`. No prior SEO PR open.
