@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const filesystemSummaryArticle = {
+  title: 'What AgentSight filesystem mutation summaries prove—and what they cannot',
+  description: 'Source-pinned master-branch analysis of syscall-entry evidence, merged file paths, rename destinations, unreadable user arguments and limits of SUMMARY counts; not yet in stable v1.0.35.',
+  href: '/blog/what-agentsight-filesystem-mutation-summaries-mean/',
+};
 const eventsTimelineArticle = {
   title: 'What AgentSight Events timeline bars do—and do not—measure',
   description: 'Source-pinned master-branch analysis of process, model, network and Tool spans, unfinished observations, aggregate windows and visual-width limits; not yet in stable v1.0.35.',
@@ -210,6 +215,7 @@ export default function BlogPage() {
     description: config.description,
     url: `${site.url}${config.path}`,
     hasPart: [
+      { '@type': 'WebPage', name: filesystemSummaryArticle.title, url: site.url + filesystemSummaryArticle.href },
       { '@type': 'WebPage', name: eventsTimelineArticle.title, url: site.url + eventsTimelineArticle.href },
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
       { '@type': 'WebPage', name: topCounterArticle.title, url: site.url + topCounterArticle.href },
@@ -258,6 +264,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Filesystem mutation evidence · November 2026</p>
+            <h2><Link href={filesystemSummaryArticle.href}>{filesystemSummaryArticle.title}</Link></h2>
+            <p>{filesystemSummaryArticle.description}</p>
+            <Link className="arrow-link" href={filesystemSummaryArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Event timeline implementation research · November 2026</p>
             <h2><Link href={eventsTimelineArticle.href}>{eventsTimelineArticle.title}</Link></h2>

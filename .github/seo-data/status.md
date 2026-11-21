@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-11-21 (filesystem mutation evidence publication in progress)
+
+- **Authority:** website main baseline `78f3f6778a78a38a3531dd66043dfdf035caf766`; product master `fbc6d91a025b561970f6e526a5c77bb07754f30a` advanced one implementation/CI repair commit over November 20. Stable release still v1.0.35; shared SEO skills unchanged at upstream/main `f42128a3f05c73cf10c786a2711c488bb3a14839`. No earlier open SEO PR.
+- **48h clock:** last qualifying exact-source production `2026-11-20 09:21:03 PST`, deadline `2026-11-22 09:21:03 PST`; waiting until tomorrow morning offers insufficient guaranteed CI/deployment margin. Publication on a fresh branch is under delivery; no unmerged content counts as success.
+- **Research:** master filesystem mutation `SUMMARY` observes syscall **entry**, not successful outcomes; keys group multiple attempted paths and `extra` can show only the last target. Rename logs destination not source; recent code switches to raw syscall dispatch and preserves unreadable-path markers. New distinct TechArticle proposed under `/blog/what-agentsight-filesystem-mutation-summaries-mean/`, clearly labeled unreleased master, not v1.0.35.
+- **Analytics:** exact Drive folder unchanged: 120 files, newest `2026-11-16T17:06:45.104Z`, November 9–15 preliminary only; GA4 14 organic sessions/0 key events; GSC November 9–14 7 clicks/218 date impressions, November 15 missing; page grouping 7/294 separately. Apps Script historical backfill and finalized reruns remain a human-only external blocker. Cloudflare not configured.
+- **Public:** homepage and Blog load; independent reader's Blog index lags the November 20 deployment and direct newer article fetch is unavailable, not yet a proven production outage. Tanium's separately launched AgentSight remains a verified brand-name collision with no measured ranking effect. No verified new independent backlink.
+- **Delivery:** pending exact-head Website CI, GitGuardian, Cloudflare, final self-review, squash-merge, production verification and metadata closeout. No protected controls, raw analytics, workflows or any recurring schedules changed. [Full daily record](daily/2026-11-21.md).
+
+---
+
 ## Current cycle — 2026-11-20 (master Events timeline article published; live reader pending)
 
 - **Authority:** website main baseline `419a27220f4da8498c414d4758b769fd5e9603bf`, successful TypeScript 7 CI and deploy. Product master `9d33c5b6e9d8586960b6246d40a8cfa87502340c` (PR #274) adds an Events timeline, **not shipped in stable v1.0.35**. Shared SEO skills pinned and allowed upstream remain identical.
