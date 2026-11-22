@@ -198,7 +198,7 @@ export default function MissingPathnameTracepointsArticle() {
                 'cd agentsight',
                 'git checkout fbc6d91a025b561970f6e526a5c77bb07754f30a',
                 'uname -r',
-                'rg -n "trace_raw_path|SEC\(\"tp/raw_syscalls|__TARGET_ARCH" bpf/process_ext/bpf_fs.h',
+                'rg -n "trace_raw_path|__TARGET_ARCH" bpf/process_ext/bpf_fs.h',
                 'rg -n "FS_LINK_INFO|AGG_MAP_COUNTS|flush_agg_map" bpf/process.c',
                 'rg -n "test_trace_fs_summary_events|PROBE_ENV" bpf/tests/test_process_runtime.py',
                 '# With a correctly built process tracer and test prerequisites:',
