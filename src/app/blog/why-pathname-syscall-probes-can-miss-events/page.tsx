@@ -93,7 +93,7 @@ export default function MissingPathnameTracepointsArticle() {
                 file-descriptor-oriented write and truncate tracing still produced
                 summaries. That is a <strong>source-reported CI observation</strong>,
                 not a benchmark repeated independently for this article. The change
-                replaces six pathname entry programs with one raw syscall entry
+                replaces seven pathname entry programs with one raw syscall entry
                 program, while keeping separate non-path hooks such as
                 <code> ftruncate</code>. The root-only regression fixture subsequently
                 requires <code>DIR_CREATE</code>, <code>WRITE</code>,
@@ -202,7 +202,8 @@ export default function MissingPathnameTracepointsArticle() {
                 'rg -n "FS_LINK_INFO|AGG_MAP_COUNTS|flush_agg_map" bpf/process.c',
                 'rg -n "test_trace_fs_summary_events|PROBE_ENV" bpf/tests/test_process_runtime.py',
                 '# With a correctly built process tracer and test prerequisites:',
-                'sudo python3 bpf/tests/test_process_runtime.py',
+                'cd bpf',
+                'sudo python3 tests/test_process_runtime.py',
               ].join('\n')}</code></pre>
               <p>
                 Compare the actual syscall variant and target architecture with
