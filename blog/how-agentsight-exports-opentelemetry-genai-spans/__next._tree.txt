@@ -2,4 +2,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":"how-agentsight-exports-opentelemetry-genai-spans","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"blog","h":64,"c":"$Q2"}]]
-0:{"b":"agentsight-4d7564b45a7f9f1f978fe573","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"agentsight-ba9c7544ddb795ede9940fcc","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
