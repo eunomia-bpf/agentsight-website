@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const existingUpdated = new Date('2026-08-08T00:00:00Z');
   const cursorUpdated = new Date('2026-08-10T00:00:00Z');
   const overheadUpdated = new Date('2026-08-21T00:00:00Z');
+  const silentSyscallUpdated = new Date('2026-11-22T00:00:00Z');
   const filesystemSummaryUpdated = new Date('2026-11-21T00:00:00Z');
   const eventsTimelineUpdated = new Date('2026-11-20T00:00:00Z');
   const repositoryReplayUpdated = new Date('2026-11-19T00:00:00Z');
@@ -70,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...fixed.map((path) => ({
       url: `${site.url}${path}`,
-      lastModified: path === '/blog/' ? filesystemSummaryUpdated : existingUpdated,
+      lastModified: path === '/blog/' ? silentSyscallUpdated : existingUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
@@ -107,6 +108,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${site.url}/blog/how-much-overhead-does-agentsight-add/`,
       lastModified: overheadUpdated,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${site.url}/blog/why-pathname-syscall-probes-can-miss-events/`,
+      lastModified: silentSyscallUpdated,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },

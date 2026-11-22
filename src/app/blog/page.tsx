@@ -7,6 +7,11 @@ import { contentPath, getPages } from '@/lib/public-content';
 import { hubConfig, site } from '@/lib/site';
 
 const config = hubConfig.blog;
+const silentSyscallArticle = {
+  title: 'Why pathname syscall probes can miss events even when they are attached',
+  description: 'Cross-check AgentSight master pathname tracepoint failures against upstream kernel BPF delivery, raw syscall dispatch, filtering, and misleading link diagnostics; unreleased in v1.0.35.',
+  href: '/blog/why-pathname-syscall-probes-can-miss-events/',
+};
 const filesystemSummaryArticle = {
   title: 'What AgentSight filesystem mutation summaries prove—and what they cannot',
   description: 'Source-pinned master-branch analysis of syscall-entry evidence, merged file paths, rename destinations, unreadable user arguments and limits of SUMMARY counts; not yet in stable v1.0.35.',
@@ -215,6 +220,7 @@ export default function BlogPage() {
     description: config.description,
     url: `${site.url}${config.path}`,
     hasPart: [
+      { '@type': 'WebPage', name: silentSyscallArticle.title, url: site.url + silentSyscallArticle.href },
       { '@type': 'WebPage', name: filesystemSummaryArticle.title, url: site.url + filesystemSummaryArticle.href },
       { '@type': 'WebPage', name: eventsTimelineArticle.title, url: site.url + eventsTimelineArticle.href },
       ...pages.map((page) => ({ '@type': 'WebPage', name: page.title, url: `${site.url}${contentPath(page)}` })),
@@ -264,6 +270,12 @@ export default function BlogPage() {
       </section>
       <section className="section">
         <div className="shell card-grid">
+          <article className="content-card">
+            <p className="card-label">Silent syscall-probe failure analysis · November 2026</p>
+            <h2><Link href={silentSyscallArticle.href}>{silentSyscallArticle.title}</Link></h2>
+            <p>{silentSyscallArticle.description}</p>
+            <Link className="arrow-link" href={silentSyscallArticle.href}>Read the page</Link>
+          </article>
           <article className="content-card">
             <p className="card-label">Filesystem mutation evidence · November 2026</p>
             <h2><Link href={filesystemSummaryArticle.href}>{filesystemSummaryArticle.title}</Link></h2>
