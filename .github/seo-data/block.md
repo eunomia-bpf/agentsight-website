@@ -1,5 +1,12 @@
 # Human-only blockers
 
+## Latest evidence — 2026-11-23
+
+The exact configured Google Drive folder now contains **128 files**, up from 120, with the new November 16–22 family created **2026-11-23**, before its November 25 three-day finalization boundary. New GA4 organic rows total **14 sessions / 0 key events** (preliminary); new GSC date rows cover **November 16–21 only**, **6 clicks / 186 impressions**, missing November 22. A separate GSC page grouping reports **6 clicks / 209 impressions**. The prior November 9–15 family has not been regenerated after its November 18 finalization date and remains missing November 15. This is *continuing export-finalization/backfill failure*, not a measured change in completed-week traffic.
+
+**Human-only action remains unchanged:** the authorized Apps Script operator must ensure post-lag weekly regeneration and historical backfill of each incomplete window, verify full source identity and date coverage, and retain preliminary copies until replacements are validated. The routine site task can read its Drive exports but cannot safely edit or trigger the external Apps Script exporter. None of these missing rows should be imputed as zero.
+
+
 ## Latest evidence — 2026-11-18
 
 The exact configured Google Drive folder remains **120 files**; newest modification **2026-11-16T17:06:45.104Z**, with no post-finalization rerun as of the November 18 morning check. The November 9–15 export is still the preliminary November 16 copy, even after the configured three-day finalization boundary. Its GA4 organic rows total **14 sessions / 0 key events**; GSC dates cover only November 9–14 with **7 clicks / 218 impressions**, missing November 15; page aggregation reports **7 clicks / 294 impressions** on a different basis. November 2–8 remains unrefreshed and also lacks its Sunday. This is a continuing external finalization/backfill failure, not a new traffic trend.
