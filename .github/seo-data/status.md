@@ -1,5 +1,16 @@
 # SEO status
 
+## Current cycle — 2026-11-23 (five-provider native discovery refresh in delivery)
+
+- **Authority:** site `main` baseline `32f73399d904adb917c8d71432da296ddc349658`; product `master` `fbc6d91a025b561970f6e526a5c77bb07754f30a`, stable v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`, unchanged. SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches upstream. No open SEO PR on entry.
+- **New data:** exact Drive folder **128 files**, newest 2026-11-23 17:05:48 UTC. New Nov16–22 exports **preliminary**, GA4 organic **14 sessions / 0 key events**, GSC dates Nov16–21 only **6 clicks / 186 impressions** (Nov22 missing), separate page aggregation **6 clicks / 209 impressions**. Do not compare incomplete weeks as finalized trends. Existing Apps Script regeneration/backfill remains human-only; Cloudflare not configured.
+- **SEO and public:** canonical home/index directionally visible; unrelated Tanium AgentSight remains a distinguishable branded result, no ranking-causality claim. Independent Blog reader lags latest exact-source Nov22 static deployment; Nov22 CDN acceptance still unresolved, not proven incident.
+- **Decision:** tomorrow's approximately 9am run leaves insufficient margin for the **Nov24 09:23:36 PST** 48-hour deadline. Major evergreen refresh of the **existing** canonical native-session discovery article to shipped v1.0.35 and five providers, emphasizing CodeBuddy project JSONL versus history, configuration, usage and tool-result provenance, regression tests, and system-vs-native evidence. No duplicate URL, no invented benchmark.
+- **Scope/delivery:** `seo/agentsight-2026-11-23-codebuddy-discovery-refresh`: one refreshed TechArticle, Blog card, sitemap freshness, daily/status and continuing external blocker. Expected exact-head CI `npm run verify`, GitGuardian and Cloudflare; matching squash publish, live acceptance and metadata closeout required before declaring completion. Prior qualifying production Nov22 **09:23:36 PST**. [Daily evidence](daily/2026-11-23.md). Recurring schedules untouched.
+
+---
+
+
 ## Current cycle — 2026-11-22 (silent syscall-probe analysis published; independent Nov22 live reader pending)
 
 - **Authority:** website main baseline `4f06b871db3f4c9d1979c29067f753cbc4a0f159`; product master `fbc6d91a025b561970f6e526a5c77bb07754f30a`, latest stable v1.0.35; shared SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches upstream allowed main. No previous open site SEO PR at cycle start.
