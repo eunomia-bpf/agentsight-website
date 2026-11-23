@@ -4,40 +4,48 @@ import { Eyebrow, JsonLd } from '@/components/PageParts';
 import { SiteShell } from '@/components/SiteShell';
 import { site } from '@/lib/site';
 
-const productCommit = 'bb99b66f8f98e4b9f8b1769a3da0a8fbbe26b6c3';
+const productCommit = 'c1574366122a90c451bca6a84713e28813ab95e2';
 const productSource = `https://github.com/eunomia-bpf/agentsight/blob/${productCommit}`;
 const articlePath = '/blog/how-agentsight-discovers-local-agent-sessions/';
 
 export const metadata: Metadata = {
-  title: 'How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions',
+  title: 'How AgentSight discovers local Claude, Codex, Gemini, Cursor, and CodeBuddy sessions',
   description:
-    'A source-level map of AgentSight v1.0.31 local session discovery: provider roots, bounded indexing, Codex and Cursor SQLite enrichment, lazy hydration, detail limits, and missing-session diagnostics.',
+    'A v1.0.35 source-and-test-backed guide to five native agent session sources: CodeBuddy CLI transcript discovery, usage and tool-status parsing, Codex/Cursor indexing, and evidence limits.',
   alternates: { canonical: articlePath },
   openGraph: {
     type: 'article',
-    title: 'How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions',
+    title: 'How AgentSight discovers local Claude, Codex, Gemini, Cursor, and CodeBuddy sessions',
     description:
-      'Follow AgentSight v1.0.31 from provider-native files through bounded indexing, Codex and Cursor read-only SQLite enrichment, and on-demand transcript hydration.',
+      'Follow five agent-native session paths in v1.0.35, including CodeBuddy CLI project JSONL, optional storage overrides, token usage and tool results, and bounded details.',
     url: articlePath,
   },
 };
 
 const sources = [
   [
-    'AgentSight v1.0.31 session parser: discovery roots, path classification, Cursor deduplication, and provider file formats',
+    'AgentSight v1.0.35 session parser and CodeBuddy regression fixtures: roots, path rules, usage and tool outcomes',
     `${productSource}/ext/session/src/parser.rs`,
   ],
   [
-    'AgentSight v1.0.31 native analysis source: Codex indexing, Cursor state enrichment, bounded ID lookup, caching, and hydration',
+    'AgentSight v1.0.35 native analysis: Codex/Cursor indexing, bounded ID lookup, caching, and hydration',
     `${productSource}/ext/analysis/src/sources/agent_native.rs`,
   ],
   [
-    'AgentSight v1.0.31 README: native-session workflows and current platform boundary',
+    'AgentSight v1.0.35 README: native-session workflows and current platform boundary',
     `${productSource}/README.md`,
   ],
   [
-    'AgentSight v1.0.31 usage guide: top, bind, report, and vis behavior',
+    'AgentSight v1.0.35 usage guide: top, bind, report, and vis behavior',
     `${productSource}/docs/usage.md`,
+  ],
+  [
+    'AgentSight v1.0.35 CodeBuddy CLI: read-only native history versus separate Node process/TLS capture',
+    `${productSource}/docs/agents.md`,
+  ],
+  [
+    'AgentSight v1.0.35 release, confirming the pinned behavior is shipped',
+    'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35',
   ],
 ] as const;
 
@@ -48,11 +56,11 @@ export default function LocalSessionDiscoveryArticle() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
-    headline: 'How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions',
+    headline: 'How AgentSight discovers local Claude, Codex, Gemini, Cursor, and CodeBuddy sessions',
     description: metadata.description,
     url: `${site.url}${articlePath}`,
     datePublished: '2026-08-31',
-    dateModified: '2026-09-22',
+    dateModified: '2026-11-23',
     author: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
     publisher: { '@type': 'Organization', name: 'Eunomia', url: 'https://eunomia.dev/' },
   };
@@ -67,8 +75,8 @@ export default function LocalSessionDiscoveryArticle() {
             <Link href="/blog/">Blog</Link>
             <span aria-current="page">Local session discovery</span>
           </nav>
-          <Eyebrow>Implementation map · refreshed 22 September 2026 · AgentSight v1.0.31</Eyebrow>
-          <h1>How AgentSight discovers local Claude, Codex, Gemini, and Cursor sessions</h1>
+          <Eyebrow>Implementation map · refreshed 23 November 2026 · AgentSight v1.0.35</Eyebrow>
+          <h1>How AgentSight discovers local Claude, Codex, Gemini, Cursor, and CodeBuddy sessions</h1>
           <p className="hero-lede">
             AgentSight does not depend on a universal coding-agent session API. It discovers provider-owned local state,
             builds a bounded recent-session index, enriches lightweight rows from provider databases when available, and
@@ -83,11 +91,12 @@ export default function LocalSessionDiscoveryArticle() {
             <section>
               <h2>The short answer</h2>
               <p>
-                AgentSight v1.0.31 scans four provider-owned roots: Claude Code under <code>~/.claude/projects</code>, Codex
-                under <code>$CODEX_HOME/sessions</code> or <code>~/.codex/sessions</code>, Gemini CLI under
-                <code>~/.gemini/tmp</code>, and Cursor under <code>~/.cursor/projects</code>. It recognizes provider-specific
-                transcript formats, orders candidates by update time, deduplicates the visible session list, and clamps the
-                ordinary list path to at most 25 sessions.
+                AgentSight v1.0.35 scans five provider-owned roots: Claude Code under <code>~/.claude/projects</code>,
+                Codex under <code>$CODEX_HOME/sessions</code> or <code>~/.codex/sessions</code>, Gemini CLI under
+                <code>~/.gemini/tmp</code>, Cursor under <code>~/.cursor/projects</code>, and CodeBuddy CLI under
+                <code>~/.codebuddy/projects</code> or an absolute <code>CODEBUDDY_CONFIG_DIR</code> override. Discovery
+                recognizes provider-specific transcripts, orders candidates by freshness, and bounds the normal list to
+                at most 25 sessions. It is not a generic recursive scanner of every JSONL file on disk.
               </p>
               <p>
                 Two providers also have read-only database paths that avoid treating every list operation as a full transcript
@@ -135,6 +144,12 @@ export default function LocalSessionDiscoveryArticle() {
                       <td style={cell}>JSONL under <code>agent-transcripts</code>, plus sibling subagent JSONL files</td>
                       <td style={cell}>The parent transcript file stem is the composer/session ID; duplicate candidates are collapsed.</td>
                     </tr>
+                    <tr>
+                      <td style={cell}>CodeBuddy CLI</td>
+                      <td style={cell}><code>~/.codebuddy/projects</code> or an absolute <code>CODEBUDDY_CONFIG_DIR/projects</code></td>
+                      <td style={cell}>Project <code>.jsonl</code> session transcripts; <code>history.jsonl</code> is not a session</td>
+                      <td style={cell}>Project transcript file stem, checked against the parsed source session ID when hydrating detail.</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -160,7 +175,7 @@ export default function LocalSessionDiscoveryArticle() {
               </p>
               <p>
                 For Codex and Gemini, the ID index reads only the first 64 KiB when it needs the provider-native session ID.
-                Claude and Cursor can use the file stem directly. This is a useful troubleshooting distinction: list discovery,
+                Claude, Cursor, and CodeBuddy can use the transcript file stem directly. This is a useful troubleshooting distinction: list discovery,
                 ID resolution, and full transcript parsing are separate failure points.
               </p>
             </section>
@@ -209,6 +224,85 @@ export default function LocalSessionDiscoveryArticle() {
             </section>
 
             <section>
+              <h2>CodeBuddy CLI: why a fifth provider needs its own parser</h2>
+              <p>
+                CodeBuddy CLI is a Node.js command-line agent, not the CodeBuddy IDE plugin. In the pinned
+                v1.0.35 <a href={productSource + '/ext/session/src/parser.rs'}>native session parser</a>, discovery walks
+                <code> ~/.codebuddy/projects</code> by default and recognizes project <code>.jsonl</code> transcripts.
+                <code> CODEBUDDY_CONFIG_DIR</code> substitutes a different home only when it is an absolute path.
+                A relative value falls back to <code>~/.codebuddy</code>, as a source regression test confirms.
+                The separate <code>~/.codebuddy/history.jsonl</code> is a prompt index, not a session transcript;
+                counting its entries as agent sessions would inflate activity.
+              </p>
+              <p>
+                A project JSONL file is only a <em>candidate</em>. The CodeBuddy-specific parser recognizes
+                <code> message</code>, <code>ai-title</code>, <code>summary</code>, and
+                <code> turn-metrics</code> records. It reads user turns, model messages, tool calls, tool results,
+                timestamps and available token usage into the shared session representation.
+                A file containing only <code>session-meta</code> is rejected as an empty session.
+                This differs from simply displaying any file discovered beneath a provider directory.
+              </p>
+              <h3>Which CodeBuddy fields survive normalization?</h3>
+              <div style={{ overflowX: 'auto', margin: '1.25rem 0' }}>
+                <table style={{ width: '100%', minWidth: '820px', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+                  <thead>
+                    <tr><th style={header}>Source record</th><th style={header}>AgentSight interpretation</th><th style={header}>Evidence boundary</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td style={cell}><code>sessionId</code>, numeric <code>timestamp</code>, <code>cwd</code></td><td style={cell}>Provider session identity, millisecond clock and working directory</td><td style={cell}>The file's existence does not prove the parsed transcript has a valid task</td></tr>
+                    <tr><td style={cell}><code>providerData.rawUsage</code>, <code>providerData.usage</code>, message <code>usage</code></td><td style={cell}>Preferred token fields with fallbacks; separate cache creation/read counters when present</td><td style={cell}>Missing provider usage is not a measured zero-cost call; fields are provider-reported</td></tr>
+                    <tr><td style={cell}>Assistant <code>tool_use</code> or <code>function_call</code></td><td style={cell}>Tool name, call ID, command/path hints and source timestamp</td><td style={cell}>An invocation is not independent proof of an executed file operation</td></tr>
+                    <tr><td style={cell}>User <code>tool_result</code> linked by <code>tool_use_id</code></td><td style={cell}>A matching result changes tool status to <code>ok</code> or <code>fail</code> from <code>is_error</code></td><td style={cell}>Unmatched calls remain observed, not proven successful</td></tr>
+                    <tr><td style={cell}><code>turn-metrics.durationMs</code>, <code>ai-title</code>, <code>summary</code></td><td style={cell}>Accumulated reported duration and optional human-readable preview</td><td style={cell}>These are transcript fields, not host CPU measurements</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                The implementation prefers <code>rawUsage.prompt_tokens</code> and
+                <code>completion_tokens</code> when available, then checks camel-case provider usage and finally the
+                message usage object. Cache creation and cache read counts remain separate in session aggregates.
+                Tool-result status is applied only when its call ID matches an earlier Tool event.
+                An empty assistant message after a completed tool sequence does not generate a fake LLM response.
+              </p>
+            </section>
+            <section>
+              <h2>Reproducibility: what the CodeBuddy tests establish</h2>
+              <p>
+                The <a href={productSource + '/ext/session/src/parser.rs'}>pinned Rust regression tests</a>
+                <code> codebuddy_parser_reads_numeric_timestamps_usage_and_tools</code>,
+                <code> codebuddy_session_meta_only_is_not_a_session</code>,
+                <code> codebuddy_discovery_finds_project_jsonl_and_skips_history</code>, and
+                <code> codebuddy_empty_assistant_after_tools_does_not_emit_blank_response</code>
+                cover four different gates. The synthetic fixture has one user prompt, one assistant response and one
+                Read invocation, with reported <code>36,149</code> input tokens, <code>18</code> output tokens,
+                <code>31,864</code> cache-creation tokens and <code>4,277 ms</code> turn duration.
+                Those are fixed test inputs and assertions, <strong>not customer usage, a runtime benchmark,
+                or a real captured session</strong>.
+              </p>
+              <p>
+                To audit a build, inspect the tag and its fixtures before running the session tests in a
+                disposable environment. A source-level inspection requiring no private transcripts is:
+              </p>
+              <pre style={{ overflowX: 'auto' }}><code>{[
+                'git clone https://github.com/eunomia-bpf/agentsight.git',
+                'cd agentsight',
+                'git checkout c1574366122a90c451bca6a84713e28813ab95e2',
+                'rg -n "AGENT_CODEBUDDY|configured_codebuddy_home|parse_codebuddy_jsonl" ext/session/src/parser.rs',
+                'rg -n "fn codebuddy_.*|fn relative_codebuddy_home" ext/session/src/parser.rs',
+                'rg -n "CodeBuddy CLI|CODEBUDDY_CONFIG_DIR|history.jsonl" docs/agents.md',
+              ].join('\\n')}</code></pre>
+              <p>
+                If CodeBuddy appears in <code>agentsight top</code> but the session is incomplete, first confirm the
+                CLI's project JSONL and provider schema. <code>agentsight report --local</code> is a native-history
+                path, whereas <code>sudo agentsight record -c codebuddy</code> uses separate Linux process/TLS sensors.
+                The CLI's Node process name need not be <code>codebuddy</code>; the source documents command-line
+                process matching and an SSL filter exception. Neither mode proves that every file/network effect was
+                captured, and the IDE plugin is out of scope. Sensitive prompts, file paths and tool arguments
+                remain local evidence; do not post raw session transcripts publicly for debugging.
+              </p>
+            </section>
+
+            <section>
               <h2>Hydrated detail is intentionally bounded</h2>
               <p>
                 A matching transcript can still be very large, so AgentSight bounds the detail payload after hydration. v1.0.31
@@ -241,6 +335,10 @@ export default function LocalSessionDiscoveryArticle() {
                     <tr>
                       <td style={cell}>Codex sessions disappeared after moving its home.</td>
                       <td style={cell}>Verify that <code>CODEX_HOME</code> is an absolute path and that its <code>sessions</code> tree or <code>state_5.sqlite</code> remains readable.</td>
+                    </tr>
+                    <tr>
+                      <td style={cell}>CodeBuddy CLI history seems empty or over-counted.</td>
+                      <td style={cell}>Check the absolute <code>CODEBUDDY_CONFIG_DIR</code> override, <code>projects/*.jsonl</code>, and exclude the prompt-only <code>history.jsonl</code>. A metadata-only transcript does not make a parsed session.</td>
                     </tr>
                     <tr>
                       <td style={cell}>A transcript-shaped file is ignored.</td>
@@ -294,11 +392,11 @@ export default function LocalSessionDiscoveryArticle() {
                 ))}
               </ul>
               <p>
-                Research scope: AgentSight v1.0.31 at commit <code>{productCommit.slice(0, 12)}</code>, inspected on
-                22 September 2026. The session-discovery implementation itself is unchanged from the v1.0.30 snapshot this
-                article previously cited; this refresh re-verifies that implementation against the current release and adds
-                the previously undocumented Cursor state-database enrichment and delegated-token rollup path. Provider storage
-                formats can change independently, so validate newer releases against current source.
+                Research scope: released AgentSight v1.0.35 at commit <code>{productCommit.slice(0, 12)}</code>,
+                inspected on 23 November 2026. This is a major evergreen refresh of the existing discovery guide, adding
+                CodeBuddy CLI source classification, parser evidence, field-level mapping, reproducible fixture assertions,
+                and native-versus-system capture limits. Existing Codex/Cursor details remain implementation-scoped;
+                provider storage formats can change independently. No new runtime measurement was performed.
               </p>
             </section>
           </article>
@@ -308,16 +406,16 @@ export default function LocalSessionDiscoveryArticle() {
               <p className="card-label">Reader decision</p>
               <h2>Debug the discovery path before the capture path.</h2>
               <p>
-                If a native Claude, Codex, Gemini, or Cursor session is missing, first verify where the provider wrote state,
+                If a native Claude, Codex, Gemini, Cursor, or CodeBuddy CLI session is missing, first verify where the provider wrote state,
                 whether AgentSight recognizes that format, and whether the session falls inside the bounded recent index.
               </p>
             </div>
             <div className="sidebar-card">
               <p className="card-label">New in this refresh</p>
-              <h2>Cursor's transcript is only half of the index story.</h2>
+              <h2>CodeBuddy CLI is an additional native-history source.</h2>
               <p>
-                v1.0.31 can enrich discovered Cursor sessions from a read-only local state database and include delegated
-                subagent token counts when those records are available.
+                v1.0.35 reads CodeBuddy project JSONL, but filters prompt-only history and rejects metadata-only files.
+                Tool results and token fields are provider-reported evidence, not independent system observations.
               </p>
             </div>
             <div className="sidebar-card">
