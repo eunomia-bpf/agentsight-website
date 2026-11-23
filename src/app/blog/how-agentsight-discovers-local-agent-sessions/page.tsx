@@ -290,7 +290,7 @@ export default function LocalSessionDiscoveryArticle() {
                 'rg -n "AGENT_CODEBUDDY|configured_codebuddy_home|parse_codebuddy_jsonl" ext/session/src/parser.rs',
                 'rg -n "fn codebuddy_.*|fn relative_codebuddy_home" ext/session/src/parser.rs',
                 'rg -n "CodeBuddy CLI|CODEBUDDY_CONFIG_DIR|history.jsonl" docs/agents.md',
-              ].join('\\n')}</code></pre>
+              ].join('\n')}</code></pre>
               <p>
                 If CodeBuddy appears in <code>agentsight top</code> but the session is incomplete, first confirm the
                 CLI's project JSONL and provider schema. <code>agentsight report --local</code> is a native-history
@@ -305,7 +305,7 @@ export default function LocalSessionDiscoveryArticle() {
             <section>
               <h2>Hydrated detail is intentionally bounded</h2>
               <p>
-                A matching transcript can still be very large, so AgentSight bounds the detail payload after hydration. v1.0.31
+                A matching transcript can still be very large, so AgentSight bounds the detail payload after hydration. v1.0.35
                 retains at most 1,000 prompts, 2,000 LLM responses, and 2,000 tool events. Prompt and response text each share a
                 2 MiB budget; tool command text gets 1 MiB. Per-tool process chains are capped at 16 entries, while path groups,
                 paths, and domains are capped at 32 each.
