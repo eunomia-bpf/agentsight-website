@@ -1,5 +1,14 @@
 # SEO status
 
+## Current cycle — 2026-11-24 (pre-PR build unavailable; partial evidence only)
+
+- Website main baseline `cc0fe0eafd32c32f00ccfe3f0253ffe5c3a9ab3d`; no open PRs at entry. Latest main CI and production workflow succeeded. Shared skill unchanged. Product master advanced to `2b16f697f557a8694e423ccf96d9cd5908222c91` (PR #273); stable v1.0.35 unchanged.
+- Research: master-only host/session association fix ranks session candidates by recency then confidence; UI separates live process rows from running session rows, uses a strict three-minute recency predicate with missing/invalid timestamp fallback, and retains helpers in process/resource totals. Candidate article requires full overlap check against correlation guidance. No new rendered change.
+- Drive unchanged (128 files, November 23 newest); November 16–22 remains preliminary, GSC omits November 22. Public home accessible; static content matches November 23 squash, but public article reader still shows four-provider version. No confirmed outage.
+- Last qualifying publish November 23 09:51:52 PST; next deadline **November 25 09:51:52 PST**. No new qualifying publication. Required pre-PR npm verification cannot run because checkout and npm registry access are unavailable. Ordinary CI is PR/main-only; no preflight bypass. Partial evidence preserved in [daily report](daily/2026-11-24.md) on a fresh branch, not main. No merge or production change claimed; schedules untouched.
+
+---
+
 ## Current cycle — 2026-11-23 (five-provider native discovery refresh published; public CDN reader lag)
 
 - **Authority:** site `main` baseline `32f73399d904adb917c8d71432da296ddc349658`; product `master` `fbc6d91a025b561970f6e526a5c77bb07754f30a`, stable v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`, unchanged. SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches upstream. No open SEO PR on entry.
