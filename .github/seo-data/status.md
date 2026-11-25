@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-25 (preflight blocked, unmerged branch only)
+
+- Website main `cc0fe0eafd32c32f00ccfe3f0253ffe5c3a9ab3d`, no open SEO PR. Product master `2b16f697f557a8694e423ccf96d9cd5908222c91`, latest release v1.0.35. Shared skills unchanged at `f42128a3f05c73cf10c786a2711c488bb3a14839`.
+- Direct independent public reader now shows the November 23 five-provider CodeBuddy refresh on its canonical URL, resolving the article's prior acceptance uncertainty. Blog reader still lagged; static sitemap, homepage GA4 and exact deployed source verified. No established outage.
+- Drive unchanged, 128 files, newest Nov23 17:05:48 UTC; November 16–22 export is preliminary despite reaching November 25 finalization date. GA4 14 organic sessions/0 key events; GSC dates Nov16–21 6 clicks/186 impressions, Nov22 missing; GSC pages separately 6/209. Re-read fingerprints in daily report. Authorized Apps Script backfill/regeneration remains required; no complete-week trend.
+- Candidate: distinguish shared-host session matching, running-state predicate, and process/resource totals in unreleased master PR #273. Seven standalone synthetic predicate assertions pass, including strict 180s boundary and future/invalid/missing timestamp fallbacks. No full product or site build.
+- Required pre-PR verify remains blocked by DNS failures for GitHub and npm registry and absent checkout/dependency cache. No PR or publication; last qualifying deploy Nov23 09:51:52 PST, deadline Nov25 09:51:52 PST (imminent at check; next cycle exceeds it). No fabricated SLO reset or observed miss before deadline. [Daily evidence](daily/2026-11-25.md); prior unmerged [Nov24 evidence](daily/2026-11-24.md) recovered on branch. No changes to recurring schedules.
+
+---
+
 ## Current cycle — 2026-11-23 (five-provider native discovery refresh published; public CDN reader lag)
 
 - **Authority:** site `main` baseline `32f73399d904adb917c8d71432da296ddc349658`; product `master` `fbc6d91a025b561970f6e526a5c77bb07754f30a`, stable v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`, unchanged. SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches upstream. No open SEO PR on entry.
