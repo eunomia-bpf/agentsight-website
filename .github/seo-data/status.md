@@ -1,5 +1,15 @@
 # SEO status
 
+## Current cycle — 2026-11-26 (release preparation detected; 48-hour SLO missed; preflight blocked, unmerged)
+
+- Authority: website main `cc0fe0eafd32c32f00ccfe3f0253ffe5c3a9ab3d`; no open PRs. Product master [bf7d913a](https://github.com/eunomia-bpf/agentsight/commit/bf7d913a74b9c3b187de60a56bbdb793b6873d22) prepares 1.0.36, but latest stable remains v1.0.35 and 1.0.36 tag/release not found. Shared skills unchanged. Do not advertise pending version.
+- Last qualifying publication Nov23 09:51:52 PST, [PR #210](https://github.com/eunomia-bpf/agentsight-website/pull/210), [exact publish #45232101133](https://github.com/eunomia-bpf/agentsight-website/actions/runs/45232101133). **SLO missed Nov25 09:51:52 PST**; no reset. Current public article independently readable with CodeBuddy. Published source marker still matches content squash; main CI and publish successful Nov23. Blog index reader still lagging, not a confirmed outage.
+- New product-source findings: Windows process-only ETW explicit elevated top --pid, exchange-bound incremental SSE aggregation, content redactor, timestamp normalization, release asset pipeline. Not released/verified platform parity. Prior FS_LINK_INFO diagnostic removed. On release proof, reconcile version/compatibility and source-qualified articles; major evergreen candidate [timestamp/SSE article](/blog/what-agentsight-trace-timestamps-mean/) rather than duplicate URL. Prior running-session research remains usable.
+- Data: 128 exports, newest Nov23 17:05:48 UTC; unchanged fingerprints, no post-lag regeneration. GA4 14 organic sessions/0 key events; GSC Nov16–21 6 clicks/186 date impressions, Nov22 missing; separate pages 6/209. No finalized weekly trend. Apps Script regeneration/backfill remains external human-only. Cloudflare not configured. Public brand ambiguity persists, no ranking causality.
+- Local git DNS and npm registry access unavailable; required pre-PR npm run verify not executable. No PR/merge/closeout or rendered change. Fresh branch preserves Nov24–26 daily records and this status, all **unmerged**. Restore build-capable environment; no protected control or schedules modified. [Daily evidence](daily/2026-11-26.md).
+
+---
+
 ## Current cycle — 2026-11-23 (five-provider native discovery refresh published; public CDN reader lag)
 
 - **Authority:** site `main` baseline `32f73399d904adb917c8d71432da296ddc349658`; product `master` `fbc6d91a025b561970f6e526a5c77bb07754f30a`, stable v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`, unchanged. SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches upstream. No open SEO PR on entry.
