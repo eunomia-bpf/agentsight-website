@@ -1,5 +1,9 @@
 # Human-only blockers
 
+## Latest evidence — 2026-11-26
+
+The configured Drive folder remains at 128 files, newest modification 2026-11-23T17:05:48.151Z. The November 16–22 family has passed its November 25 finalization date without regeneration; matching CSV fingerprints are unchanged, and GSC dates still omit November 22. The authorized Apps Script operator must regenerate after the configured lag and backfill missing/incomplete historical windows, preserving preliminary snapshots until validated. No finalized complete-week trend can be established. The local build/DNS limitation is recorded separately in the daily report, not characterized as an Apps Script or production failure.
+
 ## Latest evidence — 2026-11-23
 
 The exact configured Google Drive folder now contains **128 files**, up from 120, with the new November 16–22 family created **2026-11-23**, before its November 25 three-day finalization boundary. New GA4 organic rows total **14 sessions / 0 key events** (preliminary); new GSC date rows cover **November 16–21 only**, **6 clicks / 186 impressions**, missing November 22. A separate GSC page grouping reports **6 clicks / 209 impressions**. The prior November 9–15 family has not been regenerated after its November 18 finalization date and remains missing November 15. This is *continuing export-finalization/backfill failure*, not a measured change in completed-week traffic.
