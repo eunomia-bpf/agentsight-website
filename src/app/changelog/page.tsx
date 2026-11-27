@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 const updates = [
   {
     label: 'Current release',
-    title: `AgentSight ${site.version}`,
+    title: `AgentSight v${site.version}`,
     description:
-      'v1.0.35 improves system capture and HTTP analysis: sidecar process capture is scoped by PID namespace and stream liveness, Docker target capture follows children forked by any thread, nested PID-namespace events remain in scope, oversized HTTP/1.1 messages retain truncation markers, and HTTP exchanges correlate by TLS connection and stream. Live Codex token totals are also kept consistent. Exact coverage still depends on the runtime and capture path.',
+      'v1.0.36 adds Windows ETW process lifecycle capture in top, an Events timeline, incremental SSE aggregation by HTTP exchange, higher-precision eBPF timestamp normalization, and a high-confidence content redaction analyzer. Windows x86_64 release binaries now include a SHA-256 checksum; Windows ETW does not provide full Linux eBPF capture parity.',
     href: site.releaseUrl,
   },
   {
@@ -99,7 +99,7 @@ const updates = [
     label: 'Cross-platform',
     title: 'Portable native-session workflows on Windows, macOS, and Linux',
     description:
-      'top, bind, vis, and report can use agent-native session files without eBPF. Native Windows session management is supported by CI and provider shims, while record and eBPF-backed tracing remain Linux-only; current GitHub Releases do not publish a Windows binary asset.',
+      'top, bind, vis, and report can use agent-native session files without eBPF. Native Windows session management is supported by CI and provider shims, while record and eBPF-backed tracing remain Linux-only. Windows x86_64 release binaries and ETW process lifecycle capture in top are available beginning with v1.0.36.',
     href: '/product/',
   },
   {
@@ -111,9 +111,9 @@ const updates = [
   },
   {
     label: 'Release artifacts',
-    title: 'Native Linux x86_64 and ARM64 binaries',
+    title: 'Native Linux x86_64 and ARM64 binaries; Windows x86_64 executable',
     description:
-      'Current GitHub Releases publish agentsight and agentpprof binaries for x86_64 and aarch64 Linux. The unsuffixed compatibility assets remain x86_64; use the architecture-specific artifact when pinning a reproducible deployment.',
+      'Current GitHub Releases publish agentsight and agentpprof binaries for x86_64 and aarch64 Linux, plus agentsight-windows-x86_64.exe and its SHA-256 checksum for Windows. The unsuffixed compatibility assets remain x86_64; use the architecture-specific artifact when pinning a reproducible deployment.',
     href: `${site.repository}/releases/latest`,
   },
   {
