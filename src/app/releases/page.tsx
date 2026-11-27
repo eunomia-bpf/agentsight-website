@@ -31,7 +31,7 @@ export default function ReleasesPage() {
             <p>
               On Linux x86-64, install through the official Homebrew tap. Cargo remains available
               through crates.io. Current GitHub Releases publish Linux binaries for both x86_64 and
-              aarch64. The
+              aarch64, plus the Windows x86_64 executable and its SHA-256 checksum. The
               unsuffixed compatibility asset remains x86_64; choose the architecture-specific artifact
               when you need an explicitly pinned deployment. The website does not mirror binaries, so
               GitHub Releases remains the authoritative download location.
