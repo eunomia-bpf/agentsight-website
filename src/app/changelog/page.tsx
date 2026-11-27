@@ -15,7 +15,7 @@ const updates = [
     label: 'Current release',
     title: `AgentSight v${site.version}`,
     description:
-      'v1.0.36 adds Windows ETW process lifecycle capture in top, an Events timeline, incremental SSE aggregation by HTTP exchange, higher-precision eBPF timestamp normalization, and a high-confidence content redaction analyzer. Windows x86_64 release binaries now include a SHA-256 checksum; Windows ETW does not provide full Linux eBPF capture parity.',
+      'v1.0.36 adds Windows ETW process lifecycle capture for elevated, explicitly targeted top sessions, an Events timeline, incremental SSE aggregation by HTTP exchange, higher-precision eBPF timestamp normalization, and a high-confidence content redaction analyzer. Windows x86_64 release binaries now include a SHA-256 checksum; Windows ETW does not provide full Linux eBPF capture parity.',
     href: site.releaseUrl,
   },
   {
@@ -99,7 +99,7 @@ const updates = [
     label: 'Cross-platform',
     title: 'Portable native-session workflows on Windows, macOS, and Linux',
     description:
-      'top, bind, vis, and report can use agent-native session files without eBPF. Native Windows session management is supported by CI and provider shims, while record and eBPF-backed tracing remain Linux-only. Windows x86_64 release binaries and ETW process lifecycle capture in top are available beginning with v1.0.36.',
+      'top, bind, vis, and report can use agent-native session files without eBPF. Native Windows session management is supported by CI and provider shims, while record and eBPF-backed tracing remain Linux-only. Windows x86_64 release binaries and ETW process lifecycle capture for elevated, explicitly targeted top sessions are available beginning with v1.0.36.',
     href: '/product/',
   },
   {
