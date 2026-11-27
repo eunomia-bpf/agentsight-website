@@ -1,5 +1,17 @@
 # SEO status
 
+## Current cycle — 2026-11-27 (release synchronization staged; preflight blocked)
+
+- **Authority:** website main `cc0fe0eafd32c32f00ccfe3f0253ffe5c3a9ab3d`, no open PR; newest merged report Nov23. Pinned shared skill and allowed upstream both `f42128a3f05c73cf10c786a2711c488bb3a14839`.
+- **Material new drift:** [v1.0.36](https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.36) is now the latest published release, published Nov26 09:54:31 PST, tag/master `bf7d913a74b9c3b187de60a56bbdb793b6873d22`. Release assets include Windows x86_64 exe and .sha256 in addition to Linux architecture-specific and compatibility binaries. Public home still reports v1.0.35. Prioritize release synchronization over new article; ETW is process-lifecycle capture for elevated explicit target top, not Linux file/network/TLS parity. Historical screenshot pin intentionally preserved.
+- **SLO:** last qualifying publication PR #210, exact [production run #45232101133](https://github.com/eunomia-bpf/agentsight-website/actions/runs/45232101133), Nov23 09:51:52 PST; deadline Nov25 09:51:52 PST missed, approximately 48h overdue at today's check. Release metadata alone does not reset the clock. Published site marker still `94e53d89f7c1fadc69cb140e4ab5ac7be453ffdf`. Public homepage and five-provider discovery article retrieved; no demonstrated outage.
+- **Data:** exact Drive folder 128 files, newest Nov23 17:05:48.151 UTC; no post-Nov25 refresh. Re-read Nov16–22 GA4 organic, GSC dates and pages; FNV-1a text fingerprints unchanged (81132cf3, 685943a3, 991e932b). Carry forward preliminary 14 sessions/0 key events, GSC Nov16–21 6 clicks/186 date impressions, 6/209 page impressions; Nov22 missing. No finalized comparison. Existing Apps Script authorized operator action remains. Cloudflare analytics not configured. Public index/domain/brand scan directional only; no new confirmed external link or ranking effect.
+- **Delivery:** local DNS resolution for github.com and registry.npmjs.org unavailable again; git ls-remote failed, npm cache empty. Required pre-PR npm run verify cannot be completed. Prepared three release-sync source files and recovered Nov24–26 records on fresh branch `seo/agentsight-2026-11-27-release-sync-preflight-blocked`. Source-only edits not built; no PR, merge, deployment or closeout. Revalidate complete release-drift scope and exact public acceptance before opening PR in network-capable environment. No scheduler or control-plane changes.
+
+[Daily evidence](daily/2026-11-27.md).
+
+---
+
 ## Current cycle — 2026-11-23 (five-provider native discovery refresh published; public CDN reader lag)
 
 - **Authority:** site `main` baseline `32f73399d904adb917c8d71432da296ddc349658`; product `master` `fbc6d91a025b561970f6e526a5c77bb07754f30a`, stable v1.0.35 at `c1574366122a90c451bca6a84713e28813ab95e2`, unchanged. SEO skill gitlink `f42128a3f05c73cf10c786a2711c488bb3a14839` matches upstream. No open SEO PR on entry.
