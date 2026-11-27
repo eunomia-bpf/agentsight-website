@@ -9,9 +9,9 @@ export const site = {
   websiteRepository: 'https://github.com/eunomia-bpf/agentsight-website',
   docs: 'https://eunomia.dev/agentsight/',
   demo: 'https://app.agentsight.us/',
-  version: '1.0.35',
-  releaseDate: '2026-10-23',
-  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.35',
+  version: '1.0.36',
+  releaseDate: '2026-11-26',
+  releaseUrl: 'https://github.com/eunomia-bpf/agentsight/releases/tag/v1.0.36',
   productCommit,
   assetBase: `https://raw.githubusercontent.com/eunomia-bpf/agentsight/${productCommit}`,
 } as const;
